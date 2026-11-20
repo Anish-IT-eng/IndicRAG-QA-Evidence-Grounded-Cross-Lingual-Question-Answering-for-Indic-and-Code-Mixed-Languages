@@ -1,0 +1,13 @@
+,SUFFICIENT,PARTIAL,INSUFFICIENT,CONFLICTING,MISSING,CLARIFICATION_REQUIRED,version
+SUFFICIENT,0,6,8,11,0,0,Historical_Phase2B
+PARTIAL,0,0,0,0,0,0,Historical_Phase2B
+INSUFFICIENT,0,0,2,0,0,0,Historical_Phase2B
+CONFLICTING,0,0,0,1,0,0,Historical_Phase2B
+MISSING,0,0,0,0,0,0,Historical_Phase2B
+CLARIFICATION_REQUIRED,0,0,0,1,0,0,Historical_Phase2B
+SUFFICIENT,11,6,8,0,0,0,Reclassified_Operational_Phase2C
+PARTIAL,0,0,0,0,0,0,Reclassified_Operational_Phase2C
+INSUFFICIENT,0,0,2,0,0,0,Reclassified_Operational_Phase2C
+CONFLICTING,0,0,0,1,0,0,Reclassified_Operational_Phase2C
+MISSING,0,0,0,0,0,0,Reclassified_Operational_Phase2C
+CLARIFICATION_REQUIRED,0,0,0,0,0,1,Reclassified_Operational_Phase2C

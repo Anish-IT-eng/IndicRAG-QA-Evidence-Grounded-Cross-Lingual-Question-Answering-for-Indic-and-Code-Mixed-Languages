@@ -1,0 +1,11 @@
+metric,language,sample_size,both_success_a,config_a_only_b,config_b_only_c,neither_success_d,discordant_pairs
+Hit@1,en,45,4,0,0,41,0
+Hit@1,hi,45,0,1,4,40,5
+Hit@1,hi-Latn,45,6,0,0,39,0
+Hit@1,en-hi,45,5,0,0,40,0
+Hit@1,OVERALL,180,15,1,4,160,5
+Hit@5,en,45,5,0,0,40,0
+Hit@5,hi,45,1,1,3,40,4
+Hit@5,hi-Latn,45,6,0,0,39,0
+Hit@5,en-hi,45,5,0,0,40,0
+Hit@5,OVERALL,180,17,1,3,159,4

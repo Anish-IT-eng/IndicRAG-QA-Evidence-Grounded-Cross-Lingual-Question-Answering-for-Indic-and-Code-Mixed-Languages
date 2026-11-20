@@ -1,0 +1,30 @@
+{
+  "milestone": "M6",
+  "phase": "Phase 2B",
+  "execution_date": "2026-11-11T05:02:27.414059+00:00",
+  "framework": "theory_anchored_heuristic_pilot",
+  "empirical_calibration": false,
+  "empirical_calibration_deferred_reason": "Sample size (N=29, N_neg=2) mathematically prohibits valid empirical Platt scaling, isotonic regression, or nested cross-fitting.",
+  "ceci_weights": {
+    "w1_relevance": 0.35,
+    "w2_margin": 0.15,
+    "w3_consensus": 0.15,
+    "w4_keyword_cov": 0.15,
+    "w5_regulatory": 0.2
+  },
+  "thresholds": {
+    "tau_sufficient": 0.65,
+    "tau_insufficient": 0.35,
+    "multi_part_coverage_threshold": 0.6
+  },
+  "override_precedence": [
+    "1. Missing mandatory cohort parameter -> CLARIFICATION_REQUIRED",
+    "2. Genuine document version contradiction -> CONFLICTING",
+    "3. Out-of-domain scope or 0 retrieved evidence -> MISSING",
+    "4. Contradictory user premise -> INSUFFICIENT",
+    "5. Zero valid citations / passages -> INSUFFICIENT",
+    "6. CECI confidence thresholding (tau_suff=0.65, tau_insuff=0.35) -> SUFFICIENT / PARTIAL / INSUFFICIENT"
+  ],
+  "corpus_hash": "8688605df0dbff786454ec770e95609d9d3aacb284fdb3a2f97191f7d2971e9d",
+  "n60_benchmark_hash": "a528ac583d8c060b91a7febce652885e4045fcc76d644e49e876ddeb5d1db4ae"
+}

@@ -1,0 +1,267 @@
+import csv
+from pathlib import Path
+
+out_path = Path("backend/data/experiments/m8/m8_4_controller_test_matrix.csv")
+
+tests = [
+    {
+        "test_id": "TM-01",
+        "category": "M8.3_ATTENDANCE_QUERY",
+        "query_text": "What is the minimum attendance required?",
+        "target_condition": "COURSE_GRADING & EXAM_ELIGIBILITY",
+        "temporal_anchor": "UNANCHORED",
+        "target_program": "GENERAL_UNIVERSITY",
+        "retrieved_candidates": "Notification-Minimum-Attendance.pdf, Academic-Rules-for-SCSET_UG.pdf, SEAS-Ordinance-Rules-Regulations-2017.pdf",
+        "regulatory_relationship": "DIFFERENT_REGULATORY_CONDITIONS & SAME_CONDITION_DIFFERENT_VERSION",
+        "existing_controller_state": "CONFLICTING",
+        "expected_controller_state": "CLARIFICATION_REQUIRED / MULTI_CONDITION_DISCLOSURE",
+        "expected_action_or_answer": "Disclose dual thresholds: 75% for End Semester Examination hall eligibility (Notification 307/2022) and 70% to avoid course-level 'X' grade (SCSET Rules Clause 30.1), or prompt user for cohort/purpose.",
+        "pass_fail_criteria": "Controller must not output single-valued contradiction error; must output either CLARIFICATION_REQUIRED or MULTI_CONDITION_DISCLOSURE with both citations."
+    },
+    {
+        "test_id": "TM-02",
+        "category": "M8.3_ATTENDANCE_QUERY",
+        "query_text": "What attendance is required to sit for end semester exams?",
+        "target_condition": "EXAM_ELIGIBILITY",
+        "temporal_anchor": "CURRENT_DEFAULT",
+        "target_program": "ALL_UNIVERSITY",
+        "retrieved_candidates": "Notification-Minimum-Attendance.pdf (0280358a)",
+        "regulatory_relationship": "SAME_CONDITION_DIFFERENT_VERSION (Resolved to Current Notice)",
+        "existing_controller_state": "PARTIAL",
+        "expected_controller_state": "SUFFICIENT",
+        "expected_action_or_answer": "75% minimum aggregate attendance is required to appear in End Semester Examinations as notified by the Registrar under UGC Regulations 2003.",
+        "pass_fail_criteria": "Status MUST be SUFFICIENT. CECI must not demote to PARTIAL when top passage 0280358a directly entails 75% exam hall rule. Must cite Notification 307/2022."
+    },
+    {
+        "test_id": "TM-03",
+        "category": "M8.3_ATTENDANCE_QUERY",
+        "query_text": "How much attendance is required to avoid an X grade?",
+        "target_condition": "COURSE_GRADING",
+        "temporal_anchor": "CURRENT_DEFAULT",
+        "target_program": "SCSET_UG",
+        "retrieved_candidates": "Academic-Rules-for-SCSET_UG.pdf (505e552e), SEAS-Ordinance-Rules-Regulations-2017.pdf (f88ec726)",
+        "regulatory_relationship": "SAME_CONDITION_AGREEMENT",
+        "existing_controller_state": "CONFLICTING",
+        "expected_controller_state": "SUFFICIENT",
+        "expected_action_or_answer": "A minimum of 70% attendance in lectures, tutorials, and practicals combined is required to avoid an 'X' grade and course repetition.",
+        "pass_fail_criteria": "Status MUST be SUFFICIENT. Consensus verification must recognize both 2017 and 2022 prescribe 70% for X grade. Zero conflict flag permitted."
+    },
+    {
+        "test_id": "TM-04",
+        "category": "M8.3_ATTENDANCE_QUERY",
+        "query_text": "Is 70% attendance enough?",
+        "target_condition": "COURSE_GRADING & EXAM_ELIGIBILITY",
+        "temporal_anchor": "CURRENT_DEFAULT",
+        "target_program": "SCSET_UG",
+        "retrieved_candidates": "Academic-Rules-for-SCSET_UG.pdf, Notification-Minimum-Attendance.pdf",
+        "regulatory_relationship": "DIFFERENT_REGULATORY_CONDITIONS",
+        "existing_controller_state": "CONFLICTING",
+        "expected_controller_state": "SUFFICIENT (CONDITIONAL_GROUNDING)",
+        "expected_action_or_answer": "Conditional answer: 70% is sufficient to avoid an 'X' grade at course level, but insufficient to sit for End Semester Examinations (requires 75%).",
+        "pass_fail_criteria": "Controller must not treat 70% vs 75% as an irreconcilable conflict. Explanation must delineate course-level vs exam-hall thresholds."
+    },
+    {
+        "test_id": "TM-05",
+        "category": "M8.3_ATTENDANCE_QUERY",
+        "query_text": "Is 75% compulsory for SCSET students?",
+        "target_condition": "EXAM_ELIGIBILITY",
+        "temporal_anchor": "CURRENT_DEFAULT",
+        "target_program": "SCSET_UG",
+        "retrieved_candidates": "Notification-Minimum-Attendance.pdf, Academic-Rules-for-SCSET_UG.pdf",
+        "regulatory_relationship": "PROGRAMME_SPECIFIC_RULE & STATUTORY_NOTIFICATION",
+        "existing_controller_state": "INSUFFICIENT",
+        "expected_controller_state": "SUFFICIENT",
+        "expected_action_or_answer": "Yes. Notification 307/2022 applies to all Schools and Programmes of Bennett University including SCSET for End Semester Examinations.",
+        "pass_fail_criteria": "Status MUST be SUFFICIENT. Cross-document inference must recognize university-wide notification applies across schools even if school document lacks literal '75%'."
+    },
+    {
+        "test_id": "TM-06",
+        "category": "M8.3_ATTENDANCE_QUERY",
+        "query_text": "What was the attendance rule in 2017?",
+        "target_condition": "HISTORICAL_COHORT_RULE",
+        "temporal_anchor": "2017 (AY 2017-18)",
+        "target_program": "SEAS_UG",
+        "retrieved_candidates": "SEAS-Ordinance-Rules-Regulations-2017.pdf (f88ec726)",
+        "regulatory_relationship": "HISTORICAL_RULE",
+        "existing_controller_state": "CONFLICTING",
+        "expected_controller_state": "SUFFICIENT",
+        "expected_action_or_answer": "Under the 2017 SEAS Ordinances (Clause 30.1), students required a minimum of 70% attendance in each course, with Dean condonation down to 60% on medical grounds.",
+        "pass_fail_criteria": "Status MUST be SUFFICIENT. Temporal anchoring to '2017' must scope retrieval to SEAS 2017 and suppress version conflicts from 2022 documents."
+    },
+    {
+        "test_id": "TM-07",
+        "category": "M8.3_ATTENDANCE_QUERY",
+        "query_text": "Can attendance be relaxed due to medical reasons?",
+        "target_condition": "MEDICAL_CONDONATION",
+        "temporal_anchor": "CURRENT_DEFAULT",
+        "target_program": "ALL_PROGRAMMES",
+        "retrieved_candidates": "Academic-Rules-for-SCSET_UG.pdf (6ad292d8), SEAS-Ordinance-Rules-Regulations-2017.pdf (6ad292d8)",
+        "regulatory_relationship": "SAME_CONDITION_AGREEMENT",
+        "existing_controller_state": "CONFLICTING",
+        "expected_controller_state": "SUFFICIENT",
+        "expected_action_or_answer": "Yes. Up to 10% attendance relaxation may be granted by the Dean for continuous hospitalization/illness of at least two weeks upon valid medical certification.",
+        "pass_fail_criteria": "Status MUST be SUFFICIENT. Unanimous rule across 2017 and 2022 must be recognized as SAME_CONDITION_AGREEMENT. Zero conflict permitted."
+    },
+    {
+        "test_id": "TM-08",
+        "category": "TEMPORAL_ANCHORING",
+        "query_text": "What attendance rule applied to the 2018 batch?",
+        "target_condition": "HISTORICAL_COHORT_RULE",
+        "temporal_anchor": "2018 (SEAS 2017-2021 cohort)",
+        "target_program": "SEAS_UG",
+        "retrieved_candidates": "SEAS-Ordinance-Rules-Regulations-2017.pdf",
+        "regulatory_relationship": "HISTORICAL_RULE",
+        "existing_controller_state": "CONFLICTING",
+        "expected_controller_state": "SUFFICIENT",
+        "expected_action_or_answer": "Students of the 2018 batch were governed by SEAS Ordinances 2017 requiring 70% minimum course attendance.",
+        "pass_fail_criteria": "Query processor must map '2018 batch' to SEAS 2017 cohort span. Controller must evaluate historical passage as valid."
+    },
+    {
+        "test_id": "TM-09",
+        "category": "TEMPORAL_ANCHORING",
+        "query_text": "What was the rule in AY 2022-23 for end sem exams?",
+        "target_condition": "EXAM_ELIGIBILITY",
+        "temporal_anchor": "AY 2022-23",
+        "target_program": "ALL_UNIVERSITY",
+        "retrieved_candidates": "Notification-Minimum-Attendance.pdf",
+        "regulatory_relationship": "SAME_CONDITION_DIFFERENT_VERSION (Matched Anchor)",
+        "existing_controller_state": "PARTIAL",
+        "expected_controller_state": "SUFFICIENT",
+        "expected_action_or_answer": "In AY 2022-23, Notification 307 established 75% minimum aggregate attendance for End Semester Examinations.",
+        "pass_fail_criteria": "Status MUST be SUFFICIENT. Exact match on AY 2022-23 must yield high regulatory fit f5=1.0."
+    },
+    {
+        "test_id": "TM-10",
+        "category": "PROGRAMME_SPECIFIC_SCOPE",
+        "query_text": "What is the maximum degree duration for B.Tech CSE students?",
+        "target_condition": "ACADEMIC_PROGRESSION",
+        "temporal_anchor": "CURRENT_DEFAULT",
+        "target_program": "SCSET_UG",
+        "retrieved_candidates": "Academic-Rules-for-SCSET_UG.pdf, BU-First-Ordinance-2016.pdf",
+        "regulatory_relationship": "PROGRAMME_SPECIFIC_RULE",
+        "existing_controller_state": "SUFFICIENT",
+        "expected_controller_state": "SUFFICIENT",
+        "expected_action_or_answer": "The normal duration is 4 years, with a maximum permissible duration of 6 years (N+2) under university regulations.",
+        "pass_fail_criteria": "Both statutory baseline and school operational rule agree; status SUFFICIENT with proper program citation."
+    },
+    {
+        "test_id": "TM-11",
+        "category": "CROSS_CONDITION_DISCIPLINE",
+        "query_text": "What happens if a student uses a mobile phone in the exam hall?",
+        "target_condition": "DISCIPLINARY_ACTION (UFM)",
+        "temporal_anchor": "CURRENT_DEFAULT",
+        "target_program": "ALL_UNIVERSITY",
+        "retrieved_candidates": "UFM-Guidelines-2024.pdf, Students-Discipline-Conduct-Rules-2024.pdf",
+        "regulatory_relationship": "DIFFERENT_REGULATORY_CONDITIONS",
+        "existing_controller_state": "SUFFICIENT",
+        "expected_controller_state": "SUFFICIENT",
+        "expected_action_or_answer": "Mobile phones inside exam halls are classified under Category II/III of UFM Guidelines 2024 resulting in course cancellation and confiscation.",
+        "pass_fail_criteria": "Controller routes to UFM specific guidelines over general conduct rules; status SUFFICIENT."
+    },
+    {
+        "test_id": "TM-12",
+        "category": "GENUINE_CONFLICT",
+        "query_text": "Is the attendance threshold for 2023 batch 70% or 75% for exam hall?",
+        "target_condition": "EXAM_ELIGIBILITY",
+        "temporal_anchor": "2023 (AY 2023-24)",
+        "target_program": "ALL_UNIVERSITY",
+        "retrieved_candidates": "Notification-Minimum-Attendance.pdf (75%), Mock-Clashing-Active-Rule.pdf (70%)",
+        "regulatory_relationship": "GENUINE_CONFLICT",
+        "existing_controller_state": "CONFLICTING",
+        "expected_controller_state": "CONFLICTING",
+        "expected_action_or_answer": "Disclose genuine regulatory contradiction between two legally co-equal active instruments and abstain from single-number hallucination.",
+        "pass_fail_criteria": "Controller must identify genuine contradiction on identical condition and cohort, returning EvidenceStatus.CONFLICTING."
+    },
+    {
+        "test_id": "TM-13",
+        "category": "UNSUPPORTED_SUPERSESSION",
+        "query_text": "Did Notification 307 cancel the SCSET 70% course rule?",
+        "target_condition": "EXPLICITLY_SUPERSEDES",
+        "temporal_anchor": "CURRENT_DEFAULT",
+        "target_program": "SCSET_UG",
+        "retrieved_candidates": "Notification-Minimum-Attendance.pdf, Academic-Rules-for-SCSET_UG.pdf",
+        "regulatory_relationship": "DIFFERENT_REGULATORY_CONDITIONS",
+        "existing_controller_state": "CONFLICTING",
+        "expected_controller_state": "SUFFICIENT",
+        "expected_action_or_answer": "No. Notification 307/2022 contains no express clause repealing course-level grading rules. Course X-grade debarment remains at 70%.",
+        "pass_fail_criteria": "System must reject unsupported supersession claims. Controller must confirm absence of express repeal clause."
+    },
+    {
+        "test_id": "TM-14",
+        "category": "APPLICABILITY_UNRESOLVED",
+        "query_text": "What is the attendance requirement for PhD scholars?",
+        "target_condition": "APPLICABILITY_UNRESOLVED",
+        "temporal_anchor": "CURRENT_DEFAULT",
+        "target_program": "PHD",
+        "retrieved_candidates": "Academic-Rules-for-SCSET_UG.pdf (UG only), Notification-Minimum-Attendance.pdf",
+        "regulatory_relationship": "APPLICABILITY_UNRESOLVED",
+        "existing_controller_state": "PARTIAL / INSUFFICIENT",
+        "expected_controller_state": "CLARIFICATION_REQUIRED / SAFE_ABSTENTION",
+        "expected_action_or_answer": "Corpus contains UG rules and university exam notice; specific PhD course work regulations are not established in retrieved documents.",
+        "pass_fail_criteria": "Controller must not extrapolate UG-specific 70% rule to PhD scholars without documentary support. Must abstain or request clarification."
+    },
+    {
+        "test_id": "TM-15",
+        "category": "CONTRADICTORY_PREMISE",
+        "query_text": "Can I take a makeup exam after getting an X grade in attendance?",
+        "target_condition": "COURSE_GRADING & EXAM_ELIGIBILITY",
+        "temporal_anchor": "CURRENT_DEFAULT",
+        "target_program": "SCSET_UG",
+        "retrieved_candidates": "Academic-Rules-for-SCSET_UG.pdf",
+        "regulatory_relationship": "CONTRADICTORY_PREMISE",
+        "existing_controller_state": "INSUFFICIENT",
+        "expected_controller_state": "INSUFFICIENT (PREMISE_REJECTED)",
+        "expected_action_or_answer": "No. An 'X' grade strictly disqualifies a student from makeup or supplementary examinations; full course repetition is mandatory.",
+        "pass_fail_criteria": "Status MUST be INSUFFICIENT. Precedence Step 4 must intercept and state the premise contradiction explicitly."
+    },
+    {
+        "test_id": "TM-16",
+        "category": "MEDICAL_CONDONATION_EXTREME",
+        "query_text": "Can a student with 55% attendance get medical condonation to sit for exams?",
+        "target_condition": "MEDICAL_CONDONATION",
+        "temporal_anchor": "CURRENT_DEFAULT",
+        "target_program": "SCSET_UG",
+        "retrieved_candidates": "Academic-Rules-for-SCSET_UG.pdf (Clause 30.1(v)), SEAS-Ordinance-Rules-Regulations-2017.pdf",
+        "regulatory_relationship": "SAME_CONDITION_AGREEMENT",
+        "existing_controller_state": "CONFLICTING",
+        "expected_controller_state": "SUFFICIENT",
+        "expected_action_or_answer": "No. Maximum medical relaxation is 10%, establishing an absolute statutory attendance floor of 60% (or 65% for exam hall). 55% cannot be condoned.",
+        "pass_fail_criteria": "Status MUST be SUFFICIENT. Controller must verify numeric floor constraint without flagging cross-version conflict."
+    },
+    {
+        "test_id": "TM-17",
+        "category": "OUT_OF_DOMAIN",
+        "query_text": "What is the recipe for chocolate cake in the Bennett cafeteria?",
+        "target_condition": "OTHER",
+        "temporal_anchor": "NONE",
+        "target_program": "NONE",
+        "retrieved_candidates": "[]",
+        "regulatory_relationship": "OUT_OF_DOMAIN",
+        "existing_controller_state": "MISSING",
+        "expected_controller_state": "MISSING",
+        "expected_action_or_answer": "Query is out of domain with respect to Bennett University academic regulations.",
+        "pass_fail_criteria": "Status MUST be MISSING. CECI must be 0.0."
+    },
+    {
+        "test_id": "TM-18",
+        "category": "CITATION_COMPLETENESS",
+        "query_text": "State the exact clause number for X grade award.",
+        "target_condition": "COURSE_GRADING",
+        "temporal_anchor": "CURRENT_DEFAULT",
+        "target_program": "SCSET_UG",
+        "retrieved_candidates": "Academic-Rules-for-SCSET_UG.pdf (Clause 30.1(ii), Page 19)",
+        "regulatory_relationship": "PROGRAMME_SPECIFIC_RULE",
+        "existing_controller_state": "SUFFICIENT",
+        "expected_controller_state": "SUFFICIENT",
+        "expected_action_or_answer": "Clause 30.1(ii) of Academic Rules for SCSET UG, Page 19.",
+        "pass_fail_criteria": "Status MUST be SUFFICIENT. Passages must include exact clause and page number citation."
+    }
+]
+
+with open(out_path, "w", newline="", encoding="utf-8") as f:
+    writer = csv.DictWriter(f, fieldnames=list(tests[0].keys()))
+    writer.writeheader()
+    writer.writerows(tests)
+
+print(f"Generated {len(tests)} test matrix records at {out_path}")
+

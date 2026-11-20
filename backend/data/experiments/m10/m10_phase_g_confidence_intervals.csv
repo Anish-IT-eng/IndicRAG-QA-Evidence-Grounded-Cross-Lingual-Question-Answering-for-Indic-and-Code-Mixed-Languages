@@ -1,0 +1,33 @@
+metric,language,config,point_estimate,ci_95_lower,ci_95_upper,method
+Hit@1,en,ConfigA_Production,0.0889,0.0351,0.2073,Wilson Score
+Hit@1,en,ConfigB_AdaptiveE6b,0.0889,0.0351,0.2073,Wilson Score
+Hit@1,hi,ConfigA_Production,0.0222,0.0039,0.1157,Wilson Score
+Hit@1,hi,ConfigB_AdaptiveE6b,0.0889,0.0351,0.2073,Wilson Score
+Hit@1,hi-Latn,ConfigA_Production,0.1333,0.0626,0.2618,Wilson Score
+Hit@1,hi-Latn,ConfigB_AdaptiveE6b,0.1333,0.0626,0.2618,Wilson Score
+Hit@1,en-hi,ConfigA_Production,0.1111,0.0484,0.235,Wilson Score
+Hit@1,en-hi,ConfigB_AdaptiveE6b,0.1111,0.0484,0.235,Wilson Score
+Hit@1,OVERALL,ConfigA_Production,0.0889,0.0555,0.1395,Wilson Score
+Hit@1,OVERALL,ConfigB_AdaptiveE6b,0.1056,0.0686,0.159,Wilson Score
+Hit@5,en,ConfigA_Production,0.1111,0.0484,0.235,Wilson Score
+Hit@5,en,ConfigB_AdaptiveE6b,0.1111,0.0484,0.235,Wilson Score
+Hit@5,hi,ConfigA_Production,0.0444,0.0123,0.1483,Wilson Score
+Hit@5,hi,ConfigB_AdaptiveE6b,0.0889,0.0351,0.2073,Wilson Score
+Hit@5,hi-Latn,ConfigA_Production,0.1333,0.0626,0.2618,Wilson Score
+Hit@5,hi-Latn,ConfigB_AdaptiveE6b,0.1333,0.0626,0.2618,Wilson Score
+Hit@5,en-hi,ConfigA_Production,0.1111,0.0484,0.235,Wilson Score
+Hit@5,en-hi,ConfigB_AdaptiveE6b,0.1111,0.0484,0.235,Wilson Score
+Hit@5,OVERALL,ConfigA_Production,0.1,0.0642,0.1525,Wilson Score
+Hit@5,OVERALL,ConfigB_AdaptiveE6b,0.1111,0.0731,0.1654,Wilson Score
+CorrectAbstentionRate,en,ConfigA_Production,0.8667,0.6212,0.9626,Wilson Score
+CorrectAbstentionRate,en,ConfigB_AdaptiveE6b,0.8667,0.6212,0.9626,Wilson Score
+CorrectAbstentionRate,hi,ConfigA_Production,1.0,0.7961,1.0,Wilson Score
+CorrectAbstentionRate,hi,ConfigB_AdaptiveE6b,1.0,0.7961,1.0,Wilson Score
+CorrectAbstentionRate,hi-Latn,ConfigA_Production,1.0,0.7961,1.0,Wilson Score
+CorrectAbstentionRate,hi-Latn,ConfigB_AdaptiveE6b,1.0,0.7961,1.0,Wilson Score
+CorrectAbstentionRate,en-hi,ConfigA_Production,1.0,0.7961,1.0,Wilson Score
+CorrectAbstentionRate,en-hi,ConfigB_AdaptiveE6b,1.0,0.7961,1.0,Wilson Score
+CorrectAbstentionRate,OVERALL,ConfigA_Production,0.9667,0.8864,0.9908,Wilson Score
+CorrectAbstentionRate,OVERALL,ConfigB_AdaptiveE6b,0.9667,0.8864,0.9908,Wilson Score
+UnsupportedAnswerRate,OVERALL,ConfigA_Production,0.0,0.0,0.0508,Rule of Three (95% Upper Bound for Zero Errors)
+UnsupportedAnswerRate,OVERALL,ConfigB_AdaptiveE6b,0.0,0.0,0.0491,Rule of Three (95% Upper Bound for Zero Errors)

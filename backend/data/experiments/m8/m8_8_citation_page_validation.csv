@@ -1,0 +1,11 @@
+query_id,passage_id,document_id,document_filename,authoritative_page,cited_page,page_verified,claim_supported
+AQ-02,0280358a-ff3c-4964-88ab-419a9147b1f0,40c366dd-41b2-49f6-b5e4-492a8b5bbe8a,Notification-Minimum-Attendance.pdf,1,1,True,True
+AQ-03,f88ec726-74ba-426f-a01f-4b9665c1a8b8,b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2,SEAS-Ordinance-Rules-Regulations-2017.pdf,28,28,True,True
+AQ-04,f88ec726-74ba-426f-a01f-4b9665c1a8b8,b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2,SEAS-Ordinance-Rules-Regulations-2017.pdf,28,28,True,True
+AQ-04,0280358a-ff3c-4964-88ab-419a9147b1f0,40c366dd-41b2-49f6-b5e4-492a8b5bbe8a,Notification-Minimum-Attendance.pdf,1,1,True,True
+AQ-05,0280358a-ff3c-4964-88ab-419a9147b1f0,40c366dd-41b2-49f6-b5e4-492a8b5bbe8a,Notification-Minimum-Attendance.pdf,1,1,True,True
+AQ-06,f88ec726-74ba-426f-a01f-4b9665c1a8b8,b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2,SEAS-Ordinance-Rules-Regulations-2017.pdf,28,28,True,True
+AQ-07,6ad292d8-6e01-4f3b-aa96-66ee4603b11e,b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2,SEAS-Ordinance-Rules-Regulations-2017.pdf,29,29,True,True
+AQ-07,c31d716d-bcfe-4011-a3f6-f4a2d5f1f22b,b787fd22-eb2f-42ed-9ef7-ef098e5ff8b6,Academic-Rules-for-SCSET_UG.pdf,19,19,True,True
+MB-01,6ad292d8-6e01-4f3b-aa96-66ee4603b11e,b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2,SEAS-Ordinance-Rules-Regulations-2017.pdf,29,29,True,True
+MB-01,c31d716d-bcfe-4011-a3f6-f4a2d5f1f22b,b787fd22-eb2f-42ed-9ef7-ef098e5ff8b6,Academic-Rules-for-SCSET_UG.pdf,19,19,True,True

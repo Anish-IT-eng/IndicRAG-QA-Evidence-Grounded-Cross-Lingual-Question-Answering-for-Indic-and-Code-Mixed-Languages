@@ -1,0 +1,71 @@
+{
+  "manifest_metadata": {
+    "milestone": "M6",
+    "phase": "Phase 1B - Calibration Design Correction & Phase 2 Implementation Specification",
+    "design_version": "1.1.0-corrected",
+    "creation_timestamp": "2026-11-10T22:50:00+05:30",
+    "author_role": "Senior RAG Evaluation Researcher & Evidence Reliability Engineer",
+    "status": "PHASE_1B_COMPLETED",
+    "runtime_code_modified": false
+  },
+  "provenance_and_integrity": {
+    "corpus_sqlite_db": "backend/data/db/indicrag.db",
+    "corpus_child_passages": 142,
+    "corpus_parent_passages": 30,
+    "corpus_total_rows": 172,
+    "corpus_sha256": "8688605df0dbff786454ec770e95609d9d3aacb284fdb3a2f97191f7d2971e9d",
+    "frozen_benchmark_path": "backend/data/dataset/final_verified_dataset.csv",
+    "frozen_benchmark_instances": 15,
+    "frozen_benchmark_sha256": "093b00ad0f19acda806f2302731ccf2de28838c1b29c6ef16d55cbc5e7e2d520",
+    "m5_reference_run_dir": "backend/data/experiments/m5/runs/run_20261110_135218/",
+    "m5_reconciliation_dir": "backend/data/experiments/m5/reconciliation/",
+    "regression_tests_passing": 135
+  },
+  "design_corrections_audit": {
+    "bm25_normalization_correction": {
+      "defect": "Query-local min-max normalization forced the top document of any pool (including completely irrelevant queries) to 1.0, destroying cross-query score comparability.",
+      "correction": "Preserve raw scores verbatim. Calibrated representation uses corpus-anchored logistic mapping fitted to calibration split."
+    },
+    "dense_cosine_normalization_correction": {
+      "defect": "Arbitrary hard clamping between 0.20 and 0.80 without empirical fitting.",
+      "correction": "Preserve raw cosine similarity [-1.0, 1.0]. Calibrated representation uses Platt scaling with A and B fitted via maximum likelihood on held-out calibration pairs."
+    },
+    "rrf_score_interpretation_correction": {
+      "defect": "RRF treated as a cardinal probability; formula used unverified 1.0/1.0 weights rather than actual 0.4/0.6 runtime settings.",
+      "correction": "RRF recognized as an ordinal rank-fusion index, bounded in [0, 1] relative to S_max (0.01639 for 0.4/0.6, 0.03279 for 1.0/1.0)."
+    },
+    "cross_encoder_calibration_correction": {
+      "defect": "Static temperature sigmoid tau=1.8 falsely labeled as Platt calibration.",
+      "correction": "Formally defined true Platt scaling with maximum likelihood parameter fitting on validation data."
+    },
+    "composite_confidence_correction": {
+      "defect": "Arbitrary weights, unbounded additive offsets ([-0.2, +0.1]), and unverified probability claims.",
+      "correction": "Redesigned as Composite Evidence Confidence Index (CECI) using a strict convex combination of 5 bounded features in [0, 1] with defined missing data fallbacks."
+    },
+    "far_statistical_guarantee_correction": {
+      "defect": "Claimed that FAR <= 5% can be statistically guaranteed on N=20 unanswerable queries.",
+      "correction": "Acknowledged that 1 error = 5% with 95% Wilson CI [0.88%, 23.6%]. Adopted cost-sensitive utility objective and honest Wilson interval reporting."
+    },
+    "evidence_state_expansion": {
+      "defect": "Five states omitted explicit clarification handling for missing temporal context.",
+      "correction": "Expanded to 6 canonical states: SUFFICIENT, PARTIAL, INSUFFICIENT, CONFLICTING, MISSING, CLARIFICATION_REQUIRED."
+    },
+    "generator_verification_independence": {
+      "defect": "Generator models could potentially verify their own candidates.",
+      "correction": "Candidate generator is strictly excluded from independent verification; at least 2 distinct independent verifiers required per candidate."
+    },
+    "claim_grounding_remediation": {
+      "defect": "claim_supported was hardcoded to True in generator.py line 151 if passage_id was in retrieved pool.",
+      "correction": "Specified dual-layer atomic claim verifier combining symbolic checks (numbers, dates, negation) and 3-way semantic entailment."
+    }
+  },
+  "deliverables": {
+    "score_calibration_design": "docs/m6_score_calibration_design.md",
+    "evaluation_protocol": "docs/m6_evaluation_protocol.md",
+    "benchmark_expansion_design": "docs/m6_benchmark_expansion_design.md",
+    "claim_grounding_design": "docs/m6_claim_grounding_design.md",
+    "phase2_implementation_plan": "docs/m6_phase2_implementation_plan.md",
+    "manifest": "backend/data/experiments/m6/m6_phase1b_manifest.json"
+  }
+}
+

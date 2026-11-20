@@ -1,0 +1,67 @@
+{
+  "index_validation": {
+    "index_name": "official",
+    "timestamp": "2026-11-16T10:00:00+05:30",
+    "status": "VALIDATED",
+    "architecture": {
+      "lexical": {
+        "engine": "BM25Okapi",
+        "corpus_size": 253,
+        "tokenization": "whitespace_lowercased",
+        "k1": 1.5,
+        "b": 0.75
+      },
+      "dense": {
+        "engine": "FAISS",
+        "index_type": "IndexFlatIP",
+        "ntotal": 253,
+        "dimension": 384,
+        "similarity_metric": "inner_product_normalized_cosine",
+        "embedding_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+      },
+      "fusion": {
+        "method": "RRF (Reciprocal Rank Fusion)",
+        "rrf_k": 60,
+        "bm25_weight": 0.5,
+        "dense_weight": 0.5
+      }
+    },
+    "smoke_tests": [
+      {
+        "query": "What is the minimum attendance requirement?",
+        "intent": "Attendance threshold and regulatory conflict",
+        "hits_count": 3,
+        "top_hit_passage_id": "f88ec726-218a-4c28-9844-325d72f1ba8e",
+        "top_hit_document": "SEAS-Ordinance-Rules-Regulations-2017.pdf",
+        "second_hit_document": "Notification-Minimum-Attendance.pdf",
+        "conflict_preserved": true
+      },
+      {
+        "query": "What are the penalties for unfair means during examinations?",
+        "intent": "Examination hall disciplinary penalties",
+        "hits_count": 3,
+        "top_hit_passage_id": "9b13c751-fe4d-4ba6-99eb-9ec07c427357",
+        "top_hit_document": "SEAS-Ordinance-Rules-Regulations-2017.pdf",
+        "second_hit_document": "UFM-Guidelines-2024.pdf",
+        "status": "SUCCESS"
+      },
+      {
+        "query": "What is the role of the Proctorial Committee in student discipline?",
+        "intent": "Student discipline rules 2024",
+        "hits_count": 3,
+        "top_hit_passage_id": "a7cd25eb-9273-455a-bbbf-b3d4f40f35e9",
+        "top_hit_document": "Students-Discipline-Conduct-Rules-2024.pdf",
+        "status": "SUCCESS"
+      },
+      {
+        "query": "What are the requirements for the award of a B.Tech degree in the First Ordinances?",
+        "intent": "Statutory degree criteria",
+        "hits_count": 3,
+        "top_hit_passage_id": "b00a9bc0-819a-411a-8742-df466a98ce10",
+        "top_hit_document": "BU-First-Ordinance-2016.pdf",
+        "status": "SUCCESS"
+      }
+    ]
+  }
+}
+

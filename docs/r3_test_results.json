@@ -1,0 +1,131 @@
+{
+  "phase": "R3",
+  "timestamp": "2026-11-19T06:03:58Z",
+  "overall_status": "R3_VERIFIED",
+  "total_tests": 15,
+  "passed_tests": 15,
+  "results": {
+    "test_1_official_retrieval_expansion": {
+      "status": "PASS",
+      "used_relationship_expansion": true,
+      "expanded_count": 5,
+      "retrieved_total": 10,
+      "latency_ms": 18253.01400000035
+    },
+    "test_2_new_pdf_upload_indexing": {
+      "status": "PASS",
+      "document_id": "1ed22da7-cec6-496b-b6c9-ac514378a50c",
+      "user_id": "tenant_aa04a5",
+      "page_count": 2
+    },
+    "test_3_auto_table_relationships": {
+      "status": "PASS",
+      "table_relationships_found": 0,
+      "note": "Document has pure text structure; table extractor executed cleanly with 0 table false positives."
+    },
+    "test_4_auto_rule_exception_extraction": {
+      "status": "PASS",
+      "total_extracted": 12,
+      "predicates_found": [
+        "RULE_HAS_CLAUSE",
+        "RULE_HAS_EXCEPTION",
+        "EXCEPTION_REQUIRES_DOCUMENT",
+        "EXCEPTION_REQUIRES_APPROVAL",
+        "RULE_HAS_THRESHOLD",
+        "RULE_APPLIES_TO_PROGRAM",
+        "RULE_APPLIES_TO_COHORT",
+        "EVENT_HAS_DATE"
+      ],
+      "user_id_scoped": true
+    },
+    "test_5_date_event_context_retrieval": {
+      "status": "PASS",
+      "events_retrieved": 6,
+      "sample_event": "Announcement of End Semester Examination Schedule (Odd Semester 2026-27)",
+      "sample_date_range": "27-11-2026"
+    },
+    "test_6_program_cohort_applicability": {
+      "status": "PASS",
+      "relationship_count": 10,
+      "sample_program": "Students admitted in 2017-2021 under SEAS Ordinance"
+    },
+    "test_7_cross_document_evidence_retrieval": {
+      "status": "PASS",
+      "documents_retrieved": [
+        "Notification-Minimum-Attendance.pdf",
+        "SEAS-Ordinance-Rules-Regulations-2017.pdf",
+        "Academic-Rules-for-SCSET_UG.pdf"
+      ],
+      "used_relationship_expansion": true
+    },
+    "test_8_conflicting_source_handling": {
+      "status": "PASS",
+      "has_70_percent_course_rule": true,
+      "has_75_percent_exam_rule": true,
+      "threshold_sources": [
+        {
+          "val": "70% minimum attendance per course (Clause 30.1)",
+          "doc": "SEAS-Ordinance-Rules-Regulations-2017.pdf",
+          "page": 28
+        },
+        {
+          "val": "75% aggregate attendance required to be eligible to appear in End Semester Examinations",
+          "doc": "Notification-Minimum-Attendance.pdf",
+          "page": 1
+        },
+        {
+          "val": "65% Attendance requirement",
+          "doc": "Academic-Rules-for-SCSET_UG.pdf",
+          "page": 1
+        },
+        {
+          "val": "50% Attendance requirement",
+          "doc": "Academic-Rules-for-SCSET_UG.pdf",
+          "page": 5
+        }
+      ]
+    },
+    "test_9_missing_relationship_handling": {
+      "status": "PASS",
+      "graceful_fallback": true,
+      "returned_count": 0
+    },
+    "test_10_idempotent_reingestion": {
+      "status": "PASS",
+      "count_before": 12,
+      "count_after": 12,
+      "stable_document_id": true
+    },
+    "test_11_cascading_deletion": {
+      "status": "PASS",
+      "document_deleted": true,
+      "passages_deleted": true,
+      "relationships_deleted": true
+    },
+    "test_12_multi_tenant_isolation": {
+      "status": "PASS",
+      "visible_to_owner": 12,
+      "leaked_to_other_tenant": 0,
+      "tenant_isolation_verified": true
+    },
+    "test_13_citation_page_provenance": {
+      "status": "PASS",
+      "provenance_intact_for_all": true,
+      "verified_count": 10
+    },
+    "test_14_r1_r2_r5_regression": {
+      "status": "PASS",
+      "r1_table_cells": 21840,
+      "r2_relationships": 7714,
+      "r5_repaired_successfully": true
+    },
+    "test_15_m10_production_regression": {
+      "status": "PASS",
+      "used_reranker": true,
+      "used_pdr": true,
+      "used_relationship_expansion": true,
+      "top_score": 9.501583099365234,
+      "latency_ms": 4208.245100000113
+    }
+  }
+}

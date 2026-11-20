@@ -1,0 +1,6 @@
+model_name,brier_score,log_loss,roc_auc,pr_auc,ece_uniform_5bins,calib_slope,calib_intercept,bin_1_count,bin_1_gap,bin_2_count,bin_2_gap,bin_3_count,bin_3_gap,bin_4_count,bin_4_gap,bin_5_count,bin_5_gap
+Heuristic CECI (Uncalibrated Baseline),0.414,9.0813,0.5573,0.7079,0.3963,-0.0069,0.1873,28,0.5396,24,0.2055,4,0.5374,0,0.0,0,0.0
+Platt-Calibrated CECI (Out-of-Fold CV),0.2473,0.6879,0.377,0.5391,0.0059,-0.2465,0.3584,0,0.0,0,0.0,53,0.0029,3,0.0593,0,0.0
+Platt-Calibrated CECI (Full Exploratory Fit),0.244,0.6811,0.5573,0.7079,0.0,0.1106,0.256,0,0.0,0,0.0,56,0.0,0,0.0,0,0.0
+Platt-Calibrated Top1 Retrieval Score (Out-of-Fold),0.2031,0.5789,0.7422,0.8362,0.0938,0.8113,0.0594,1,0.1055,21,0.1108,7,0.2313,14,0.0521,13,0.0361
+Platt-Calibrated F1 Relevance Score (Out-of-Fold),0.2423,0.6775,0.6322,0.6885,0.041,0.3086,0.1992,0,0.0,0,0.0,53,0.0215,3,0.3849,0,0.0

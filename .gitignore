@@ -1,0 +1,77 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+*.whl
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Environment variables (NEVER commit)
+.env
+*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Test artifacts
+.pytest_cache/
+.coverage
+htmlcov/
+*.xml
+
+# Data directories (large, managed separately)
+backend/data/db/
+backend/data/indexes/
+backend/data/uploads/
+# Keep official/ structure but not the PDFs
+backend/data/official/*.pdf
+# Keep dataset/ structure but not results
+backend/data/dataset/eval_results/
+
+# FAISS and pickle indexes
+*.index
+*.pkl
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Node / React (when frontend is scaffolded)
+node_modules/
+frontend/dist/
+frontend/.vite/
+*.tsbuildinfo
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Model cache (large)
+*.bin
+*.safetensors
+sentence_transformers_cache/
+
+# Temporary
+tmp/
+temp/
+scratch/

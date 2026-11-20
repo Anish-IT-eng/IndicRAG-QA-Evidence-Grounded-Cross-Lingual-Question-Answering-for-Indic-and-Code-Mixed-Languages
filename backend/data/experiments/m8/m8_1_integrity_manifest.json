@@ -1,0 +1,106 @@
+{
+  "audit_milestone": "M8.1",
+  "audit_role": "Senior Data Integrity Engineer and RAG Evaluation Auditor",
+  "execution_mode": "READ_ONLY_AUDIT",
+  "final_decision": "M8_1_INTEGRITY_VERIFIED",
+  "timestamp": "2026-11-16T10:36:00+05:30",
+  "corpus_fingerprints": {
+    "pre_refresh_canonical_sha256": "8688605df0dbff786454ec770e95609d9d3aacb284fdb3a2f97191f7d2971e9d",
+    "post_refresh_canonical_sha256": "c414cee2c2ce35b6c628f4fb4ada50804dd96d574ea9b373f68c53f29f35f111",
+    "status": "VERIFIED_CORPUS_EXPANSION"
+  },
+  "benchmark_integrity": {
+    "m3_final_dataset_sha256": {
+      "expected": "093b00ad0f19acda806f2302731ccf2de28838c1b29c6ef16d55cbc5e7e2d520",
+      "actual": "093b00ad0f19acda806f2302731ccf2de28838c1b29c6ef16d55cbc5e7e2d520",
+      "status": "VERIFIED_MATCH"
+    },
+    "m6_expanded_benchmark_n60_sha256": {
+      "expected": "a528ac583d8c060b91a7febce652885e4045fcc76d644e49e876ddeb5d1db4ae",
+      "actual": "a528ac583d8c060b91a7febce652885e4045fcc76d644e49e876ddeb5d1db4ae",
+      "status": "VERIFIED_MATCH"
+    },
+    "m6_qualification_ledger_sha256": {
+      "expected": "db8c2b5e02d6177b335a283f9ac62f99729fb36ef142aa1af81c99528efd3b13",
+      "actual": "db8c2b5e02d6177b335a283f9ac62f99729fb36ef142aa1af81c99528efd3b13",
+      "status": "VERIFIED_MATCH"
+    },
+    "m6_phase3_negative_benchmark_sha256": {
+      "expected": "492b0b1be3ce0c00fdcf453c971c48cb15176496e15806142c0aaff66050aeaa",
+      "actual": "492b0b1be3ce0c00fdcf453c971c48cb15176496e15806142c0aaff66050aeaa",
+      "status": "VERIFIED_MATCH"
+    }
+  },
+  "historical_passage_preservation": {
+    "historical_passages_total": 172,
+    "historical_child_passages": 142,
+    "historical_parent_passages": 30,
+    "identical_preserved_passages": 172,
+    "identical_preserved_percentage": 100.0,
+    "rechunked_passages": 0,
+    "text_changed_passages": 0,
+    "metadata_changed_passages": 0,
+    "missing_passages": 0,
+    "duplicated_passages": 0,
+    "status": "PERFECT_PRESERVATION"
+  },
+  "document_count_reconciliation_summary": {
+    "sqlite_ground_truth": {
+      "Academic-Rules-for-SCSET_UG.pdf": {
+        "child": 34,
+        "parent": 8,
+        "total": 42
+      },
+      "Notification-Minimum-Attendance.pdf": {
+        "child": 1,
+        "parent": 1,
+        "total": 2
+      },
+      "Academic-Calendar-2026-27.pdf": {
+        "child": 11,
+        "parent": 3,
+        "total": 14
+      },
+      "SEAS-Ordinance-Rules-Regulations-2017.pdf": {
+        "child": 96,
+        "parent": 18,
+        "total": 114
+      },
+      "Students-Discipline-Conduct-Rules-2024.pdf": {
+        "child": 41,
+        "parent": 6,
+        "total": 47
+      },
+      "BU-First-Ordinance-2016.pdf": {
+        "child": 61,
+        "parent": 15,
+        "total": 76
+      },
+      "UFM-Guidelines-2024.pdf": {
+        "child": 9,
+        "parent": 2,
+        "total": 11
+      }
+    },
+    "discrepancy_root_cause": "The M8 update manifest (m8_update_manifest.json) contained a documentation transcription discrepancy where page count (20) was entered for SCSET child passages and residual estimates (8, 113) for Calendar and SEAS. The underlying SQLite database never underwent rechunking; hash deduplication skipped re-ingestion, perfectly preserving all 172 historical passages with identical IDs, text hashes, page numbers, and parent-child linkages."
+  },
+  "index_consistency": {
+    "registered_official_documents": 7,
+    "eligible_child_passages": 253,
+    "parent_passages": 53,
+    "total_database_passages": 306,
+    "bm25_records": 253,
+    "faiss_vectors": 253,
+    "faiss_dimension": 384,
+    "faiss_metric": "IndexFlatIP",
+    "dangling_parent_references": 0,
+    "upload_passages_in_official_index": 0,
+    "status": "INDEX_DATABASE_PARITY_VERIFIED"
+  },
+  "test_suite_status": {
+    "total_tests": 214,
+    "passed_tests": 214,
+    "failed_tests": 0,
+    "pass_rate": "100%"
+  }
+}

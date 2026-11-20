@@ -1,0 +1,528 @@
+"""
+Grounded answer generation via Ollama.
+
+Design principles:
+- Only the selected evidence passages are passed to the model.
+- The model is instructed to answer from evidence only and cite sources.
+- Citations are validated against stored passages.
+- Returns UNANSWERABLE if the evidence controller rejects the answer.
+- Never reveals debug information in production mode.
+"""
+from __future__ import annotations
+
+import json
+import re
+import time
+import uuid
+from typing import Optional
+
+import httpx
+
+from app.core.config import settings
+from app.core.logging_config import logger
+from app.models.schemas import (
+    Citation,
+    ClaimVerificationVerdict,
+    DocumentVersionInfo,
+    EvidenceDecision,
+    EvidenceStatus,
+    QueryAnalysis,
+    QueryLanguage,
+    QueryResponse,
+    ResponseStatus,
+)
+
+# ─── Language-aware response instructions ─────────────────────────────────────
+
+_LANG_INSTRUCTIONS = {
+    QueryLanguage.ENGLISH: "Answer in English.",
+    QueryLanguage.HINDI: "कृपया उत्तर हिंदी में दें।",
+    QueryLanguage.ROMANIZED_HINDI: "Please answer in simple Romanized Hindi (Hinglish).",
+    QueryLanguage.CODE_MIXED: "Answer in Hindi-English code-mixed style (Hinglish).",
+    QueryLanguage.UNKNOWN: "Answer in English.",
+}
+
+# ─── Prompt templates ─────────────────────────────────────────────────────────
+
+_SYSTEM_PROMPT = """You are a precise academic regulation assistant for Bennett University.
+Your task is to answer questions using ONLY the provided evidence passages.
+
+Rules:
+1. Answer ONLY from the provided evidence. Do not add facts not in the evidence.
+2. Cite every factual claim with [Source: <passage_id>, page X] referring to the passages above.
+3. If the evidence does not contain enough information, say: UNANSWERABLE — Insufficient information available in the provided documents.
+4. Preserve all conditions, exceptions, and qualifying clauses from the evidence.
+5. If rules conflict between documents, state both versions and their applicable periods.
+6. Be concise and precise. Do not speculate or extrapolate.
+"""
+
+_USER_PROMPT_TEMPLATE = """{lang_instruction}
+
+Question: {question}
+
+Evidence passages:
+{evidence}
+
+Instructions: Answer the question using the evidence passages above. Cite every factual claim with [Source: passage_id, page X] referring to the passages above. If the answer cannot be determined from the evidence, output UNANSWERABLE."""
+
+_RETRY_CITATION_PROMPT = """You provided an answer without citing any source passages.
+You MUST provide citations in the exact format [Source: <passage_id>, page X] for EVERY factual claim made.
+
+Question: {question}
+
+Evidence passages:
+{evidence}
+
+Previous answer:
+{previous_answer}
+
+Instructions: Re-write the answer ensuring every factual claim is strictly cited with [Source: <passage_id>, page X] referring to the passages above."""
+
+
+def _format_evidence(passages) -> str:
+    """Format retrieved passages for the LLM prompt."""
+    parts = []
+    for i, p in enumerate(passages, 1):
+        page_str = f", page {p.page_number}" if p.page_number else ""
+        heading_str = f" [{p.heading}]" if p.heading else ""
+        parts.append(
+            f"[{i}] passage_id={p.passage_id}{page_str}{heading_str}\n{p.text}"
+        )
+    return "\n\n".join(parts)
+
+
+# ─── Ollama client ────────────────────────────────────────────────────────────
+
+_ollama_client: Optional[httpx.AsyncClient] = None
+
+
+def _get_ollama_client() -> httpx.AsyncClient:
+    global _ollama_client
+    if _ollama_client is None or _ollama_client.is_closed:
+        _ollama_client = httpx.AsyncClient(
+            timeout=settings.ollama_timeout,
+            limits=httpx.Limits(max_keepalive_connections=5, max_connections=10),
+        )
+    return _ollama_client
+
+
+async def _call_ollama(prompt: str, system_prompt: str) -> str:
+    """
+    Call the Ollama REST API.
+    Returns the generated text or raises on failure.
+    """
+    payload = {
+        "model": settings.ollama_model,
+        "prompt": prompt,
+        "system": system_prompt,
+        "stream": False,
+        "options": {
+            "temperature": settings.generation_temperature,
+            "num_predict": settings.generation_max_tokens,
+        },
+    }
+    global _ollama_client
+    try:
+        client = _get_ollama_client()
+        resp = await client.post(
+            f"{settings.ollama_base_url}/api/generate",
+            json=payload,
+        )
+    except (RuntimeError, Exception) as exc:
+        if "closed" in str(exc).lower() or isinstance(exc, RuntimeError):
+            # Event loop was closed or client invalidated; re-create client and retry once
+            _ollama_client = httpx.AsyncClient(
+                timeout=settings.ollama_timeout,
+                limits=httpx.Limits(max_keepalive_connections=5, max_connections=10),
+            )
+            resp = await _ollama_client.post(
+                f"{settings.ollama_base_url}/api/generate",
+                json=payload,
+            )
+        else:
+            raise
+    resp.raise_for_status()
+    data = resp.json()
+    return data.get("response", "").strip()
+
+
+# ─── Citation extraction and validation ───────────────────────────────────────
+
+# Match citations in all supported formats:
+# Format A: [Source: <uuid>, page 19]
+# Format B: [Source: passage_id=<uuid>, page 19]
+# Format C: [Source: <uuid>]
+# Format D: [Source: passage_id=<uuid>]
+# Match citations in all supported formats:
+# Format A: [Source: <uuid>, page 19]
+# Format B: [Source: passage_id=<uuid>, page 19]
+# Format C: [Source: <uuid>]
+# Format D: [Source: passage_id=<uuid>]
+# Variations: [Source: passage_id: <uuid>], uppercase/lowercase UUIDs, optional page/p.
+_CITATION_PATTERN = re.compile(
+    r"\[Source:\s*(?:passage_id\s*[:=]?\s*)?([a-zA-Z0-9_-]+)(?:\s*,\s*(?:page|p\.?)\s*(\d+))?\s*\]",
+    re.IGNORECASE,
+)
+
+
+def _is_valid_uuid(val: str) -> bool:
+    """Validate whether val is a well-formed UUID string."""
+    try:
+        u = uuid.UUID(val)
+        return str(u).lower() == val.lower() or u.hex.lower() == val.lower()
+    except (ValueError, AttributeError, TypeError):
+        return False
+
+
+def _extract_citations_and_claims(
+    generated_text: str,
+    passages,
+    document_filenames: dict[str, str],
+) -> tuple[list[Citation], str, Any]:
+    """
+    Parse [Source: passage_id, page X] markers from generated text.
+    Validate each cited passage against retrieved passages and schema.
+    Runs claim-level grounding verification.
+    Returns (valid_citations, cleaned_answer, claim_res).
+    """
+    from app.generation.claim_grounding import get_claim_grounding_verifier
+
+    citations: list[Citation] = []
+    seen_passage_ids: set[str] = set()
+
+    passage_map = {p.passage_id: p for p in passages}
+    lower_passage_map = {p.passage_id.lower(): p for p in passages}
+
+    # Match citation markers
+    matches = list(_CITATION_PATTERN.finditer(generated_text))
+
+    # Run atomic claim verification
+    claim_verifier = get_claim_grounding_verifier()
+    claim_res = claim_verifier.verify_claims(
+        answer_text=generated_text,
+        evidence_passages=passages,
+        cited_passage_map=passage_map,
+    )
+
+    for match in matches:
+        raw_pid = match.group(1).strip()
+        page = int(match.group(2)) if match.group(2) else None
+
+        # Guard: reject accidental capture of the literal keyword "passage_id"
+        if raw_pid.lower() in ("passage_id", "passage", "id", "source"):
+            logger.warning("Citation captured literal keyword '%s' instead of passage identifier; rejecting.", raw_pid)
+            continue
+
+        # Look up passage in evidence set (case-insensitive)
+        matched_p = passage_map.get(raw_pid) or lower_passage_map.get(raw_pid.lower())
+
+        if not matched_p:
+            if _is_valid_uuid(raw_pid):
+                logger.warning("Citation references unknown/unretrieved UUID passage_id: %s", raw_pid)
+            else:
+                logger.warning("Citation contains malformed/invalid passage_id: %s", raw_pid)
+            continue
+
+        canonical_pid = matched_p.passage_id
+
+        if canonical_pid in seen_passage_ids:
+            continue
+        seen_passage_ids.add(canonical_pid)
+
+        # Page metadata validation warning
+        if page is not None and matched_p.page_number is not None and page != matched_p.page_number:
+            logger.warning(
+                "Citation page mismatch for passage %s: cited page %d != actual page %d",
+                canonical_pid, page, matched_p.page_number
+            )
+
+        # Grounding check: claim must not contain verified contradictions
+        is_supported = bool(
+            not claim_res.contains_contradiction
+            and (claim_res.grounding_ratio >= 0.4 or claim_res.total_claims == 0)
+        )
+
+        citations.append(Citation(
+            document_id=matched_p.document_id,
+            filename=document_filenames.get(matched_p.document_id, "unknown"),
+            page=matched_p.page_number or page,
+            passage_id=canonical_pid,
+            quote=matched_p.text[:300],
+            section=matched_p.section,
+            heading=matched_p.heading,
+            version_info=DocumentVersionInfo(
+                effective_date=matched_p.version_info.effective_date if matched_p.version_info else None,
+                academic_year=matched_p.version_info.academic_year if matched_p.version_info else None,
+            ),
+            claim_supported=is_supported,
+        ))
+
+    # Clean the answer by removing citation markers (keep them in citations list)
+    cleaned = _CITATION_PATTERN.sub("", generated_text)
+    # Clean up whitespace and punctuation artifacts
+    cleaned = re.sub(r" +", " ", cleaned)
+    cleaned = re.sub(r"\s+([.,;:!?])", r"\1", cleaned).strip()
+
+    return citations, cleaned, claim_res
+
+
+def _extract_citations_from_text(
+    generated_text: str,
+    passages,
+    document_filenames: dict[str, str],
+) -> tuple[list[Citation], str]:
+    """Backward-compatible helper returning (citations, cleaned_answer)."""
+    citations, cleaned, _ = _extract_citations_and_claims(
+        generated_text, passages, document_filenames
+    )
+    return citations, cleaned
+
+
+# ─── Main generation function ─────────────────────────────────────────────────
+
+async def generate_answer(
+    query_analysis: QueryAnalysis,
+    evidence_decision: EvidenceDecision,
+    response_language: Optional[str] = None,
+    debug: bool = False,
+) -> QueryResponse:
+    """
+    Generate a grounded answer.
+
+    Args:
+        query_analysis: Processed query with all representations.
+        evidence_decision: Result from the evidence controller.
+        response_language: Override language code (e.g., "en", "hi").
+        debug: Include retrieval trace in response.
+
+    Returns:
+        QueryResponse with structured answer, citations, and evidence status.
+    """
+    t0 = time.perf_counter()
+    request_id = __import__("uuid").uuid4().hex
+
+    # Determine response language
+    if response_language:
+        out_lang = response_language
+        lang_enum = QueryLanguage(response_language) if response_language in QueryLanguage._value2member_map_ else QueryLanguage.ENGLISH
+    else:
+        lang_enum = query_analysis.detected_language
+        out_lang = lang_enum.value
+
+    # Handle clarification required immediately (no LLM call)
+    if evidence_decision.status == EvidenceStatus.CLARIFICATION_REQUIRED or evidence_decision.clarification_needed:
+        latency = (time.perf_counter() - t0) * 1000
+        explanation = evidence_decision.explanation or "Applicable academic cohort or program version must be specified."
+        return QueryResponse(
+            request_id=request_id,
+            status=ResponseStatus.CLARIFICATION_NEEDED,
+            answer=f"CLARIFICATION REQUIRED — {explanation}",
+            language=out_lang,
+            citations=[],
+            evidence_status=EvidenceStatus.CLARIFICATION_REQUIRED,
+            latency_ms=latency,
+            model_used=settings.ollama_model,
+        )
+
+    # Handle insufficient / missing evidence immediately (no LLM call)
+    if evidence_decision.status in (EvidenceStatus.INSUFFICIENT, EvidenceStatus.MISSING):
+        latency = (time.perf_counter() - t0) * 1000
+        return QueryResponse(
+            request_id=request_id,
+            status=ResponseStatus.UNANSWERABLE,
+            answer="UNANSWERABLE — Insufficient information available in the provided documents.",
+            language=out_lang,
+            citations=[],
+            evidence_status=evidence_decision.status,
+            latency_ms=latency,
+            model_used=settings.ollama_model,
+        )
+
+    if evidence_decision.status == EvidenceStatus.CONFLICTING:
+        # Still attempt generation but warn about conflict
+        logger.warning("Generating with conflicting evidence — will disclose conflict.")
+
+    # Build prompt
+    lang_instruction = _LANG_INSTRUCTIONS.get(lang_enum, "Answer in English.")
+    evidence_text = _format_evidence(evidence_decision.valid_passages)
+    user_prompt = _USER_PROMPT_TEMPLATE.format(
+        lang_instruction=lang_instruction,
+        question=query_analysis.original_query,
+        evidence=evidence_text,
+    )
+
+    # Fetch document filenames for citation building
+    from app.ingestion.pipeline import get_all_documents
+    all_docs = get_all_documents()
+    doc_filenames = {d["document_id"]: d["filename"] for d in all_docs}
+
+    # Call LLM
+    try:
+        raw_output = await _call_ollama(user_prompt, _SYSTEM_PROMPT)
+        logger.debug("LLM output length: %d chars", len(raw_output))
+    except Exception as exc:
+        logger.error("LLM call failed: %s", exc)
+        latency = (time.perf_counter() - t0) * 1000
+        if evidence_decision.status == EvidenceStatus.CONFLICTING:
+            conflict_msg = (
+                "CONFLICTING REGULATIONS DETECTED — Multiple contradictory rules exist across "
+                "different regulatory versions in the official records. Please specify your academic cohort."
+            )
+            return QueryResponse(
+                request_id=request_id,
+                status=ResponseStatus.CONFLICTING_VERSIONS,
+                answer=conflict_msg,
+                language=out_lang,
+                citations=[],
+                evidence_status=EvidenceStatus.CONFLICTING,
+                latency_ms=latency,
+                model_used=settings.ollama_model,
+            )
+        return QueryResponse(
+            request_id=request_id,
+            status=ResponseStatus.ERROR,
+            answer=None,
+            language=out_lang,
+            citations=[],
+            evidence_status=evidence_decision.status,
+            latency_ms=latency,
+            model_used=settings.ollama_model,
+        )
+
+    # Check for UNANSWERABLE self-report from model
+    if "UNANSWERABLE" in raw_output.upper():
+        latency = (time.perf_counter() - t0) * 1000
+        return QueryResponse(
+            request_id=request_id,
+            status=ResponseStatus.UNANSWERABLE,
+            answer="UNANSWERABLE — Insufficient information available in the provided documents.",
+            language=out_lang,
+            citations=[],
+            evidence_status=EvidenceStatus.INSUFFICIENT,
+            latency_ms=latency,
+            model_used=settings.ollama_model,
+        )
+
+    # Extract and validate citations
+    citations, cleaned_answer, claim_res = _extract_citations_and_claims(
+        raw_output,
+        evidence_decision.valid_passages,
+        doc_filenames,
+    )
+
+    # DEFECT-GEN-02: Zero-Citation Bypass Prevention
+    # When evidence was sufficient or partial, but the LLM omitted source citations:
+    if len(citations) == 0 and evidence_decision.status in (EvidenceStatus.SUFFICIENT, EvidenceStatus.PARTIAL):
+        logger.info("Zero citations detected from initial generation. Triggering 1-bounded retry prompt.")
+        retry_prompt = _RETRY_CITATION_PROMPT.format(
+            question=query_analysis.original_query,
+            evidence=evidence_text,
+            previous_answer=raw_output,
+        )
+        try:
+            retry_output = await _call_ollama(retry_prompt, _SYSTEM_PROMPT)
+            if "UNANSWERABLE" in retry_output.upper():
+                latency = (time.perf_counter() - t0) * 1000
+                return QueryResponse(
+                    request_id=request_id,
+                    status=ResponseStatus.UNANSWERABLE,
+                    answer="UNANSWERABLE — Insufficient information available in the provided documents.",
+                    language=out_lang,
+                    citations=[],
+                    evidence_status=evidence_decision.status,
+                    latency_ms=latency,
+                    model_used=settings.ollama_model,
+                )
+            retry_citations, retry_cleaned, retry_claim_res = _extract_citations_and_claims(
+                retry_output,
+                evidence_decision.valid_passages,
+                doc_filenames,
+            )
+            if len(retry_citations) > 0:
+                citations = retry_citations
+                cleaned_answer = retry_cleaned
+                claim_res = retry_claim_res
+                raw_output = retry_output
+        except Exception as retry_exc:
+            logger.warning("Retry citation generation failed: %s", retry_exc)
+
+        # If citations are STILL missing after retry, safely abstain
+        if len(citations) == 0:
+            logger.warning("Generation yielded zero valid citations after retry. Abstaining with UNANSWERABLE.")
+            latency = (time.perf_counter() - t0) * 1000
+            return QueryResponse(
+                request_id=request_id,
+                status=ResponseStatus.UNANSWERABLE,
+                answer="UNANSWERABLE — Factual claims could not be verified against corpus citations.",
+                language=out_lang,
+                citations=[],
+                evidence_status=evidence_decision.status,
+                latency_ms=latency,
+                model_used=settings.ollama_model,
+            )
+
+    # DEFECT-GEN-01: Contradicted Claims Leaking into ANSWERED responses
+    # When claim_verifier identifies contradicted claims in the generated text:
+    if claim_res.contains_contradiction:
+        logger.warning("Contradicted claims detected in generated answer. Suppressing ungrounded answer.")
+        discrepancies = [
+            f"Claim: '{c.claim_text}' -> Discrepancy: {'; '.join(c.discrepancies or [c.explanation])}"
+            for c in claim_res.claims
+            if c.verdict == ClaimVerificationVerdict.CONTRADICTED
+        ]
+        discrepancy_str = ";\n".join(discrepancies) if discrepancies else "Statements directly contradict cited regulatory records."
+        cleaned_answer = (
+            f"CONTRADICTION DETECTED — The generated answer contains statements that contradict authoritative regulatory records:\n"
+            f"{discrepancy_str}\n\n"
+            f"Please refer to official university notifications or specify cohort details."
+        )
+        resp_status = ResponseStatus.CONFLICTING_VERSIONS
+    else:
+        # Additional Grounding Enforcement: Uncertainty qualification for low-grounded claims
+        if claim_res.total_claims > 0 and claim_res.grounding_ratio < 0.40:
+            unverified_claims = [
+                c.claim_text for c in claim_res.claims
+                if c.verdict != ClaimVerificationVerdict.ENTAILED
+            ]
+            if unverified_claims:
+                qual_text = (
+                    f"[UNCERTAINTY QUALIFICATION: The following claims could not be fully verified against cited sources: "
+                    f"{'; '.join(unverified_claims[:2])}]\n\n"
+                )
+                cleaned_answer = qual_text + cleaned_answer
+
+        # Determine response status
+        if evidence_decision.status == EvidenceStatus.CONFLICTING:
+            resp_status = ResponseStatus.CONFLICTING_VERSIONS
+        elif evidence_decision.status == EvidenceStatus.PARTIAL:
+            resp_status = ResponseStatus.ANSWERED
+        elif evidence_decision.status == EvidenceStatus.CLARIFICATION_REQUIRED:
+            resp_status = ResponseStatus.CLARIFICATION_NEEDED
+        else:
+            resp_status = ResponseStatus.ANSWERED
+
+    latency = (time.perf_counter() - t0) * 1000
+
+    retrieval_summary = None
+    if debug:
+        retrieval_summary = {
+            "evidence_status": evidence_decision.status.value,
+            "coverage_score": evidence_decision.coverage_score,
+            "passages_used": len(evidence_decision.valid_passages),
+            "conflict_count": len(evidence_decision.conflicting_passages),
+            "grounding_ratio": claim_res.grounding_ratio,
+            "contradiction_detected": claim_res.contains_contradiction,
+        }
+
+    return QueryResponse(
+        request_id=request_id,
+        status=resp_status,
+        answer=cleaned_answer,
+        language=out_lang,
+        citations=citations,
+        evidence_status=evidence_decision.status,
+        query_analysis=query_analysis if debug else None,
+        retrieval_summary=retrieval_summary,
+        latency_ms=latency,
+        model_used=settings.ollama_model,
+    )

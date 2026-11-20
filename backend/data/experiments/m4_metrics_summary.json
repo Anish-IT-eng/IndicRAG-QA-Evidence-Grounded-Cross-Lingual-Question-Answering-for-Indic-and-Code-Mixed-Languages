@@ -1,0 +1,184 @@
+{
+  "timestamp_utc": "2026-11-10T13:08:24.561302+00:00",
+  "corpus_hash": "8688605df0dbff786454ec770e95609d9d3aacb284fdb3a2f97191f7d2971e9d",
+  "sample_size": {
+    "total": 15,
+    "answerable_evaluated": 13,
+    "unanswerable_evaluated": 2
+  },
+  "aggregate_metrics": {
+    "bm25": {
+      "count": 13,
+      "hit_1": 0.3077,
+      "hit_3": 0.6154,
+      "hit_5": 0.6923,
+      "mrr": 0.4808,
+      "ndcg_5": 0.521,
+      "avg_latency_ms": 0.79
+    },
+    "dense": {
+      "count": 13,
+      "hit_1": 0.2308,
+      "hit_3": 0.4615,
+      "hit_5": 0.6154,
+      "mrr": 0.3718,
+      "ndcg_5": 0.3691,
+      "avg_latency_ms": 494.18
+    },
+    "hybrid_rrf": {
+      "count": 13,
+      "hit_1": 0.1538,
+      "hit_3": 0.7692,
+      "hit_5": 0.9231,
+      "mrr": 0.4705,
+      "ndcg_5": 0.5561,
+      "avg_latency_ms": 29.4
+    }
+  },
+  "language_breakdown": {
+    "en": {
+      "language": "en",
+      "total_queries": 5,
+      "answerable_queries": 4,
+      "bm25_hit_1": 0.5,
+      "bm25_hit_3": 0.75,
+      "bm25_hit_5": 1.0,
+      "bm25_mrr": 0.6875,
+      "bm25_ndcg_5": 0.7044,
+      "dense_hit_1": 0.25,
+      "dense_hit_3": 0.5,
+      "dense_hit_5": 0.75,
+      "dense_mrr": 0.4375,
+      "dense_ndcg_5": 0.4187,
+      "hybrid_hit_1": 0.25,
+      "hybrid_hit_3": 0.75,
+      "hybrid_hit_5": 1.0,
+      "hybrid_mrr": 0.5625,
+      "hybrid_ndcg_5": 0.6315
+    },
+    "hi": {
+      "language": "hi",
+      "total_queries": 5,
+      "answerable_queries": 4,
+      "bm25_hit_1": 0.0,
+      "bm25_hit_3": 0.25,
+      "bm25_hit_5": 0.25,
+      "bm25_mrr": 0.125,
+      "bm25_ndcg_5": 0.1577,
+      "dense_hit_1": 0.0,
+      "dense_hit_3": 0.25,
+      "dense_hit_5": 0.25,
+      "dense_mrr": 0.125,
+      "dense_ndcg_5": 0.0967,
+      "hybrid_hit_1": 0.0,
+      "hybrid_hit_3": 0.5,
+      "hybrid_hit_5": 0.75,
+      "hybrid_mrr": 0.2583,
+      "hybrid_ndcg_5": 0.3185
+    },
+    "hi-en": {
+      "language": "hi-en",
+      "total_queries": 3,
+      "answerable_queries": 3,
+      "bm25_hit_1": 0.6667,
+      "bm25_hit_3": 1.0,
+      "bm25_hit_5": 1.0,
+      "bm25_mrr": 0.8333,
+      "bm25_ndcg_5": 0.8978,
+      "dense_hit_1": 0.0,
+      "dense_hit_3": 0.3333,
+      "dense_hit_5": 0.6667,
+      "dense_mrr": 0.1944,
+      "dense_ndcg_5": 0.2458,
+      "hybrid_hit_1": 0.0,
+      "hybrid_hit_3": 1.0,
+      "hybrid_hit_5": 1.0,
+      "hybrid_mrr": 0.4444,
+      "hybrid_ndcg_5": 0.5996
+    },
+    "hi-Latn": {
+      "language": "hi-Latn",
+      "total_queries": 2,
+      "answerable_queries": 2,
+      "bm25_hit_1": 0.0,
+      "bm25_hit_3": 0.5,
+      "bm25_hit_5": 0.5,
+      "bm25_mrr": 0.25,
+      "bm25_ndcg_5": 0.3155,
+      "dense_hit_1": 1.0,
+      "dense_hit_3": 1.0,
+      "dense_hit_5": 1.0,
+      "dense_mrr": 1.0,
+      "dense_ndcg_5": 1.0,
+      "hybrid_hit_1": 0.5,
+      "hybrid_hit_3": 1.0,
+      "hybrid_hit_5": 1.0,
+      "hybrid_mrr": 0.75,
+      "hybrid_ndcg_5": 0.8155
+    }
+  },
+  "unanswerable_analysis": [
+    {
+      "candidate_id": "b0a1c011-87a1-4111-9011-000000000011",
+      "language": "hi",
+      "question": "\u090f\u0938\u0938\u0940\u090f\u0938\u0908\u091f\u0940 \u092f\u0942\u091c\u0940 \u0928\u093f\u092f\u092e\u094b\u0902 \u0915\u0947 \u0905\u0928\u0941\u0938\u093e\u0930 \u0939\u0949\u0938\u094d\u091f\u0932 \u092e\u0947\u0938 \u0915\u0940 \u092b\u0940\u0938 \u0935\u093e\u092a\u0938\u0940 (refund) \u0915\u0947 \u0915\u094d\u092f\u093e \u0928\u093f\u092f\u092e \u0939\u0948\u0902?",
+      "bm25_top1_score": 0.0,
+      "dense_top1_score": 0.3587,
+      "hybrid_top1_score": 0.016393
+    },
+    {
+      "candidate_id": "b0a1c010-87a0-4110-9010-000000000010",
+      "language": "en",
+      "question": "What is the prescribed fee for submitting a PhD dissertation thesis according to the SCSET UG academic regulations?",
+      "bm25_top1_score": 20.6362,
+      "dense_top1_score": 0.4692,
+      "hybrid_top1_score": 0.030798
+    }
+  ],
+  "version_awareness_test": [
+    {
+      "query_id": "V1_AY_2022_23",
+      "type": "2022-23 Academic Year Specific",
+      "query": "What is the minimum attendance required to appear in the end semester examination for academic year 2022-23?",
+      "target_clause": "Notification 307/2022 (75%)",
+      "bm25_top1": "0280358a-ff3c-4964-88ab-419a9147b1f0",
+      "dense_top1": "0280358a-ff3c-4964-88ab-419a9147b1f0",
+      "hybrid_top1": "0280358a-ff3c-4964-88ab-419a9147b1f0",
+      "rank_notification_307_hybrid": 1,
+      "rank_clause_30_hybrid": "Not in top 5"
+    },
+    {
+      "query_id": "V2_AY_2026_27",
+      "type": "2026-27 Academic Year Specific",
+      "query": "What is the attendance criteria for end semester examination in academic year 2026-27?",
+      "target_clause": "Notification 307/2022 (75% onwards)",
+      "bm25_top1": "0280358a-ff3c-4964-88ab-419a9147b1f0",
+      "dense_top1": "0280358a-ff3c-4964-88ab-419a9147b1f0",
+      "hybrid_top1": "0280358a-ff3c-4964-88ab-419a9147b1f0",
+      "rank_notification_307_hybrid": 1,
+      "rank_clause_30_hybrid": "Not in top 5"
+    },
+    {
+      "query_id": "V3_HISTORICAL_CLAUSE_30",
+      "type": "Historical SCSET UG Regulation",
+      "query": "Under Clause 30.1 of Academic Rules for SCSET UG, what is the minimum attendance requirement in a course to avoid X grade?",
+      "target_clause": "Clause 30.1(ii) (70%)",
+      "bm25_top1": "0280358a-ff3c-4964-88ab-419a9147b1f0",
+      "dense_top1": "0280358a-ff3c-4964-88ab-419a9147b1f0",
+      "hybrid_top1": "0280358a-ff3c-4964-88ab-419a9147b1f0",
+      "rank_notification_307_hybrid": 1,
+      "rank_clause_30_hybrid": 4
+    },
+    {
+      "query_id": "V4_UNSPECIFIED_AY",
+      "type": "Unspecified Academic Year",
+      "query": "What is the minimum attendance percentage required for students?",
+      "target_clause": "Comparative / Coexistence Check",
+      "bm25_top1": "807121bd-ab89-4b0d-bcab-a68cc56020a8",
+      "dense_top1": "0280358a-ff3c-4964-88ab-419a9147b1f0",
+      "hybrid_top1": "0280358a-ff3c-4964-88ab-419a9147b1f0",
+      "rank_notification_307_hybrid": 1,
+      "rank_clause_30_hybrid": "Not in top 5"
+    }
+  ]
+}

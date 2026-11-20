@@ -1,0 +1,13 @@
+test_id,defect_id,test_name,input_condition,expected_behavior,actual_status,latency_ms,leakage_prevented
+SEC-TEST-01,DEFECT-GEN-02,Zero citations on SUFFICIENT evidence triggers retry,"Sufficient evidence, initial generation omits citations",Executes 1 bounded retry with strict citation prompt,PASS,15.2,YES
+SEC-TEST-02,DEFECT-GEN-02,Zero citations after retry safely abstains,"Sufficient evidence, retry fails to produce citations",Returns UNANSWERABLE abstention,PASS,18.4,YES
+SEC-TEST-03,DEFECT-GEN-01,Numeric contradiction mapped to CONFLICTING_VERSIONS,"Evidence states 75%, LLM claims 60%","Suppresses answer, sets CONFLICTING_VERSIONS",PASS,12.1,YES
+SEC-TEST-04,DEFECT-GEN-01,Structured contradiction warning disclosed,Contradiction detected in claims,Discloses specific numeric discrepancy to user,PASS,11.8,YES
+SEC-TEST-05,DEFECT-GEN-03,CLARIFICATION_REQUIRED preserves explanation,Controller emits CLARIFICATION_REQUIRED,Returns CLARIFICATION_NEEDED with explanation without LLM call,PASS,1.2,YES
+SEC-TEST-06,DEFECT-GEN-03,CLARIFICATION_REQUIRED does not fall back to ANSWERED,clarification_needed=True on evidence decision,Deterministic CLARIFICATION_NEEDED status override,PASS,1.1,YES
+SEC-TEST-07,GROUNDING-QUAL,Low-grounding answers receive uncertainty qualification,Grounding ratio < 0.40 without direct contradiction,Prepends [UNCERTAINTY QUALIFICATION: ...],PASS,14.6,YES
+SEC-TEST-08,GROUNDING-SAFE,Well-grounded answers pass cleanly,Accurate claims with valid citations matching evidence,Returns ANSWERED with valid Citation objects,PASS,13.9,N/A
+SEC-TEST-09,CITATION-INTEG,Invalid / hallucinated passage_id rejected,LLM cites unknown passage_id not in retrieved pool,Citation discarded; triggers zero-citation retry/abstention,PASS,16.5,YES
+SEC-TEST-10,MODEL-SELF-REP,Model self-reported UNANSWERABLE honored,LLM text explicitly states UNANSWERABLE,Immediate UNANSWERABLE status and empty citations,PASS,9.4,YES
+SEC-TEST-11,API-INTEG,FastAPI /query route integration,HTTP POST /query with clarification / conflicting status,Valid 200 response with correct status payload,PASS,8.3,YES
+SEC-TEST-12,CROSS-LINGUAL,Cross-lingual query language fidelity,Hindi / Hinglish query under runtime enforcement,Preserves detected language code and instructions,PASS,14.1,YES

@@ -1,0 +1,309 @@
+[
+  {
+    "query_id": "AQ-01",
+    "category": "PRIMARY_ACCEPTANCE",
+    "query_text": "What is the minimum attendance required?",
+    "controller_decision": {
+      "status": "clarification_required",
+      "ceci_score": 0.8,
+      "explanation": "Structured Regulatory Disclosure: 75% minimum aggregate attendance is required by the Registrar to appear in End Semester Examinations (Notification 307/2022), while 70% attendance in a course is required to avoid an 'X' grade and course repetition (SCSET Academic Rules Clause 30.1). Query lacks student cohort or admission year parameter. Please specify student batch or regulatory purpose.",
+      "multi_conditions": []
+    },
+    "response": {
+      "status": "clarification_needed",
+      "citations": [],
+      "answer": "CLARIFICATION REQUIRED \u2014 Structured Regulatory Disclosure: 75% minimum aggregate attendance is required by the Registrar to appear in End Semester Examinations (Notification 307/2022), while 70% attendance in a course is required to avoid an 'X' grade and course repetition (SCSET Academic Rules Clause 30.1). Query lacks student cohort or admission year parameter. Please specify student batch or regulatory purpose.",
+      "latency_ms": 16833.429599995725
+    },
+    "claims_verification": {
+      "total_claims": 3,
+      "supported_claims": 2,
+      "grounding_ratio": 0.667,
+      "contains_contradiction": false
+    },
+    "outcome": "PASS",
+    "failure_reason": ""
+  },
+  {
+    "query_id": "AQ-02",
+    "category": "PRIMARY_ACCEPTANCE",
+    "query_text": "What attendance is required to sit for end semester exams?",
+    "controller_decision": {
+      "status": "sufficient",
+      "ceci_score": 0.88,
+      "explanation": "Authoritative requirement: A minimum of 75% aggregate attendance across courses is required to appear in End Semester Examinations pursuant to Notification 307/2022 and UGC Regulations 2003.",
+      "multi_conditions": []
+    },
+    "response": {
+      "status": "answered",
+      "citations": [
+        {
+          "passage_id": "0280358a-ff3c-4964-88ab-419a9147b1f0",
+          "document_id": "40c366dd-41b2-49f6-b5e4-492a8b5bbe8a",
+          "filename": "Notification-Minimum-Attendance.pdf",
+          "authoritative_page": 1,
+          "cited_page": 1,
+          "page_verified": true,
+          "claim_supported": true,
+          "quote": "BENNETT\nUNIVERSITY\nTIMESOFINDIAGROUP\nRef No.: BU/R0/Notification/307/2022\n08th September, 2022\nNOTIFICATION\nThe minimum attendance criteria for the students to appear in the End Semester\nExamination was reviewed in the 13th Academic Council Meeting held on 29th July\n2022 in consonance with the UGC's"
+        }
+      ],
+      "answer": "The minimum attendance criteria for the students to appear in the End Semester Examination is 75%.",
+      "latency_ms": 7895.217299999786
+    },
+    "claims_verification": {
+      "total_claims": 1,
+      "supported_claims": 1,
+      "grounding_ratio": 1.0,
+      "contains_contradiction": false
+    },
+    "outcome": "PASS",
+    "failure_reason": ""
+  },
+  {
+    "query_id": "AQ-03",
+    "category": "PRIMARY_ACCEPTANCE",
+    "query_text": "How much attendance is required to avoid an X grade?",
+    "controller_decision": {
+      "status": "sufficient",
+      "ceci_score": 0.85,
+      "explanation": "Unanimous regulatory consensus: A minimum of 70% attendance in a course (lectures, tutorials, practicals combined) is required to avoid an 'X' grade.",
+      "multi_conditions": []
+    },
+    "response": {
+      "status": "answered",
+      "citations": [
+        {
+          "passage_id": "f88ec726-74ba-426f-a01f-4b9665c1a8b8",
+          "document_id": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2",
+          "filename": "SEAS-Ordinance-Rules-Regulations-2017.pdf",
+          "authoritative_page": 28,
+          "cited_page": 28,
+          "page_verified": true,
+          "claim_supported": true,
+          "quote": "30 Attendance Requirements \n30.1 Attendance Rules \n(i) All undergraduate/Integrated program students are expected to be present in every \nlecture, tutorial, practical or project interaction sessions scheduled for them. (ii) A student must have a minimum attendance of 70% in a course during a semeste"
+        }
+      ],
+      "answer": "To avoid an X grade, a student is required to have a minimum attendance of 70% in a course during a semester.",
+      "latency_ms": 7797.538700004225
+    },
+    "claims_verification": {
+      "total_claims": 1,
+      "supported_claims": 1,
+      "grounding_ratio": 1.0,
+      "contains_contradiction": false
+    },
+    "outcome": "PASS",
+    "failure_reason": ""
+  },
+  {
+    "query_id": "AQ-04",
+    "category": "PRIMARY_ACCEPTANCE",
+    "query_text": "Is 70% attendance enough?",
+    "controller_decision": {
+      "status": "sufficient",
+      "ceci_score": 0.8,
+      "explanation": "Structured Conditional Result: 70% attendance is sufficient to avoid an 'X' grade in individual courses under School rules, but insufficient to sit for End Semester Examinations, which strictly requires 75% aggregate attendance under university Notification 307/2022.",
+      "multi_conditions": []
+    },
+    "response": {
+      "status": "answered",
+      "citations": [
+        {
+          "passage_id": "f88ec726-74ba-426f-a01f-4b9665c1a8b8",
+          "document_id": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2",
+          "filename": "SEAS-Ordinance-Rules-Regulations-2017.pdf",
+          "authoritative_page": 28,
+          "cited_page": 28,
+          "page_verified": true,
+          "claim_supported": true,
+          "quote": "30 Attendance Requirements \n30.1 Attendance Rules \n(i) All undergraduate/Integrated program students are expected to be present in every \nlecture, tutorial, practical or project interaction sessions scheduled for them. (ii) A student must have a minimum attendance of 70% in a course during a semeste"
+        },
+        {
+          "passage_id": "0280358a-ff3c-4964-88ab-419a9147b1f0",
+          "document_id": "40c366dd-41b2-49f6-b5e4-492a8b5bbe8a",
+          "filename": "Notification-Minimum-Attendance.pdf",
+          "authoritative_page": 1,
+          "cited_page": 1,
+          "page_verified": true,
+          "claim_supported": true,
+          "quote": "BENNETT\nUNIVERSITY\nTIMESOFINDIAGROUP\nRef No.: BU/R0/Notification/307/2022\n08th September, 2022\nNOTIFICATION\nThe minimum attendance criteria for the students to appear in the End Semester\nExamination was reviewed in the 13th Academic Council Meeting held on 29th July\n2022 in consonance with the UGC's"
+        }
+      ],
+      "answer": "According to the provided information, 70% attendance is required for a course to avoid an X grade. This is stated in the 30.1 Attendance Rules (i) of passage ID f88ec726-74ba-426f-a01f-4b9665c1a8b8, page 28.\n\n The minimum attendance criteria for the current semester is 75% to appear in the End Semester Examination, as per Notification 307/2022, which was approved by the Competent Authority. This is stated in the 31. Interpretation of Regulations (vi) of passage ID 0280358a-ff3c-4964-88ab-419a9147b1f0, page 1.\n\nTherefore, 70% attendance is not enough for the End Semester Examination eligibility, as it requires 75% attendance. However, it is enough to avoid an X grade in a course.",
+      "latency_ms": 34624.32630000694
+    },
+    "claims_verification": {
+      "total_claims": 7,
+      "supported_claims": 7,
+      "grounding_ratio": 1.0,
+      "contains_contradiction": false
+    },
+    "outcome": "PASS",
+    "failure_reason": ""
+  },
+  {
+    "query_id": "AQ-05",
+    "category": "PRIMARY_ACCEPTANCE",
+    "query_text": "Is 75% compulsory for SCSET students?",
+    "controller_decision": {
+      "status": "sufficient",
+      "ceci_score": 0.82,
+      "explanation": "Yes. Notification 307/2022 applies university-wide across all Schools and Programmes of Bennett University, including SCSET, establishing 75% minimum attendance for End Semester Examinations.",
+      "multi_conditions": []
+    },
+    "response": {
+      "status": "answered",
+      "citations": [
+        {
+          "passage_id": "0280358a-ff3c-4964-88ab-419a9147b1f0",
+          "document_id": "40c366dd-41b2-49f6-b5e4-492a8b5bbe8a",
+          "filename": "Notification-Minimum-Attendance.pdf",
+          "authoritative_page": 1,
+          "cited_page": 1,
+          "page_verified": true,
+          "claim_supported": true,
+          "quote": "BENNETT\nUNIVERSITY\nTIMESOFINDIAGROUP\nRef No.: BU/R0/Notification/307/2022\n08th September, 2022\nNOTIFICATION\nThe minimum attendance criteria for the students to appear in the End Semester\nExamination was reviewed in the 13th Academic Council Meeting held on 29th July\n2022 in consonance with the UGC's"
+        }
+      ],
+      "answer": "The minimum attendance criteria for the students to appear in the End Semester Examination was reviewed and approved to be 75%.",
+      "latency_ms": 7980.503599996155
+    },
+    "claims_verification": {
+      "total_claims": 1,
+      "supported_claims": 1,
+      "grounding_ratio": 1.0,
+      "contains_contradiction": false
+    },
+    "outcome": "PASS",
+    "failure_reason": ""
+  },
+  {
+    "query_id": "AQ-06",
+    "category": "PRIMARY_ACCEPTANCE",
+    "query_text": "What was the attendance rule in 2017?",
+    "controller_decision": {
+      "status": "sufficient",
+      "ceci_score": 0.75,
+      "explanation": "Grounded historical answer anchored to 2017-18 academic regulations (b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2).",
+      "multi_conditions": []
+    },
+    "response": {
+      "status": "answered",
+      "citations": [
+        {
+          "passage_id": "f88ec726-74ba-426f-a01f-4b9665c1a8b8",
+          "document_id": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2",
+          "filename": "SEAS-Ordinance-Rules-Regulations-2017.pdf",
+          "authoritative_page": 28,
+          "cited_page": 28,
+          "page_verified": true,
+          "claim_supported": true,
+          "quote": "30 Attendance Requirements \n30.1 Attendance Rules \n(i) All undergraduate/Integrated program students are expected to be present in every \nlecture, tutorial, practical or project interaction sessions scheduled for them. (ii) A student must have a minimum attendance of 70% in a course during a semeste"
+        }
+      ],
+      "answer": "The attendance rule in 2017 for undergraduate/Integrated program students was that they are expected to be present in every lecture, tutorial, practical or project interaction sessions scheduled for them. Additionally, a student must have a minimum attendance of 70% in a course during a semester, in lectures, tutorials or practicals taken together, to avoid receiving an 'X' grade.",
+      "latency_ms": 13530.794899998
+    },
+    "claims_verification": {
+      "total_claims": 2,
+      "supported_claims": 2,
+      "grounding_ratio": 1.0,
+      "contains_contradiction": false
+    },
+    "outcome": "PASS",
+    "failure_reason": ""
+  },
+  {
+    "query_id": "AQ-07",
+    "category": "PRIMARY_ACCEPTANCE",
+    "query_text": "Can attendance be relaxed due to medical reasons?",
+    "controller_decision": {
+      "status": "sufficient",
+      "ceci_score": 0.85,
+      "explanation": "Unanimous regulatory consensus: Relaxation up to a maximum of 10% may be granted by the Dean on valid medical grounds (continuous hospitalization/illness of at least two weeks).",
+      "multi_conditions": []
+    },
+    "response": {
+      "status": "answered",
+      "citations": [
+        {
+          "passage_id": "6ad292d8-6e01-4f3b-aa96-66ee4603b11e",
+          "document_id": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2",
+          "filename": "SEAS-Ordinance-Rules-Regulations-2017.pdf",
+          "authoritative_page": 29,
+          "cited_page": 29,
+          "page_verified": true,
+          "claim_supported": true,
+          "quote": "28 \n \n(iii) A student should meet the above attendance requirement irrespective of the \nnumber of days he/she is on medical and/or other leave for any reason, \nwhatsoever. (iv) For the purpose of attendance, every scheduled class will be counted as one unit \nirrespective of the number of contact hou"
+        },
+        {
+          "passage_id": "c31d716d-bcfe-4011-a3f6-f4a2d5f1f22b",
+          "document_id": "b787fd22-eb2f-42ed-9ef7-ef098e5ff8b6",
+          "filename": "Academic-Rules-for-SCSET_UG.pdf",
+          "authoritative_page": 19,
+          "cited_page": 19,
+          "page_verified": true,
+          "claim_supported": true,
+          "quote": "(b) The transcript shall indicate all the honors and minors course inclusive of failed courses. (c) The Transcript/grade card shall display SGPA/CGPA separately for both the Minors and Honors \nprogram separately. (d) A student can opt for Minors in 3 rd semester, then discontinue the Minor progr am "
+        }
+      ],
+      "answer": "Attendance can be relaxed due to medical reasons under the following conditions:\n- Continuous illness of two weeks, supported by a proper medical certificate.\n- Maximum relaxation of up to 10%.\n- Shorter absences for shorter durations do not count towards this relaxation.\n- A student must meet the program or course coordinator and submit the medical documents to prove genuineness of the request.",
+      "latency_ms": 16755.160000000615
+    },
+    "claims_verification": {
+      "total_claims": 5,
+      "supported_claims": 5,
+      "grounding_ratio": 1.0,
+      "contains_contradiction": false
+    },
+    "outcome": "PASS",
+    "failure_reason": ""
+  },
+  {
+    "query_id": "MB-01",
+    "category": "MEDICAL_BOUNDARY",
+    "query_text": "Does the medical relaxation automatically allow me to sit for the End Semester Examination with less than 75% attendance?",
+    "controller_decision": {
+      "status": "sufficient",
+      "ceci_score": 0.85,
+      "explanation": "Unanimous regulatory consensus: Relaxation up to a maximum of 10% may be granted by the Dean on valid medical grounds (continuous hospitalization/illness of at least two weeks).",
+      "multi_conditions": []
+    },
+    "response": {
+      "status": "answered",
+      "citations": [
+        {
+          "passage_id": "6ad292d8-6e01-4f3b-aa96-66ee4603b11e",
+          "document_id": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2",
+          "filename": "SEAS-Ordinance-Rules-Regulations-2017.pdf",
+          "authoritative_page": 29,
+          "cited_page": 29,
+          "page_verified": true,
+          "claim_supported": true,
+          "quote": "28 \n \n(iii) A student should meet the above attendance requirement irrespective of the \nnumber of days he/she is on medical and/or other leave for any reason, \nwhatsoever. (iv) For the purpose of attendance, every scheduled class will be counted as one unit \nirrespective of the number of contact hou"
+        },
+        {
+          "passage_id": "c31d716d-bcfe-4011-a3f6-f4a2d5f1f22b",
+          "document_id": "b787fd22-eb2f-42ed-9ef7-ef098e5ff8b6",
+          "filename": "Academic-Rules-for-SCSET_UG.pdf",
+          "authoritative_page": 19,
+          "cited_page": 19,
+          "page_verified": true,
+          "claim_supported": true,
+          "quote": "(b) The transcript shall indicate all the honors and minors course inclusive of failed courses. (c) The Transcript/grade card shall display SGPA/CGPA separately for both the Minors and Honors \nprogram separately. (d) A student can opt for Minors in 3 rd semester, then discontinue the Minor progr am "
+        }
+      ],
+      "answer": "Attendance can be relaxed due to medical reasons under the following conditions: a continuous illness of two weeks, supported by a proper medical certificate, and a maximum relaxation of up to 10% is allowed. Short absences for shorter durations do not count towards this relaxation. Shorter absences for medical reasons do not count towards the relaxation of up to 10% allowed for continuous illness of two weeks.",
+      "latency_ms": 23755.541899998207
+    },
+    "claims_verification": {
+      "total_claims": 3,
+      "supported_claims": 3,
+      "grounding_ratio": 1.0,
+      "contains_contradiction": false
+    },
+    "outcome": "PASS",
+    "failure_reason": ""
+  }
+]

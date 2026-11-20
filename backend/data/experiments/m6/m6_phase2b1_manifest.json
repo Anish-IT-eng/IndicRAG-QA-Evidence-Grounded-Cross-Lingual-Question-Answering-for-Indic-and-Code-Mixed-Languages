@@ -1,0 +1,116 @@
+{
+  "milestone": "M6",
+  "phase": "Phase 2B.1",
+  "audit_title": "Post-Implementation Evaluation Integrity Audit",
+  "timestamp_utc": "2026-11-11T05:25:05.260421+00:00",
+  "provenance_hashes": {
+    "corpus_db_sha256": "8688605df0dbff786454ec770e95609d9d3aacb284fdb3a2f97191f7d2971e9d",
+    "corpus_expected": "8688605df0dbff786454ec770e95609d9d3aacb284fdb3a2f97191f7d2971e9d",
+    "corpus_hash_matches": true,
+    "m3_frozen_benchmark_sha256": "093b00ad0f19acda806f2302731ccf2de28838c1b29c6ef16d55cbc5e7e2d520",
+    "m3_expected": "093b00ad0f19acda806f2302731ccf2de28838c1b29c6ef16d55cbc5e7e2d520",
+    "m3_hash_matches": true,
+    "m6_n60_benchmark_sha256": "a528ac583d8c060b91a7febce652885e4045fcc76d644e49e876ddeb5d1db4ae",
+    "m6_n60_expected": "a528ac583d8c060b91a7febce652885e4045fcc76d644e49e876ddeb5d1db4ae",
+    "m6_n60_hash_matches": true,
+    "m6_qualification_ledger_sha256": "db8c2b5e02d6177b335a283f9ac62f99729fb36ef142aa1af81c99528efd3b13"
+  },
+  "test_reconciliation": {
+    "actual_collected_tests": 163,
+    "passed_tests": 163,
+    "failed_tests": 0,
+    "skipped_tests": 0,
+    "error_tests": 0,
+    "baseline_test_count": 142,
+    "new_phase2b_test_count": 21,
+    "total_test_count_verified": 163,
+    "discrepancy_explanation": "STATUS.md documented test_metrics.py as 18/18 (stale M4 baseline count). Actual test_metrics.py contains 24 tests (12 retrieval, 9 answer, 3 answerability). Sum of listed files with 24 is exactly 163.",
+    "per_file_counts": {
+      "test_api.py": 10,
+      "test_database.py": 4,
+      "test_ingestion_smoke.py": 32,
+      "test_metrics.py": 24,
+      "test_model_verifier.py": 12,
+      "test_query_processor.py": 22,
+      "test_retrieval_baselines.py": 12,
+      "test_m5_advanced_rag.py": 19,
+      "test_m6_benchmark_expansion.py": 7,
+      "test_m6_phase2b_scoring_and_controller.py": 21
+    }
+  },
+  "controller_state_audit": {
+    "primary_pilot_set_size": 29,
+    "conflicting_count": 13,
+    "partial_count": 6,
+    "insufficient_count": 10,
+    "missing_count": 0,
+    "clarification_required_count": 0,
+    "conflicting_audit_findings": {
+      "identical_rules_flagged_as_conflict": 11,
+      "genuine_cohort_variances_needing_clarification": 1,
+      "genuine_procedural_conflicts_maintained": 1,
+      "root_cause": "EvidenceController Step 2 asserted CONFLICTING whenever top valid and conflicting passages scored within 80% across different documents, without verifying whether substantive rule content was identical."
+    }
+  },
+  "claim_grounding_audit": {
+    "total_claims_audited": 65,
+    "eligible_set_claims": 30,
+    "excluded_set_claims": 35,
+    "eligible_breakdown": {
+      "entailed": 27,
+      "contradicted": 1,
+      "insufficient_support": 2
+    },
+    "excluded_breakdown": {
+      "entailed": 13,
+      "contradicted": 7,
+      "insufficient_support": 15
+    },
+    "enforcement_findings": {
+      "contradicted_claims_presented": 6,
+      "contradicted_claims_suppressed": 2,
+      "unsupported_claims_presented": 12,
+      "unsupported_claims_suppressed": 5,
+      "queries_with_all_claims_entailed": 38,
+      "cross_lingual_limitation": "Lexical word overlap heuristic fails on Hindi/Hinglish reference claims evaluated against English official passages."
+    }
+  },
+  "answerability_metrics_audit": {
+    "evaluation_mapping_historical": {
+      "mapping": "SUFFICIENT + PARTIAL = Answerable; CONFLICTING + INSUFFICIENT = Unanswerable",
+      "TP": 6,
+      "TN": 2,
+      "FP": 0,
+      "FN": 21,
+      "precision_answerable": 1.0,
+      "recall_answerable": 0.2222,
+      "recall_unanswerable": 1.0,
+      "macro_f1": 0.2618
+    },
+    "evaluation_mapping_reclassified_preview": {
+      "mapping": "SUFFICIENT + PARTIAL + (Non-Conflicting Identical Rules Reclassified) = Answerable",
+      "TP": 19,
+      "TN": 2,
+      "FP": 0,
+      "FN": 8,
+      "precision_answerable": 1.0,
+      "recall_answerable": 0.7037,
+      "recall_unanswerable": 1.0,
+      "macro_f1": 0.7303
+    },
+    "statistical_disclaimer": "With N_neg = 2, unanswerable detection recall = 100% is a directional heuristic observation and does not represent statistically significant proof of generalization."
+  },
+  "quarantine_compliance": {
+    "primary_qualified_pilot_records": 29,
+    "quarantined_excluded_records": 31,
+    "leakage_detected": false,
+    "notes": "100% of the 31 excluded records remained strictly quarantined in diagnostic reporting."
+  },
+  "deliverables_generated": [
+    "docs/m6_phase2b1_integrity_audit.md",
+    "backend/data/experiments/m6/m6_phase2b1_test_reconciliation.csv",
+    "backend/data/experiments/m6/m6_phase2b1_conflict_audit.csv",
+    "backend/data/experiments/m6/m6_phase2b1_claim_enforcement_audit.csv",
+    "backend/data/experiments/m6/m6_phase2b1_manifest.json"
+  ]
+}

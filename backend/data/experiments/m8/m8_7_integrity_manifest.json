@@ -1,0 +1,59 @@
+{
+  "milestone": "M8.7",
+  "determination": "M8_7_IMPLEMENTATION_COMPLETED",
+  "timestamp": "2026-11-16T17:48:00+05:30",
+  "role": "Senior RAG Systems Engineer, Citation Traceability Specialist & Research Evaluation Auditor",
+  "preflight_verification": {
+    "official_documents": 7,
+    "child_passages": 253,
+    "parent_passages": 53,
+    "total_db_passages": 306,
+    "faiss_vector_count": 253,
+    "faiss_dimensions": 384,
+    "historical_passages_preserved": 172
+  },
+  "frozen_benchmark_hashes": {
+    "m3_final_dataset_csv": "093b00ad0f19acda806f2302731ccf2de28838c1b29c6ef16d55cbc5e7e2d520",
+    "m6_expanded_benchmark_n60_csv": "a528ac583d8c060b91a7febce652885e4045fcc76d644e49e876ddeb5d1db4ae",
+    "m6_qualification_ledger_csv": "db8c2b5e02d6177b335a283f9ac62f99729fb36ef142aa1af81c99528efd3b13",
+    "m6_phase3_negative_candidates_csv": "492b0b1be3ce0c00fdcf453c971c48cb15176496e15806142c0aaff66050aeaa"
+  },
+  "remediation_summary": {
+    "modified_source_file": "backend/app/generation/generator.py",
+    "backup_location": "backend/data/backups/m8_7_pre_remediation_20261116_165247/generator.py",
+    "citation_regex_pattern": "\\[Source:\\s*(?:passage_id\\s*[:=]?\\s*)?([a-zA-Z0-9_-]+)(?:\\s*,\\s*(?:page|p\\.?)\\s*(\\d+))?\\s*\\]",
+    "formats_supported": [
+      "Format A: [Source: <uuid>, page 19]",
+      "Format B: [Source: passage_id=<uuid>, page 19]",
+      "Format C: [Source: <uuid>]",
+      "Format D: [Source: passage_id=<uuid>]"
+    ],
+    "new_unit_tests": "backend/tests/test_m8_7_citation_parser.py (14 tests, all passed)"
+  },
+  "test_suite_execution": {
+    "total_collected": 257,
+    "total_executed": 257,
+    "passed": 257,
+    "failed": 0,
+    "skipped": 0,
+    "pass_rate": 100.0,
+    "modules_count": 16,
+    "duration_seconds": 69.71,
+    "execution_log": "backend/data/experiments/m8/m8_7_test_execution.log"
+  },
+  "inconsistencies_resolved": {
+    "aq05_scope": "Notification 307/2022 applies to respective schools for examination eligibility without superseding internal course-level grading",
+    "embedding_model_identity": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2 verified in config and instantiated runtime (dim 384)",
+    "notification_307_authority": "Col Guljit Singh Chadha, Retd, Registrar (Office of the Registrar / BU/RO, 08 Sept 2022)",
+    "supersession_claims": "Calibrated to corpus-limited records"
+  },
+  "artifacts_sha256": {
+    "docs/m8_7_citation_extraction_remediation.md": "BCDEFDA66025D401F6809D290560702E403DB086215CCBA0D6BAB2074BCDB5EF",
+    "backend/app/generation/generator.py": "EE7DC5071794BC2C3C0EBEEBD196694C142066CC419075136E94ADDD9E894202",
+    "backend/tests/test_m8_7_citation_parser.py": "21776E94DCD4DFDD02B9BFCA9DCAF75CFA388E24FD8D0A57063EFB4651E3B4BD",
+    "backend/data/experiments/m8/m8_7_citation_parser_tests.csv": "4F9DBF2352919E0849AB3E7E7669E1116AEAECBDC60072386AC0F29D8F5CB120",
+    "backend/data/experiments/m8/m8_7_query_acceptance_results.csv": "EAFA5EE973E1C5A15E3A55B8F607EA6130F31BCAE360027EB52A90791AF4BF96",
+    "backend/data/experiments/m8/m8_7_final_answer_traces.json": "678B97A31658D96487F8D1B3D05CB376BB8B801117EA07C3B0AE0261CC5585B6",
+    "backend/data/experiments/m8/m8_7_test_execution.log": "6CEB5C344E97A5220005B9F66FE3F54B954306E492A255E13D2169BE1DAFF7E4"
+  }
+}

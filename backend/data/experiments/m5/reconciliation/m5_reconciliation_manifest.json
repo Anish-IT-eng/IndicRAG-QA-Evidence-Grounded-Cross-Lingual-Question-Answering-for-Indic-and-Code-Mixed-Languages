@@ -1,0 +1,38 @@
+{
+  "audit_timestamp_utc": "2026-11-10T14:48:44.087421+00:00",
+  "status": "RECONCILIATION_COMPLETE",
+  "corpus_sha256": "8688605df0dbff786454ec770e95609d9d3aacb284fdb3a2f97191f7d2971e9d",
+  "benchmark_sha256": "093b00ad0f19acda806f2302731ccf2de28838c1b29c6ef16d55cbc5e7e2d520",
+  "source_m5_run": "C:\\Users\\anish\\Desktop\\IndicRAG-QA\\backend\\data\\experiments\\m5\\runs\\run_20261110_135218",
+  "source_m4_run": "C:\\Users\\anish\\Desktop\\IndicRAG-QA\\backend\\data\\experiments",
+  "audit_deliverables": [
+    "m5_metric_reconciliation.csv",
+    "m5_query_level_discrepancies.csv",
+    "m5_translation_audit.csv",
+    "m5_version_validation_audit.csv",
+    "m5_ablation_integrity_audit.csv",
+    "m5_reconciliation_manifest.json"
+  ],
+  "findings_summary": {
+    "m4_vs_m5_e1": {
+      "classification": "EXPLAINED_CONFIGURATION_DIFFERENCE",
+      "root_cause": "Omission of explicit bm25_weight=1.0 and dense_weight=1.0 in M5 E1 caused fallback to config settings 0.4/0.6, where dense passages consistently outranked BM25 matches. Reconciled run with 1.0/1.0 exactly matches M4 metrics (Hit@5=0.9231, MRR=0.4705).",
+      "reproducibility_status": "CONFIRMED_REPRODUCIBLE"
+    },
+    "e4_vs_e12_a1": {
+      "classification": "EXPLAINED_ARCHITECTURAL_DIFFERENCE",
+      "root_cause": "E4 without reranker was an isolated test of the baseline Hybrid retriever (version validation OFF). E12 A1 was a leave-one-out ablation of the Full Architecture (version validation ON). Version validation demoted non-current Ordinance passages, reducing MRR from 0.4064 to 0.3167.",
+      "reproducibility_status": "CONFIRMED_REPRODUCIBLE"
+    },
+    "e10_abstention_scale": {
+      "classification": "PIPELINE_DEFECT",
+      "root_cause": "settings.evidence_min_score=0.35 is scaled for dense cosine similarities [0, 1]. In E10, raw RRF reciprocal scores (max 0.033) were passed, causing all 15 queries to fail threshold and trigger INSUFFICIENT.",
+      "remediation_status": "IDENTIFIED_FOR_M6_CALIBRATION"
+    },
+    "best_retrieval_architecture": "A0_FULL_ARCHITECTURE",
+    "best_retrieval_hit_5": 0.8462,
+    "fastest_high_precision_architecture": "A5_PURE_BM25_PLUS_RERANKER",
+    "a5_hit_5": 0.8462,
+    "a5_mrr": 0.4744
+  }
+}

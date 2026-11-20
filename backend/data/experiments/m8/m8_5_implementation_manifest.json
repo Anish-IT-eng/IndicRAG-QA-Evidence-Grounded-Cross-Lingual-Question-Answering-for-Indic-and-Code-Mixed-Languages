@@ -1,0 +1,103 @@
+{
+  "milestone": "M8.5",
+  "determination": "M8_5_IMPLEMENTATION_COMPLETED",
+  "audit_date": "2026-11-16T12:08:00+05:30",
+  "pre_implementation_backup_path": "backend/data/backups/m8_5_pre_implementation_20261116_113700/",
+  "regression_test_summary": {
+    "total_tests_collected": 243,
+    "total_tests_actually_executed": 243,
+    "total_tests_passed": 243,
+    "total_tests_failed": 0,
+    "total_tests_skipped": 0,
+    "test_modules_count": 16,
+    "pass_rate_percentage": 100.0,
+    "execution_time_seconds": 79.81
+  },
+  "acceptance_suite_summary": {
+    "m8_3_attendance_queries_count": 7,
+    "m8_3_attendance_queries_passed": 7,
+    "m8_3_attendance_pass_rate": 100.0,
+    "m8_4_test_matrix_count": 18,
+    "m8_4_test_matrix_passed": 18,
+    "m8_4_test_matrix_pass_rate": 100.0
+  },
+  "m8_3_live_results": [
+    {
+      "query_id": "AQ-01",
+      "query_text": "What is the minimum attendance required?",
+      "expected_state": "CLARIFICATION_REQUIRED",
+      "actual_state": "clarification_required",
+      "ceci_score": 0.8,
+      "outcome": "PASS"
+    },
+    {
+      "query_id": "AQ-02",
+      "query_text": "What attendance is required to sit for end semester exams?",
+      "expected_state": "SUFFICIENT",
+      "actual_state": "sufficient",
+      "ceci_score": 0.88,
+      "outcome": "PASS"
+    },
+    {
+      "query_id": "AQ-03",
+      "query_text": "How much attendance is required to avoid an X grade?",
+      "expected_state": "SUFFICIENT",
+      "actual_state": "sufficient",
+      "ceci_score": 0.85,
+      "outcome": "PASS"
+    },
+    {
+      "query_id": "AQ-04",
+      "query_text": "Is 70% attendance enough?",
+      "expected_state": "SUFFICIENT",
+      "actual_state": "sufficient",
+      "ceci_score": 0.8,
+      "outcome": "PASS"
+    },
+    {
+      "query_id": "AQ-05",
+      "query_text": "Is 75% compulsory for SCSET students?",
+      "expected_state": "SUFFICIENT",
+      "actual_state": "sufficient",
+      "ceci_score": 0.82,
+      "outcome": "PASS"
+    },
+    {
+      "query_id": "AQ-06",
+      "query_text": "What was the attendance rule in 2017?",
+      "expected_state": "SUFFICIENT",
+      "actual_state": "sufficient",
+      "ceci_score": 0.75,
+      "outcome": "PASS"
+    },
+    {
+      "query_id": "AQ-07",
+      "query_text": "Can attendance be relaxed due to medical reasons?",
+      "expected_state": "SUFFICIENT",
+      "actual_state": "sufficient",
+      "ceci_score": 0.85,
+      "outcome": "PASS"
+    }
+  ],
+  "implementation_file_sha256": {
+    "backend/app/models/schemas.py": "79263C776798EE9FDB83EF67F413276234EA1860B6637EDBC6643CE069AAF901",
+    "backend/app/retrieval/regulatory_classifier.py": "916F4F9CC377DF962A41ABF9FCF8DE707F46FBCCEF196BE2605370ADE1BF6BE1",
+    "backend/app/query/processor.py": "32F4673B06AABC11A168D722FC141793DC00343D484E5971D2C81CA2433B2BDB",
+    "backend/app/retrieval/engine.py": "83B6A2726AF24616D85B41A903E14F8D37D8F29C852EE81CA55257A5C9DE7F4C",
+    "backend/app/retrieval/ceci.py": "80286797A36E3455490B4F9F8AE685B721787E91EB4CCA13E57B3FF891BBDFF8",
+    "backend/app/retrieval/evidence_controller.py": "86EABE10C4D7B57CB49A4D4727152206C44CD425C4EE947BBC2478D3096C2DA1",
+    "backend/tests/test_m8_5_controller.py": "48EFC1A2F9979CCE8C826A8E4EB6073E78091CCDA12D74288460D25414DB8D46"
+  },
+  "deliverables_sha256": {
+    "backend/data/experiments/m8/m8_5_controller_test_results.csv": "920EF74A8AFFDAE204661868F9463571E1BC80B9C1E915C2E7B757E88A3245A7",
+    "backend/data/experiments/m8/m8_5_regulatory_decision_traces.json": "50AB0B1734A530DFAFBDAF768EE7A9A5C2253911B1BFC10572D88A9FE02B9FB3"
+  },
+  "safety_and_integrity_invariants": {
+    "official_and_upload_indexes_isolated": true,
+    "benchmark_datasets_unmodified": true,
+    "canonical_sha256_unmodified": true,
+    "historical_databases_and_pdfs_unmodified": true,
+    "deterministic_override_precedence_verified": true,
+    "consensus_verification_removes_false_conflicts": true
+  }
+}

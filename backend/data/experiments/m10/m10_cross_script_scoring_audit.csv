@@ -1,0 +1,6 @@
+intent_id,topic,en_score,hi_latn_score,en_hi_score,hi_devanagari_score,devanagari_vs_en_diff
+M9-INT-01,Minimum Attendance Requirement (75%),9.7782,1.473,-0.5127,-8.3636,-18.1418
+M9-INT-02,Attendance Condonation on Medical Grounds,8.5414,-1.0505,0.8093,-8.0308,-16.5722
+M9-INT-05,Passing Marks and Minimum CGPA,7.7988,-1.5856,1.3708,-8.1099,-15.9087
+M9-INT-10,Supplementary Examination Eligibility,9.1116,-2.9931,-2.1033,-8.5354,-17.647
+M9-INT-35,Mobile Phone Malpractice Penalty,6.7233,-3.5577,0.2611,-7.6769,-14.4002

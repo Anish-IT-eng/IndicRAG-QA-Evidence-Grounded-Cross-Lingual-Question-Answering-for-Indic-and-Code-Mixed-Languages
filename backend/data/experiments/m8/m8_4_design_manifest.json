@@ -1,0 +1,91 @@
+{
+  "design_milestone": "M8.4",
+  "design_role": "Senior RAG Architect, Regulatory Knowledge Engineer, and Evidence Reliability Researcher",
+  "execution_mode": "DESIGN_AND_IMPLEMENTATION_SPECIFICATION_ONLY",
+  "final_determination": "M8_4_SPECIFICATION_READY",
+  "timestamp": "2026-11-16T11:33:00+05:30",
+  "prerequisites_verified": {
+    "M8_DOCUMENT_REFRESH_COMPLETED": true,
+    "M8_1_INTEGRITY_VERIFIED": true,
+    "M8_2_CLOSED_WITH_DOCUMENTATION_ERRORS": true,
+    "M8_3_VERIFIED_WITH_CONTROLLER_GAPS": true
+  },
+  "existing_codebase_inspection": {
+    "functions_inspected": [
+      {
+        "file": "backend/app/retrieval/evidence_controller.py",
+        "function": "EvidenceController.evaluate()",
+        "behavior": "Evaluates retrieved passages using strict six-state override hierarchy. In Step 1, checks _check_missing_cohort_parameter using text substring search on passage text rather than document metadata and hardcodes incorrect 80% rule in explanation. In Step 2, checks _split_passages and flags any passage where is_valid_for_query is False as conflicting; if passages[0] is conflicting, flags CONFLICTING immediately without semantic verification."
+      },
+      {
+        "file": "backend/app/retrieval/engine.py",
+        "function": "validate_versions()",
+        "behavior": "Applies static metadata flags. If is_current is False, sets _version_flag='not_current' and demotes score by 0.6. In retrieve(), converts this into is_valid_for_query=False, causing historical documents to automatically become conflicting candidates even when the user explicitly queried historical rules."
+      },
+      {
+        "file": "backend/app/query/processor.py",
+        "function": "process_query()",
+        "behavior": "Performs language detection, normalization, complexity scoring, and keyword extraction. Completely lacks temporal anchor extraction, academic year normalization, or program scope parsing."
+      },
+      {
+        "file": "backend/app/retrieval/ceci.py",
+        "function": "CECIEstimator._compute_regulatory_fit()",
+        "behavior": "Scores f5=0.0 whenever is_valid_for_query is False or is_current is False, severely penalizing historical passages even when they are the exact intended targets of a temporal query."
+      },
+      {
+        "file": "backend/app/api/main.py",
+        "function": "query()",
+        "behavior": "Receives QueryRequest but does not pass academic_year or program to retrieve()."
+      }
+    ],
+    "empirical_query_diagnostics": {
+      "AQ-01": "Status CONFLICTING. f88ec726 (SEAS 2017) has is_current=False -> conflicting; passages[0] in conflicting -> Step 2 triggered CONFLICTING without checking actual rule text. Step 1 missed because f88ec726 text lacks the literal token '2017'.",
+      "AQ-02": "Status PARTIAL. Top hit 0280358a (Notification 307) answers 75% exam hall rule directly, but CECI scored 0.419 due to margin/keyword penalties, falling below tau_suff=0.65.",
+      "AQ-03": "Status CONFLICTING. f88ec726 (SEAS 2017) is top hit; is_current=False -> conflicting -> Step 2 flags CONFLICTING. False conflict: both 2017 and 2022 rules agree 100% on 70% attendance for X grade.",
+      "AQ-04": "Status CONFLICTING. f88ec726 is top hit. Controller collapses distinction between course grading (70%) and exam hall (75%) into flat contradiction.",
+      "AQ-05": "Status INSUFFICIENT. CECI scored 0.325 < 0.35 because SCSET PDF lacks string '75%'. System lacks cross-document institutional inference connecting university notices to school regulations.",
+      "AQ-06": "Status CONFLICTING. Query explicitly asks 'in 2017'. System retrieves SEAS 2017 but flags CONFLICTING against newer documents because query processor lacks temporal intent extraction.",
+      "AQ-07": "Status CONFLICTING. Both 2017 and 2022 documents prescribe identical 10% medical relaxation. Controller triggers CONFLICTING solely because SEAS 2017 is marked is_current=False."
+    }
+  },
+  "proposed_architecture_specification": {
+    "modules_specified": [
+      {
+        "module": "app.query.processor",
+        "component": "Temporal & Cohort Intent Extractor",
+        "responsibilities": "Extracts TemporalIntentMode (EXPLICIT_HISTORICAL, EXPLICIT_CURRENT, COHORT_BOUND, UNANCHORED), academic_year_scope, and target_programme from user query."
+      },
+      {
+        "module": "app.retrieval.engine",
+        "component": "Temporal-Aware Version Filter",
+        "responsibilities": "Aligns candidate validity with query temporal anchor. When query anchors to historical cohort, historical documents are marked is_valid_for_query=True with full score."
+      },
+      {
+        "module": "app.retrieval.regulatory_classifier",
+        "component": "Condition & Relationship Classifier",
+        "responsibilities": "Classifies passages into 7 RegulatoryConditions and pairs into 8 RegulatoryRelationships (including SAME_CONDITION_AGREEMENT and DIFFERENT_REGULATORY_CONDITIONS)."
+      },
+      {
+        "module": "app.retrieval.evidence_controller",
+        "component": "Consensus & Condition-Aware Evidence Controller",
+        "responsibilities": "7-step deterministic hierarchy. Precedence: 1. Unanchored Ambiguity -> CLARIFICATION / MULTI_CONDITION; 2. Contradictory Premise -> INSUFFICIENT; 3. Consensus Verification -> SUFFICIENT (overrides version flag if rules agree); 4. Genuine Conflict -> CONFLICTING; 5. Missing Evidence -> MISSING; 6. CECI Sufficiency; 7. Safe Abstention."
+      },
+      {
+        "module": "app.retrieval.ceci",
+        "component": "Condition-Matched CECI Estimator",
+        "responsibilities": "Updates f5 (regulatory fit) to reflect temporal-anchor match rather than raw is_current boolean."
+      }
+    ]
+  },
+  "schema_reference": "backend/data/experiments/m8/m8_4_regulatory_condition_schema.json",
+  "test_matrix_reference": "backend/data/experiments/m8/m8_4_controller_test_matrix.csv",
+  "total_regression_tests_specified": 18,
+  "safety_and_preservation_guarantees": {
+    "runtime_code_modified": false,
+    "databases_modified": false,
+    "indexes_modified": false,
+    "benchmarks_modified": false,
+    "execution_mode": "SPECIFICATION_ONLY"
+  }
+}
+

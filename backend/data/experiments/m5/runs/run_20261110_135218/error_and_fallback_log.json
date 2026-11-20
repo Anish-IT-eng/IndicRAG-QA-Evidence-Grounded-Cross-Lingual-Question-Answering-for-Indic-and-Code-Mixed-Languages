@@ -1,0 +1,107 @@
+[
+  {
+    "timestamp": "2026-11-10T13:54:01.948937+00:00",
+    "experiment_id": "E10",
+    "candidate_id": "8820214e-35a3-4176-9a87-d6a681c62c24",
+    "event_type": "abstention",
+    "details": "Status: insufficient, gold=answerable"
+  },
+  {
+    "timestamp": "2026-11-10T13:54:01.988997+00:00",
+    "experiment_id": "E10",
+    "candidate_id": "fe70960c-f447-4fd4-88c7-20572e422fb0",
+    "event_type": "abstention",
+    "details": "Status: insufficient, gold=answerable"
+  },
+  {
+    "timestamp": "2026-11-10T13:54:02.024080+00:00",
+    "experiment_id": "E10",
+    "candidate_id": "b0a1c002-87a2-4102-9002-000000000002",
+    "event_type": "abstention",
+    "details": "Status: insufficient, gold=answerable"
+  },
+  {
+    "timestamp": "2026-11-10T13:54:02.056467+00:00",
+    "experiment_id": "E10",
+    "candidate_id": "6776bafc-4389-4d2f-8025-d37a604d177b",
+    "event_type": "abstention",
+    "details": "Status: insufficient, gold=answerable"
+  },
+  {
+    "timestamp": "2026-11-10T13:54:02.083742+00:00",
+    "experiment_id": "E10",
+    "candidate_id": "b0a1c007-87a7-4107-9007-000000000007",
+    "event_type": "abstention",
+    "details": "Status: insufficient, gold=answerable"
+  },
+  {
+    "timestamp": "2026-11-10T13:54:02.114295+00:00",
+    "experiment_id": "E10",
+    "candidate_id": "b0a1c001-87a1-4101-9001-000000000001",
+    "event_type": "abstention",
+    "details": "Status: insufficient, gold=answerable"
+  },
+  {
+    "timestamp": "2026-11-10T13:54:02.152570+00:00",
+    "experiment_id": "E10",
+    "candidate_id": "b0a1c004-87a4-4104-9004-000000000004",
+    "event_type": "abstention",
+    "details": "Status: insufficient, gold=answerable"
+  },
+  {
+    "timestamp": "2026-11-10T13:54:02.188265+00:00",
+    "experiment_id": "E10",
+    "candidate_id": "b0a1c011-87a1-4111-9011-000000000011",
+    "event_type": "abstention",
+    "details": "Status: insufficient, gold=unanswerable"
+  },
+  {
+    "timestamp": "2026-11-10T13:54:02.224663+00:00",
+    "experiment_id": "E10",
+    "candidate_id": "b0a1c006-87a6-4106-9006-000000000006",
+    "event_type": "abstention",
+    "details": "Status: insufficient, gold=answerable"
+  },
+  {
+    "timestamp": "2026-11-10T13:54:02.255911+00:00",
+    "experiment_id": "E10",
+    "candidate_id": "b0a1c010-87a0-4110-9010-000000000010",
+    "event_type": "abstention",
+    "details": "Status: insufficient, gold=unanswerable"
+  },
+  {
+    "timestamp": "2026-11-10T13:54:02.279159+00:00",
+    "experiment_id": "E10",
+    "candidate_id": "b0a1c009-87a9-4109-9009-000000000009",
+    "event_type": "abstention",
+    "details": "Status: insufficient, gold=answerable"
+  },
+  {
+    "timestamp": "2026-11-10T13:54:02.302856+00:00",
+    "experiment_id": "E10",
+    "candidate_id": "b0a1c003-87a3-4103-9003-000000000003",
+    "event_type": "abstention",
+    "details": "Status: insufficient, gold=answerable"
+  },
+  {
+    "timestamp": "2026-11-10T13:54:02.328665+00:00",
+    "experiment_id": "E10",
+    "candidate_id": "01fc5ad1-43a1-443f-beda-e82970d2a7cb",
+    "event_type": "abstention",
+    "details": "Status: insufficient, gold=answerable"
+  },
+  {
+    "timestamp": "2026-11-10T13:54:02.363039+00:00",
+    "experiment_id": "E10",
+    "candidate_id": "b0a1c008-87a8-4108-9008-000000000008",
+    "event_type": "abstention",
+    "details": "Status: insufficient, gold=answerable"
+  },
+  {
+    "timestamp": "2026-11-10T13:54:02.395031+00:00",
+    "experiment_id": "E10",
+    "candidate_id": "b0a1c005-87a5-4105-9005-000000000005",
+    "event_type": "abstention",
+    "details": "Status: insufficient, gold=answerable"
+  }
+]

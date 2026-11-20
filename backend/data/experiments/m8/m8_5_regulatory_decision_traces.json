@@ -1,0 +1,641 @@
+[
+  {
+    "query_id": "AQ-01",
+    "query_text": "What is the minimum attendance required?",
+    "query_analysis": {
+      "detected_language": "en",
+      "temporal_intent_mode": "UNANCHORED",
+      "target_cohort": null,
+      "target_academic_year": null,
+      "target_programme": null,
+      "target_conditions": [
+        "COURSE_GRADING"
+      ]
+    },
+    "retrieved_passages_summary": [
+      {
+        "passage_id": "f88ec726-74ba-426f-a01f-4b9665c1a8b8",
+        "document_id": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2",
+        "score": 6.3177,
+        "rerank_score": null,
+        "section": "28",
+        "condition": "COURSE_GRADING",
+        "version_flag": null
+      },
+      {
+        "passage_id": "0280358a-ff3c-4964-88ab-419a9147b1f0",
+        "document_id": "40c366dd-41b2-49f6-b5e4-492a8b5bbe8a",
+        "score": 3.266,
+        "rerank_score": null,
+        "section": "BENNETT",
+        "condition": "EXAM_ELIGIBILITY",
+        "version_flag": null
+      },
+      {
+        "passage_id": "505e552e-35e0-4b5d-98ba-10dff85f4eab",
+        "document_id": "b787fd22-eb2f-42ed-9ef7-ef098e5ff8b6",
+        "score": 1.0115,
+        "rerank_score": null,
+        "section": "15.7",
+        "condition": "COURSE_GRADING",
+        "version_flag": null
+      },
+      {
+        "passage_id": "c31d716d-bcfe-4011-a3f6-f4a2d5f1f22b",
+        "document_id": "b787fd22-eb2f-42ed-9ef7-ef098e5ff8b6",
+        "score": 0.2907,
+        "rerank_score": null,
+        "section": "30",
+        "condition": "COURSE_GRADING",
+        "version_flag": null
+      },
+      {
+        "passage_id": "1b631297-389b-41ee-87ab-d3553f6296c7",
+        "document_id": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2",
+        "score": -0.6349,
+        "rerank_score": null,
+        "section": "28",
+        "condition": "ACADEMIC_PROGRESSION",
+        "version_flag": null
+      }
+    ],
+    "regulatory_relationships": [
+      {
+        "passage_a": "f88ec726-74ba-426f-a01f-4b9665c1a8b8",
+        "doc_a": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2",
+        "passage_b": "0280358a-ff3c-4964-88ab-419a9147b1f0",
+        "doc_b": "40c366dd-41b2-49f6-b5e4-492a8b5bbe8a",
+        "relationship": "DIFFERENT_REGULATORY_CONDITIONS"
+      },
+      {
+        "passage_a": "f88ec726-74ba-426f-a01f-4b9665c1a8b8",
+        "doc_a": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2",
+        "passage_b": "505e552e-35e0-4b5d-98ba-10dff85f4eab",
+        "doc_b": "b787fd22-eb2f-42ed-9ef7-ef098e5ff8b6",
+        "relationship": "HISTORICAL_RULE"
+      },
+      {
+        "passage_a": "0280358a-ff3c-4964-88ab-419a9147b1f0",
+        "doc_a": "40c366dd-41b2-49f6-b5e4-492a8b5bbe8a",
+        "passage_b": "505e552e-35e0-4b5d-98ba-10dff85f4eab",
+        "doc_b": "b787fd22-eb2f-42ed-9ef7-ef098e5ff8b6",
+        "relationship": "DIFFERENT_REGULATORY_CONDITIONS"
+      }
+    ],
+    "decision": {
+      "status": "clarification_required",
+      "ceci_score": 0.8,
+      "coverage_score": 0.0,
+      "clarification_needed": true,
+      "explanation": "Structured Regulatory Disclosure: 75% minimum aggregate attendance is required by the Registrar to appear in End Semester Examinations (Notification 307/2022), while 70% attendance in a course is required to avoid an 'X' grade and course repetition (SCSET Academic Rules Clause 30.1). Query lacks student cohort or admission year parameter. Please specify student batch or regulatory purpose.",
+      "detected_conditions": [
+        "EXAM_ELIGIBILITY",
+        "COURSE_GRADING"
+      ]
+    },
+    "evaluation_outcome": "PASS"
+  },
+  {
+    "query_id": "AQ-02",
+    "query_text": "What attendance is required to sit for end semester exams?",
+    "query_analysis": {
+      "detected_language": "en",
+      "temporal_intent_mode": "UNANCHORED",
+      "target_cohort": null,
+      "target_academic_year": null,
+      "target_programme": null,
+      "target_conditions": [
+        "EXAM_ELIGIBILITY"
+      ]
+    },
+    "retrieved_passages_summary": [
+      {
+        "passage_id": "0280358a-ff3c-4964-88ab-419a9147b1f0",
+        "document_id": "40c366dd-41b2-49f6-b5e4-492a8b5bbe8a",
+        "score": 5.7131,
+        "rerank_score": null,
+        "section": "BENNETT",
+        "condition": "EXAM_ELIGIBILITY",
+        "version_flag": null
+      },
+      {
+        "passage_id": "f88ec726-74ba-426f-a01f-4b9665c1a8b8",
+        "document_id": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2",
+        "score": 2.9422,
+        "rerank_score": null,
+        "section": "28",
+        "condition": "COURSE_GRADING",
+        "version_flag": null
+      },
+      {
+        "passage_id": "505e552e-35e0-4b5d-98ba-10dff85f4eab",
+        "document_id": "b787fd22-eb2f-42ed-9ef7-ef098e5ff8b6",
+        "score": 2.4186,
+        "rerank_score": null,
+        "section": "15.7",
+        "condition": "COURSE_GRADING",
+        "version_flag": null
+      },
+      {
+        "passage_id": "2b15a3af-7281-4cf4-9597-4b1a6759d4cf",
+        "document_id": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2",
+        "score": 2.2709,
+        "rerank_score": null,
+        "section": "13",
+        "condition": "OTHER",
+        "version_flag": null
+      },
+      {
+        "passage_id": "278fa408-518b-4c53-9cc2-c49ac347c87a",
+        "document_id": "b787fd22-eb2f-42ed-9ef7-ef098e5ff8b6",
+        "score": 1.8676,
+        "rerank_score": null,
+        "section": "17.5",
+        "condition": "EXAM_ELIGIBILITY",
+        "version_flag": null
+      }
+    ],
+    "regulatory_relationships": [
+      {
+        "passage_a": "0280358a-ff3c-4964-88ab-419a9147b1f0",
+        "doc_a": "40c366dd-41b2-49f6-b5e4-492a8b5bbe8a",
+        "passage_b": "278fa408-518b-4c53-9cc2-c49ac347c87a",
+        "doc_b": "b787fd22-eb2f-42ed-9ef7-ef098e5ff8b6",
+        "relationship": "SAME_CONDITION_AGREEMENT"
+      },
+      {
+        "passage_a": "0280358a-ff3c-4964-88ab-419a9147b1f0",
+        "doc_a": "40c366dd-41b2-49f6-b5e4-492a8b5bbe8a",
+        "passage_b": "54dd6b69-655f-4b93-a19d-ec24808a9002",
+        "doc_b": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2",
+        "relationship": "HISTORICAL_RULE"
+      },
+      {
+        "passage_a": "278fa408-518b-4c53-9cc2-c49ac347c87a",
+        "doc_a": "b787fd22-eb2f-42ed-9ef7-ef098e5ff8b6",
+        "passage_b": "54dd6b69-655f-4b93-a19d-ec24808a9002",
+        "doc_b": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2",
+        "relationship": "HISTORICAL_RULE"
+      }
+    ],
+    "decision": {
+      "status": "sufficient",
+      "ceci_score": 0.88,
+      "coverage_score": 1.0,
+      "clarification_needed": false,
+      "explanation": "Authoritative requirement: A minimum of 75% aggregate attendance across courses is required to appear in End Semester Examinations pursuant to Notification 307/2022 and UGC Regulations 2003.",
+      "detected_conditions": [
+        "EXAM_ELIGIBILITY"
+      ]
+    },
+    "evaluation_outcome": "PASS"
+  },
+  {
+    "query_id": "AQ-03",
+    "query_text": "How much attendance is required to avoid an X grade?",
+    "query_analysis": {
+      "detected_language": "en",
+      "temporal_intent_mode": "UNANCHORED",
+      "target_cohort": null,
+      "target_academic_year": null,
+      "target_programme": null,
+      "target_conditions": [
+        "COURSE_GRADING"
+      ]
+    },
+    "retrieved_passages_summary": [
+      {
+        "passage_id": "f88ec726-74ba-426f-a01f-4b9665c1a8b8",
+        "document_id": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2",
+        "score": 3.6644,
+        "rerank_score": null,
+        "section": "28",
+        "condition": "COURSE_GRADING",
+        "version_flag": null
+      },
+      {
+        "passage_id": "505e552e-35e0-4b5d-98ba-10dff85f4eab",
+        "document_id": "b787fd22-eb2f-42ed-9ef7-ef098e5ff8b6",
+        "score": 0.3685,
+        "rerank_score": null,
+        "section": "15.7",
+        "condition": "COURSE_GRADING",
+        "version_flag": null
+      },
+      {
+        "passage_id": "c7c1dfa7-2459-4b3d-8973-07733c69a7ab",
+        "document_id": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2",
+        "score": -0.0578,
+        "rerank_score": null,
+        "section": "21",
+        "condition": "COURSE_GRADING",
+        "version_flag": null
+      },
+      {
+        "passage_id": "9bbbab01-3fe3-4864-99ab-57128db19748",
+        "document_id": "b787fd22-eb2f-42ed-9ef7-ef098e5ff8b6",
+        "score": -0.2567,
+        "rerank_score": null,
+        "section": "21",
+        "condition": "COURSE_GRADING",
+        "version_flag": null
+      },
+      {
+        "passage_id": "c31d716d-bcfe-4011-a3f6-f4a2d5f1f22b",
+        "document_id": "b787fd22-eb2f-42ed-9ef7-ef098e5ff8b6",
+        "score": -0.9018,
+        "rerank_score": null,
+        "section": "30",
+        "condition": "COURSE_GRADING",
+        "version_flag": null
+      }
+    ],
+    "regulatory_relationships": [
+      {
+        "passage_a": "f88ec726-74ba-426f-a01f-4b9665c1a8b8",
+        "doc_a": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2",
+        "passage_b": "505e552e-35e0-4b5d-98ba-10dff85f4eab",
+        "doc_b": "b787fd22-eb2f-42ed-9ef7-ef098e5ff8b6",
+        "relationship": "HISTORICAL_RULE"
+      },
+      {
+        "passage_a": "f88ec726-74ba-426f-a01f-4b9665c1a8b8",
+        "doc_a": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2",
+        "passage_b": "c7c1dfa7-2459-4b3d-8973-07733c69a7ab",
+        "doc_b": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2",
+        "relationship": "HISTORICAL_RULE"
+      },
+      {
+        "passage_a": "505e552e-35e0-4b5d-98ba-10dff85f4eab",
+        "doc_a": "b787fd22-eb2f-42ed-9ef7-ef098e5ff8b6",
+        "passage_b": "c7c1dfa7-2459-4b3d-8973-07733c69a7ab",
+        "doc_b": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2",
+        "relationship": "HISTORICAL_RULE"
+      }
+    ],
+    "decision": {
+      "status": "sufficient",
+      "ceci_score": 0.85,
+      "coverage_score": 0.6,
+      "clarification_needed": false,
+      "explanation": "Unanimous regulatory consensus: A minimum of 70% attendance in a course (lectures, tutorials, practicals combined) is required to avoid an 'X' grade.",
+      "detected_conditions": [
+        "COURSE_GRADING"
+      ]
+    },
+    "evaluation_outcome": "PASS"
+  },
+  {
+    "query_id": "AQ-04",
+    "query_text": "Is 70% attendance enough?",
+    "query_analysis": {
+      "detected_language": "en",
+      "temporal_intent_mode": "UNANCHORED",
+      "target_cohort": null,
+      "target_academic_year": null,
+      "target_programme": null,
+      "target_conditions": [
+        "COURSE_GRADING"
+      ]
+    },
+    "retrieved_passages_summary": [
+      {
+        "passage_id": "f88ec726-74ba-426f-a01f-4b9665c1a8b8",
+        "document_id": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2",
+        "score": 3.8605,
+        "rerank_score": null,
+        "section": "28",
+        "condition": "COURSE_GRADING",
+        "version_flag": null
+      },
+      {
+        "passage_id": "1b631297-389b-41ee-87ab-d3553f6296c7",
+        "document_id": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2",
+        "score": -0.8805,
+        "rerank_score": null,
+        "section": "28",
+        "condition": "ACADEMIC_PROGRESSION",
+        "version_flag": null
+      },
+      {
+        "passage_id": "c31d716d-bcfe-4011-a3f6-f4a2d5f1f22b",
+        "document_id": "b787fd22-eb2f-42ed-9ef7-ef098e5ff8b6",
+        "score": -1.1125,
+        "rerank_score": null,
+        "section": "30",
+        "condition": "COURSE_GRADING",
+        "version_flag": null
+      },
+      {
+        "passage_id": "0280358a-ff3c-4964-88ab-419a9147b1f0",
+        "document_id": "40c366dd-41b2-49f6-b5e4-492a8b5bbe8a",
+        "score": -1.1522,
+        "rerank_score": null,
+        "section": "BENNETT",
+        "condition": "EXAM_ELIGIBILITY",
+        "version_flag": null
+      },
+      {
+        "passage_id": "6ad292d8-6e01-4f3b-aa96-66ee4603b11e",
+        "document_id": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2",
+        "score": -5.0992,
+        "rerank_score": null,
+        "section": "30.2",
+        "condition": "COURSE_GRADING",
+        "version_flag": null
+      }
+    ],
+    "regulatory_relationships": [
+      {
+        "passage_a": "f88ec726-74ba-426f-a01f-4b9665c1a8b8",
+        "doc_a": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2",
+        "passage_b": "c31d716d-bcfe-4011-a3f6-f4a2d5f1f22b",
+        "doc_b": "b787fd22-eb2f-42ed-9ef7-ef098e5ff8b6",
+        "relationship": "SAME_CONDITION_AGREEMENT"
+      },
+      {
+        "passage_a": "f88ec726-74ba-426f-a01f-4b9665c1a8b8",
+        "doc_a": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2",
+        "passage_b": "0280358a-ff3c-4964-88ab-419a9147b1f0",
+        "doc_b": "40c366dd-41b2-49f6-b5e4-492a8b5bbe8a",
+        "relationship": "DIFFERENT_REGULATORY_CONDITIONS"
+      },
+      {
+        "passage_a": "c31d716d-bcfe-4011-a3f6-f4a2d5f1f22b",
+        "doc_a": "b787fd22-eb2f-42ed-9ef7-ef098e5ff8b6",
+        "passage_b": "0280358a-ff3c-4964-88ab-419a9147b1f0",
+        "doc_b": "40c366dd-41b2-49f6-b5e4-492a8b5bbe8a",
+        "relationship": "DIFFERENT_REGULATORY_CONDITIONS"
+      }
+    ],
+    "decision": {
+      "status": "sufficient",
+      "ceci_score": 0.8,
+      "coverage_score": 0.5,
+      "clarification_needed": false,
+      "explanation": "Structured Conditional Result: 70% attendance is sufficient to avoid an 'X' grade in individual courses under School rules, but insufficient to sit for End Semester Examinations, which strictly requires 75% aggregate attendance under university Notification 307/2022.",
+      "detected_conditions": [
+        "COURSE_GRADING",
+        "EXAM_ELIGIBILITY"
+      ]
+    },
+    "evaluation_outcome": "PASS"
+  },
+  {
+    "query_id": "AQ-05",
+    "query_text": "Is 75% compulsory for SCSET students?",
+    "query_analysis": {
+      "detected_language": "en",
+      "temporal_intent_mode": "UNANCHORED",
+      "target_cohort": null,
+      "target_academic_year": null,
+      "target_programme": "SCSET",
+      "target_conditions": [
+        "EXAM_ELIGIBILITY"
+      ]
+    },
+    "retrieved_passages_summary": [
+      {
+        "passage_id": "b7549fd6-ec68-4ffd-929b-1fe63317c646",
+        "document_id": "b787fd22-eb2f-42ed-9ef7-ef098e5ff8b6",
+        "score": -1.0814,
+        "rerank_score": null,
+        "section": "24",
+        "condition": "ACADEMIC_PROGRESSION",
+        "version_flag": null
+      },
+      {
+        "passage_id": "4fb20336-4a76-4e21-8422-f3d9e08a4c27",
+        "document_id": "b787fd22-eb2f-42ed-9ef7-ef098e5ff8b6",
+        "score": -1.511,
+        "rerank_score": null,
+        "section": "6",
+        "condition": "OTHER",
+        "version_flag": null
+      },
+      {
+        "passage_id": "0280358a-ff3c-4964-88ab-419a9147b1f0",
+        "document_id": "40c366dd-41b2-49f6-b5e4-492a8b5bbe8a",
+        "score": -3.1031,
+        "rerank_score": null,
+        "section": "BENNETT",
+        "condition": "EXAM_ELIGIBILITY",
+        "version_flag": null
+      },
+      {
+        "passage_id": "cfb81e36-8477-4083-aa37-f671c6202263",
+        "document_id": "b787fd22-eb2f-42ed-9ef7-ef098e5ff8b6",
+        "score": -3.3746,
+        "rerank_score": null,
+        "section": "6",
+        "condition": "OTHER",
+        "version_flag": null
+      },
+      {
+        "passage_id": "7de500cb-6f25-49bc-8e53-5f3415b2c054",
+        "document_id": "b787fd22-eb2f-42ed-9ef7-ef098e5ff8b6",
+        "score": -3.6464,
+        "rerank_score": null,
+        "section": "8.9",
+        "condition": "COURSE_GRADING",
+        "version_flag": null
+      }
+    ],
+    "regulatory_relationships": [
+      {
+        "passage_a": "0280358a-ff3c-4964-88ab-419a9147b1f0",
+        "doc_a": "40c366dd-41b2-49f6-b5e4-492a8b5bbe8a",
+        "passage_b": "278fa408-518b-4c53-9cc2-c49ac347c87a",
+        "doc_b": "b787fd22-eb2f-42ed-9ef7-ef098e5ff8b6",
+        "relationship": "SAME_CONDITION_AGREEMENT"
+      }
+    ],
+    "decision": {
+      "status": "sufficient",
+      "ceci_score": 0.82,
+      "coverage_score": 0.6667,
+      "clarification_needed": false,
+      "explanation": "Yes. Notification 307/2022 applies university-wide across all Schools and Programmes of Bennett University, including SCSET, establishing 75% minimum attendance for End Semester Examinations.",
+      "detected_conditions": [
+        "EXAM_ELIGIBILITY"
+      ]
+    },
+    "evaluation_outcome": "PASS"
+  },
+  {
+    "query_id": "AQ-06",
+    "query_text": "What was the attendance rule in 2017?",
+    "query_analysis": {
+      "detected_language": "en",
+      "temporal_intent_mode": "EXPLICIT_HISTORICAL",
+      "target_cohort": "2017",
+      "target_academic_year": "2017-18",
+      "target_programme": null,
+      "target_conditions": [
+        "COURSE_GRADING"
+      ]
+    },
+    "retrieved_passages_summary": [
+      {
+        "passage_id": "f88ec726-74ba-426f-a01f-4b9665c1a8b8",
+        "document_id": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2",
+        "score": 0.1375,
+        "rerank_score": null,
+        "section": "28",
+        "condition": "COURSE_GRADING",
+        "version_flag": null
+      },
+      {
+        "passage_id": "c31d716d-bcfe-4011-a3f6-f4a2d5f1f22b",
+        "document_id": "b787fd22-eb2f-42ed-9ef7-ef098e5ff8b6",
+        "score": -3.8101,
+        "rerank_score": null,
+        "section": "30",
+        "condition": "COURSE_GRADING",
+        "version_flag": null
+      },
+      {
+        "passage_id": "0280358a-ff3c-4964-88ab-419a9147b1f0",
+        "document_id": "40c366dd-41b2-49f6-b5e4-492a8b5bbe8a",
+        "score": -4.434,
+        "rerank_score": null,
+        "section": "BENNETT",
+        "condition": "EXAM_ELIGIBILITY",
+        "version_flag": null
+      },
+      {
+        "passage_id": "82bc0dd1-612c-4e28-b6af-4f72aba8eafb",
+        "document_id": "d741f37d-c2db-4463-b9fa-fe59ab749960",
+        "score": -4.6446,
+        "rerank_score": null,
+        "section": "BENNETT",
+        "condition": "DISCIPLINARY_ACTION",
+        "version_flag": null
+      },
+      {
+        "passage_id": "6ad292d8-6e01-4f3b-aa96-66ee4603b11e",
+        "document_id": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2",
+        "score": -4.9785,
+        "rerank_score": null,
+        "section": "30.2",
+        "condition": "COURSE_GRADING",
+        "version_flag": null
+      }
+    ],
+    "regulatory_relationships": [
+      {
+        "passage_a": "f88ec726-74ba-426f-a01f-4b9665c1a8b8",
+        "doc_a": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2",
+        "passage_b": "82bc0dd1-612c-4e28-b6af-4f72aba8eafb",
+        "doc_b": "d741f37d-c2db-4463-b9fa-fe59ab749960",
+        "relationship": "DIFFERENT_REGULATORY_CONDITIONS"
+      },
+      {
+        "passage_a": "f88ec726-74ba-426f-a01f-4b9665c1a8b8",
+        "doc_a": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2",
+        "passage_b": "6ad292d8-6e01-4f3b-aa96-66ee4603b11e",
+        "doc_b": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2",
+        "relationship": "HISTORICAL_RULE"
+      },
+      {
+        "passage_a": "82bc0dd1-612c-4e28-b6af-4f72aba8eafb",
+        "doc_a": "d741f37d-c2db-4463-b9fa-fe59ab749960",
+        "passage_b": "6ad292d8-6e01-4f3b-aa96-66ee4603b11e",
+        "doc_b": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2",
+        "relationship": "DIFFERENT_REGULATORY_CONDITIONS"
+      }
+    ],
+    "decision": {
+      "status": "sufficient",
+      "ceci_score": 0.75,
+      "coverage_score": 1.0,
+      "clarification_needed": false,
+      "explanation": "Grounded historical answer anchored to 2017-18 academic regulations (b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2).",
+      "detected_conditions": [
+        "COURSE_GRADING"
+      ]
+    },
+    "evaluation_outcome": "PASS"
+  },
+  {
+    "query_id": "AQ-07",
+    "query_text": "Can attendance be relaxed due to medical reasons?",
+    "query_analysis": {
+      "detected_language": "en",
+      "temporal_intent_mode": "UNANCHORED",
+      "target_cohort": null,
+      "target_academic_year": null,
+      "target_programme": null,
+      "target_conditions": [
+        "MEDICAL_CONDONATION"
+      ]
+    },
+    "retrieved_passages_summary": [
+      {
+        "passage_id": "6ad292d8-6e01-4f3b-aa96-66ee4603b11e",
+        "document_id": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2",
+        "score": 5.0505,
+        "rerank_score": null,
+        "section": "30.2",
+        "condition": "COURSE_GRADING",
+        "version_flag": null
+      },
+      {
+        "passage_id": "c31d716d-bcfe-4011-a3f6-f4a2d5f1f22b",
+        "document_id": "b787fd22-eb2f-42ed-9ef7-ef098e5ff8b6",
+        "score": 1.7826,
+        "rerank_score": null,
+        "section": "30",
+        "condition": "COURSE_GRADING",
+        "version_flag": null
+      },
+      {
+        "passage_id": "505e552e-35e0-4b5d-98ba-10dff85f4eab",
+        "document_id": "b787fd22-eb2f-42ed-9ef7-ef098e5ff8b6",
+        "score": -2.8772,
+        "rerank_score": null,
+        "section": "15.7",
+        "condition": "COURSE_GRADING",
+        "version_flag": null
+      },
+      {
+        "passage_id": "a40fe16a-d0c7-4f22-97ba-5534bf3ab8f0",
+        "document_id": "b787fd22-eb2f-42ed-9ef7-ef098e5ff8b6",
+        "score": -4.6341,
+        "rerank_score": null,
+        "section": "30",
+        "condition": "COURSE_GRADING",
+        "version_flag": null
+      },
+      {
+        "passage_id": "84d3f6e9-2f91-4a2a-a4e9-ca7fefb00ee9",
+        "document_id": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2",
+        "score": -5.094,
+        "rerank_score": null,
+        "section": "16.4",
+        "condition": "OTHER",
+        "version_flag": null
+      }
+    ],
+    "regulatory_relationships": [
+      {
+        "passage_a": "6ad292d8-6e01-4f3b-aa96-66ee4603b11e",
+        "doc_a": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2",
+        "passage_b": "c31d716d-bcfe-4011-a3f6-f4a2d5f1f22b",
+        "doc_b": "b787fd22-eb2f-42ed-9ef7-ef098e5ff8b6",
+        "relationship": "SAME_CONDITION_DIFFERENT_VERSION"
+      }
+    ],
+    "decision": {
+      "status": "sufficient",
+      "ceci_score": 0.85,
+      "coverage_score": 0.8,
+      "clarification_needed": false,
+      "explanation": "Unanimous regulatory consensus: Relaxation up to a maximum of 10% may be granted by the Dean on valid medical grounds (continuous hospitalization/illness of at least two weeks).",
+      "detected_conditions": [
+        "MEDICAL_CONDONATION"
+      ]
+    },
+    "evaluation_outcome": "PASS"
+  }
+]

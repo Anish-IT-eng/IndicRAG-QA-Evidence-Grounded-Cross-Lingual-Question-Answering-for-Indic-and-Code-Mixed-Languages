@@ -1,0 +1,53 @@
+{
+  "benchmark_sample_summary": {
+    "total_qualified_positive_pilot": 27,
+    "total_qualified_negative_candidates": 22,
+    "total_qualified_answerable_controls": 5,
+    "total_needs_adjudication": 6,
+    "effective_positive_sample_size": 32,
+    "effective_negative_sample_size": 22,
+    "class_ratio_positive_to_negative": "32:22 (approx 1.57:1)",
+    "label_independence": "Partially independent. Positive pilot labels derived from human-audited M3/M6 ground truth; negative candidate labels generated with generator-verifier separation but pending authoritative institutional policy adjudication."
+  },
+  "method_evaluations": {
+    "platt_scaling": {
+      "method_name": "Platt Scaling (Logistic Sigmoid Calibration)",
+      "readiness_status": "FEASIBLE_EXPLORATORY_ONLY",
+      "sample_size_adequate": false,
+      "overfitting_risk": "HIGH",
+      "justification": "Fitting 2-parameter logistic sigmoid on N_neg=21 and N_pos=33 is statistically underpowered. With small sample sizes, Platt scaling exhibits high parameter variance (instability in slope A and intercept B) and severe probability compression. Authorized strictly as an exploratory curve-fitting baseline; cannot be reported as production confidence probabilities."
+    },
+    "score_calibration": {
+      "method_name": "Non-Parametric / Isotonic Score Calibration",
+      "readiness_status": "BLOCKED",
+      "sample_size_adequate": false,
+      "overfitting_risk": "CRITICAL",
+      "justification": "Isotonic regression requires N >= 200 samples to prevent step-function overfitting on sparse rank points. Blocked for Phase 4."
+    },
+    "threshold_selection": {
+      "method_name": "Empirical ROC / Youden J Index Threshold Selection",
+      "readiness_status": "FEASIBLE_EXPLORATORY_ONLY",
+      "sample_size_adequate": true,
+      "overfitting_risk": "MODERATE",
+      "justification": "Feasible to explore optimal operating points on CECI and raw retrieval scores. However, threshold selection on N=54 will overfit query-local quirks unless heavily regularized."
+    },
+    "nested_cross_validation": {
+      "method_name": "Nested 5-Fold Cross-Validation",
+      "readiness_status": "FEASIBLE_EXPLORATORY_ONLY",
+      "sample_size_adequate": false,
+      "overfitting_risk": "HIGH",
+      "justification": "In a 5-fold CV with N_neg=21, each test fold contains only ~4 negative samples. A single misclassification shifts fold recall by 25%. Cross-fitting variance will be large. Permitted only with explicit confidence intervals and exploratory caveats."
+    },
+    "calibration_performance_reporting": {
+      "method_name": "Brier Score, Expected Calibration Error (ECE), and Reliability Diagrams",
+      "readiness_status": "FEASIBLE_EXPLORATORY_ONLY",
+      "sample_size_adequate": false,
+      "overfitting_risk": "MODERATE",
+      "justification": "ECE with 10 bins would average only ~5 samples per bin, producing noisy bin-level confidence estimates. Authorized with 3-5 coarse bins and exploratory labeling."
+    }
+  },
+  "overall_recommendation": {
+    "decision": "PHASE_4_AUTHORIZED_EXPLORATORY_ONLY",
+    "justification": "The benchmark has successfully expanded from N_neg=2 to N_neg=21 qualified negatives (+ 6 answerable controls, 6 needing adjudication), unlocking preliminary calibration exploration. However, the statistical sample size remains too small for definitive production calibration guarantees. Phase 4 is authorized strictly as an exploratory engineering study with mandatory overfitting disclaimers."
+  }
+}

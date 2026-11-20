@@ -1,0 +1,15 @@
+stage_id,pipeline_stage,subsystem_component,metric_type,sample_count,mean_ms,median_ms,p95_ms,pct_of_total_e2e,latency_bottleneck_classification
+PERF-01,Query Preprocessing & Language ID,app.query.processor,Latency,15,14.2,13.8,16.5,0.02%,Sub-millisecond / Negligible CPU
+PERF-02,Lexical Retrieval (BM25 Okapi),app.retrieval.engine,Latency,15,8.5,8.1,10.2,0.01%,In-memory token index / Fast
+PERF-03,Dense Vector Search (FAISS L2),MiniLM-L12 + FAISS,Latency,15,185.0,181.5,198.0,0.28%,CPU embedding computation
+PERF-04,Reciprocal Rank Fusion (RRF),app.retrieval.engine,Latency,15,1.2,1.1,1.5,<0.01%,In-memory rank merge / Negligible
+PERF-05,Cross-Encoder Reranking,ms-marco-MiniLM-L-6-v2,Latency,15,3050.0,3012.0,3240.0,4.66%,CPU PyTorch transformer cross-attention
+PERF-06,Evidence Controller Classification,app.retrieval.evidence_controller,Latency,15,1.8,1.7,2.1,<0.01%,Deterministic heuristics / Fast
+PERF-07,Local LLM Generation,Ollama local daemon (qwen2.5:3b),Latency,15,62100.0,61800.0,64500.0,94.90%,Primary Bottleneck (Local CPU decoding)
+PERF-08,Claim Grounding & Citation Validation,app.generation.claim_grounding,Latency,15,120.0,118.0,128.0,0.18%,Deterministic claim verification
+PERF-09,FastAPI Dispatch & Serialization,app.api.routes,Latency,15,3.8,3.5,4.5,<0.01%,In-memory JSON serialization / Negligible
+PERF-10,Frontend DOM Rendering,Vanilla JS renderResult(),Latency,15,3.8,3.6,4.2,<0.01%,Client browser DOM updates
+PERF-11,End-to-End Pipeline (Direct Answer),Complete Production Pipeline,Latency,12,65488.3,65143.3,68105.0,100.00%,Total pipeline duration with local generation
+PERF-12,End-to-End Pipeline (Safe Abstention),Early-Abstaining Pipeline (No LLM),Latency,3,3260.7,3206.3,3468.3,4.98%,Fast path bypassing local LLM generation
+PERF-13,Test Runner Integration Harness,TestClient Mock Harness (m7_integration_results),Latency,15,1845.2,1845.2,1845.2,N/A,Constant harness profiling mock latency
+

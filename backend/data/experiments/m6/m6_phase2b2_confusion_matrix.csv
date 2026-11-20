@@ -1,0 +1,30 @@
+candidate_id,query_text,gold_answerability,historical_controller_status,historical_confusion_class,corrected_audited_status,corrected_confusion_class,reconciliation_category
+8820214e-35a3-4176-9a87-d6a681c62c24,What are the three options available to a student for doing the final semester?,answerable,CONFLICTING,FN,SUFFICIENT,TP,Identical Rule Recovery
+fe70960c-f447-4fd4-88c7-20572e422fb0,What happens if a student misses a makeup exam?,answerable,CONFLICTING,FN,CONFLICTING,FN,Genuine Conflict
+b0a1c002-87a2-4102-9002-000000000002,Semester khatam hone se kitne hafte pehle tak course withdraw karne ki permission milti hai?,answerable,CONFLICTING,FN,SUFFICIENT,TP,Identical Rule Recovery
+6776bafc-4389-4d2f-8025-d37a604d177b,What is the minimum duration of the B.Tech program?,answerable,CONFLICTING,FN,SUFFICIENT,TP,Identical Rule Recovery
+b0a1c007-87a7-4107-9007-000000000007,Supplementary examination mein student ko maximum kaun sa grade mil sakta hai?,answerable,PARTIAL,TP,PARTIAL,TP,Baseline Retained
+b0a1c001-87a1-4101-9001-000000000001,सेमेस्टर शुरू होने के बाद छात्र कितने समय के भीतर पंजीकृत कोर्स में नया विषय जोड़ या हटा सकते हैं?,answerable,CONFLICTING,FN,SUFFICIENT,TP,Identical Rule Recovery
+b0a1c004-87a4-4104-9004-000000000004,"यदि किसी छात्र को उपस्थिति की कमी के कारण 'X' ग्रेड दिया जाता है, तो क्या वह पूरक परीक्षा (Supplementary Examination) दे सकता है?",answerable,CONFLICTING,FN,CLARIFICATION_REQUIRED,CR,Clarification Required
+b0a1c011-87a1-4111-9011-000000000011,एससीएसईटी यूजी नियमों के अनुसार हॉस्टल मेस की फीस वापसी (refund) के क्या नियम हैं?,unanswerable,INSUFFICIENT,TN,INSUFFICIENT,TN,Baseline Retained
+b0a1c006-87a6-4106-9006-000000000006,"यदि कोई छात्र उचित कारण से एंड सेमेस्टर मुख्य परीक्षा में शामिल नहीं हो पाता और कुलपति द्वारा मामला स्वीकृत होता है, तो उसे कौन सा ग्रेड दिया जाता है?",answerable,CONFLICTING,FN,SUFFICIENT,TP,Identical Rule Recovery
+b0a1c010-87a0-4110-9010-000000000010,What is the prescribed fee for submitting a PhD dissertation thesis according to the SCSET UG academic regulations?,unanswerable,INSUFFICIENT,TN,INSUFFICIENT,TN,Baseline Retained
+b0a1c009-87a9-4109-9009-000000000009,Odd semester 2026-27 ke liye all students ka last teaching day kab hai?,answerable,PARTIAL,TP,PARTIAL,TP,Baseline Retained
+b0a1c003-87a3-4103-9003-000000000003,Courses ke liye D grade ki range kitne marks se shuru hoti hai?,answerable,INSUFFICIENT,FN,INSUFFICIENT,FN,Baseline Retained
+01fc5ad1-43a1-443f-beda-e82970d2a7cb,What type of courses are offered at Bennett University?,answerable,CONFLICTING,FN,SUFFICIENT,TP,Identical Rule Recovery
+b0a1c008-87a8-4108-9008-000000000008,शैक्षणिक कैलेंडर 2026-27 के अनुसार विषम सेमेस्टर (Odd Semester) में उपस्थिति माफी (Attendance Condonation) के लिए आवेदन करने की अंतिम तिथि क्या है?,answerable,INSUFFICIENT,FN,INSUFFICIENT,FN,Baseline Retained
+b0a1c005-87a5-4105-9005-000000000005,Mid Term exam miss hone par makeup examination ke liye request kitne din ke andar submit karni hoti hai?,answerable,CONFLICTING,FN,SUFFICIENT,TP,Identical Rule Recovery
+c60a-e01-000000000001,What is the minimum duration prescribed for undergraduate B.Tech programs under SCSET academic rules?,answerable,PARTIAL,TP,PARTIAL,TP,Baseline Retained
+c60a-e02-000000000002,What are the two semesters comprising an academic year in the SCSET semester system?,answerable,PARTIAL,TP,PARTIAL,TP,Baseline Retained
+c60a-e03-000000000003,How many days are available for actual instruction within an 18-20 week semester?,answerable,CONFLICTING,FN,SUFFICIENT,TP,Identical Rule Recovery
+c60a-e04-000000000004,In which semester is a B.Tech student permitted to start an industry internship?,answerable,PARTIAL,TP,PARTIAL,TP,Baseline Retained
+c60a-e05-000000000005,What is expected of a student under the guidance of a faculty member for the seminar course requirement?,answerable,PARTIAL,TP,PARTIAL,TP,Baseline Retained
+c60a-e06-000000000006,Why must students ensure correctness of their course registration records?,answerable,INSUFFICIENT,FN,INSUFFICIENT,FN,Baseline Retained
+c60a-e07-000000000007,What are the rules regarding the deadlines for adding a course and withdrawing from a course?,answerable,INSUFFICIENT,FN,INSUFFICIENT,FN,Baseline Retained
+c60a-e08-000000000008,What is the minimum number of registered students required for an undergraduate elective course to normally run?,answerable,CONFLICTING,FN,SUFFICIENT,TP,Identical Rule Recovery
+c60a-e10-000000000010,Out of what total marks is each academic course evaluated according to Clause 15.5?,answerable,INSUFFICIENT,FN,INSUFFICIENT,FN,Baseline Retained
+c60a-h01-000000000011,एससीएसईटी यूजी नियमों के अनुसार सभी पाठ्यक्रमों के लिए 'D' ग्रेड की न्यूनतम अंक सीमा क्या है?,answerable,INSUFFICIENT,FN,INSUFFICIENT,FN,Baseline Retained
+c60a-h02-000000000012,चिकित्सा कारणों से परीक्षा में अनुपस्थित रहने पर छात्र को किसे सूचना देनी होती है?,answerable,CONFLICTING,FN,SUFFICIENT,TP,Identical Rule Recovery
+c60a-h03-000000000013,परीक्षा की अंतिम तिथि के कितने दिनों के भीतर मेडिकल दस्तावेज जमा करना अनिवार्य है?,answerable,INSUFFICIENT,FN,INSUFFICIENT,FN,Baseline Retained
+c60a-h04-000000000014,पूरक परीक्षा (Supplementary Examination) की समयावधि किसके समान होती है?,answerable,INSUFFICIENT,FN,INSUFFICIENT,FN,Baseline Retained
+c60a-h05-000000000015,यदि कोई छात्र एंड-सेमेस्टर मेजर परीक्षा के मेक-अप के रूप में पूरक परीक्षा देता है तो उसे कौन से ग्रेड दिए जाते हैं?,answerable,CONFLICTING,FN,SUFFICIENT,TP,Identical Rule Recovery

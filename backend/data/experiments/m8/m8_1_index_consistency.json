@@ -1,0 +1,223 @@
+{
+  "audit_milestone": "M8.1",
+  "timestamp": "2026-11-16T10:35:00+05:30",
+  "database_integrity": {
+    "database_file": "backend/data/db/indicrag.db",
+    "registered_official_documents": 7,
+    "expected_official_documents": 7,
+    "total_passages": 306,
+    "child_passages": 253,
+    "expected_child_passages": 253,
+    "parent_passages": 53,
+    "expected_parent_passages": 53,
+    "duplicate_passage_ids": 0,
+    "dangling_parent_child_references": 0,
+    "database_status": "CONSISTENT"
+  },
+  "index_integrity": {
+    "index_directory": "backend/data/indexes/official",
+    "bm25_tokenized_documents": 253,
+    "expected_bm25_records": 253,
+    "faiss_total_vectors": 253,
+    "expected_faiss_vectors": 253,
+    "faiss_dimension": 384,
+    "expected_faiss_dimension": 384,
+    "faiss_metric_type": "IndexFlatIP",
+    "upload_passages_in_official_index": 0,
+    "index_status": "CONSISTENT"
+  },
+  "corpus_parity_check": {
+    "db_child_matches_bm25_count": true,
+    "db_child_matches_faiss_count": true,
+    "passage_id_count": 253,
+    "status": "PERFECT_PARITY"
+  },
+  "retrieval_verification": [
+    {
+      "query": "What is the penalty for using unfair means in examinations?",
+      "bm25_top_hits": [
+        {
+          "passage_id": "fadd4d67-5fd3-4404-87e0-a43c442c82f7",
+          "score": 20.3076,
+          "doc_id": "8e3b751a-5728-4af0-bf6c-5418b578af7b"
+        },
+        {
+          "passage_id": "2aa0c096-38d6-4d5c-ac39-cb04a87747a2",
+          "score": 18.101,
+          "doc_id": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2"
+        },
+        {
+          "passage_id": "9b13c751-2ad3-4558-8cd6-9ba46156e2c9",
+          "score": 18.0316,
+          "doc_id": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2"
+        }
+      ],
+      "dense_top_hits": [
+        {
+          "passage_id": "9b13c751-2ad3-4558-8cd6-9ba46156e2c9",
+          "score": 0.7119,
+          "doc_id": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2"
+        },
+        {
+          "passage_id": "81397cf0-5a9f-4b34-aad9-3e27bd6d307a",
+          "score": 0.6209,
+          "doc_id": "8e3b751a-5728-4af0-bf6c-5418b578af7b"
+        },
+        {
+          "passage_id": "f36779cc-b893-4221-8b18-118915b78993",
+          "score": 0.6027,
+          "doc_id": "d741f37d-c2db-4463-b9fa-fe59ab749960"
+        }
+      ]
+    },
+    {
+      "query": "What are the student discipline rules and proctorial board actions?",
+      "bm25_top_hits": [
+        {
+          "passage_id": "cae48981-0c35-4509-bd25-99d0cffa7fca",
+          "score": 15.1082,
+          "doc_id": "f110a0e9-e299-4f4a-9dd9-b879ecbbdc36"
+        },
+        {
+          "passage_id": "d84da86a-c39d-4dbc-84e9-e0ad3c2116f1",
+          "score": 14.6743,
+          "doc_id": "f110a0e9-e299-4f4a-9dd9-b879ecbbdc36"
+        },
+        {
+          "passage_id": "48ae2c24-0ad1-45fb-a10c-ff68316d80b5",
+          "score": 14.2158,
+          "doc_id": "8e3b751a-5728-4af0-bf6c-5418b578af7b"
+        }
+      ],
+      "dense_top_hits": [
+        {
+          "passage_id": "a495b9c6-4067-4ca8-9eb4-9a833e8a31a3",
+          "score": 0.7757,
+          "doc_id": "f110a0e9-e299-4f4a-9dd9-b879ecbbdc36"
+        },
+        {
+          "passage_id": "4369e013-2aab-4761-a5c6-c94ea38847b9",
+          "score": 0.7156,
+          "doc_id": "8e3b751a-5728-4af0-bf6c-5418b578af7b"
+        },
+        {
+          "passage_id": "add43912-886c-48bd-b47e-8ec203ea40fa",
+          "score": 0.7135,
+          "doc_id": "f110a0e9-e299-4f4a-9dd9-b879ecbbdc36"
+        }
+      ]
+    },
+    {
+      "query": "What are the powers of the Vice Chancellor under the First Ordinance?",
+      "bm25_top_hits": [
+        {
+          "passage_id": "cae48981-0c35-4509-bd25-99d0cffa7fca",
+          "score": 20.3413,
+          "doc_id": "f110a0e9-e299-4f4a-9dd9-b879ecbbdc36"
+        },
+        {
+          "passage_id": "d84da86a-c39d-4dbc-84e9-e0ad3c2116f1",
+          "score": 20.071,
+          "doc_id": "f110a0e9-e299-4f4a-9dd9-b879ecbbdc36"
+        },
+        {
+          "passage_id": "7f16dd1d-47cf-4de0-b259-73f0572ae671",
+          "score": 19.5457,
+          "doc_id": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2"
+        }
+      ],
+      "dense_top_hits": [
+        {
+          "passage_id": "d84da86a-c39d-4dbc-84e9-e0ad3c2116f1",
+          "score": 0.7389,
+          "doc_id": "f110a0e9-e299-4f4a-9dd9-b879ecbbdc36"
+        },
+        {
+          "passage_id": "ce921af9-b4f8-4fbc-9f28-4eb0fc073816",
+          "score": 0.6238,
+          "doc_id": "8e3b751a-5728-4af0-bf6c-5418b578af7b"
+        },
+        {
+          "passage_id": "80ee9b0b-48c0-45c9-a497-19b34fd426b5",
+          "score": 0.5885,
+          "doc_id": "8e3b751a-5728-4af0-bf6c-5418b578af7b"
+        }
+      ]
+    },
+    {
+      "query": "What is the minimum attendance required to appear in end semester exams?",
+      "bm25_top_hits": [
+        {
+          "passage_id": "0280358a-ff3c-4964-88ab-419a9147b1f0",
+          "score": 21.216,
+          "doc_id": "40c366dd-41b2-49f6-b5e4-492a8b5bbe8a"
+        },
+        {
+          "passage_id": "505e552e-35e0-4b5d-98ba-10dff85f4eab",
+          "score": 16.0118,
+          "doc_id": "b787fd22-eb2f-42ed-9ef7-ef098e5ff8b6"
+        },
+        {
+          "passage_id": "1b631297-389b-41ee-87ab-d3553f6296c7",
+          "score": 15.8649,
+          "doc_id": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2"
+        }
+      ],
+      "dense_top_hits": [
+        {
+          "passage_id": "0280358a-ff3c-4964-88ab-419a9147b1f0",
+          "score": 0.7491,
+          "doc_id": "40c366dd-41b2-49f6-b5e4-492a8b5bbe8a"
+        },
+        {
+          "passage_id": "f88ec726-74ba-426f-a01f-4b9665c1a8b8",
+          "score": 0.7022,
+          "doc_id": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2"
+        },
+        {
+          "passage_id": "2b15a3af-7281-4cf4-9597-4b1a6759d4cf",
+          "score": 0.6561,
+          "doc_id": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2"
+        }
+      ]
+    },
+    {
+      "query": "What are the promotion criteria for B.Tech SCSET students?",
+      "bm25_top_hits": [
+        {
+          "passage_id": "b00a9bc0-0a07-461d-b47c-26fec0d621bb",
+          "score": 17.3739,
+          "doc_id": "8e3b751a-5728-4af0-bf6c-5418b578af7b"
+        },
+        {
+          "passage_id": "cfb81e36-8477-4083-aa37-f671c6202263",
+          "score": 14.9841,
+          "doc_id": "b787fd22-eb2f-42ed-9ef7-ef098e5ff8b6"
+        },
+        {
+          "passage_id": "4fb20336-4a76-4e21-8422-f3d9e08a4c27",
+          "score": 13.0548,
+          "doc_id": "b787fd22-eb2f-42ed-9ef7-ef098e5ff8b6"
+        }
+      ],
+      "dense_top_hits": [
+        {
+          "passage_id": "f699fc2a-993d-439a-badf-fd45cc8ebc26",
+          "score": 0.5433,
+          "doc_id": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2"
+        },
+        {
+          "passage_id": "232928ea-fe34-4563-8c67-6f714317a64d",
+          "score": 0.5378,
+          "doc_id": "b787fd22-eb2f-42ed-9ef7-ef098e5ff8b6"
+        },
+        {
+          "passage_id": "b00a9bc0-0a07-461d-b47c-26fec0d621bb",
+          "score": 0.5311,
+          "doc_id": "8e3b751a-5728-4af0-bf6c-5418b578af7b"
+        }
+      ]
+    }
+  ],
+  "final_index_decision": "INDEX_INTEGRITY_VERIFIED"
+}

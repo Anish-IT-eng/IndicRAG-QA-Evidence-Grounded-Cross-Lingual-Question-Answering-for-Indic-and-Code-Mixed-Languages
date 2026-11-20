@@ -1,0 +1,156 @@
+{
+  "audit_milestone": "M8.3",
+  "audit_role": "Senior Academic Regulation Researcher, RAG Safety Engineer, and Research Evaluation Auditor",
+  "execution_mode": "STRICT_READ_ONLY_AUDIT",
+  "final_determination": "M8_3_VERIFIED_WITH_CONTROLLER_GAPS",
+  "timestamp": "2026-11-16T11:22:00+05:30",
+  "prerequisites_verified": {
+    "M8_DOCUMENT_REFRESH_COMPLETED": true,
+    "M8_1_INTEGRITY_VERIFIED": true,
+    "M8_2_CLOSED_WITH_DOCUMENTATION_ERRORS": true
+  },
+  "regulatory_semantics_summary": {
+    "course_level_grading_debarment": {
+      "sources": [
+        "Academic-Rules-for-SCSET_UG.pdf (Clause 30.1(ii), Page 19)",
+        "SEAS-Ordinance-Rules-Regulations-2017.pdf (Clause 30.1(ii), Page 28)"
+      ],
+      "threshold": "70% minimum attendance in course lectures, tutorials, and practicals combined",
+      "consequence": "Award of 'X' grade and repetition of the course when next offered",
+      "enforcing_authority": "Course Instructor / School Dean",
+      "regulatory_nature": "Course-level academic performance and evaluation standard"
+    },
+    "end_semester_examination_eligibility": {
+      "sources": [
+        "Notification-Minimum-Attendance.pdf (Ref BU/RO/Notification/307/2022, Page 1)"
+      ],
+      "threshold": "75% minimum aggregate attendance across all registered courses",
+      "consequence": "Debarment from End Semester Examination; withholding of Examination Admit Card",
+      "enforcing_authority": "Registrar / Academic Council / Controller of Examination (pursuant to UGC Regulations 2003)",
+      "regulatory_nature": "University-wide institutional statutory examination hall entry condition"
+    },
+    "medical_relaxation_condonation": {
+      "sources": [
+        "Academic-Rules-for-SCSET_UG.pdf (Clause 30.1(v), Page 19)",
+        "SEAS-Ordinance-Rules-Regulations-2017.pdf (Clause 30.1(v), Page 28)"
+      ],
+      "threshold": "Up to 10% attendance relaxation (effective floor 60%)",
+      "conditions": "Continuous illness of minimum two weeks with certified medical proof or authorized university deputation",
+      "regulatory_nature": "Statutory condonation floor shared identically across 2017 and 2022 frameworks"
+    }
+  },
+  "relationship_matrix_summary": {
+    "matrix_file": "backend/data/experiments/m8/m8_3_regulatory_relationship_matrix.csv",
+    "relationships_evaluated": 6,
+    "categories_used": [
+      "DIFFERENT_REGULATORY_CONDITIONS",
+      "HISTORICAL_RULE",
+      "PROGRAMME_SPECIFIC_RULE",
+      "SAME_CONDITION_DIFFERENT_VERSION"
+    ]
+  },
+  "query_audit_summary": {
+    "audit_file": "backend/data/experiments/m8/m8_3_attendance_query_audit.csv",
+    "total_queries_audited": 7,
+    "query_evaluations": {
+      "AQ-01": {
+        "query": "What is the minimum attendance required?",
+        "condition": "UNANCHORED_GENERAL_ATTENDANCE (Dual threshold: Exam eligibility vs Course grade)",
+        "existing_controller_status": "CONFLICTING",
+        "recommended_status": "DUAL_THRESHOLD_DISCLOSURE / CLARIFICATION_REQUEST",
+        "evaluation": "Legitimate ambiguity requiring disclosure of both 75% exam hall threshold and 70% course grade threshold."
+      },
+      "AQ-02": {
+        "query": "What attendance is required to sit for end semester exams?",
+        "condition": "END_SEMESTER_EXAM_ELIGIBILITY",
+        "existing_controller_status": "PARTIAL",
+        "recommended_status": "GROUNDED_ANSWER (SUFFICIENT)",
+        "evaluation": "False partial due to CECI 0.419 threshold; top hit 0280358a (Notification 307) provides direct, definitive 75% answer."
+      },
+      "AQ-03": {
+        "query": "How much attendance is required to avoid an X grade?",
+        "condition": "COURSE_LEVEL_GRADING_DEBARMENT (X Grade)",
+        "existing_controller_status": "CONFLICTING",
+        "recommended_status": "GROUNDED_ANSWER (SUFFICIENT)",
+        "evaluation": "False conflict; both current SCSET 2022 and historical SEAS 2017 unanimously prescribe 70% threshold."
+      },
+      "AQ-04": {
+        "query": "Is 70% attendance enough?",
+        "condition": "DUAL_THRESHOLD_INTERSECTION (70% vs 75%)",
+        "existing_controller_status": "CONFLICTING",
+        "recommended_status": "STRUCTURED_CONDITIONAL_ANSWER",
+        "evaluation": "Not a regulatory contradiction; 70% is sufficient for course grade/credit but insufficient for exam hall."
+      },
+      "AQ-05": {
+        "query": "Is 75% compulsory for SCSET students?",
+        "condition": "JURISDICTIONAL_OVERLAP (University Notice vs School Rules)",
+        "existing_controller_status": "INSUFFICIENT",
+        "recommended_status": "GROUNDED_ANSWER (SUFFICIENT)",
+        "evaluation": "CECI 0.325 dropped to insufficient because SCSET PDF omits literal '75%'. Cross-document inference confirms Notification 307 binds all schools."
+      },
+      "AQ-06": {
+        "query": "What was the attendance rule in 2017?",
+        "condition": "HISTORICAL_COHORT_RULE (2017)",
+        "existing_controller_status": "CONFLICTING",
+        "recommended_status": "GROUNDED_ANSWER (SUFFICIENT)",
+        "evaluation": "False conflict; query explicitly provides temporal anchor 'in 2017'. System should anchor to SEAS 2017 rather than flagging newer rules."
+      },
+      "AQ-07": {
+        "query": "Can attendance be relaxed due to medical reasons?",
+        "condition": "ATTENDANCE_CONDONATION_RELAXATION (Medical)",
+        "existing_controller_status": "CONFLICTING",
+        "recommended_status": "GROUNDED_ANSWER (SUFFICIENT)",
+        "evaluation": "False conflict; both SEAS 2017 and SCSET 2022 contain identical 10% medical relaxation clauses. Flagged solely because one doc is marked is_current=False."
+      }
+    }
+  },
+  "controller_gap_findings": [
+    {
+      "gap_id": "GAP-01",
+      "name": "False Conflict on Consensus Rules across Current and Historical Versions",
+      "severity": "HIGH",
+      "description": "EvidenceController flags CONFLICTING whenever a current and historical document are co-retrieved, even when their clauses specify identical thresholds and conditions (e.g. 70% for X-grade in AQ-03, 10% medical condonation in AQ-07)."
+    },
+    {
+      "gap_id": "GAP-02",
+      "name": "Inability to Respect Explicit Temporal / Cohort Query Anchors",
+      "severity": "HIGH",
+      "description": "When a query explicitly specifies a historical year or cohort ('What was the attendance rule in 2017?' in AQ-06), the pipeline retrieves the correct 2017 passage but EvidenceController still flags CONFLICTING against newer documents instead of scoping retrieval to the requested cohort."
+    },
+    {
+      "gap_id": "GAP-03",
+      "name": "Collapse of Distinct Regulatory Conditions into Flat Numerical Contradictions",
+      "severity": "MEDIUM",
+      "description": "The system treats 70% course grade debarment and 75% end-semester exam hall eligibility as an irreconcilable conflict rather than recognizing them as two distinct regulatory stages with separate enforcement authorities."
+    }
+  ],
+  "test_suite_inventory_reconciliation": {
+    "collected_test_cases": 214,
+    "cache_records_count": 215,
+    "active_execution_baseline_passed": 214,
+    "failed_tests": 0,
+    "skipped_tests": 0,
+    "cache_discrepancy_explanation": "The 1-test difference between cached nodeids (215) and collected/executed tests (214) is 'tests/test_ingestion_smoke.py::TestSourceRegistryStructure::test_get_verified_sources_empty_by_default', an obsolete test nodeid retained in .pytest_cache from an earlier development iteration. Active execution is 100% consistent at 214 passing tests across 14 test modules."
+  },
+  "controller_improvement_recommendations": [
+    {
+      "proposal_id": "PROP-01",
+      "module": "app.query.controller",
+      "action": "Introduce Consensus Verification prior to conflict triggering",
+      "summary": "Check if extracted regulatory thresholds/consequences in retrieved historical and current passages match. If numerical values and conditions are identical, emit SUFFICIENT."
+    },
+    {
+      "proposal_id": "PROP-02",
+      "module": "app.query.processor",
+      "action": "Implement Temporal / Cohort Intent Parsing",
+      "summary": "Extract year/cohort entities (e.g. '2017', 'first batch') and filter/boost matching historical documents while disabling newer superseding conflicts."
+    },
+    {
+      "proposal_id": "PROP-03",
+      "module": "app.query.controller & app.core.schemas",
+      "action": "Tag Regulatory Conditions (Exam vs Course vs Discipline)",
+      "summary": "Differentiate between institutional examination eligibility (75%) and course-level grading debarment (70%) to provide structured multi-condition responses."
+    }
+  ]
+}
+

@@ -1,0 +1,9 @@
+criterion_id,security_domain,target_component,verification_method,test_condition,expected_behavior,actual_outcome,verdict
+SEC-CRIT-01,Data Isolation,get_official_index() vs get_upload_index(),Automated Test & Code Inspection,Query official collection while user uploads exist,Retrieval restricted strictly to source_type == 'official',Official index ignores upload documents,PASS
+SEC-CRIT-02,Data Isolation,/documents endpoint source filtering,Automated Test & API Probe,Invoke GET /documents with source_type=official and source_type=upload,Returns only records matching requested source_type partition,Clean document separation maintained,PASS
+SEC-CRIT-03,Lifecycle Integrity,User Document Deletion,Automated Test & SQLite Verification,Delete uploaded document via DELETE /documents/{id},Removes parent record and cascades deletion to child passages in SQLite and FAISS,Stale passages completely purged,PASS
+SEC-CRIT-04,API Robustness,Passage Inspector 404 Handling,Automated Test & HTTP Status Probe,Request GET /documents/{invalid_id}/passages with non-existent UUID,Returns HTTP 404 with structured detail error message,HTTP 404 returned without unhandled crash,PASS
+SEC-CRIT-05,Database Security,SQL Parameterization,Code Inspection (SQLite Handler),Pass arbitrary string tokens and special characters to search queries,Queries bound via parameterized SQLite statements (? placeholders),Zero string concatenation in SQL execution,PASS
+SEC-CRIT-06,Filesystem Security,Upload Path Traversal,Code Inspection & API Validation,Submit upload filename containing directory traversal sequences (../),Filename sanitized and saved to isolated upload directory with UUID prefix,Path traversal prevented,PASS
+SEC-CRIT-07,Evidence Integrity,Citation Provenance Validation,Claim Grounding Engine,Evaluate generated citations against active corpus index,Only citations matching verified retrieved passages are emitted,Hallucinated passage IDs rejected,PASS
+

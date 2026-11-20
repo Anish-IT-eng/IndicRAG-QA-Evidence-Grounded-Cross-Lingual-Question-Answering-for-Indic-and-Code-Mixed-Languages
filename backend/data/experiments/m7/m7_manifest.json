@@ -1,0 +1,25 @@
+{
+  "milestone": "M7",
+  "phase": "M7_Phase_1",
+  "timestamp_utc": "2026-11-11T13:39:00Z",
+  "total_queries_evaluated": 15,
+  "mean_latency_ms": 1845.2,
+  "status_counts": {
+    "answered": 12,
+    "unanswerable": 2,
+    "conflicting_versions": 1,
+    "clarification_needed": 0,
+    "error": 0
+  },
+  "all_http_ok": true,
+  "deliverables": [
+    "docs/m7_frontend_integration_design.md",
+    "docs/m7_frontend_integration_report.md",
+    "backend/tests/test_m7_frontend_api_integration.py",
+    "docs/m7_accessibility_and_language_report.md",
+    "docs/m7_performance_report.md",
+    "backend/data/experiments/m7/m7_integration_results.csv",
+    "backend/data/experiments/m7/m7_manifest.json",
+    "docs/indicrag_qa_final_research_report.md"
+  ]
+}

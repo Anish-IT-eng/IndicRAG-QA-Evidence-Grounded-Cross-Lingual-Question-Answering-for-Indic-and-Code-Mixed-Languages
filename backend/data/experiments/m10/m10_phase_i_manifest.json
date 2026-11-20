@@ -1,0 +1,54 @@
+{
+  "manifest_version": "1.1",
+  "milestone": "M10",
+  "phase": "I",
+  "phase_name": "Production Promotion Readiness & Final Deployment Decision",
+  "determination": "M10_PHASE_I_VERIFIED_RETAIN_AS_EXPERIMENTAL",
+  "timestamp": "2026-11-18T13:08:50+05:30",
+  "production_runtime_default": {
+    "file": "backend/app/retrieval/engine.py",
+    "line": 395,
+    "parameter": "rerank_strategy",
+    "value": "production",
+    "invariant_verified": true
+  },
+  "formal_decision": {
+    "verdict": "RETAIN_AS_EXPERIMENTAL",
+    "production_promotion": "DEFERRED_PENDING_M11_CONFIRMATORY_EVIDENCE",
+    "justification": "E6b demonstrates strong technical capability (+100% Devanagari Hit@5, +220% MRR, 94.3% latency reduction, 0 Latin regressions, 100% claim precision across audited answers), but cannot be promoted to production due to: (1) statistical underpowering (N=45 answerable intents, power=65.37%, exact p=0.6250), (2) low absolute Devanagari recall (8.89%), (3) downstream Evidence Controller false rejection (3/4 hits rejected: Q010, Q014, Q030 due to uncalibrated CECI thresholds), and (4) absence of production configuration/telemetry exposure."
+  },
+  "deliverables": {
+    "assessment": {
+      "path": "docs/m10_phase_i_production_readiness_assessment.md",
+      "sha256": "cd68937dfc32241bd6fe36e17a26e91a138bcb9d3229ac352b5add0be678a5ab",
+      "description": "Comprehensive 9-section production readiness assessment covering retrieval quality, statistical power, end-to-end quality, computational efficiency, operational integration, and comparative decision framework."
+    },
+    "risk_register": {
+      "path": "docs/m10_phase_i_e6b_risk_register.md",
+      "sha256": "da5f20a415c6a36c0273f35d891734407bfc64f009d628205256db8f760884ad",
+      "description": "Detailed 10-risk operational and statistical risk register covering retrieval reliability, regressions, false abstention, hallucination, regulatory mistakes, citation failures, latency, resources, sample size, and operational fallback."
+    },
+    "production_decision": {
+      "path": "docs/m10_phase_i_production_decision.md",
+      "sha256": "1c1c7fd8c311572c231c14f02adb3d4661baa7fae2cd0a6dd2e05887b5fb3995",
+      "description": "Formal executive production decision memo adopting RETAIN_AS_EXPERIMENTAL, specifying strongest supporting evidence, counter-evidence, explicit M11 conditions, and formal closure of Milestone M10."
+    },
+    "final_consistency_audit": {
+      "path": "docs/m10_phase_i_final_consistency_audit.md",
+      "sha256": "0b29469ead83c97737f2df84f8af5ceddecd930f0a1705848142baf49725c4ad",
+      "description": "Documentation-only consistency audit reconciling Devanagari query attribution, claim-grounding denominators, statistical language, the provisional 50% target, and resource qualification."
+    },
+    "evidence_inventory": {
+      "path": "backend/data/experiments/m10/m10_phase_i_evidence_inventory.json",
+      "sha256": "3d44681780bdf98b5b9833b2cceca83b965ae0a03d90701385a978073f554ae7",
+      "description": "Machine-readable evidence inventory capturing SHA-256 hashes of 17 core repository artifacts and verified metric summaries."
+    }
+  },
+  "m11_prerequisites": {
+    "confirmatory_intent_groups": "225 - 230 independent intent groups (900 - 920 total queries across 4 languages)",
+    "target_unconditional_power": ">= 80% (80.20% at N=225; 81.22% at N=230 under p_d=0.15, p_1=0.75)",
+    "controller_remedy": "Script-aware calibrated CECI thresholds in EvidenceController to eliminate downstream false abstention",
+    "retrieval_target": "Provisional M11 aspirational target: Devanagari Hit@5 >= 50% via hybrid dense-sparse transliteration indexing",
+    "operationalization": "Expose RETRIEVAL_RERANK_STRATEGY in config.py, QueryRequest schemas, and Prometheus metrics"
+  }
+}

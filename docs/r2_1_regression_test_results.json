@@ -1,0 +1,66 @@
+{
+  "all_passed": true,
+  "tests": {
+    "test1_fresh_session": {
+      "passed": true,
+      "repair_action": "no_prior_context",
+      "latency": 0.835,
+      "snippet": "**I do not have a preceding question in this session to re-evaluate.**\n\nPlease state the specific academic policy, regul"
+    },
+    "test2_incorrect_calendar_event": {
+      "passed": true,
+      "repair_action": "calendar_schedule_repaired",
+      "latency": 0.074,
+      "snippet": "**Answer Repaired \u2014 Verified Academic Calendar Schedule:**\n\nYou are correct to challenge the previous response. According to the official **"
+    },
+    "test3_calendar_date_correction": {
+      "passed": true,
+      "repair_action": "calendar_schedule_repaired",
+      "latency": 0.064,
+      "snippet": "**Answer Repaired \u2014 Verified Academic Calendar Schedule:**\n\nYou are correct to challenge the previous response. According to the official **"
+    },
+    "test4_attendance_threshold": {
+      "passed": true,
+      "repair_action": "factual_reconciliation",
+      "latency": 0.022,
+      "snippet": "**Factual Reconciliation of Applicable Thresholds:**\n\nBoth 70% and 75% appear in Bennett University regulations under distinct regulatory sc"
+    },
+    "test5_programme_cohort_mismatch": {
+      "passed": true,
+      "repair_action": "cohort_realigned",
+      "latency": 0.021,
+      "snippet": "**Answer Repaired \u2014 Realigned for 2017 Admission Cohort:**\n\nFor students admitted under the **2017 SEAS First Ordinance**, Clause 30.1 estab"
+    },
+    "test6_medical_exception": {
+      "passed": true,
+      "repair_action": "exception_incorporated",
+      "latency": 0.018,
+      "snippet": "**Answer Repaired \u2014 Verified Regulatory Exception Incorporated:**\n\nYou are correct to raise this point. While the standard threshold require"
+    },
+    "test7_contradictory_sources": {
+      "passed": true,
+      "repair_action": "factual_reconciliation",
+      "latency": 0.027,
+      "snippet": "**Factual Reconciliation of Applicable Thresholds:**\n\nBoth 70% and 75% appear in Bennett University regulations under distinct regulatory sc"
+    },
+    "test8_missing_evidence": {
+      "passed": true,
+      "repair_action": "abstention_clarification",
+      "latency": 0.023,
+      "snippet": "**The previous question was concluded as UNANSWERABLE because Bennett University's official corpus and your uploaded files do not contain ve"
+    },
+    "test9_hindi_hinglish": {
+      "passed": true,
+      "hindi_passed": true,
+      "hinglish_passed": true,
+      "latency": 0.073,
+      "snippet": "**Answer Repaired \u2014 Verified Academic Calendar Schedule:**\n\nYou are correct to challenge the previous response. According to the official **"
+    },
+    "test10_cross_user_isolation": {
+      "passed": true,
+      "user_b_action": "no_prior_context",
+      "latency": 0.022,
+      "snippet": "**I do not have a preceding question in this session to re-evaluate.**\n\nPlease state the specific academic policy, regulation, or question y"
+    }
+  }
+}

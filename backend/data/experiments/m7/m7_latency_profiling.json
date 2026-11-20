@@ -1,0 +1,12 @@
+{
+  "query_processing_ms": 337.35,
+  "bm25_ms": 0.6,
+  "dense_faiss_ms": 7011.7,
+  "rrf_fusion_ms": 0.03,
+  "cross_encoder_rerank_ms": 5516.39,
+  "pdr_expansion_ms": 0.07,
+  "evidence_controller_ms": 0.19,
+  "claim_grounding_ms": 2.79,
+  "ollama_generation_ms": 108616.33,
+  "total_e2e_ms": 111047.91
+}

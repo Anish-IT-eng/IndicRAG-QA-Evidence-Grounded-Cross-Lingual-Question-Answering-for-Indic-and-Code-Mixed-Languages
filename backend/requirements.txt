@@ -1,0 +1,45 @@
+# IndicRAG-QA Backend — Python Dependencies
+# Verified environment: Python 3.13.5 (Anaconda), Windows 11, i7-1360P, 16 GB RAM
+# Install: pip install -r requirements.txt
+#
+# IMPORTANT: PyMuPDF 2.x is blocked by Windows Application Control on this machine.
+# PyMuPDF==1.24.13 is the last version whose DLL passes the policy check.
+# pypdf is a pure-Python fallback (no native DLLs) and is always installed.
+
+# Web framework
+fastapi==0.141.1
+uvicorn[standard]==0.52.4
+python-multipart==0.0.32
+aiofiles==25.1.0
+httpx==0.28.1
+
+# Data validation
+pydantic==2.10.3
+pydantic-settings==2.6.1
+
+# PDF processing (primary + fallback)
+PyMuPDF==1.24.13
+pypdf>=6.0.0
+
+# Retrieval
+rank-bm25==0.2.2
+faiss-cpu==1.15.1
+sentence-transformers==6.1.0
+
+# NLP utilities
+langdetect==1.0.9
+nltk==3.9.3
+numpy==2.4.6
+scipy==1.15.3
+
+# ML (reranker + embeddings — no LLM loaded during ingestion)
+torch==2.9.0
+transformers==5.19.0
+
+# Testing
+pytest==9.1.1
+pytest-asyncio>=0.23.0
+
+# Utilities
+tqdm==4.67.1
+click==8.5.0

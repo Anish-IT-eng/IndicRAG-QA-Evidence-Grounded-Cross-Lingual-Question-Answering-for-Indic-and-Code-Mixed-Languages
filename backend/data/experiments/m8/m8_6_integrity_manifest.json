@@ -1,0 +1,121 @@
+{
+  "milestone": "M8.6",
+  "determination": "M8_6_VERIFIED_WITH_LIMITATIONS",
+  "audit_timestamp": "2026-11-16T15:25:00+05:30",
+  "auditor_role": "Senior RAG Evaluation Researcher, Regulatory Evidence Auditor & Research Integrity Engineer",
+  "preflight_verification": {
+    "official_documents": {
+      "expected": 7,
+      "actual": 7,
+      "status": "MATCH"
+    },
+    "child_passages": {
+      "expected": 253,
+      "actual": 253,
+      "status": "MATCH"
+    },
+    "parent_passages": {
+      "expected": 53,
+      "actual": 53,
+      "status": "MATCH"
+    },
+    "faiss_vectors": {
+      "expected": 253,
+      "actual": 253,
+      "status": "MATCH"
+    },
+    "faiss_dimensions": {
+      "expected": 384,
+      "actual": 384,
+      "status": "MATCH"
+    },
+    "historical_passages_preserved": {
+      "expected": 172,
+      "actual": 172,
+      "status": "MATCH"
+    },
+    "human_verified_benchmark_examples": {
+      "expected": 0,
+      "actual": 0,
+      "status": "MATCH"
+    }
+  },
+  "frozen_benchmark_hashes": {
+    "m3_final_dataset": {
+      "path": "backend/data/dataset/final_verified_dataset.csv",
+      "expected_sha256": "093b00ad0f19acda806f2302731ccf2de28838c1b29c6ef16d55cbc5e7e2d520",
+      "actual_sha256": "093b00ad0f19acda806f2302731ccf2de28838c1b29c6ef16d55cbc5e7e2d520",
+      "status": "VERIFIED_IDENTICAL"
+    },
+    "m6_expanded_benchmark_n60": {
+      "path": "backend/data/dataset/m6_expanded_benchmark_n60.csv",
+      "expected_sha256": "a528ac583d8c060b91a7febce652885e4045fcc76d644e49e876ddeb5d1db4ae",
+      "actual_sha256": "a528ac583d8c060b91a7febce652885e4045fcc76d644e49e876ddeb5d1db4ae",
+      "status": "VERIFIED_IDENTICAL"
+    },
+    "m6_qualification_ledger": {
+      "path": "backend/data/dataset/m6_benchmark_qualification.csv",
+      "expected_sha256": "db8c2b5e02d6177b335a283f9ac62f99729fb36ef142aa1af81c99528efd3b13",
+      "actual_sha256": "db8c2b5e02d6177b335a283f9ac62f99729fb36ef142aa1af81c99528efd3b13",
+      "status": "VERIFIED_IDENTICAL"
+    },
+    "m6_phase3_negative_candidates": {
+      "path": "backend/data/dataset/m6_phase3_negative_candidates.csv",
+      "expected_sha256": "492b0b1be3ce0c00fdcf453c971c48cb15176496e15806142c0aaff66050aeaa",
+      "actual_sha256": "492b0b1be3ce0c00fdcf453c971c48cb15176496e15806142c0aaff66050aeaa",
+      "status": "VERIFIED_IDENTICAL"
+    }
+  },
+  "test_suite_audit": {
+    "total_collected": 243,
+    "total_executed": 243,
+    "total_passed": 243,
+    "total_failed": 0,
+    "total_skipped": 0,
+    "pass_rate": 100.0,
+    "execution_duration_seconds": 90.77,
+    "command_used": "C:\\Users\\anish\\Anaconda3\\python.exe -m pytest backend/tests -v",
+    "execution_log_path": "backend/data/experiments/m8/m8_6_test_execution.log",
+    "module_count_reconciliation": {
+      "test_modules_count": 15,
+      "explanation": "backend/tests/ contains exactly 15 test_*.py files and 1 __init__.py file (16 python files total). M8.5 report text cited 16 modules while listing 15; physical count is verified at 15 test modules."
+    }
+  },
+  "audit_deliverables_sha256": {
+    "backend/data/experiments/m8/m8_6_claim_evidence_matrix.csv": "11907BB39C50059779FA97BCDA963C66B46B63D28871C8CF28D31063A341A150",
+    "backend/data/experiments/m8/m8_6_query_acceptance_results.csv": "EB8A822FE4EA0AA40C4354034466046D2ABEE01585F6C889CD5F6099050C9354",
+    "backend/data/experiments/m8/m8_6_regulatory_relationship_audit.csv": "F67F95B7E3DE712014AA3DED856568607D0680F1C10FEE7858A2AF258A0147C9",
+    "backend/data/experiments/m8/m8_6_citation_validation.json": "B1268ADDBCCA8BF2D104D5485430F67042097088ED586973FA7EF05AF8C791AD",
+    "backend/data/experiments/m8/m8_6_final_answer_traces.json": "9954DE14704070C09D4664944FFC951F2C35713C3709C8C4E7A705B868285780",
+    "backend/data/experiments/m8/m8_6_test_execution.log": "61EA84E59ECC7883D75D82DCC8AD6BD6037B5354F365F0BA285BFA40A3906D7A",
+    "docs/m8_6_final_answer_grounding_audit.md": "FB2C2D3836250338C71F5A725658FF792936146C84BC93D89CAE3F360A08B06C"
+  },
+  "identified_runtime_limitations": {
+    "limitation_1_citation_regex_mismatch": {
+      "severity": "HIGH (Pipeline Output Truncation)",
+      "description": "In generator.py line 171, the citation extraction regex expects [Source: <passage_id>, page X]. When local model gemma:2b prefixes the UUID with 'passage_id=' (e.g. [Source: passage_id=0280358a-..., page 1]), the regex fails to capture the UUID, causing the citation validator to detect zero valid citations. This triggers generator.py line 351's safe abstention guardrail, converting valid SUFFICIENT answers into UNANSWERABLE in production runtime.",
+      "affected_queries": [
+        "AQ-02",
+        "AQ-03",
+        "AQ-04",
+        "AQ-05",
+        "AQ-06",
+        "AQ-07"
+      ],
+      "controller_impact": "None. EvidenceController operates with 100% precision (CECI 0.75 - 0.88). The failure is strictly localized to generator post-processing.",
+      "proposed_correction": "Update generator.py regex to r'\\[Source:\\s*(?:passage_id=)?([\\w-]+)(?:,\\s*page\\s*(\\d+))?\\]' in post-M8.6 remediation."
+    },
+    "limitation_2_small_model_over_abstention": {
+      "severity": "MEDIUM",
+      "description": "gemma:2b exhibits conservative over-abstention on complex multi-passage prompts, outputting the verbatim UNANSWERABLE template for AQ-02, AQ-05, and AQ-07 despite relevant evidence in its prompt.",
+      "proposed_correction": "Enforce structured deterministic answers at the controller level for standard regulatory inquiries (as demonstrated by AQ-01)."
+    }
+  },
+  "safety_and_integrity_invariants": {
+    "production_source_code_unmodified": true,
+    "official_and_upload_indexes_isolated": true,
+    "official_sqlite_corpus_unmodified": true,
+    "frozen_benchmark_datasets_unmodified": true,
+    "historical_backups_preserved": true
+  }
+}

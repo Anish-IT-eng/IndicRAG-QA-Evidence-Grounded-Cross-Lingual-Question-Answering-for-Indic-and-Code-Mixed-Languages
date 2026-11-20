@@ -1,0 +1,71 @@
+{
+  "milestone": "M8.8",
+  "determination": "M8_8_CLOSURE_VERIFIED",
+  "timestamp": "2026-11-16T19:05:00+05:30",
+  "role": "Senior Academic Regulation Researcher, RAG Systems Engineer & Research Evaluation Auditor",
+  "preflight_verification": {
+    "official_documents": 7,
+    "child_passages": 253,
+    "parent_passages": 53,
+    "total_db_passages": 306,
+    "faiss_vector_count": 253,
+    "faiss_dimensions": 384,
+    "historical_passages_preserved": 172
+  },
+  "frozen_benchmark_hashes": {
+    "m3_final_dataset": {
+      "path": "backend/data/dataset/final_verified_dataset.csv",
+      "sha256": "093b00ad0f19acda806f2302731ccf2de28838c1b29c6ef16d55cbc5e7e2d520"
+    },
+    "m6_expanded_benchmark_n60": {
+      "path": "backend/data/dataset/m6_expanded_benchmark_n60.csv",
+      "sha256": "a528ac583d8c060b91a7febce652885e4045fcc76d644e49e876ddeb5d1db4ae"
+    },
+    "m6_qualification_ledger": {
+      "path": "backend/data/dataset/m6_benchmark_qualification.csv",
+      "sha256": "db8c2b5e02d6177b335a283f9ac62f99729fb36ef142aa1af81c99528efd3b13"
+    },
+    "m6_phase3_negative_candidates": {
+      "path": "backend/data/experiments/m6/m6_phase3_1_negative_benchmark_audit.csv",
+      "sha256": "be02da59b85d2895b8c60f52266540c27e39c4e8fb39810b1152cf74ea69b05c"
+    }
+  },
+  "source_code_hashes": {
+    "backend/app/models/schemas.py": "ec22c2b2df22d5e2f0ab22c08412fe4b1b63e290b2fb9cb3538b99007f2b477b",
+    "backend/app/generation/claim_grounding.py": "1f9ba4b13d8558ac843303e92dbd066ea34fd4030ddff904a34272ac7a89c400",
+    "backend/app/generation/generator.py": "7ca250bec278f4084c1a15985c6a0d870265c4e406149420568e4148080de9dd",
+    "backend/tests/test_m8_7_citation_parser.py": "6362843f0ff125838999d1df14f957e03cdee55f3e577c5fffa41616918cb67a"
+  },
+  "artifacts_sha256": {
+    "backend/data/experiments/m8/m8_8_final_answer_traces.json": "71f68b64b3a67786a85d5725ff575787bc73d88cc4e73696cb14ac3b3dc2b9b9",
+    "backend/data/experiments/m8/m8_8_query_acceptance_results.csv": "32922e37c03b65daaa569c1d2a9e64785916d42147829eba34641d26e7bfa6da",
+    "backend/data/experiments/m8/m8_8_claim_evidence_matrix.csv": "7e7baa97f1914badf6157f7041d0151dc501b044636e298239ba1042b79ade7e",
+    "backend/data/experiments/m8/m8_8_citation_page_validation.csv": "f54cb08526391b853969d72df9a92544ba50bfd7a104e7f00e70faacb859a5f0",
+    "backend/data/experiments/m8/m8_8_clause_relationship_matrix.csv": "2c2709abac91e5eb607ec0d8ea29118eff07417383de0a600ec07388a390d976",
+    "backend/data/experiments/m8/m8_8_test_execution.log": "560ab90599928c864b2ccf49187eeb326dda350129ab77ae2f6d1f36fe281651",
+    "backend/data/experiments/m8/m8_8_test_results.xml": "4412d55c77c2bfaa50ef6ba23c6e6d2009faf4846a31891a851c88394f6e49bd",
+    "backend/data/db/indicrag.db": "2ec61aae957c51eb9703e5322461e044b8432e1b752a9a6e8e2b154bd68121d3",
+    "docs/m8_8_regulatory_clause_reconciliation.md": "541ceb0affafd6760574abdd4d1c6c8926165ee2e91aab8db2e90c9d2033edcb"
+  },
+  "test_suite_execution": {
+    "total_collected": 257,
+    "total_executed": 257,
+    "passed": 257,
+    "failed": 0,
+    "skipped": 0,
+    "pass_rate": 100.0,
+    "modules_count": 16,
+    "duration_seconds": 73.0,
+    "execution_log": "backend/data/experiments/m8/m8_8_test_execution.log"
+  },
+  "acceptance_queries_summary": {
+    "total_queries": 8,
+    "passed": 8,
+    "failed": 0,
+    "pass_rate": 100.0,
+    "ceci_average": 0.8125,
+    "grounding_ratio_average": 0.985,
+    "citation_precision": 1.0,
+    "citation_recall": 1.0
+  }
+}

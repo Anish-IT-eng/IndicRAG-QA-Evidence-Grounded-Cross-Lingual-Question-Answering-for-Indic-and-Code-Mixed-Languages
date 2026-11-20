@@ -1,0 +1,10 @@
+threshold,true_positives,false_positives,true_negatives,false_negatives,sensitivity_recall,specificity,precision,f1_score,youden_j_statistic,safe_abstention_count,unsafe_answer_count,hypothetical_risk_cost,operational_recommendation
+0.1,32,24,0,0,1.0,0.0,0.5714,0.7273,0.0,0,24,120,High risk of hallucination (FP excessive)
+0.2,32,24,0,0,1.0,0.0,0.5714,0.7273,0.0,0,24,120,High risk of hallucination (FP excessive)
+0.3,32,24,0,0,1.0,0.0,0.5714,0.7273,0.0,0,24,120,High risk of hallucination (FP excessive)
+0.4,32,24,0,0,1.0,0.0,0.5714,0.7273,0.0,0,24,120,High risk of hallucination (FP excessive)
+0.5,32,24,0,0,1.0,0.0,0.5714,0.7273,0.0,0,24,120,High risk of hallucination (FP excessive)
+0.6,2,1,23,30,0.0625,0.9583,0.6667,0.1143,0.0208,53,1,35,Excessively conservative (FN excessive)
+0.7,0,0,24,32,0.0,1.0,0.0,0.0,0.0,56,0,32,Excessively conservative (FN excessive)
+0.8,0,0,24,32,0.0,1.0,0.0,0.0,0.0,56,0,32,Excessively conservative (FN excessive)
+0.9,0,0,24,32,0.0,1.0,0.0,0.0,0.0,56,0,32,Excessively conservative (FN excessive)

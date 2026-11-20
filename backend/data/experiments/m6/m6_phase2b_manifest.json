@@ -1,0 +1,52 @@
+{
+  "milestone": "M6",
+  "phase": "Phase 2B",
+  "timestamp_utc": "2026-11-11T05:02:27.415548+00:00",
+  "corpus_sha256": "8688605df0dbff786454ec770e95609d9d3aacb284fdb3a2f97191f7d2971e9d",
+  "n60_benchmark_sha256": "a528ac583d8c060b91a7febce652885e4045fcc76d644e49e876ddeb5d1db4ae",
+  "total_benchmark_records": 60,
+  "primary_pilot_set": {
+    "n_records": 29,
+    "n_answerable": 27,
+    "n_unanswerable": 2,
+    "accuracy": 0.2759,
+    "precision_answerable": 1.0,
+    "recall_answerable": 0.2222,
+    "f1_answerable": 0.3636,
+    "precision_unanswerable": 0.087,
+    "recall_unanswerable": 1.0,
+    "f1_unanswerable": 0.16,
+    "macro_f1": 0.2618,
+    "confusion_matrix": {
+      "TP": 6,
+      "TN": 2,
+      "FP": 0,
+      "FN": 21
+    },
+    "status_distribution": {
+      "conflicting": 13,
+      "partial": 6,
+      "insufficient": 10
+    },
+    "mean_ceci_answerable": 0.166,
+    "mean_ceci_unanswerable": 0.215
+  },
+  "diagnostic_excluded_set": {
+    "n_records": 31,
+    "n_answerable": 13,
+    "n_unanswerable": 18,
+    "status_distribution": {
+      "conflicting": 13,
+      "partial": 8,
+      "insufficient": 9,
+      "missing": 1
+    }
+  },
+  "files_generated": [
+    "backend/data/experiments/m6/m6_phase2b_query_eval.csv",
+    "backend/data/experiments/m6/m6_phase2b_claim_grounding.csv",
+    "backend/data/experiments/m6/m6_phase2b_controller_trace.jsonl",
+    "backend/data/experiments/m6/m6_phase2b_config.json",
+    "backend/data/experiments/m6/m6_phase2b_manifest.json"
+  ]
+}

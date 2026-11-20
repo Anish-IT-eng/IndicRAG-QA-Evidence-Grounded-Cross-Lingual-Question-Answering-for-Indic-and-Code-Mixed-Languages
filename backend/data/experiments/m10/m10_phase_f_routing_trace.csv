@@ -1,0 +1,249 @@
+test_id,category,query_text,detected_language,detected_script,expected_routing,actual_routing,routing_match
+T-01,pure_english,What is the minimum attendance required for exams?,en,Latin,cross_encoder,cross_encoder,True
+T-02,pure_devanagari,एंड सेमेस्टर परीक्षा में बैठने के लिए न्यूनतम कितनी उपस्थिति आवश्यक है?,hi,Devanagari,bi_encoder,bi_encoder,True
+T-03,romanized_hindi,End semester exam mein baithne ke liye minimum kitni attendance chahiye?,hi-en,Latin,cross_encoder,cross_encoder,True
+T-04,hinglish_code_mixed,End sem exam dene ke liye minimum attendance requirement kya hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+T-05,mixed_script_devanagari_dominant,उपस्थिति 70% attendance,hi-en,Mixed,bi_encoder,bi_encoder,True
+T-06,numeric_percentage,70% attendance required?,en,Latin,cross_encoder,cross_encoder,True
+T-07,technical_regulatory,Notification 307 Clause 30.1(v),en,Latin,cross_encoder,cross_encoder,True
+T-08,whitespace_empty,   ,en,Latin,cross_encoder,cross_encoder,True
+M9-Q001,m9_en,What is the minimum attendance required to appear in the End Semester Examination?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q002,m9_hi,एंड सेमेस्टर परीक्षा में बैठने के लिए न्यूनतम कितनी उपस्थिति आवश्यक है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q003,m9_hi-Latn,End semester exam mein baithne ke liye minimum kitni attendance chahiye?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q004,m9_en-hi,End sem exam dene ke liye minimum attendance requirement kya hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q005,m9_en,How much attendance is required in a course to avoid an X grade?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q006,m9_hi,किसी कोर्स में 'X' ग्रेड से बचने के लिए कितनी उपस्थिति की आवश्यकता होती है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q007,m9_hi-Latn,Kisi course mein X grade se bachne ke liye kitni attendance required hoti hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q008,m9_en-hi,Course mein X grade na mile iske liye minimum attendance kitni honi chahiye?,hi-Latn,Latin,cross_encoder,cross_encoder,True
+M9-Q009,m9_en,"Can attendance be relaxed on medical grounds, and by how much?",en,Latin,cross_encoder,cross_encoder,True
+M9-Q010,m9_hi,क्या मेडिकल आधार पर उपस्थिति में छूट मिल सकती है और अधिकतम कितनी?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q011,m9_hi-Latn,Kya medical grounds par attendance mein relaxation mil sakti hai aur kitni?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q012,m9_en-hi,Medical reason par maximum kitni attendance relaxation mil sakti hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q013,m9_en,Do short medical absences of 2 or 3 days count towards attendance relaxation?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q014,m9_hi,क्या 2 या 3 दिनों की छोटी मेडिकल अनुपस्थिति को उपस्थिति छूट में गिना जाता है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q015,m9_hi-Latn,Kya do teen din ki short medical leave par attendance relaxation milti hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q016,m9_en-hi,Agar 2-3 days ki illness ho toh kya attendance relaxation count hogi?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q017,m9_en,Is 70% attendance enough for both course passing and semester examinations?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q018,m9_hi,क्या 70% उपस्थिति कोर्स पास करने और सेमेस्टर परीक्षा दोनों के लिए पर्याप्त है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q019,m9_hi-Latn,Kya 70 percent attendance course pass karne aur semester exam dono ke liye kaafi hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q020,m9_en-hi,Kya 70% attendance se course aur end sem exam dono clear ho jayenge?,hi-Latn,Latin,cross_encoder,cross_encoder,True
+M9-Q021,m9_en,What was the course attendance requirement under the 2017 SEAS rules?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q022,m9_hi,2017 SEAS नियमों के तहत कोर्स उपस्थिति की क्या आवश्यकता थी?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q023,m9_hi-Latn,2017 SEAS rules ke mutabiq course attendance requirement kya thi?,hi-Latn,Latin,cross_encoder,cross_encoder,True
+M9-Q024,m9_en-hi,2017 batch ke SEAS ordinance mein attendance rule kya tha?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q025,m9_en,Who has the authority to approve attendance relaxation for students?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q026,m9_hi,छात्रों के लिए उपस्थिति में छूट स्वीकृत करने का अधिकार किसके पास है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q027,m9_hi-Latn,Students ke liye attendance relaxation approve karne ki authority kiske paas hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q028,m9_en-hi,Attendance relaxation approve karne ki power kiske paas hoti hai?,hi-Latn,Latin,cross_encoder,cross_encoder,True
+M9-Q029,m9_en,"Are lectures, tutorials, and practicals counted together for course attendance?",en,Latin,cross_encoder,cross_encoder,True
+M9-Q030,m9_hi,"क्या कोर्स उपस्थिति के लिए व्याख्यान, ट्यूटोरियल और प्रैक्टिकल एक साथ गिने जाते हैं?",hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q031,m9_hi-Latn,"Kya course attendance ke liye lectures, tutorials aur practicals saath mein count hote hain?",hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q032,m9_en-hi,"Lectures, tutorials aur practicals ki attendance alag count hoti hai ya saath mein?",hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q033,m9_en,What is the letter grading system used for student academic performance?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q034,m9_hi,छात्रों के शैक्षणिक प्रदर्शन के लिए किस लेटर ग्रेडिंग प्रणाली का उपयोग किया जाता है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q035,m9_hi-Latn,Students ke academic performance ke liye kaunsa letter grading system use hota hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q036,m9_en-hi,Academic grading scale mein kaun kaun se letter grades hote hain?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q037,m9_en,What does an X grade mean and what is the consequence of receiving it?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q038,m9_hi,'X' ग्रेड का क्या अर्थ है और इसे प्राप्त करने का क्या परिणाम होता है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q039,m9_hi-Latn,X grade ka kya matlab hai aur ye milne par kya hota hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q040,m9_en-hi,Agar kisi course mein X grade mil jaye toh uska consequence kya hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q041,m9_en,What is the minimum marks threshold required to secure a D grade?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q042,m9_hi,'D' ग्रेड प्राप्त करने के लिए न्यूनतम कितने अंकों की आवश्यकता होती है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q043,m9_hi-Latn,D grade secure karne ke liye minimum kitne marks chahiye?,hi-Latn,Latin,cross_encoder,cross_encoder,True
+M9-Q044,m9_en-hi,Course mein passing D grade ke liye minimum marks cutoff kya hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q045,m9_en,Under what circumstances is an I grade awarded to a student?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q046,m9_hi,छात्र को किन परिस्थितियों में 'I' ग्रेड दिया जाता है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q047,m9_hi-Latn,Student ko kin situations mein I grade milta hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q048,m9_en-hi,Report card mein I grade kab award kiya jata hai?,hi-Latn,Latin,cross_encoder,cross_encoder,True
+M9-Q049,m9_en,Do audit courses award credits and what grade is given for them?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q050,m9_hi,क्या ऑडिट कोर्स में क्रेडिट मिलते हैं और उनके लिए क्या ग्रेड दिया जाता है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q051,m9_hi-Latn,Kya audit courses mein credit milte hain aur kaunsa grade milta hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q052,m9_en-hi,Audit courses ke liye kya AU grade milta hai aur kya credits count hote hain?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q053,m9_en,How is grade moderation conducted for course evaluations?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q054,m9_hi,कोर्स मूल्यांकन के लिए ग्रेड मॉडरेशन कैसे किया जाता है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q055,m9_hi-Latn,Course evaluation ke liye grade moderation kaise conduct hota hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q056,m9_en-hi,Exam ke baad grade moderation ka process kya hota hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q057,m9_en,How is the Cumulative Grade Point Average (CGPA) calculated?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q058,m9_hi,कम्युलेटिव ग्रेड प्वाइंट एवरेज (CGPA) की गणना कैसे की जाती है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q059,m9_hi-Latn,Cumulative Grade Point Average yaani CGPA kaise calculate hota hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q060,m9_en-hi,Bennett University mein overall CGPA calculate karne ka formula kya hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q061,m9_en,What is the minimum CGPA required to graduate and receive a B.Tech degree?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q062,m9_hi,बी.टेक डिग्री प्राप्त करने और स्नातक होने के लिए न्यूनतम कितने CGPA की आवश्यकता होती है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q063,m9_hi-Latn,B.Tech degree lene aur graduate hone ke liye minimum kitna CGPA hona chahiye?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q064,m9_en-hi,Degree award ke liye minimum CGPA requirement kitni hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q065,m9_en,Who is eligible to take a make-up examination for end-semester exams?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q066,m9_hi,एंड-सेमेस्टर परीक्षा के लिए मेक-अप परीक्षा देने का पात्र कौन है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q067,m9_hi-Latn,End-semester exam ke liye make-up examination kaun de sakta hai?,hi-Latn,Latin,cross_encoder,cross_encoder,True
+M9-Q068,m9_en-hi,End sem exams miss hone par makeup exam ki eligibility kya hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q069,m9_en,What is the policy for supplementary examinations?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q070,m9_hi,पूरक (सप्लीमेंट्री) परीक्षाओं के लिए क्या नीति है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q071,m9_hi-Latn,Supplementary exams ke liye university ki policy kya hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q072,m9_en-hi,Supplementary examination ka rule kya hai aur F grade wale kaise de sakte hain?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q073,m9_en,How are practical and laboratory courses evaluated?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q074,m9_hi,प्रैक्टिकल और प्रयोगशाला पाठ्यक्रमों का मूल्यांकन कैसे किया जाता है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q075,m9_hi-Latn,Practical aur lab courses ka evaluation kaise kiya jata hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q076,m9_en-hi,Lab practical courses ka grading aur examination criteria kya hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q077,m9_en,Within how many days must medical documents be submitted after missing an exam?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q078,m9_hi,परीक्षा छूटने के कितने दिनों के भीतर मेडिकल दस्तावेज जमा करने होते हैं?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q079,m9_hi-Latn,Exam miss hone ke kitne din ke andar medical documents submit karne hote hain?,hi-Latn,Latin,cross_encoder,cross_encoder,True
+M9-Q080,m9_en-hi,Exam miss karne par medical certificate submit karne ki deadline kitne days hai?,hi-Latn,Latin,cross_encoder,cross_encoder,True
+M9-Q081,m9_en,Is an admit card required to enter the end-semester examination hall?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q082,m9_hi,क्या एंड-सेमेस्टर परीक्षा हॉल में प्रवेश के लिए एडमिट कार्ड आवश्यक है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q083,m9_hi-Latn,Kya end-semester examination hall mein enter karne ke liye admit card chahiye?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q084,m9_en-hi,End sem exam hall mein admit card compulsory hota hai kya?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q085,m9_en,Is there a supplementary examination option available for project courses?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q086,m9_hi,क्या प्रोजेक्ट पाठ्यक्रमों के लिए पूरक (सप्लीमेंट्री) परीक्षा का विकल्प उपलब्ध है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q087,m9_hi-Latn,Kya project courses ke liye supplementary exam ka option hota hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q088,m9_en-hi,Project work mein fail hone par supplementary evaluation kaise hoti hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q089,m9_en,What is the duration of a semester and how many teaching days are scheduled?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q090,m9_hi,एक सेमेस्टर की अवधि क्या होती है और इसमें कितने शिक्षण दिन निर्धारित हैं?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q091,m9_hi-Latn,Ek semester ki duration kya hoti hai aur usme kitne teaching days hote hain?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q092,m9_en-hi,Semester kitne weeks ka hota hai aur kitne days teaching ke liye hote hain?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q093,m9_en,What is the backlog requirement for promotion to the 3rd year?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q094,m9_hi,तीसरे वर्ष में पदोन्नति (प्रमोशन) के लिए बैकलॉग की क्या आवश्यकता है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q095,m9_hi-Latn,Third year mein promotion ke liye backlog ka kya rule hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q096,m9_en-hi,3rd year mein promote hone ke liye 1st year ke backlogs clear hona zaroori hai kya?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q097,m9_en,What are credit restrictions for students with low academic performance?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q098,m9_hi,कम शैक्षणिक प्रदर्शन वाले छात्रों के लिए क्रेडिट प्रतिबंध क्या हैं?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q099,m9_hi-Latn,Low academic performance wale students ke liye credit restrictions kya hoti hain?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q100,m9_en-hi,Agar CGPA kam ho toh semester mein credit restriction kaise lagti hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q101,m9_en,How can a B.Tech student earn a Minor specialization?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q102,m9_hi,एक बी.टेक छात्र माइनर विशेषज्ञता कैसे प्राप्त कर सकता है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q103,m9_hi-Latn,Ek B.Tech student Minor specialization kaise earn kar sakta hai?,hi-Latn,Latin,cross_encoder,cross_encoder,True
+M9-Q104,m9_en-hi,B.Tech mein Minor lene ka kya procedure aur credit requirement hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q105,m9_en,What is the minimum number of students required to run an elective course?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q106,m9_hi,किसी ऐच्छिक (इलेक्टिव) पाठ्यक्रम को चलाने के लिए न्यूनतम कितने छात्रों की आवश्यकता होती है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q107,m9_hi-Latn,Kisi elective course ko run karne ke liye minimum kitne students hone chahiye?,hi-Latn,Latin,cross_encoder,cross_encoder,True
+M9-Q108,m9_en-hi,Elective course offer hone ke liye minimum student enrollment kitni chahiye?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q109,m9_en,Who is required to take the Preparatory English Course?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q110,m9_hi,प्रारंभिक अंग्रेजी पाठ्यक्रम (प्रिपरेटरी इंग्लिश कोर्स) लेना किसके लिए आवश्यक है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q111,m9_hi-Latn,Preparatory English Course lena kiske liye compulsory hota hai?,hi-Latn,Latin,cross_encoder,cross_encoder,True
+M9-Q112,m9_en-hi,Preparatory English course kin students ko assign kiya jata hai?,hi-Latn,Latin,cross_encoder,cross_encoder,True
+M9-Q113,m9_en,What is the university's policy and penalty regarding ragging?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q114,m9_hi,रैगिंग के संबंध में विश्वविद्यालय की क्या नीति और दंड है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q115,m9_hi-Latn,Ragging ke regarding university ki policy aur penalty kya hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q116,m9_en-hi,Ragging karne par university kya punishment aur action leti hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q117,m9_en,Which university committee is responsible for investigating student indiscipline?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q118,m9_hi,छात्र अनुशासनहीनता की जांच के लिए कौन सी विश्वविद्यालय समिति जिम्मेदार है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q119,m9_hi-Latn,Student indiscipline ki investigation ke liye kaunsi university committee responsible hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q120,m9_en-hi,Campus mein disciplinary issues handle karne ke liye kaunsi committee hoti hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q121,m9_en,What are the rules and penalties concerning alcohol and drugs on campus?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q122,m9_hi,परिसर में शराब और नशीले पदार्थों के संबंध में क्या नियम और दंड हैं?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q123,m9_hi-Latn,Campus mein alcohol aur drugs ke regarding kya rules aur penalties hain?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q124,m9_en-hi,Campus mein alcohol ya drugs possess karne par kya penalty lagti hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q125,m9_en,Can a student appeal against a disciplinary decision of the Proctorial Committee?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q126,m9_hi,क्या कोई छात्र प्रॉक्टोरियल कमेटी के अनुशासनात्मक निर्णय के खिलाफ अपील कर सकता है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q127,m9_hi-Latn,Kya student Proctorial Committee ke disciplinary decision ke against appeal kar sakta hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q128,m9_en-hi,Proctorial board ke punishment order ke khilaaf appeal kahan ki ja sakti hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q129,m9_en,What is the typical duration of suspension imposed for misconduct?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q130,m9_hi,दुर्व्यवहार के लिए आमतौर पर निलंबन (सस्पेंशन) की अवधि क्या होती है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q131,m9_hi-Latn,Misconduct ke liye suspension ki typical duration kya hoti hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q132,m9_en-hi,Student ko misconduct ke case mein kitne time ke liye suspend kiya ja sakta hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q133,m9_en,Is bringing unauthorized outsiders into hostels or campus a punishable offense?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q134,m9_hi,क्या हॉस्टल या परिसर में अनाधिकृत बाहरी व्यक्तियों को लाना दंडनीय अपराध है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q135,m9_hi-Latn,Kya hostel ya campus mein unauthorized outsiders ko lana punishable offence hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q136,m9_en-hi,Outsiders ko bina permission hostel ya campus mein lane par kya action hota hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q137,m9_en,What is the penalty for possessing a mobile phone in the examination hall?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q138,m9_hi,परीक्षा हॉल में मोबाइल फोन रखने पर क्या दंड दिया जाता है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q139,m9_hi-Latn,Exam hall mein mobile phone rakhne par kya penalty lagti hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q140,m9_en-hi,Examination room mein phone pakde jane par kya UFM lagta hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q141,m9_en,What action is taken if a student impersonates someone else in an examination?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q142,m9_hi,यदि कोई छात्र परीक्षा में किसी अन्य का रूप धारण (इम्पर्सनेशन) करता है तो क्या कार्रवाई की जाती है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q143,m9_hi-Latn,Agar koi student exam mein kisi aur ki jagah baithe toh kya action hota hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q144,m9_en-hi,Exam mein impersonation ya proxy baithane par kya punishment hoti hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q145,m9_en,Is allowing another student to copy from your exam answer script considered unfair means?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q146,m9_hi,क्या किसी अन्य छात्र को अपनी उत्तर पुस्तिका से नकल करने देना अनुचित साधन (UFM) माना जाता है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q147,m9_hi-Latn,Kya kisi doosre student ko apni answer sheet se copy karne dena UFM mana jata hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q148,m9_en-hi,Exam mein doosre student ko answer dikhana ya copy karwana kya punishable hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q149,m9_en,How does the Committee on Unfair Means investigate cheating cases?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q150,m9_hi,अनुचित साधन समिति (UFM कमेटी) नकल के मामलों की जांच कैसे करती है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q151,m9_hi-Latn,Unfair Means Committee cheating ke cases ki investigation kaise karti hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q152,m9_en-hi,UFM committee unfair means ke cases mein student ko kaise hear karti hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q153,m9_en,Can a student be debarred from future semester examinations under UFM rules?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q154,m9_hi,क्या UFM नियमों के तहत किसी छात्र को भविष्य की सेमेस्टर परीक्षाओं से वंचित किया जा सकता है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q155,m9_hi-Latn,Kya UFM rules ke under student ko aage ke semester exams se debar kiya ja sakta hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q156,m9_en-hi,Kya UFM case mein student multiple semesters ke liye debar ho sakta hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q157,m9_en,When does registration for the Even Semester Make-up Examination start in 2026?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q158,m9_hi,2026 में इवन सेमेस्टर मेक-अप परीक्षा के लिए पंजीकरण कब शुरू होता है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q159,m9_hi-Latn,2026 mein Even Semester Make-up Examination ka registration kab start hota hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q160,m9_en-hi,2026 even sem makeup exam registration start date kya hai?,hi-Latn,Latin,cross_encoder,cross_encoder,True
+M9-Q161,m9_en,On what date does the issuance of admit cards start for the Odd Semester in 2026?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q162,m9_hi,2026 में ऑड सेमेस्टर के लिए एडमिट कार्ड जारी करने की तिथि क्या है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q163,m9_hi-Latn,2026 mein Odd Semester ke liye admit card issue hone ki start date kya hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q164,m9_en-hi,Odd sem 2026 ke admit cards kis date se issue hone shuru honge?,hi-Latn,Latin,cross_encoder,cross_encoder,True
+M9-Q165,m9_en,What is the scheduled tentative date for Convocation in the 2026-27 calendar?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q166,m9_hi,2026-27 शैक्षणिक कैलेंडर में दीक्षांत समारोह (कॉन्वोकेशन) की संभावित तिथि क्या है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q167,m9_hi-Latn,2026-27 academic calendar mein Convocation ki tentative date kya hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q168,m9_en-hi,Academic year 2026-27 mein university convocation ki tentative date kya rakhi gayi hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q169,m9_en,What is the last date for submitting Odd Semester mid-term marks in ERP?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q170,m9_hi,ईआरपी में ऑड सेमेस्टर मिड-टर्म अंक जमा करने की अंतिम तिथि क्या है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q171,m9_hi-Latn,ERP mein Odd Semester mid-term marks submit karne ki last date kya hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q172,m9_en-hi,Odd semester mid term marks ERP par submit karne ki end date kya hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q173,m9_en,"Are December 5 and 6, 2026 scheduled as holidays?",en,Latin,cross_encoder,cross_encoder,True
+M9-Q174,m9_hi,क्या 5 और 6 दिसंबर 2026 को अवकाश (हॉलिडे) निर्धारित है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q175,m9_hi-Latn,Kya 5 aur 6 December 2026 ko holiday schedule kiya gaya hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q176,m9_en-hi,5-6 December 2026 ko calendar mein holiday mark hai ya class hogi?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q177,m9_en,Who is designated as the principal executive and academic officer of Bennett University?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q178,m9_hi,बेनेट विश्वविद्यालय के मुख्य कार्यकारी और शैक्षणिक अधिकारी के रूप में किसे नामित किया गया है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q179,m9_hi-Latn,Bennett University ke principal executive aur academic officer kaun hote hain?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q180,m9_en-hi,University ka main academic aur executive head kaun hota hai according to ordinance?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q181,m9_en,What is the voting procedure for students to select the hostel mess food menu?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q182,m9_hi,हॉस्टल मेस के खाने के मेनू को चुनने के लिए छात्रों की वोटिंग प्रक्रिया क्या है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q183,m9_hi-Latn,Hostel mess ke food menu ko decide karne ke liye student voting process kya hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q184,m9_en-hi,Hostel mess menu choose karne ke liye students ka voting system kaise kaam karta hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q185,m9_en,What percentage of tuition fee is refunded if a student withdraws after six months?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q186,m9_hi,यदि कोई छात्र छह महीने बाद नाम वापस लेता है तो शिक्षण शुल्क का कितने प्रतिशत वापस किया जाता है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q187,m9_hi-Latn,Agar koi student 6 month baad admission withdraw kare toh kitna fees refund milta hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q188,m9_en-hi,6 months baad admission cancel karne par tuition fee refund percentage kitna hai?,hi-Latn,Latin,cross_encoder,cross_encoder,True
+M9-Q189,m9_en,What was the highest international salary package offered during campus placements in 2025?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q190,m9_hi,2025 में कैंपस प्लेसमेंट के दौरान पेश किया गया उच्चतम अंतरराष्ट्रीय वेतन पैकेज क्या था?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q191,m9_hi-Latn,2025 ke campus placements mein highest international salary package kitna tha?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q192,m9_en-hi,2025 placements mein highest overseas CTC package kitna offer hua tha?,hi-Latn,Latin,cross_encoder,cross_encoder,True
+M9-Q193,m9_en,What is the monthly stipend amount provided to full-time PhD research scholars?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q194,m9_hi,पूर्णकालिक पीएचडी शोधार्थियों को प्रति माह दी जाने वाली छात्रवृत्ति (स्टाइपेंड) की राशि क्या है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q195,m9_hi-Latn,Full-time PhD research scholars ko monthly stipend kitna milta hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q196,m9_en-hi,PhD scholars ko university se monthly kitna research stipend diya jata hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q197,m9_en,What are the morning bus pickup timings and designated stops from Delhi to campus?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q198,m9_hi,दिल्ली से परिसर के लिए सुबह की बस पिकअप का समय और निर्धारित स्टॉप क्या हैं?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q199,m9_hi-Latn,Delhi se campus aane ke liye morning bus pickup timings aur stops kya hain?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q200,m9_en-hi,Delhi route ki university transport bus ka morning schedule aur stops kya hain?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q201,m9_en,What is the mandatory uniform or dress code for School of Law students on weekdays?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q202,m9_hi,सप्ताह के दिनों में स्कूल ऑफ लॉ के छात्रों के लिए अनिवार्य ड्रेस कोड क्या है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q203,m9_hi-Latn,Weekdays par School of Law ke students ke liye mandatory dress code kya hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q204,m9_en-hi,Law school students ke liye daily mandatory dress code ya uniform kya hai?,hi-Latn,Latin,cross_encoder,cross_encoder,True
+M9-Q205,m9_en,What is the daily overdue fine rate per book borrowed from the university library?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q206,m9_hi,विश्वविद्यालय के पुस्तकालय से ली गई पुस्तक पर दैनिक विलंब शुल्क की दर क्या है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q207,m9_hi-Latn,University library se li gayi book late return karne par daily fine kitna lagta hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q208,m9_en-hi,Library books late return karne par per day kitna fine charge hota hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q209,m9_en,What are the specific eligibility criteria and trials for sports quota admissions?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q210,m9_hi,स्पोर्ट्स कोटा में प्रवेश के लिए विशिष्ट पात्रता मानदंड और ट्रायल क्या हैं?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q211,m9_hi-Latn,Sports quota admission ke liye specific eligibility criteria aur trials kya hote hain?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q212,m9_en-hi,Sports quota ke through admission lene ke liye trial criteria kya hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q213,m9_en,Can 2nd year students get permission to stay in off-campus private flats?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q214,m9_hi,क्या दूसरे वर्ष के छात्रों को परिसर से बाहर निजी फ्लैटों में रहने की अनुमति मिल सकती है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q215,m9_hi-Latn,Kya 2nd year students ko campus ke bahar private flat mein rehne ki permission milti hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q216,m9_en-hi,2nd year ke students ke liye off-campus flat permission ka kya rule hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q217,m9_en,What is the mandatory minimum stipend paid by companies during the 8th semester internship?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q218,m9_hi,8वें सेमेस्टर की इंटर्नशिप के दौरान कंपनियों द्वारा भुगतान किया जाने वाला अनिवार्य न्यूनतम वजीफा क्या है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q219,m9_hi-Latn,8th semester internship ke dauran companies kitna minimum stipend pay karti hain?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q220,m9_en-hi,Final semester internship mein minimum kitna corporate stipend milna compulsory hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q221,m9_en,What visa documentation is required for students participating in semester exchange abroad?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q222,m9_hi,विदेश में सेमेस्टर एक्सचेंज में भाग लेने वाले छात्रों के लिए किस वीजा दस्तावेज की आवश्यकता होती है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q223,m9_hi-Latn,Abroad semester exchange ke liye students ko kaunse visa documents submit karne hote hain?,hi-Latn,Latin,cross_encoder,cross_encoder,True
+M9-Q224,m9_en-hi,Semester exchange program ke liye university se kaunse visa papers milte hain?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q225,m9_en,How much does the university charge for personal gym trainer sessions per month?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q226,m9_hi,विश्वविद्यालय प्रति माह पर्सनल जिम ट्रेनर सत्र के लिए कितना शुल्क लेता है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q227,m9_hi-Latn,University per month personal gym trainer ke liye kitna charge karti hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q228,m9_en-hi,Campus gym mein personal fitness trainer hire karne ki monthly fee kya hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q229,m9_en,Why is 50% attendance allowed for final examinations at Bennett University?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q230,m9_hi,बेनेट विश्वविद्यालय में अंतिम परीक्षाओं के लिए 50% उपस्थिति की अनुमति क्यों दी जाती है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q231,m9_hi-Latn,Bennett University mein final exams ke liye 50 percent attendance kyu allow ki gayi hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q232,m9_en-hi,End sem exam dene ke liye 50% attendance rule kahan likha hai?,hi-Latn,Latin,cross_encoder,cross_encoder,True
+M9-Q233,m9_en,How can an undergraduate student obtain an 'A' grade with only 35% overall marks?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q234,m9_hi,एक स्नातक छात्र केवल 35% कुल अंकों के साथ 'A' ग्रेड कैसे प्राप्त कर सकता है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q235,m9_hi-Latn,Ek student sirf 35 percent marks ke saath 'A' grade kaise score kar sakta hai?,hi-Latn,Latin,cross_encoder,cross_encoder,True
+M9-Q236,m9_en-hi,Kya kisi subject mein 35% marks lake A grade mil sakta hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q237,m9_en,What is the procedure to change branch from BA-LLB to B.Tech Computer Science after first year?,en,Latin,cross_encoder,cross_encoder,True
+M9-Q238,m9_hi,प्रथम वर्ष के बाद बीए-एलएलबी से बी.टेक कंप्यूटर साइंस में शाखा (ब्रांच) बदलने की प्रक्रिया क्या है?,hi,Devanagari,bi_encoder,bi_encoder,True
+M9-Q239,m9_hi-Latn,First year ke baad BA-LLB se B.Tech Computer Science mein branch change karne ka procedure kya hai?,hi-en,Latin,cross_encoder,cross_encoder,True
+M9-Q240,m9_en-hi,Law school se B.Tech CSE mein stream switch karne ke rules kya hain?,hi-en,Latin,cross_encoder,cross_encoder,True

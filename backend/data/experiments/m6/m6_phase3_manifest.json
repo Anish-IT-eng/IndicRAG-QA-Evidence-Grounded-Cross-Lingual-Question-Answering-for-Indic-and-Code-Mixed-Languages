@@ -1,0 +1,57 @@
+{
+  "milestone": "M6",
+  "phase": "Phase 3",
+  "title": "Negative Corpus Expansion & Runtime Enforcement Patching",
+  "timestamp_utc": "2026-11-11T06:37:11.078869+00:00",
+  "provenance_hashes": {
+    "corpus_db_sha256": "8688605df0dbff786454ec770e95609d9d3aacb284fdb3a2f97191f7d2971e9d",
+    "corpus_expected": "8688605df0dbff786454ec770e95609d9d3aacb284fdb3a2f97191f7d2971e9d",
+    "corpus_hash_matches": true,
+    "m3_frozen_benchmark_sha256": "093b00ad0f19acda806f2302731ccf2de28838c1b29c6ef16d55cbc5e7e2d520",
+    "m3_expected": "093b00ad0f19acda806f2302731ccf2de28838c1b29c6ef16d55cbc5e7e2d520",
+    "m3_hash_matches": true,
+    "m6_n60_benchmark_sha256": "a528ac583d8c060b91a7febce652885e4045fcc76d644e49e876ddeb5d1db4ae",
+    "m6_n60_expected": "a528ac583d8c060b91a7febce652885e4045fcc76d644e49e876ddeb5d1db4ae",
+    "m6_n60_hash_matches": true,
+    "m6_qualification_ledger_sha256": "db8c2b5e02d6177b335a283f9ac62f99729fb36ef142aa1af81c99528efd3b13",
+    "m6_qualification_ledger_matches": true,
+    "m6_phase3_negative_candidates_sha256": "492b0b1be3ce0c00fdcf453c971c48cb15176496e15806142c0aaff66050aeaa"
+  },
+  "remediation_summary": {
+    "defect_gen_01_contradictions_remediated": true,
+    "defect_gen_02_zero_citations_retry_enabled": true,
+    "defect_gen_03_clarification_required_enforced": true,
+    "uncertainty_qualification_threshold": 0.4,
+    "total_security_tests": 12,
+    "passing_security_tests": 12,
+    "test_suite_total_tests": 175,
+    "test_suite_baseline_tests": 142,
+    "test_suite_phase2b_tests": 21,
+    "test_suite_phase3_tests": 12
+  },
+  "negative_benchmark_expansion": {
+    "total_candidates": 33,
+    "distribution_by_category": {
+      "out_of_domain": 4,
+      "missing_policy": 5,
+      "missing_cohort": 5,
+      "contradictory_premise": 5,
+      "historical_misapplication": 4,
+      "cross_lingual_unanswerable": 6,
+      "falsely_presupposed_policy": 4
+    },
+    "distribution_by_expected_state": {
+      "MISSING": 9,
+      "INSUFFICIENT": 15,
+      "CLARIFICATION_REQUIRED": 5,
+      "CONFLICTING": 4
+    },
+    "dataset_file": "backend/data/dataset/m6_phase3_negative_candidates.csv"
+  },
+  "pilot_enforcement_delta": {
+    "pilot_queries_count": 60,
+    "remediated_contradictions_count": 8,
+    "remediated_clarifications_count": 0,
+    "direct_leakage_rate_post_patch": 0.0
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "manifest_metadata": {
+    "milestone": "M6",
+    "phase": "Phase 1 - Evidence Reliability Audit and Benchmark Expansion Design",
+    "creation_timestamp": "2026-11-10T20:31:00+05:30",
+    "author_role": "Senior RAG Research Engineer & Multilingual Evaluation Specialist",
+    "status": "PHASE_1_COMPLETED",
+    "architecture_freeze": "PRESERVED_IMMUTABLE"
+  },
+  "provenance_and_integrity": {
+    "corpus_sqlite_db": "backend/data/db/indicrag.db",
+    "corpus_child_passages": 142,
+    "corpus_parent_passages": 30,
+    "corpus_total_rows": 172,
+    "corpus_sha256": "8688605df0dbff786454ec770e95609d9d3aacb284fdb3a2f97191f7d2971e9d",
+    "frozen_benchmark_path": "backend/data/dataset/final_verified_dataset.csv",
+    "frozen_benchmark_instances": 15,
+    "frozen_benchmark_sha256": "093b00ad0f19acda806f2302731ccf2de28838c1b29c6ef16d55cbc5e7e2d520",
+    "m5_reference_run_dir": "backend/data/experiments/m5/runs/run_20261110_135218/",
+    "m5_reconciliation_dir": "backend/data/experiments/m5/reconciliation/",
+    "regression_tests_passing": 135
+  },
+  "audit_findings_summary": {
+    "score_scale_incompatibility": {
+      "defect_identified": true,
+      "description": "EvidenceController evaluated retrieval scores with fixed min_score=0.35, but received raw RRF scores <= 0.033 in E10, triggering 100% false abstentions on answerable queries.",
+      "severity": "CRITICAL_PIPELINE_DEFECT",
+      "remediation_status": "DESIGNED_IN_PHASE_1"
+    },
+    "benchmark_sample_size_limitation": {
+      "frozen_unanswerable_count": 2,
+      "description": "N=2 unanswerable instances provides zero degrees of freedom for threshold calibration or ROC/PR curve plotting.",
+      "remediation_status": "EXPANSION_DESIGNED_TO_N60"
+    },
+    "citation_claim_support_limitation": {
+      "defect_identified": true,
+      "description": "claim_supported is currently hardcoded to True in generator.py if passage_id exists in retrieved pool, without verifying semantic text entailment.",
+      "remediation_status": "EVALUATION_PROTOCOL_UPDATED"
+    }
+  },
+  "benchmark_expansion_specification": {
+    "target_total_instances": 60,
+    "answerable_instances": 40,
+    "unanswerable_instances": 20,
+    "provenance_split": {
+      "m3_frozen_core": 15,
+      "m6_expanded_answerable": 27,
+      "m6_expanded_unanswerable": 18
+    },
+    "language_distribution": {
+      "english_en": { "answerable": 14, "unanswerable": 6, "total": 20 },
+      "hindi_devanagari_hi": { "answerable": 10, "unanswerable": 6, "total": 16 },
+      "hinglish_code_mixed_hi_en": { "answerable": 8, "unanswerable": 4, "total": 12 },
+      "hindi_romanized_hi_latn": { "answerable": 8, "unanswerable": 4, "total": 12 }
+    },
+    "answerable_taxonomies": [
+      "direct_factual",
+      "numerical_tabular",
+      "multi_part_decomposed",
+      "conditional_exceptional",
+      "temporal_version_dependent"
+    ],
+    "unanswerable_taxonomies": [
+      "out_of_domain",
+      "absent_university_policy",
+      "ambiguous_missing_year",
+      "contradictory_unresolvable"
+    ],
+    "target_dataset_path": "backend/data/dataset/m6_expanded_benchmark_n60.csv"
+  },
+  "calibration_methodology_specification": {
+    "score_normalizers": {
+      "bm25": "Dynamic pool-level min-max normalization with query term damping",
+      "dense_faiss": "Clamped cosine normalization to [0.0, 1.0] using empirical noise floor (0.20) and ceiling (0.80)",
+      "hybrid_rrf": "Theoretical maximum normalization: S_rrf / S_max where S_max = 2.0 / (k + 1)",
+      "cross_encoder": "Temperature-scaled logistic sigmoid: sigma((z - mu_prior) / tau) with tau=1.8"
+    },
+    "multi_feature_confidence_vector": {
+      "phi_formulation": "alpha_1 * s_1 + alpha_2 * delta_s12 + alpha_3 * c_consensus + alpha_4 * cov_intent + v_align",
+      "weights": {
+        "alpha_1_top_score": 0.50,
+        "alpha_2_margin": 0.15,
+        "alpha_3_consensus": 0.15,
+        "alpha_4_intent_coverage": 0.20
+      }
+    },
+    "cross_validation_strategy": "Stratified 5-Fold Cross-Validation on expanded benchmark with zero test set leakage",
+    "calibration_objective": "argmax_theta F1(theta) subject to FAR(theta) <= 0.05"
+  },
+  "deliverables": {
+    "evidence_reliability_audit": "docs/m6_evidence_reliability_audit.md",
+    "benchmark_expansion_design": "docs/m6_benchmark_expansion_design.md",
+    "score_calibration_design": "docs/m6_score_calibration_design.md",
+    "evaluation_protocol": "docs/m6_evaluation_protocol.md",
+    "phase1_manifest": "backend/data/experiments/m6/m6_phase1_manifest.json"
+  }
+}
+

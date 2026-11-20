@@ -1,0 +1,9 @@
+config_id,stage,mean_latency_ms,p50_latency_ms,p95_latency_ms,p99_latency_ms,max_latency_ms
+ConfigA_Production,retrieval,2805.54,2191.6,5834.43,8555.01,19041.0
+ConfigA_Production,controller,1.5,1.5,1.5,1.5,1.5
+ConfigA_Production,generation,43872.76,0.3,117966.35,212985.0,1122445.1
+ConfigA_Production,total,46694.32,7053.8,121230.71,217518.19,1126474.5
+ConfigB_AdaptiveE6b,retrieval,2372.5,2034.95,5835.38,8555.01,19041.0
+ConfigB_AdaptiveE6b,controller,1.25,1.5,1.5,1.5,1.5
+ConfigB_AdaptiveE6b,generation,43897.19,0.3,119580.12,212985.0,1122445.1
+ConfigB_AdaptiveE6b,total,46270.94,7053.55,121850.94,217518.37,1126472.1

@@ -1,0 +1,40 @@
+{
+  "milestone": "M8",
+  "name": "Bennett University Official Document Refresh",
+  "timestamp": "2026-11-16T10:00:00+05:30",
+  "decision": "M8_DOCUMENT_REFRESH_COMPLETED",
+  "hashes": {
+    "corpus_sha256_pre": "8688605df0dbff786454ec770e95609d9d3aacb284fdb3a2f97191f7d2971e9d",
+    "corpus_sha256_post": "c414cee2c2ce35b6c628f4fb4ada50804dd96d574ea9b373f68c53f29f35f111",
+    "benchmarks": {
+      "m3_verified": "093b00ad0f19acda806f2302731ccf2de28838c1b29c6ef16d55cbc5e7e2d520",
+      "m6_expanded_n60": "a528ac583d8c060b91a7febce652885e4045fcc76d644e49e876ddeb5d1db4ae",
+      "m6_qualification": "db8c2b5e02d6177b335a283f9ac62f99729fb36ef142aa1af81c99528efd3b13",
+      "m6_phase3_negative": "492b0b1be3ce0c00fdcf453c971c48cb15176496e15806142c0aaff66050aeaa"
+    }
+  },
+  "corpus_metrics": {
+    "official_documents_pre": 4,
+    "official_documents_post": 7,
+    "pages_pre": 111,
+    "pages_post": 196,
+    "passages_pre": 172,
+    "passages_post": 306,
+    "child_passages_pre": 142,
+    "child_passages_post": 253,
+    "parent_passages_pre": 30,
+    "parent_passages_post": 53
+  },
+  "index_metrics": {
+    "bm25_count": 253,
+    "faiss_count": 253,
+    "faiss_dim": 384
+  },
+  "test_metrics": {
+    "total_tests": 214,
+    "passed": 214,
+    "failed": 0,
+    "pass_rate": 1.0
+  }
+}
+

@@ -1,0 +1,204 @@
+"""
+Evidence and Answerability Controller.
+
+Evaluates retrieved passages and decides:
+  SUFFICIENT    → proceed to generation
+  PARTIAL       → answer but note incomplete evidence
+  INSUFFICIENT  → retry or abstain
+  CONFLICTING   → flag conflicting versions
+  MISSING       → evidence absent from selected corpus
+
+The controller uses interpretable rule-based signals, NOT LLM self-confidence.
+Thresholds must be calibrated on the validation set, never the test set.
+"""
+from __future__ import annotations
+
+from typing import Optional
+
+from app.core.config import settings
+from app.core.logging_config import logger
+from app.models.schemas import (
+    EvidenceDecision,
+    EvidenceStatus,
+    QueryAnalysis,
+    RetrievedPassage,
+    RetrievalResult,
+)
+
+
+class EvidenceController:
+    """
+    Interprets retrieval results and produces an EvidenceDecision.
+
+    Signals evaluated (all interpretable rules):
+    1. Top-passage score vs. evidence_min_score threshold.
+    2. Count of passages above threshold.
+    3. Presence of version-conflict flags.
+    4. Coverage of sub-questions (multi-part queries).
+    5. Source-type consistency (do all valid passages agree on the rule?).
+    """
+
+    def __init__(
+        self,
+        min_score: float = settings.evidence_min_score,
+        sufficient_count: int = settings.evidence_sufficient_count,
+        max_retries: int = settings.max_retrieval_retries,
+    ):
+        self.min_score = min_score
+        self.sufficient_count = sufficient_count
+        self.max_retries = max_retries
+
+    # ── Public interface ──────────────────────────────────────────────────────
+
+    def evaluate(
+        self,
+        retrieval_result: RetrievalResult,
+        attempt: int = 1,
+    ) -> EvidenceDecision:
+        passages = retrieval_result.retrieved_passages
+        query_analysis = retrieval_result.query_analysis
+
+        if not passages:
+            return EvidenceDecision(
+                status=EvidenceStatus.MISSING,
+                explanation=(
+                    "No passages were retrieved. "
+                    "The information may not exist in the selected corpus."
+                ),
+                retry_recommended=attempt < self.max_retries,
+            )
+
+        # Separate valid from superseded/flagged passages
+        valid, conflicting = self._split_passages(passages)
+
+        # Check for conflicting versions
+        if conflicting and valid:
+            return EvidenceDecision(
+                status=EvidenceStatus.CONFLICTING,
+                valid_passages=valid,
+                conflicting_passages=conflicting,
+                explanation=(
+                    "Multiple document versions found. "
+                    "The applicable rule may differ by academic year or program."
+                ),
+                coverage_score=self._coverage_score(valid, query_analysis),
+            )
+
+        # Filter by minimum score
+        above_threshold = [p for p in valid if p.score >= self.min_score]
+
+        if len(above_threshold) == 0:
+            logger.debug(
+                "No passages above threshold %.2f (best score: %.2f)",
+                self.min_score,
+                max((p.score for p in valid), default=0.0),
+            )
+            return EvidenceDecision(
+                status=EvidenceStatus.INSUFFICIENT,
+                valid_passages=valid,
+                coverage_score=0.0,
+                explanation=(
+                    f"Retrieval scores below evidence threshold ({self.min_score:.2f}). "
+                    "Insufficient evidence to answer."
+                ),
+                retry_recommended=attempt < self.max_retries,
+            )
+
+        # Coverage check for multi-part questions
+        coverage = self._coverage_score(above_threshold, query_analysis)
+        sub_coverage = self._sub_question_coverage(above_threshold, query_analysis)
+
+        if query_analysis.is_multi_part and coverage < 0.6:
+            return EvidenceDecision(
+                status=EvidenceStatus.PARTIAL,
+                valid_passages=above_threshold,
+                coverage_score=coverage,
+                sub_question_coverage=sub_coverage,
+                explanation=(
+                    "Evidence found for some but not all parts of the question. "
+                    "Partial answer only."
+                ),
+            )
+
+        if len(above_threshold) >= self.sufficient_count:
+            return EvidenceDecision(
+                status=EvidenceStatus.SUFFICIENT,
+                valid_passages=above_threshold,
+                coverage_score=coverage,
+                sub_question_coverage=sub_coverage,
+                explanation="Sufficient evidence found.",
+            )
+
+        # Edge case: threshold met but count low
+        return EvidenceDecision(
+            status=EvidenceStatus.INSUFFICIENT,
+            valid_passages=above_threshold,
+            coverage_score=coverage,
+            explanation="Evidence count below required minimum.",
+            retry_recommended=attempt < self.max_retries,
+        )
+
+    # ── Helpers ───────────────────────────────────────────────────────────────
+
+    def _split_passages(
+        self,
+        passages: list[RetrievedPassage],
+    ) -> tuple[list[RetrievedPassage], list[RetrievedPassage]]:
+        """Separate valid passages from those flagged as superseded or conflicting."""
+        valid, conflicting = [], []
+        for p in passages:
+            if p.version_info.superseded_by:
+                conflicting.append(p)
+            elif p.is_valid_for_query is False:
+                conflicting.append(p)
+            else:
+                valid.append(p)
+        return valid, conflicting
+
+    def _coverage_score(
+        self,
+        passages: list[RetrievedPassage],
+        query_analysis: QueryAnalysis,
+    ) -> float:
+        """
+        Heuristic coverage: check how many intent keywords appear in evidence text.
+        """
+        if not query_analysis.intent_keywords or not passages:
+            return 1.0 if passages else 0.0
+
+        all_text = " ".join(p.text.lower() for p in passages)
+        matched = sum(
+            1 for kw in query_analysis.intent_keywords if kw in all_text
+        )
+        return matched / len(query_analysis.intent_keywords)
+
+    def _sub_question_coverage(
+        self,
+        passages: list[RetrievedPassage],
+        query_analysis: QueryAnalysis,
+    ) -> dict[str, bool]:
+        """
+        For each sub-question, check whether any retrieved passage seems relevant.
+        Uses keyword overlap heuristic.
+        """
+        coverage: dict[str, bool] = {}
+        all_text = " ".join(p.text.lower() for p in passages)
+        for sq in query_analysis.sub_questions:
+            kws = [w.lower() for w in sq.split() if len(w) > 3]
+            if not kws:
+                coverage[sq] = True
+                continue
+            matched = sum(1 for kw in kws if kw in all_text)
+            coverage[sq] = matched >= max(1, len(kws) // 2)
+        return coverage
+
+
+# Singleton
+_evidence_controller: Optional[EvidenceController] = None
+
+
+def get_evidence_controller() -> EvidenceController:
+    global _evidence_controller
+    if _evidence_controller is None:
+        _evidence_controller = EvidenceController()
+    return _evidence_controller

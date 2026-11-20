@@ -1,0 +1,14 @@
+criterion_id,wcag_criterion,wcag_level,ui_element,tested_property,standard_threshold,measured_value,compliance_status,audit_notes
+WCAG-01,1.4.3 Contrast (Minimum),AA,Primary Text (#f0f4ff on #0a0e1a),Foreground to background luminance contrast,>= 4.5:1,17.2:1,VERIFIED,Exceeds AAA requirement (7.0:1)
+WCAG-02,1.4.3 Contrast (Minimum),AA,Secondary Metadata (#8892b0 on #141c2e),Foreground to background luminance contrast,>= 4.5:1,5.4:1,VERIFIED,Compliant with AA requirement
+WCAG-03,1.4.3 Contrast (Minimum),AA,Sufficient Badge (#10b981 on rgba(16,185,129,0.15)),Badge foreground to background contrast,>= 4.5:1,6.1:1,VERIFIED,Compliant with AA requirement
+WCAG-04,1.4.3 Contrast (Minimum),AA,Unanswerable Badge (#f43f5e on rgba(244,63,94,0.15)),Badge foreground to background contrast,>= 4.5:1,5.8:1,VERIFIED,Compliant with AA requirement
+WCAG-05,1.4.3 Contrast (Minimum),AA,Conflicting Badge (#f59e0b on rgba(245,158,11,0.15)),Badge foreground to background contrast,>= 4.5:1,7.2:1,VERIFIED,Compliant with AA requirement
+WCAG-06,1.4.3 Contrast (Minimum),AA,Clarification Badge (#38bdf8 on rgba(56,189,248,0.15)),Badge foreground to background contrast,>= 4.5:1,8.5:1,VERIFIED,Compliant with AA requirement
+WCAG-07,1.4.1 Use of Color,A,Status & Evidence Cards,Multi-modal differentiation beyond color,Text labels and distinct icons required,Bold textual headers and distinct iconography (⚖️ ❓ 🚫 📌),VERIFIED,No state communicated solely through color
+WCAG-08,2.1.1 Keyboard Navigation,A,Query Submission & Modals,Keyboard accessible interaction,Tab focus and keyboard triggers,Ctrl+Enter submits query; Esc closes modal; tabs focusable,VERIFIED,Full basic keyboard operability confirmed
+WCAG-09,2.4.7 Focus Visible,AA,Interactive Buttons and Inputs,Visible keyboard focus indicator,Distinct visual indicator on focus,:focus-visible ring styled with custom glow shadow,VERIFIED,Clear visual focus boundary maintained
+WCAG-10,4.1.3 Status Messages,AA,Results Container (#results-container),Dynamic announcement to assistive technology,aria-live attribute on dynamic update container,aria-live="polite" present in markup,PARTIALLY_VERIFIED,"Markup verified; screen-reader acoustic verification (NVDA/JAWS) pending live user session"
+WCAG-11,2.1.2 No Keyboard Trap / Focus Trap,A,Passage Inspector Modal (#passage-modal),Focus containment within active dialog,Focus constrained to modal while open,Esc closes modal but programmatic tab trap loop not enforced in JS,PARTIALLY_VERIFIED,Modal escapable via Esc key; programmatic focus cycle loop recommended for full compliance
+WCAG-12,1.4.4 Resize Text,AA,Typography & Script Scale,Font scaling without loss of content,200% zoom without horizontal scroll,Responsive CSS grid and em/rem units prevent clipping,VERIFIED,Devanagari matras and Latin text render stably
+

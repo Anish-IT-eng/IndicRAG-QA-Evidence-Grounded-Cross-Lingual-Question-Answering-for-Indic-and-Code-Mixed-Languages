@@ -1,0 +1,140 @@
+{
+  "milestone": "M6",
+  "phase": "Phase 2B.2",
+  "audit_title": "Final Metric and Classification Reconciliation",
+  "timestamp_utc": "2026-11-11T05:45:46.924558+00:00",
+  "provenance_hashes": {
+    "corpus_db_sha256": "8688605df0dbff786454ec770e95609d9d3aacb284fdb3a2f97191f7d2971e9d",
+    "corpus_expected": "8688605df0dbff786454ec770e95609d9d3aacb284fdb3a2f97191f7d2971e9d",
+    "corpus_hash_matches": true,
+    "m3_frozen_benchmark_sha256": "093b00ad0f19acda806f2302731ccf2de28838c1b29c6ef16d55cbc5e7e2d520",
+    "m3_expected": "093b00ad0f19acda806f2302731ccf2de28838c1b29c6ef16d55cbc5e7e2d520",
+    "m3_hash_matches": true,
+    "m6_n60_benchmark_sha256": "a528ac583d8c060b91a7febce652885e4045fcc76d644e49e876ddeb5d1db4ae",
+    "m6_n60_expected": "a528ac583d8c060b91a7febce652885e4045fcc76d644e49e876ddeb5d1db4ae",
+    "m6_n60_hash_matches": true,
+    "m6_qualification_ledger_sha256": "db8c2b5e02d6177b335a283f9ac62f99729fb36ef142aa1af81c99528efd3b13"
+  },
+  "test_evidence": {
+    "actual_collected_tests": 163,
+    "passed_tests": 163,
+    "failed_tests": 0,
+    "skipped_tests": 0,
+    "error_tests": 0,
+    "runtime_seconds": 25.82,
+    "test_metrics_count": 24,
+    "per_module_breakdown": {
+      "test_api.py": 10,
+      "test_database.py": 4,
+      "test_ingestion_smoke.py": 32,
+      "test_metrics.py": 24,
+      "test_model_verifier.py": 12,
+      "test_query_processor.py": 22,
+      "test_retrieval_baselines.py": 12,
+      "test_m5_advanced_rag.py": 19,
+      "test_m6_benchmark_expansion.py": 7,
+      "test_m6_phase2b_scoring_and_controller.py": 21
+    },
+    "sum_verified": 163
+  },
+  "conflict_partition_reconciliation": {
+    "total_historical_conflicting": 13,
+    "partition_breakdown": {
+      "identical_substantive_rules": 11,
+      "cohort_specific_attendance_clarification": 1,
+      "genuine_regulatory_contradiction": 1
+    },
+    "identical_rule_query_ids": [
+      "8820214e-35a3-4176-9a87-d6a681c62c24",
+      "b0a1c002-87a2-4102-9002-000000000002",
+      "6776bafc-4389-4d2f-8025-d37a604d177b",
+      "b0a1c001-87a1-4101-9001-000000000001",
+      "b0a1c006-87a6-4106-9006-000000000006",
+      "01fc5ad1-43a1-443f-beda-e82970d2a7cb",
+      "b0a1c005-87a5-4105-9005-000000000005",
+      "c60a-e03-000000000003",
+      "c60a-e08-000000000008",
+      "c60a-h02-000000000012",
+      "c60a-h05-000000000015"
+    ],
+    "cohort_specific_attendance_query_id": "b0a1c004-87a4-4104-9004-000000000004",
+    "genuine_contradiction_query_id": "fe70960c-f447-4fd4-88c7-20572e422fb0"
+  },
+  "confusion_matrix_reconciliation": {
+    "historical_phase2b_strict": {
+      "TP": 6,
+      "FN": 21,
+      "FP": 0,
+      "TN": 2,
+      "CR": 0,
+      "answer_precision": 1.0,
+      "answerable_recall": 0.2222,
+      "answerable_f1": 0.3636,
+      "unanswerable_precision": 0.087,
+      "unanswerable_recall": 1.0,
+      "unanswerable_f1": 0.16,
+      "macro_f1": 0.2618,
+      "coverage": 0.2069,
+      "false_answers": 0
+    },
+    "phase2b1_erroneous_claim": {
+      "reported_TP": 19,
+      "reported_FN": 8,
+      "discrepancy_diagnosis": "Phase 2B.1 mistakenly added all 13 conflicting queries indiscriminately (6 + 13 = 19) to TP without subtracting the 1 clarification query (b0a1c004) and 1 genuine contradiction query (fe70960c).",
+      "unexplained_tp_records_identified": [
+        "b0a1c004-87a4-4104-9004-000000000004 (CLARIFICATION_REQUIRED)",
+        "fe70960c-f447-4fd4-88c7-20572e422fb0 (GENUINE CONTRADICTION / MAINTAIN_CONFLICTING)"
+      ]
+    },
+    "corrected_operational_phase2b2": {
+      "TP": 17,
+      "FN": 9,
+      "FP": 0,
+      "TN": 2,
+      "CR": 1,
+      "answer_precision": 1.0,
+      "answerable_recall": 0.6538,
+      "answerable_f1": 0.7907,
+      "unanswerable_precision": 0.1818,
+      "unanswerable_recall": 1.0,
+      "unanswerable_f1": 0.3077,
+      "macro_f1": 0.5492,
+      "coverage": 0.5862,
+      "false_answers": 0,
+      "notes": "Calculated with Clarification Required (CR=1) reported separately. If CR is included as unaddressed positive in strict binary (FN=10), answerable_recall=0.6296, answerable_f1=0.7727, unanswerable_precision=0.1667, unanswerable_f1=0.2857, macro_f1=0.5292."
+    }
+  },
+  "claim_grounding_reconciliation": {
+    "raw_csv_grounding_counts": {
+      "total_claims": 65,
+      "entailed": 40,
+      "contradicted": 8,
+      "insufficient_support": 17
+    },
+    "transcription_discrepancy_resolution": "The apparent shift from 40 to 39 entailed claims in Phase 2B.1 was an off-by-one clerical markdown table typo in docs/m6_phase2b1_integrity_audit.md (reporting 11+1=12 rather than 11+2=13 excluded entailed claims). The underlying CSV files (m6_phase2b_claim_grounding.csv and m6_phase2b1_claim_enforcement_audit.csv) are identical at 40 entailed, 8 contradicted, 17 unsupported.",
+    "cross_lingual_diagnosis": {
+      "b0a1c002-87a2-4102-9002-000000000002": {
+        "language": "Hinglish",
+        "lexical_overlap": 0.3,
+        "lexical_threshold": 0.4,
+        "lexical_verdict": "INSUFFICIENT_SUPPORT (Fail)",
+        "semantic_entailment": true,
+        "diagnosis": "Lexical failure only due to mixed English-Hindi tokenization. Semantically 100% grounded in official withdrawal regulations."
+      },
+      "b0a1c006-87a6-4106-9006-000000000006": {
+        "language": "Hindi (Devanagari)",
+        "lexical_overlap": 0.0,
+        "lexical_threshold": 0.4,
+        "lexical_verdict": "INSUFFICIENT_SUPPORT (Fail)",
+        "semantic_entailment": true,
+        "diagnosis": "Lexical failure only due to script divergence (Devanagari vs English Latin). Semantically 100% grounded in official 'I' grade regulations."
+      }
+    }
+  },
+  "deliverables_generated": [
+    "docs/m6_phase2b2_metric_reconciliation.md",
+    "backend/data/experiments/m6/m6_phase2b2_confusion_matrix.csv",
+    "backend/data/experiments/m6/m6_phase2b2_claim_delta_audit.csv",
+    "backend/data/experiments/m6/m6_phase2b2_manifest.json"
+  ]
+}

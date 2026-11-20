@@ -1,0 +1,82 @@
+[
+  {
+    "query_id": "AQ-01",
+    "query_text": "What is the minimum attendance required?",
+    "citations_extracted_count": 0,
+    "citations": [],
+    "strict_production_regex_passed": false,
+    "robust_regex_passed": true,
+    "citation_validity_explanation": "No citations"
+  },
+  {
+    "query_id": "AQ-02",
+    "query_text": "What attendance is required to sit for end semester exams?",
+    "citations_extracted_count": 0,
+    "citations": [],
+    "strict_production_regex_passed": false,
+    "robust_regex_passed": false,
+    "citation_validity_explanation": "No citations"
+  },
+  {
+    "query_id": "AQ-03",
+    "query_text": "How much attendance is required to avoid an X grade?",
+    "citations_extracted_count": 1,
+    "citations": [
+      {
+        "cited_passage_id": "f88ec726-74ba-426f-a01f-4b9665c1a8b8",
+        "cited_page": "28",
+        "valid_in_retrieval": true,
+        "document_title": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2",
+        "matched_by_strict_production_regex": false
+      }
+    ],
+    "strict_production_regex_passed": false,
+    "robust_regex_passed": true,
+    "citation_validity_explanation": "Model formatted citation with 'passage_id=' prefix, matching robust regex but rejected by production regex."
+  },
+  {
+    "query_id": "AQ-04",
+    "query_text": "Is 70% attendance enough?",
+    "citations_extracted_count": 0,
+    "citations": [],
+    "strict_production_regex_passed": false,
+    "robust_regex_passed": false,
+    "citation_validity_explanation": "No citations"
+  },
+  {
+    "query_id": "AQ-05",
+    "query_text": "Is 75% compulsory for SCSET students?",
+    "citations_extracted_count": 0,
+    "citations": [],
+    "strict_production_regex_passed": false,
+    "robust_regex_passed": false,
+    "citation_validity_explanation": "No citations"
+  },
+  {
+    "query_id": "AQ-06",
+    "query_text": "What was the attendance rule in 2017?",
+    "citations_extracted_count": 0,
+    "citations": [],
+    "strict_production_regex_passed": false,
+    "robust_regex_passed": false,
+    "citation_validity_explanation": "No citations"
+  },
+  {
+    "query_id": "AQ-07",
+    "query_text": "Can attendance be relaxed due to medical reasons?",
+    "citations_extracted_count": 0,
+    "citations": [],
+    "strict_production_regex_passed": false,
+    "robust_regex_passed": false,
+    "citation_validity_explanation": "No citations"
+  },
+  {
+    "query_id": "MB-01",
+    "query_text": "Does the medical relaxation automatically allow me to sit for the End Semester Examination with less than 75% attendance?",
+    "citations_extracted_count": 0,
+    "citations": [],
+    "strict_production_regex_passed": false,
+    "robust_regex_passed": false,
+    "citation_validity_explanation": "No citations"
+  }
+]

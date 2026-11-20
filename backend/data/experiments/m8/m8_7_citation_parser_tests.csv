@@ -1,0 +1,15 @@
+test_id,test_name,input_format,extracted_passage_id,extracted_page,syntax_valid,membership_valid,page_valid,claim_supported,test_outcome
+T01,Valid UUID with page number,"[Source: <uuid>, page 1]",0280358a-ff3c-4964-88ab-419a9147b1f0,1,True,True,True,True,PASS
+T02,Valid UUID without page number,"[Source: <uuid>]",0280358a-ff3c-4964-88ab-419a9147b1f0,1,True,True,True,True,PASS
+T03,passage_id= prefixed UUID,"[Source: passage_id=<uuid>, page 1]",0280358a-ff3c-4964-88ab-419a9147b1f0,1,True,True,True,True,PASS
+T04,Uppercase UUID,"[Source: <UUID>, page 1]",0280358a-ff3c-4964-88ab-419a9147b1f0,1,True,True,True,True,PASS
+T05,Invalid UUID,"[Source: not-a-real-uuid-12345, page 1]",None,None,False,False,False,False,PASS
+T06,Unknown passage ID,"[Source: 00000000-0000-0000-0000-000000000000, page 1]",None,None,True,False,False,False,PASS
+T07,Passage ID not in retrieved evidence,"[Source: <outside_uuid>, page 24]",None,None,True,False,False,False,PASS
+T08,Citation with incorrect page number,"[Source: <uuid>, page 99]",0280358a-ff3c-4964-88ab-419a9147b1f0,1,True,True,False,True,PASS
+T09,Multiple citations in one answer,"[Source: <uuid1>, page 1] + [Source: passage_id=<uuid2>, page 24]",Multiple (p1, p2),Multiple (1, 24),True,True,True,True,PASS
+T10,Duplicate citations,"[Source: <uuid1>, page 1] repeated twice",0280358a-ff3c-4964-88ab-419a9147b1f0,1,True,True,True,True,PASS
+T11,Malformed citation syntax,"(Source: ...), [Source: ], [Source: passage_id]",None,None,False,False,False,False,PASS
+T12,Answer with no citations,Answer prose with zero citations,None,None,True,True,True,True,PASS
+T13,Citation with unsupported claim,"[Source: <uuid>, page 1] with contradicted claim",0280358a-ff3c-4964-88ab-419a9147b1f0,1,True,True,True,False,PASS
+T14,Formatting variations (Ollama),"[Source: passage_id: <uuid>], [Source: passage_id=<uuid>, p. 1], whitespace",0280358a-ff3c-4964-88ab-419a9147b1f0,1,True,True,True,True,PASS

@@ -1,0 +1,202 @@
+{
+  "milestone": "M8",
+  "phase_name": "Corpus Document Refresh and Official Repository Expansion",
+  "execution_timestamp": "2026-11-16T09:48:00+05:30",
+  "final_decision": "M8_DOCUMENT_REFRESH_COMPLETED",
+  "corpus_fingerprints": {
+    "pre_refresh_child_passage_sha256": "8688605df0dbff786454ec770e95609d9d3aacb284fdb3a2f97191f7d2971e9d",
+    "post_refresh_child_passage_sha256": "c414cee2c2ce35b6c628f4fb4ada50804dd96d574ea9b373f68c53f29f35f111",
+    "fingerprint_definition": "SHA-256 over all child passages (parent_passage_id IS NOT NULL) ordered by passage_id"
+  },
+  "frozen_benchmarks_audit": {
+    "m3_final_verified_dataset": {
+      "path": "backend/data/dataset/final_verified_dataset.csv",
+      "expected_sha256": "093b00ad0f19acda806f2302731ccf2de28838c1b29c6ef16d55cbc5e7e2d520",
+      "actual_sha256": "093b00ad0f19acda806f2302731ccf2de28838c1b29c6ef16d55cbc5e7e2d520",
+      "status": "VERIFIED_INTACT"
+    },
+    "m6_expanded_benchmark_n60": {
+      "path": "backend/data/dataset/m6_expanded_benchmark_n60.csv",
+      "expected_sha256": "a528ac583d8c060b91a7febce652885e4045fcc76d644e49e876ddeb5d1db4ae",
+      "actual_sha256": "a528ac583d8c060b91a7febce652885e4045fcc76d644e49e876ddeb5d1db4ae",
+      "status": "VERIFIED_INTACT"
+    },
+    "m6_qualification_ledger": {
+      "path": "backend/data/dataset/m6_benchmark_qualification.csv",
+      "expected_sha256": "db8c2b5e02d6177b335a283f9ac62f99729fb36ef142aa1af81c99528efd3b13",
+      "actual_sha256": "db8c2b5e02d6177b335a283f9ac62f99729fb36ef142aa1af81c99528efd3b13",
+      "status": "VERIFIED_INTACT"
+    },
+    "m6_phase3_negative_candidates": {
+      "path": "backend/data/dataset/m6_phase3_negative_candidates.csv",
+      "expected_sha256": "492b0b1be3ce0c00fdcf453c971c48cb15176496e15806142c0aaff66050aeaa",
+      "actual_sha256": "492b0b1be3ce0c00fdcf453c971c48cb15176496e15806142c0aaff66050aeaa",
+      "status": "VERIFIED_INTACT"
+    }
+  },
+  "corpus_inventory": {
+    "total_documents": 7,
+    "historical_documents_preserved": 4,
+    "new_official_documents_added": 3,
+    "documents": [
+      {
+        "document_id": "b787fd22-eb2f-42ed-9ef7-ef098e5ff8b6",
+        "filename": "Academic-Rules-for-SCSET_UG.pdf",
+        "category": "HISTORICAL_CURRENT",
+        "title": "Academic Rules for Undergraduate Programs — SCSET",
+        "academic_year": "2022-23",
+        "effective_date": null,
+        "program_applicability": ["B.Tech"],
+        "pages": 20,
+        "passages": 25,
+        "child_passages": 20,
+        "parent_passages": 5,
+        "sha256": "787c88b0eb03e5c70bb8d591b61905307b0ecdaecb700f074d0ea203b8e4e082",
+        "is_current": null
+      },
+      {
+        "document_id": "40c366dd-41b2-49f6-b5e4-492a8b5bbe8a",
+        "filename": "Notification-Minimum-Attendance.pdf",
+        "category": "HISTORICAL_CURRENT",
+        "title": "Notification for Minimum Attendance for Students (Ref No: BU/RO/Notification/307/2022)",
+        "academic_year": "2022-23 onwards",
+        "effective_date": "2022-09-08",
+        "program_applicability": ["B.Tech", "Undergraduate", "All Students"],
+        "pages": 1,
+        "passages": 2,
+        "child_passages": 1,
+        "parent_passages": 1,
+        "sha256": "81f181be3c42e975a6c66cf1bb2a842f10b777a8fcff92ffdc39f285fb70c8ad",
+        "is_current": true
+      },
+      {
+        "document_id": "0c174816-3d23-4e47-aef4-8b8579b801d6",
+        "filename": "Academic-Calendar-2026-27.pdf",
+        "category": "HISTORICAL_CURRENT",
+        "title": "Academic Calendar for A.Y. 2026-27",
+        "academic_year": "2026-27",
+        "effective_date": "2026-07-01",
+        "program_applicability": ["B.Tech"],
+        "pages": 9,
+        "passages": 9,
+        "child_passages": 8,
+        "parent_passages": 1,
+        "sha256": "e36e6ba6fcbf2a35368a5ca4eb3bca4fdf2463e26084931a0e14a275e7a9121a",
+        "is_current": true
+      },
+      {
+        "document_id": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2",
+        "filename": "SEAS-Ordinance-Rules-Regulations-2017.pdf",
+        "category": "HISTORICAL_SUPERSEDED",
+        "title": "Ordinances, Rules and Regulations for UG Engineering Programs — 2017 Onwards",
+        "academic_year": "2017-18",
+        "effective_date": "2017-11-01",
+        "program_applicability": ["B.Tech"],
+        "pages": 81,
+        "passages": 136,
+        "child_passages": 113,
+        "parent_passages": 23,
+        "sha256": "cffb041cfdd924f707f1859bf557924c5ddccce5c678516d2eaec4b5b7863e46",
+        "is_current": false
+      },
+      {
+        "document_id": "f110a0e9-e299-4f4a-9dd9-b879ecbbdc36",
+        "filename": "Students-Discipline-Conduct-Rules-2024.pdf",
+        "category": "NEW_OFFICIAL_ADDED",
+        "title": "Students' Discipline and Conduct Rules (2024)",
+        "academic_year": "2023-24 onwards",
+        "effective_date": "2024-03-01",
+        "program_applicability": ["All Students", "B.Tech", "Undergraduate", "Postgraduate"],
+        "pages": 23,
+        "passages": 47,
+        "child_passages": 41,
+        "parent_passages": 6,
+        "sha256": "1325facb0517e640ebf634e8d30ffe3d2fcd1122a676e7cfba49db9a8fa3bb2d",
+        "source_url": "https://www.bennett.edu.in/wp-content/uploads/2024/03/STUDENTS-DISCIPLINE-AND-CONDUCT-RULES_compressed.pdf",
+        "is_current": true
+      },
+      {
+        "document_id": "8e3b751a-5728-4af0-bf6c-5418b578af7b",
+        "filename": "BU-First-Ordinance-2016.pdf",
+        "category": "NEW_OFFICIAL_ADDED",
+        "title": "First Ordinances of Bennett University (U.P. Act No 24 of 2016)",
+        "academic_year": "2016-17 onwards",
+        "effective_date": "2016-09-01",
+        "program_applicability": ["All Programs", "B.Tech", "MBA", "PhD"],
+        "pages": 55,
+        "passages": 76,
+        "child_passages": 61,
+        "parent_passages": 15,
+        "sha256": "b657822edb6148b7e9b6a276b9065dab1f9d66bd4a81a58432f425498e47be05",
+        "source_url": "https://www.bennett.edu.in/wp-content/uploads/2024/05/BU-First-Ordinance-2016.pdf",
+        "is_current": true
+      },
+      {
+        "document_id": "d741f37d-c2db-4463-b9fa-fe59ab749960",
+        "filename": "UFM-Guidelines-2024.pdf",
+        "category": "NEW_OFFICIAL_ADDED",
+        "title": "Instructions and Penalty for Use of Unfair Means (UFM)",
+        "academic_year": "2017-18 onwards",
+        "effective_date": "2017-12-11",
+        "program_applicability": ["All Students", "B.Tech", "Undergraduate", "Postgraduate"],
+        "pages": 7,
+        "passages": 11,
+        "child_passages": 9,
+        "parent_passages": 2,
+        "sha256": "450363b66826637de2123c86570d571d11c3dde576bab890b278143d60768f04",
+        "source_url": "https://www.bennett.edu.in/wp-content/uploads/2024/05/UFM.pdf",
+        "is_current": true
+      }
+    ]
+  },
+  "passage_metrics": {
+    "pre_refresh_total_passages": 172,
+    "pre_refresh_child_passages": 142,
+    "pre_refresh_parent_passages": 30,
+    "post_refresh_total_passages": 306,
+    "post_refresh_child_passages": 253,
+    "post_refresh_parent_passages": 53,
+    "net_passages_added": 134,
+    "net_child_passages_added": 111,
+    "net_parent_passages_added": 23
+  },
+  "index_metrics": {
+    "official_index_name": "official",
+    "retrieval_units": "child_passages",
+    "bm25_indexed_passages": 253,
+    "faiss_indexed_passages": 253,
+    "faiss_embedding_dimension": 384,
+    "embedding_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+  },
+  "quarantined_and_preceding_documents": [
+    {
+      "filename": "Exam-Manual.pdf",
+      "source_url": "https://www.bennett.edu.in/wp-content/uploads/2024/05/Exam-Manual.pdf",
+      "pages": 40,
+      "status": "QUARANTINED_PENDING_BATCH_OCR",
+      "reason": "40-page heavy image scan. Requires dedicated batch OCR workflow. Core examination hall penalty provisions covered by UFM-Guidelines-2024.pdf."
+    },
+    {
+      "filename": "Academic-Calender-2024-25.pdf",
+      "source_url": "https://www.bennett.edu.in/wp-content/uploads/2024/06/Academic-Calender-2024-25.pdf",
+      "pages": 6,
+      "status": "EVALUATED_PRECEDING_YEAR",
+      "reason": "Calendar for past AY 2024-25. Corpus already contains future calendar Academic-Calendar-2026-27.pdf."
+    },
+    {
+      "filename": "Academic-Calendar-for-A.Y.-2025-26-All-Returning-Students_Updated.pdf",
+      "source_url": "https://www.bennett.edu.in/wp-content/uploads/2025/07/Academic-Calendar-for-A.Y.-2025-26-All-Returning-Students_Updated.pdf",
+      "pages": 7,
+      "status": "EVALUATED_PRECEDING_YEAR",
+      "reason": "Calendar for AY 2025-26. Corpus already contains future calendar Academic-Calendar-2026-27.pdf."
+    }
+  ],
+  "regression_testing": {
+    "total_tests": 197,
+    "passed_tests": 197,
+    "failed_tests": 0,
+    "pass_rate_percentage": 100.0,
+    "suite_path": "backend/tests"
+  }
+}
+

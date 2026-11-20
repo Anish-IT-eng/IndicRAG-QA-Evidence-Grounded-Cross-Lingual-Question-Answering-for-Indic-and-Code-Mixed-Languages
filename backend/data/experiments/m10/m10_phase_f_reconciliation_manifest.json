@@ -1,0 +1,86 @@
+{
+  "timestamp": "2026-11-17T19:30:00Z",
+  "audit_milestone": "M10_PHASE_F_RECONCILIATION_AND_SIGNOFF",
+  "auditor_role": "Independent Senior RAG Evaluation Researcher & Integrity Auditor",
+  "determination": "M10_PHASE_F_VERIFIED_WITH_LIMITATIONS",
+  "contingency_table_devanagari_hit5": {
+    "population_denominator": 45,
+    "both_successful_a": 1,
+    "config_a_only_b": 1,
+    "config_b_only_c": 3,
+    "neither_successful_d": 40,
+    "total": 45,
+    "query_breakdown": {
+      "both_successful": ["M9-Q014"],
+      "config_a_only": ["M9-Q018"],
+      "config_b_only": ["M9-Q002", "M9-Q010", "M9-Q030"],
+      "neither_successful_count": 40
+    }
+  },
+  "statistical_recalculations": {
+    "reported_mcnemar_p_value": 0.0455,
+    "reported_status": "UNVERIFIED_AS_EXACT",
+    "reported_derivation": "Asymptotic chi2 without continuity correction under assumed b=0, c=4 (chi2=4.00, p=0.0455)",
+    "empirical_asymptotic_chi2": 1.0,
+    "empirical_asymptotic_p_value": 0.3173,
+    "empirical_continuity_corrected_chi2": 0.25,
+    "empirical_continuity_corrected_p_value": 0.6171,
+    "empirical_exact_binomial_p_value": 0.625,
+    "statistical_significance_alpha_0_05": false
+  },
+  "latency_reconciliation": {
+    "phase_e_candidate_e6b_mean_ms": 849.9,
+    "phase_f_reported_table3_e6b_mean_ms": 836.0,
+    "phase_f_empirical_resource_csv_mean_ms": 2372.5,
+    "reconciliation_explanation": "Phase E measured candidate fetch and rerank at candidate depth k=10. Phase F empirical resource results measured full retrieve() pipeline at candidate depth k=20 across BM25, FAISS, RRF, version validation, reranker, and PDR. Table 3 in report transcribed Phase E theoretical estimate rather than empirical CSV mean."
+  },
+  "correctness_denominators": {
+    "total_evaluation_queries": 240,
+    "answerable_gold_queries": 180,
+    "unanswerable_gold_queries": 60,
+    "config_a_correct_answered": 52,
+    "config_a_regulatory_disclosure": 7,
+    "config_a_unnecessary_abstention": 121,
+    "config_a_correct_abstention": 58,
+    "config_a_incorrect_answer": 2,
+    "config_b_correct_answered": 53,
+    "config_b_regulatory_disclosure": 8,
+    "config_b_unnecessary_abstention": 119,
+    "config_b_correct_abstention": 58,
+    "config_b_incorrect_answer": 2,
+    "unsupported_answer_rate": 0.0
+  },
+  "claim_and_citation_denominators": {
+    "recovered_query": "M9-Q002",
+    "total_claims_evaluated": 2,
+    "supported_claims": 2,
+    "partially_supported_claims": 0,
+    "unsupported_claims": 0,
+    "contradicted_claims": 0,
+    "valid_citation_uuids": 2,
+    "correct_source_documents": 2,
+    "correct_pdf_pages": 2,
+    "semantically_supporting_citations": 2
+  },
+  "production_integration_status": {
+    "adaptive_e6b_available": true,
+    "adaptive_e6b_runtime_default": false,
+    "active_default_strategy": "production",
+    "frontend_api_selected": false,
+    "production_decision_stage": "Deferred to M10 Phase I"
+  },
+  "verified_artifact_hashes": {
+    "m9_evaluation_dataset_jsonl": "f1829bdcad4512b6481005a944ab65da6dbd2858de5cc83a4a289d15bd506c2f",
+    "m9_integrity_manifest_json": "8941968f484d636c888e5fe224ad11d9039b39234ae2764e43b4d94014b5570d",
+    "indicrag_db": "2ec61aae957c51eb9703e5322461e044b8432e1b752a9a6e8e2b154bd68121d3",
+    "faiss_index": "19e57ba4d910eb911ff6300d196c222b3bdd3735b878352f6f504311f7c10d2c",
+    "m10_phase_e_results_csv": "4009e1b5afa0205c4f9f9a08734177b2e00eb1ace7697e570f72664d08bc255d",
+    "m10_phase_f_end_to_end_results_csv": "60a108f448ff9756601a0669c930e48b0186fab7b5920be26e1359c8581a7ebf",
+    "m10_phase_f_answer_correctness_csv": "870b88febfe1bf241c2372f093bd1e80492f014bd0ad427146741f08d9004269",
+    "m10_phase_f_claim_grounding_csv": "70edac17a364bb531ce6174e3596715ab8c813d2c6174a587ba6509f03c2bd9b",
+    "m10_phase_f_citation_audit_csv": "1fbda42873912ee9af2968c8ef91c14651ecbd00941293f394d4a46a8ca2f39c",
+    "m10_phase_f_language_quality_csv": "f03ff98ec2820078d5599987f0d374b3a74a46c32429f40afcc4a44573d4551d",
+    "m10_phase_f_resource_results_csv": "17722af2ddf41eb8b6cad12d4634053e6726defd08e0fa268282f3199239222a",
+    "m10_phase_f_integrity_manifest_json": "e0e25d5c2001d932d658d519410ee80baeb1bd6686d940f1e77021041965ffe7"
+  }
+}

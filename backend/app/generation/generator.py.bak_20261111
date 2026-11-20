@@ -1,0 +1,294 @@
+"""
+Grounded answer generation via Ollama.
+
+Design principles:
+- Only the selected evidence passages are passed to the model.
+- The model is instructed to answer from evidence only and cite sources.
+- Citations are validated against stored passages.
+- Returns UNANSWERABLE if the evidence controller rejects the answer.
+- Never reveals debug information in production mode.
+"""
+from __future__ import annotations
+
+import json
+import time
+from typing import Optional
+
+import httpx
+
+from app.core.config import settings
+from app.core.logging_config import logger
+from app.models.schemas import (
+    Citation,
+    DocumentVersionInfo,
+    EvidenceDecision,
+    EvidenceStatus,
+    QueryAnalysis,
+    QueryLanguage,
+    QueryResponse,
+    ResponseStatus,
+)
+
+# ─── Language-aware response instructions ─────────────────────────────────────
+
+_LANG_INSTRUCTIONS = {
+    QueryLanguage.ENGLISH: "Answer in English.",
+    QueryLanguage.HINDI: "कृपया उत्तर हिंदी में दें।",
+    QueryLanguage.ROMANIZED_HINDI: "Please answer in simple Romanized Hindi (Hinglish).",
+    QueryLanguage.CODE_MIXED: "Answer in Hindi-English code-mixed style (Hinglish).",
+    QueryLanguage.UNKNOWN: "Answer in English.",
+}
+
+# ─── Prompt templates ─────────────────────────────────────────────────────────
+
+_SYSTEM_PROMPT = """You are a precise academic regulation assistant for Bennett University.
+Your task is to answer questions using ONLY the provided evidence passages.
+
+Rules:
+1. Answer ONLY from the provided evidence. Do not add facts not in the evidence.
+2. Cite every factual claim with [Source: passage_id, page X].
+3. If the evidence does not contain enough information, say: UNANSWERABLE - Insufficient evidence.
+4. Preserve all conditions, exceptions, and qualifying clauses from the evidence.
+5. If rules conflict between documents, state both versions and their applicable periods.
+6. Be concise and precise. Do not speculate or extrapolate.
+"""
+
+_USER_PROMPT_TEMPLATE = """{lang_instruction}
+
+Question: {question}
+
+Evidence passages:
+{evidence}
+
+Instructions: Answer the question based solely on the above evidence.
+If the evidence is insufficient, respond with exactly:
+UNANSWERABLE — Insufficient information available in the provided documents."""
+
+
+def _format_evidence(passages) -> str:
+    """Format retrieved passages for the LLM prompt."""
+    parts = []
+    for i, p in enumerate(passages, 1):
+        page_str = f", page {p.page_number}" if p.page_number else ""
+        heading_str = f" [{p.heading}]" if p.heading else ""
+        parts.append(
+            f"[{i}] passage_id={p.passage_id}{page_str}{heading_str}\n{p.text}"
+        )
+    return "\n\n".join(parts)
+
+
+# ─── Ollama client ────────────────────────────────────────────────────────────
+
+async def _call_ollama(prompt: str, system_prompt: str) -> str:
+    """
+    Call the Ollama REST API.
+    Returns the generated text or raises on failure.
+    """
+    payload = {
+        "model": settings.ollama_model,
+        "prompt": prompt,
+        "system": system_prompt,
+        "stream": False,
+        "options": {
+            "temperature": settings.generation_temperature,
+            "num_predict": settings.generation_max_tokens,
+        },
+    }
+    async with httpx.AsyncClient(timeout=settings.ollama_timeout) as client:
+        resp = await client.post(
+            f"{settings.ollama_base_url}/api/generate",
+            json=payload,
+        )
+        resp.raise_for_status()
+        data = resp.json()
+        return data.get("response", "").strip()
+
+
+# ─── Citation extraction and validation ───────────────────────────────────────
+
+def _extract_citations_from_text(
+    generated_text: str,
+    passages,
+    document_filenames: dict[str, str],
+) -> tuple[list[Citation], str]:
+    """
+    Parse [Source: passage_id, page X] markers from generated text.
+    Validate each cited passage against stored passages.
+    Returns (valid_citations, cleaned_answer).
+    """
+    import re
+    citations: list[Citation] = []
+    seen_passage_ids: set[str] = set()
+
+    passage_map = {p.passage_id: p for p in passages}
+
+    # Match citation markers
+    pattern = re.compile(r"\[Source:\s*([\w-]+)(?:,\s*page\s*(\d+))?\]")
+    matches = pattern.finditer(generated_text)
+
+    for match in matches:
+        pid = match.group(1)
+        page = int(match.group(2)) if match.group(2) else None
+
+        if pid in seen_passage_ids:
+            continue
+        seen_passage_ids.add(pid)
+
+        if pid in passage_map:
+            p = passage_map[pid]
+            citations.append(Citation(
+                document_id=p.document_id,
+                filename=document_filenames.get(p.document_id, "unknown"),
+                page=p.page_number or page,
+                passage_id=pid,
+                quote=p.text[:300],
+                section=p.section,
+                heading=p.heading,
+                version_info=DocumentVersionInfo(
+                    effective_date=p.version_info.effective_date if p.version_info else None,
+                    academic_year=p.version_info.academic_year if p.version_info else None,
+                ),
+                claim_supported=True,
+            ))
+        else:
+            logger.warning("Citation references unknown passage_id: %s", pid)
+            # Invalid citation — do NOT include it
+
+    # Clean the answer by removing citation markers (keep them in citations list)
+    cleaned = pattern.sub("", generated_text).strip()
+    return citations, cleaned
+
+
+# ─── Main generation function ─────────────────────────────────────────────────
+
+async def generate_answer(
+    query_analysis: QueryAnalysis,
+    evidence_decision: EvidenceDecision,
+    response_language: Optional[str] = None,
+    debug: bool = False,
+) -> QueryResponse:
+    """
+    Generate a grounded answer.
+
+    Args:
+        query_analysis: Processed query with all representations.
+        evidence_decision: Result from the evidence controller.
+        response_language: Override language code (e.g., "en", "hi").
+        debug: Include retrieval trace in response.
+
+    Returns:
+        QueryResponse with structured answer, citations, and evidence status.
+    """
+    t0 = time.perf_counter()
+    request_id = __import__("uuid").uuid4().hex
+
+    # Determine response language
+    if response_language:
+        out_lang = response_language
+        lang_enum = QueryLanguage(response_language) if response_language in QueryLanguage._value2member_map_ else QueryLanguage.ENGLISH
+    else:
+        lang_enum = query_analysis.detected_language
+        out_lang = lang_enum.value
+
+    # Handle insufficient / missing evidence immediately (no LLM call)
+    if evidence_decision.status in (EvidenceStatus.INSUFFICIENT, EvidenceStatus.MISSING):
+        latency = (time.perf_counter() - t0) * 1000
+        return QueryResponse(
+            request_id=request_id,
+            status=ResponseStatus.UNANSWERABLE,
+            answer="UNANSWERABLE — Insufficient information available in the provided documents.",
+            language=out_lang,
+            citations=[],
+            evidence_status=evidence_decision.status,
+            latency_ms=latency,
+            model_used=settings.ollama_model,
+        )
+
+    if evidence_decision.status == EvidenceStatus.CONFLICTING:
+        # Still attempt generation but warn about conflict
+        logger.warning("Generating with conflicting evidence — will disclose conflict.")
+
+    # Build prompt
+    lang_instruction = _LANG_INSTRUCTIONS.get(lang_enum, "Answer in English.")
+    evidence_text = _format_evidence(evidence_decision.valid_passages)
+    user_prompt = _USER_PROMPT_TEMPLATE.format(
+        lang_instruction=lang_instruction,
+        question=query_analysis.original_query,
+        evidence=evidence_text,
+    )
+
+    # Fetch document filenames for citation building
+    from app.ingestion.pipeline import get_all_documents
+    all_docs = get_all_documents()
+    doc_filenames = {d["document_id"]: d["filename"] for d in all_docs}
+
+    # Call LLM
+    try:
+        raw_output = await _call_ollama(user_prompt, _SYSTEM_PROMPT)
+        logger.debug("LLM output length: %d chars", len(raw_output))
+    except Exception as exc:
+        logger.error("LLM call failed: %s", exc)
+        latency = (time.perf_counter() - t0) * 1000
+        return QueryResponse(
+            request_id=request_id,
+            status=ResponseStatus.ERROR,
+            answer=None,
+            language=out_lang,
+            citations=[],
+            evidence_status=evidence_decision.status,
+            latency_ms=latency,
+            model_used=settings.ollama_model,
+        )
+
+    # Check for UNANSWERABLE self-report from model
+    if "UNANSWERABLE" in raw_output.upper():
+        latency = (time.perf_counter() - t0) * 1000
+        return QueryResponse(
+            request_id=request_id,
+            status=ResponseStatus.UNANSWERABLE,
+            answer="UNANSWERABLE — Insufficient information available in the provided documents.",
+            language=out_lang,
+            citations=[],
+            evidence_status=EvidenceStatus.INSUFFICIENT,
+            latency_ms=latency,
+            model_used=settings.ollama_model,
+        )
+
+    # Extract and validate citations
+    citations, cleaned_answer = _extract_citations_from_text(
+        raw_output,
+        evidence_decision.valid_passages,
+        doc_filenames,
+    )
+
+    # Determine response status
+    if evidence_decision.status == EvidenceStatus.CONFLICTING:
+        resp_status = ResponseStatus.CONFLICTING_VERSIONS
+    elif evidence_decision.status == EvidenceStatus.PARTIAL:
+        resp_status = ResponseStatus.ANSWERED  # partial but answered
+    else:
+        resp_status = ResponseStatus.ANSWERED
+
+    latency = (time.perf_counter() - t0) * 1000
+
+    retrieval_summary = None
+    if debug:
+        retrieval_summary = {
+            "evidence_status": evidence_decision.status.value,
+            "coverage_score": evidence_decision.coverage_score,
+            "passages_used": len(evidence_decision.valid_passages),
+            "conflict_count": len(evidence_decision.conflicting_passages),
+        }
+
+    return QueryResponse(
+        request_id=request_id,
+        status=resp_status,
+        answer=cleaned_answer,
+        language=out_lang,
+        citations=citations,
+        evidence_status=evidence_decision.status,
+        query_analysis=query_analysis if debug else None,
+        retrieval_summary=retrieval_summary,
+        latency_ms=latency,
+        model_used=settings.ollama_model,
+    )

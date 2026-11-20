@@ -1,0 +1,51 @@
+{
+  "manifest_metadata": {
+    "milestone": "M6",
+    "phase": "Phase 2A - Expanded Benchmark Generation and Independent Verification",
+    "execution_timestamp": "2026-11-11T00:01:02.581130",
+    "target_benchmark_size": 60,
+    "actual_benchmark_size": 60,
+    "status": "PHASE_2A_COMPLETED"
+  },
+  "integrity_provenance": {
+    "frozen_m3_benchmark_sha256": "093b00ad0f19acda806f2302731ccf2de28838c1b29c6ef16d55cbc5e7e2d520",
+    "corpus_sha256": "8688605df0dbff786454ec770e95609d9d3aacb284fdb3a2f97191f7d2971e9d",
+    "m6_benchmark_sha256": "a528ac583d8c060b91a7febce652885e4045fcc76d644e49e876ddeb5d1db4ae",
+    "m6_benchmark_csv_path": "backend\\data\\dataset\\m6_expanded_benchmark_n60.csv",
+    "m6_verification_jsonl_path": "backend\\data\\dataset\\m6_candidate_verification.jsonl",
+    "m6_reconciliation_csv_path": "backend\\data\\dataset\\m6_candidate_reconciliation.csv"
+  },
+  "stratification_summary": {
+    "total_instances": 60,
+    "answerable_count": 40,
+    "unanswerable_count": 20,
+    "provenance_breakdown": {
+      "m3_frozen_core": 15,
+      "m6_expanded_answerable": 27,
+      "m6_expanded_unanswerable": 18
+    },
+    "language_breakdown": {
+      "en": 20,
+      "hi-en": 12,
+      "hi-Latn": 12,
+      "hi": 16
+    },
+    "final_status_breakdown": {
+      "auto_validated": 29,
+      "needs_review": 24,
+      "auto_rejected": 7
+    },
+    "human_verified_count": 0,
+    "review_status_pending_count": 60
+  },
+  "model_verification_governance": {
+    "models_utilized": [
+      "qwen2.5:3b",
+      "llama3.2:3b",
+      "gemma:2b"
+    ],
+    "generator_verifier_independence_verified": true,
+    "self_verification_disallowed": true,
+    "verbatim_quote_matching_verified": true
+  }
+}

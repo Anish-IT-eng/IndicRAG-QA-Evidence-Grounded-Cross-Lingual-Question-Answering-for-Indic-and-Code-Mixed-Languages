@@ -1,0 +1,26 @@
+hypothesis_id,family,description,p_value_raw,p_value_holm_bonferroni,p_value_benjamini_hochberg,is_significant_raw_05,is_significant_holm_05,is_significant_bh_fdr_05
+HYP_RET_Hit1_en,Retrieval,Config B != Config A on Hit@1 in en,1.0,1.0,1.0,False,False,False
+HYP_RET_Hit1_hi,Retrieval,Config B != Config A on Hit@1 in hi,0.375,1.0,1.0,False,False,False
+HYP_RET_Hit1_hi-Latn,Retrieval,Config B != Config A on Hit@1 in hi-Latn,1.0,1.0,1.0,False,False,False
+HYP_RET_Hit1_en-hi,Retrieval,Config B != Config A on Hit@1 in en-hi,1.0,1.0,1.0,False,False,False
+HYP_RET_Hit1_OVERALL,Retrieval,Config B != Config A on Hit@1 in OVERALL,0.375,1.0,1.0,False,False,False
+HYP_RET_Hit5_en,Retrieval,Config B != Config A on Hit@5 in en,1.0,1.0,1.0,False,False,False
+HYP_RET_Hit5_hi,Retrieval,Config B != Config A on Hit@5 in hi,0.625,1.0,1.0,False,False,False
+HYP_RET_Hit5_hi-Latn,Retrieval,Config B != Config A on Hit@5 in hi-Latn,1.0,1.0,1.0,False,False,False
+HYP_RET_Hit5_en-hi,Retrieval,Config B != Config A on Hit@5 in en-hi,1.0,1.0,1.0,False,False,False
+HYP_RET_Hit5_OVERALL,Retrieval,Config B != Config A on Hit@5 in OVERALL,0.625,1.0,1.0,False,False,False
+HYP_RET_MRR_en,Retrieval,Config B != Config A on MRR in en,1.0,1.0,1.0,False,False,False
+HYP_RET_MRR_hi,Retrieval,Config B != Config A on MRR in hi,0.257899,1.0,1.0,False,False,False
+HYP_RET_MRR_hi-Latn,Retrieval,Config B != Config A on MRR in hi-Latn,1.0,1.0,1.0,False,False,False
+HYP_RET_MRR_en-hi,Retrieval,Config B != Config A on MRR in en-hi,1.0,1.0,1.0,False,False,False
+HYP_RET_MRR_OVERALL,Retrieval,Config B != Config A on MRR in OVERALL,0.257899,1.0,1.0,False,False,False
+HYP_RET_nDCG5_en,Retrieval,Config B != Config A on nDCG@5 in en,1.0,1.0,1.0,False,False,False
+HYP_RET_nDCG5_hi,Retrieval,Config B != Config A on nDCG@5 in hi,0.173568,1.0,1.0,False,False,False
+HYP_RET_nDCG5_hi-Latn,Retrieval,Config B != Config A on nDCG@5 in hi-Latn,1.0,1.0,1.0,False,False,False
+HYP_RET_nDCG5_en-hi,Retrieval,Config B != Config A on nDCG@5 in en-hi,1.0,1.0,1.0,False,False,False
+HYP_RET_nDCG5_OVERALL,Retrieval,Config B != Config A on nDCG@5 in OVERALL,0.173568,1.0,1.0,False,False,False
+HYP_E2E_Succ_en,EndToEnd,Config B != Config A on Answerable Success Rate in en,1.0,1.0,1.0,False,False,False
+HYP_E2E_Succ_hi,EndToEnd,Config B != Config A on Answerable Success Rate in hi,0.5,1.0,1.0,False,False,False
+HYP_E2E_Succ_hi-Latn,EndToEnd,Config B != Config A on Answerable Success Rate in hi-Latn,1.0,1.0,1.0,False,False,False
+HYP_E2E_Succ_en-hi,EndToEnd,Config B != Config A on Answerable Success Rate in en-hi,1.0,1.0,1.0,False,False,False
+HYP_E2E_Succ_OVERALL,EndToEnd,Config B != Config A on Answerable Success Rate in OVERALL,0.5,1.0,1.0,False,False,False

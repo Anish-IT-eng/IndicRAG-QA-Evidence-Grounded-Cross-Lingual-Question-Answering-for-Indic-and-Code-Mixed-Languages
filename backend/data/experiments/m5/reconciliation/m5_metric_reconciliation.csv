@@ -1,0 +1,8 @@
+configuration,pipeline_description,weights_bm25_dense,reranker,version_validation,hit_1,hit_3,hit_5,mrr,ndcg_5,avg_latency_ms,status
+M4_BASELINE_C_HYBRID_RRF,"M4 Hybrid RRF (BM25 top-10 + Dense top-10, k=60, weights 1.0/1.0)",1.0 / 1.0,OFF,OFF,0.1538,0.7692,0.9231,0.4705,0.5561,29.4,AUTHORITATIVE_M4_BASELINE
+M5_E1_HYBRID_RRF_DEFAULT_WEIGHTS,M5 E1 Hybrid RRF (Default weights 0.4/0.6 from settings),0.4 / 0.6,OFF,OFF,0.1538,0.6154,0.7692,0.4064,0.4475,44.26,CONFIG_OVERSIGHT_REPRODUCED
+M5_E1_HYBRID_RRF_RECONCILED,M5 E1 Hybrid RRF Reconciled with explicit equal weights 1.0/1.0,1.0 / 1.0,OFF,OFF,0.1538,0.7692,0.9231,0.4705,0.5561,44.1,RECONCILED_EXACT_MATCH_M4
+M5_E4_WITHOUT_RERANKER,E4 Control: Fixed Hybrid RRF (default weights 0.4/0.6),0.4 / 0.6,OFF,OFF,0.1538,0.6154,0.7692,0.4064,0.4475,5.0,VERIFIED_ISOLATED_CONTROL
+M5_E4_WITH_RERANKER,E4 Treatment: Fixed Hybrid + ms-marco-MiniLM-L-6-v2 Cross-Encoder,0.4 / 0.6,ON,OFF,0.1538,0.8462,0.8462,0.4487,0.5195,1652.26,VERIFIED_RERANKER_TREATMENT
+M5_E12_A1_NO_RERANKER,E12 A1: Full Architecture leave-one-out without reranker (Version Validation active),0.4 / 0.6,OFF,ON,0.0,0.6154,0.7692,0.3167,0.3806,42.48,EXPLAINED_VERSION_VAL_ACTIVE
+M5_E12_A0_FULL_ARCHITECTURE,E12 A0: Full Architecture (BM25+Dense+MQR+Reranker+PDR+Version Validation),0.4 / 0.6,ON,ON,0.1538,0.8462,0.8462,0.4487,0.5195,1464.38,VERIFIED_BEST_RETRIEVAL

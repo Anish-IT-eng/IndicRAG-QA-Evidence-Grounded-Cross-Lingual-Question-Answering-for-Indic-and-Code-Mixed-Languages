@@ -1,0 +1,481 @@
+query_id,intent_id,language,config_id,expected_status,actual_status,correctness_category,reason
+M9-Q001,M9-INT-01,en,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q001,M9-INT-01,en,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q002,M9-INT-01,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q002,M9-INT-01,hi,ConfigB_AdaptiveE6b,ANSWERED,clarification_needed,REGULATORY_DISCLOSURE,Authoritative regulatory disclosure of 70% course and 75% exam rules
+M9-Q003,M9-INT-01,hi-Latn,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q003,M9-INT-01,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q004,M9-INT-01,en-hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q004,M9-INT-01,en-hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q005,M9-INT-02,en,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q005,M9-INT-02,en,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q006,M9-INT-02,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q006,M9-INT-02,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q007,M9-INT-02,hi-Latn,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q007,M9-INT-02,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q008,M9-INT-02,en-hi,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q008,M9-INT-02,en-hi,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q009,M9-INT-03,en,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q009,M9-INT-03,en,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q010,M9-INT-03,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q010,M9-INT-03,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q011,M9-INT-03,hi-Latn,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q011,M9-INT-03,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q012,M9-INT-03,en-hi,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q012,M9-INT-03,en-hi,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q013,M9-INT-04,en,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q013,M9-INT-04,en,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q014,M9-INT-04,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q014,M9-INT-04,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q015,M9-INT-04,hi-Latn,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q015,M9-INT-04,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q016,M9-INT-04,en-hi,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q016,M9-INT-04,en-hi,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q017,M9-INT-05,en,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q017,M9-INT-05,en,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q018,M9-INT-05,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q018,M9-INT-05,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q019,M9-INT-05,hi-Latn,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q019,M9-INT-05,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q020,M9-INT-05,en-hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q020,M9-INT-05,en-hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q021,M9-INT-06,en,ConfigA_Production,ANSWERED,conflicting_versions,REGULATORY_DISCLOSURE,Regulatory disclosure of conflicting/multiple conditions
+M9-Q021,M9-INT-06,en,ConfigB_AdaptiveE6b,ANSWERED,conflicting_versions,REGULATORY_DISCLOSURE,Authoritative regulatory disclosure of 70% course and 75% exam rules
+M9-Q022,M9-INT-06,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q022,M9-INT-06,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q023,M9-INT-06,hi-Latn,ConfigA_Production,ANSWERED,conflicting_versions,REGULATORY_DISCLOSURE,Regulatory disclosure of conflicting/multiple conditions
+M9-Q023,M9-INT-06,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,conflicting_versions,REGULATORY_DISCLOSURE,Authoritative regulatory disclosure of 70% course and 75% exam rules
+M9-Q024,M9-INT-06,en-hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q024,M9-INT-06,en-hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q025,M9-INT-07,en,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q025,M9-INT-07,en,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q026,M9-INT-07,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q026,M9-INT-07,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q027,M9-INT-07,hi-Latn,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q027,M9-INT-07,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q028,M9-INT-07,en-hi,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q028,M9-INT-07,en-hi,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q029,M9-INT-08,en,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q029,M9-INT-08,en,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q030,M9-INT-08,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q030,M9-INT-08,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q031,M9-INT-08,hi-Latn,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q031,M9-INT-08,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q032,M9-INT-08,en-hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q032,M9-INT-08,en-hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q033,M9-INT-09,en,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q033,M9-INT-09,en,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q034,M9-INT-09,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q034,M9-INT-09,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q035,M9-INT-09,hi-Latn,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q035,M9-INT-09,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q036,M9-INT-09,en-hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q036,M9-INT-09,en-hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q037,M9-INT-10,en,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q037,M9-INT-10,en,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q038,M9-INT-10,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q038,M9-INT-10,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q039,M9-INT-10,hi-Latn,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q039,M9-INT-10,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q040,M9-INT-10,en-hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q040,M9-INT-10,en-hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q041,M9-INT-11,en,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q041,M9-INT-11,en,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q042,M9-INT-11,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q042,M9-INT-11,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q043,M9-INT-11,hi-Latn,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q043,M9-INT-11,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q044,M9-INT-11,en-hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q044,M9-INT-11,en-hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q045,M9-INT-12,en,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q045,M9-INT-12,en,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q046,M9-INT-12,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q046,M9-INT-12,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q047,M9-INT-12,hi-Latn,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q047,M9-INT-12,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q048,M9-INT-12,en-hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q048,M9-INT-12,en-hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q049,M9-INT-13,en,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q049,M9-INT-13,en,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q050,M9-INT-13,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q050,M9-INT-13,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q051,M9-INT-13,hi-Latn,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q051,M9-INT-13,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q052,M9-INT-13,en-hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q052,M9-INT-13,en-hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q053,M9-INT-14,en,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q053,M9-INT-14,en,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q054,M9-INT-14,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q054,M9-INT-14,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q055,M9-INT-14,hi-Latn,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q055,M9-INT-14,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q056,M9-INT-14,en-hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q056,M9-INT-14,en-hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q057,M9-INT-15,en,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q057,M9-INT-15,en,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q058,M9-INT-15,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q058,M9-INT-15,hi,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q059,M9-INT-15,hi-Latn,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q059,M9-INT-15,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q060,M9-INT-15,en-hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q060,M9-INT-15,en-hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q061,M9-INT-16,en,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q061,M9-INT-16,en,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q062,M9-INT-16,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q062,M9-INT-16,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q063,M9-INT-16,hi-Latn,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q063,M9-INT-16,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q064,M9-INT-16,en-hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q064,M9-INT-16,en-hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q065,M9-INT-17,en,ConfigA_Production,ANSWERED,conflicting_versions,REGULATORY_DISCLOSURE,Regulatory disclosure of conflicting/multiple conditions
+M9-Q065,M9-INT-17,en,ConfigB_AdaptiveE6b,ANSWERED,conflicting_versions,REGULATORY_DISCLOSURE,Authoritative regulatory disclosure of 70% course and 75% exam rules
+M9-Q066,M9-INT-17,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q066,M9-INT-17,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q067,M9-INT-17,hi-Latn,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q067,M9-INT-17,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q068,M9-INT-17,en-hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q068,M9-INT-17,en-hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q069,M9-INT-18,en,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q069,M9-INT-18,en,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q070,M9-INT-18,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q070,M9-INT-18,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q071,M9-INT-18,hi-Latn,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q071,M9-INT-18,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q072,M9-INT-18,en-hi,ConfigA_Production,ANSWERED,conflicting_versions,REGULATORY_DISCLOSURE,Regulatory disclosure of conflicting/multiple conditions
+M9-Q072,M9-INT-18,en-hi,ConfigB_AdaptiveE6b,ANSWERED,conflicting_versions,REGULATORY_DISCLOSURE,Authoritative regulatory disclosure of 70% course and 75% exam rules
+M9-Q073,M9-INT-19,en,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q073,M9-INT-19,en,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q074,M9-INT-19,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q074,M9-INT-19,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q075,M9-INT-19,hi-Latn,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q075,M9-INT-19,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q076,M9-INT-19,en-hi,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q076,M9-INT-19,en-hi,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q077,M9-INT-20,en,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q077,M9-INT-20,en,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q078,M9-INT-20,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q078,M9-INT-20,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q079,M9-INT-20,hi-Latn,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q079,M9-INT-20,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q080,M9-INT-20,en-hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q080,M9-INT-20,en-hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q081,M9-INT-21,en,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q081,M9-INT-21,en,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q082,M9-INT-21,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q082,M9-INT-21,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q083,M9-INT-21,hi-Latn,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q083,M9-INT-21,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q084,M9-INT-21,en-hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q084,M9-INT-21,en-hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q085,M9-INT-22,en,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q085,M9-INT-22,en,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q086,M9-INT-22,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q086,M9-INT-22,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q087,M9-INT-22,hi-Latn,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q087,M9-INT-22,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q088,M9-INT-22,en-hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q088,M9-INT-22,en-hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q089,M9-INT-23,en,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q089,M9-INT-23,en,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q090,M9-INT-23,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q090,M9-INT-23,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q091,M9-INT-23,hi-Latn,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q091,M9-INT-23,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q092,M9-INT-23,en-hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q092,M9-INT-23,en-hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q093,M9-INT-24,en,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q093,M9-INT-24,en,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q094,M9-INT-24,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q094,M9-INT-24,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q095,M9-INT-24,hi-Latn,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q095,M9-INT-24,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q096,M9-INT-24,en-hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q096,M9-INT-24,en-hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q097,M9-INT-25,en,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q097,M9-INT-25,en,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q098,M9-INT-25,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q098,M9-INT-25,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q099,M9-INT-25,hi-Latn,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q099,M9-INT-25,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q100,M9-INT-25,en-hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q100,M9-INT-25,en-hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q101,M9-INT-26,en,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q101,M9-INT-26,en,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q102,M9-INT-26,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q102,M9-INT-26,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q103,M9-INT-26,hi-Latn,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q103,M9-INT-26,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q104,M9-INT-26,en-hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q104,M9-INT-26,en-hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q105,M9-INT-27,en,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q105,M9-INT-27,en,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q106,M9-INT-27,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q106,M9-INT-27,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q107,M9-INT-27,hi-Latn,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q107,M9-INT-27,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q108,M9-INT-27,en-hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q108,M9-INT-27,en-hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q109,M9-INT-28,en,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q109,M9-INT-28,en,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q110,M9-INT-28,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q110,M9-INT-28,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q111,M9-INT-28,hi-Latn,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q111,M9-INT-28,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q112,M9-INT-28,en-hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q112,M9-INT-28,en-hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q113,M9-INT-29,en,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q113,M9-INT-29,en,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q114,M9-INT-29,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q114,M9-INT-29,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q115,M9-INT-29,hi-Latn,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q115,M9-INT-29,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q116,M9-INT-29,en-hi,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q116,M9-INT-29,en-hi,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q117,M9-INT-30,en,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q117,M9-INT-30,en,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q118,M9-INT-30,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q118,M9-INT-30,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q119,M9-INT-30,hi-Latn,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q119,M9-INT-30,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q120,M9-INT-30,en-hi,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q120,M9-INT-30,en-hi,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q121,M9-INT-31,en,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q121,M9-INT-31,en,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q122,M9-INT-31,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q122,M9-INT-31,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q123,M9-INT-31,hi-Latn,ConfigA_Production,ANSWERED,error,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q123,M9-INT-31,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,error,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q124,M9-INT-31,en-hi,ConfigA_Production,ANSWERED,error,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q124,M9-INT-31,en-hi,ConfigB_AdaptiveE6b,ANSWERED,error,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q125,M9-INT-32,en,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q125,M9-INT-32,en,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q126,M9-INT-32,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q126,M9-INT-32,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q127,M9-INT-32,hi-Latn,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q127,M9-INT-32,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q128,M9-INT-32,en-hi,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q128,M9-INT-32,en-hi,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q129,M9-INT-33,en,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q129,M9-INT-33,en,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q130,M9-INT-33,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q130,M9-INT-33,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q131,M9-INT-33,hi-Latn,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q131,M9-INT-33,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q132,M9-INT-33,en-hi,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q132,M9-INT-33,en-hi,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q133,M9-INT-34,en,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q133,M9-INT-34,en,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q134,M9-INT-34,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q134,M9-INT-34,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q135,M9-INT-34,hi-Latn,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q135,M9-INT-34,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q136,M9-INT-34,en-hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q136,M9-INT-34,en-hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q137,M9-INT-35,en,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q137,M9-INT-35,en,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q138,M9-INT-35,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q138,M9-INT-35,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q139,M9-INT-35,hi-Latn,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q139,M9-INT-35,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q140,M9-INT-35,en-hi,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q140,M9-INT-35,en-hi,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q141,M9-INT-36,en,ConfigA_Production,ANSWERED,conflicting_versions,REGULATORY_DISCLOSURE,Regulatory disclosure of conflicting/multiple conditions
+M9-Q141,M9-INT-36,en,ConfigB_AdaptiveE6b,ANSWERED,conflicting_versions,REGULATORY_DISCLOSURE,Authoritative regulatory disclosure of 70% course and 75% exam rules
+M9-Q142,M9-INT-36,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q142,M9-INT-36,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q143,M9-INT-36,hi-Latn,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q143,M9-INT-36,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q144,M9-INT-36,en-hi,ConfigA_Production,ANSWERED,conflicting_versions,REGULATORY_DISCLOSURE,Regulatory disclosure of conflicting/multiple conditions
+M9-Q144,M9-INT-36,en-hi,ConfigB_AdaptiveE6b,ANSWERED,conflicting_versions,REGULATORY_DISCLOSURE,Authoritative regulatory disclosure of 70% course and 75% exam rules
+M9-Q145,M9-INT-37,en,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q145,M9-INT-37,en,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q146,M9-INT-37,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q146,M9-INT-37,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q147,M9-INT-37,hi-Latn,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q147,M9-INT-37,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q148,M9-INT-37,en-hi,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q148,M9-INT-37,en-hi,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q149,M9-INT-38,en,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q149,M9-INT-38,en,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q150,M9-INT-38,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q150,M9-INT-38,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q151,M9-INT-38,hi-Latn,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q151,M9-INT-38,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q152,M9-INT-38,en-hi,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q152,M9-INT-38,en-hi,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q153,M9-INT-39,en,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q153,M9-INT-39,en,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q154,M9-INT-39,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q154,M9-INT-39,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q155,M9-INT-39,hi-Latn,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q155,M9-INT-39,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q156,M9-INT-39,en-hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q156,M9-INT-39,en-hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q157,M9-INT-40,en,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q157,M9-INT-40,en,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q158,M9-INT-40,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q158,M9-INT-40,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q159,M9-INT-40,hi-Latn,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q159,M9-INT-40,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q160,M9-INT-40,en-hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q160,M9-INT-40,en-hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q161,M9-INT-41,en,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q161,M9-INT-41,en,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q162,M9-INT-41,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q162,M9-INT-41,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q163,M9-INT-41,hi-Latn,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q163,M9-INT-41,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q164,M9-INT-41,en-hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q164,M9-INT-41,en-hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q165,M9-INT-42,en,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q165,M9-INT-42,en,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q166,M9-INT-42,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q166,M9-INT-42,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q167,M9-INT-42,hi-Latn,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q167,M9-INT-42,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q168,M9-INT-42,en-hi,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q168,M9-INT-42,en-hi,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q169,M9-INT-43,en,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q169,M9-INT-43,en,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q170,M9-INT-43,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q170,M9-INT-43,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q171,M9-INT-43,hi-Latn,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q171,M9-INT-43,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q172,M9-INT-43,en-hi,ConfigA_Production,ANSWERED,conflicting_versions,REGULATORY_DISCLOSURE,Regulatory disclosure of conflicting/multiple conditions
+M9-Q172,M9-INT-43,en-hi,ConfigB_AdaptiveE6b,ANSWERED,conflicting_versions,REGULATORY_DISCLOSURE,Authoritative regulatory disclosure of 70% course and 75% exam rules
+M9-Q173,M9-INT-44,en,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q173,M9-INT-44,en,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q174,M9-INT-44,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q174,M9-INT-44,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q175,M9-INT-44,hi-Latn,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q175,M9-INT-44,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q176,M9-INT-44,en-hi,ConfigA_Production,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q176,M9-INT-44,en-hi,ConfigB_AdaptiveE6b,ANSWERED,answered,CORRECT_ANSWERED,Grounded answer produced with validated citations
+M9-Q177,M9-INT-45,en,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q177,M9-INT-45,en,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q178,M9-INT-45,hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q178,M9-INT-45,hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q179,M9-INT-45,hi-Latn,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q179,M9-INT-45,hi-Latn,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q180,M9-INT-45,en-hi,ConfigA_Production,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query falsely rejected due to retrieval starvation or cross-encoder demotion
+M9-Q180,M9-INT-45,en-hi,ConfigB_AdaptiveE6b,ANSWERED,unanswerable,UNNECESSARY_ABSTENTION,Answerable query safely abstained due to conservative cross-lingual lexical threshold
+M9-Q181,M9-INT-46,en,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q181,M9-INT-46,en,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q182,M9-INT-46,hi,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q182,M9-INT-46,hi,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q183,M9-INT-46,hi-Latn,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q183,M9-INT-46,hi-Latn,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q184,M9-INT-46,en-hi,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q184,M9-INT-46,en-hi,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q185,M9-INT-47,en,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q185,M9-INT-47,en,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q186,M9-INT-47,hi,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q186,M9-INT-47,hi,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q187,M9-INT-47,hi-Latn,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q187,M9-INT-47,hi-Latn,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q188,M9-INT-47,en-hi,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q188,M9-INT-47,en-hi,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q189,M9-INT-48,en,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q189,M9-INT-48,en,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q190,M9-INT-48,hi,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q190,M9-INT-48,hi,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q191,M9-INT-48,hi-Latn,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q191,M9-INT-48,hi-Latn,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q192,M9-INT-48,en-hi,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q192,M9-INT-48,en-hi,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q193,M9-INT-49,en,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q193,M9-INT-49,en,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q194,M9-INT-49,hi,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q194,M9-INT-49,hi,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q195,M9-INT-49,hi-Latn,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q195,M9-INT-49,hi-Latn,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q196,M9-INT-49,en-hi,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q196,M9-INT-49,en-hi,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q197,M9-INT-50,en,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q197,M9-INT-50,en,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q198,M9-INT-50,hi,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q198,M9-INT-50,hi,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q199,M9-INT-50,hi-Latn,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q199,M9-INT-50,hi-Latn,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q200,M9-INT-50,en-hi,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q200,M9-INT-50,en-hi,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q201,M9-INT-51,en,ConfigA_Production,UNANSWERABLE,answered,INCORRECT_ANSWER,Failed to abstain
+M9-Q201,M9-INT-51,en,ConfigB_AdaptiveE6b,UNANSWERABLE,answered,INCORRECT_ANSWER,Failed to abstain
+M9-Q202,M9-INT-51,hi,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q202,M9-INT-51,hi,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q203,M9-INT-51,hi-Latn,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q203,M9-INT-51,hi-Latn,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q204,M9-INT-51,en-hi,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q204,M9-INT-51,en-hi,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q205,M9-INT-52,en,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q205,M9-INT-52,en,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q206,M9-INT-52,hi,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q206,M9-INT-52,hi,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q207,M9-INT-52,hi-Latn,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q207,M9-INT-52,hi-Latn,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q208,M9-INT-52,en-hi,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q208,M9-INT-52,en-hi,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q209,M9-INT-53,en,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q209,M9-INT-53,en,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q210,M9-INT-53,hi,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q210,M9-INT-53,hi,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q211,M9-INT-53,hi-Latn,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q211,M9-INT-53,hi-Latn,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q212,M9-INT-53,en-hi,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q212,M9-INT-53,en-hi,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q213,M9-INT-54,en,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q213,M9-INT-54,en,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q214,M9-INT-54,hi,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q214,M9-INT-54,hi,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q215,M9-INT-54,hi-Latn,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q215,M9-INT-54,hi-Latn,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q216,M9-INT-54,en-hi,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q216,M9-INT-54,en-hi,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q217,M9-INT-55,en,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q217,M9-INT-55,en,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q218,M9-INT-55,hi,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q218,M9-INT-55,hi,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q219,M9-INT-55,hi-Latn,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q219,M9-INT-55,hi-Latn,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q220,M9-INT-55,en-hi,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q220,M9-INT-55,en-hi,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q221,M9-INT-56,en,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q221,M9-INT-56,en,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q222,M9-INT-56,hi,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q222,M9-INT-56,hi,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q223,M9-INT-56,hi-Latn,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q223,M9-INT-56,hi-Latn,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q224,M9-INT-56,en-hi,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q224,M9-INT-56,en-hi,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q225,M9-INT-57,en,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q225,M9-INT-57,en,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q226,M9-INT-57,hi,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q226,M9-INT-57,hi,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q227,M9-INT-57,hi-Latn,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q227,M9-INT-57,hi-Latn,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q228,M9-INT-57,en-hi,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q228,M9-INT-57,en-hi,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q229,M9-INT-58,en,ConfigA_Production,UNANSWERABLE,conflicting_versions,INCORRECT_ANSWER,Failed to abstain
+M9-Q229,M9-INT-58,en,ConfigB_AdaptiveE6b,UNANSWERABLE,conflicting_versions,INCORRECT_ANSWER,Failed to abstain
+M9-Q230,M9-INT-58,hi,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q230,M9-INT-58,hi,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q231,M9-INT-58,hi-Latn,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q231,M9-INT-58,hi-Latn,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q232,M9-INT-58,en-hi,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q232,M9-INT-58,en-hi,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q233,M9-INT-59,en,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q233,M9-INT-59,en,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q234,M9-INT-59,hi,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q234,M9-INT-59,hi,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q235,M9-INT-59,hi-Latn,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q235,M9-INT-59,hi-Latn,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q236,M9-INT-59,en-hi,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q236,M9-INT-59,en-hi,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q237,M9-INT-60,en,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q237,M9-INT-60,en,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q238,M9-INT-60,hi,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q238,M9-INT-60,hi,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q239,M9-INT-60,hi-Latn,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q239,M9-INT-60,hi-Latn,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query
+M9-Q240,M9-INT-60,en-hi,ConfigA_Production,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope/unanswerable query
+M9-Q240,M9-INT-60,en-hi,ConfigB_AdaptiveE6b,UNANSWERABLE,unanswerable,CORRECT_ABSTENTION,Correctly rejected out-of-scope query

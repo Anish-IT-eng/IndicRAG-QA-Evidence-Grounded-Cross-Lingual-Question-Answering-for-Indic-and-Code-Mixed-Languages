@@ -1,0 +1,83 @@
+{
+  "milestone": "M9",
+  "determination": "M9_EVALUATION_COMPLETED",
+  "audit_timestamp": "2026-11-17T14:10:00+05:30",
+  "auditor_role": "Senior Multilingual NLP Architect, Information Retrieval Specialist & Evaluation Auditor",
+  "preflight_and_corpus_verification": {
+    "official_documents": 7,
+    "child_passages": 253,
+    "parent_passages": 53,
+    "total_db_passages": 306,
+    "faiss_vector_count": 253,
+    "faiss_dimensions": 384,
+    "embedding_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "human_verified_benchmark_examples": 0,
+    "benchmark_review_status": "PROVISIONAL_NOT_HUMAN_VERIFIED"
+  },
+  "frozen_benchmark_hashes": {
+    "m3_final_dataset": {
+      "path": "backend/data/dataset/final_verified_dataset.csv",
+      "sha256": "093b00ad0f19acda806f2302731ccf2de28838c1b29c6ef16d55cbc5e7e2d520"
+    },
+    "m6_expanded_benchmark_n60": {
+      "path": "backend/data/dataset/m6_expanded_benchmark_n60.csv",
+      "sha256": "a528ac583d8c060b91a7febce652885e4045fcc76d644e49e876ddeb5d1db4ae"
+    },
+    "m6_qualification_ledger": {
+      "path": "backend/data/dataset/m6_benchmark_qualification.csv",
+      "sha256": "db8c2b5e02d6177b335a283f9ac62f99729fb36ef142aa1af81c99528efd3b13"
+    },
+    "m6_phase3_negative_candidates": {
+      "path": "backend/data/experiments/m6/m6_phase3_1_negative_benchmark_audit.csv",
+      "sha256": "be02da59b85d2895b8c60f52266540c27e39c4e8fb39810b1152cf74ea69b05c"
+    }
+  },
+  "test_suite_execution": {
+    "total_collected": 257,
+    "total_executed": 257,
+    "passed": 257,
+    "failed": 0,
+    "skipped": 0,
+    "pass_rate": 100.0,
+    "duration_seconds": 303.52,
+    "execution_log": "backend/data/experiments/m9/m9_test_execution.log",
+    "junit_xml": "backend/data/experiments/m9/m9_test_results.xml"
+  },
+  "dataset_summary": {
+    "semantic_intent_groups": 60,
+    "total_queries": 240,
+    "language_distribution": {
+      "english": 60,
+      "hindi_devanagari": 60,
+      "romanized_hindi": 60,
+      "hinglish": 60
+    },
+    "answerable_intents": 45,
+    "unanswerable_intents": 15
+  },
+  "artifacts_sha256": {
+    "backend/data/experiments/m9/m9_evaluation_dataset.jsonl": "f1829bdcad4512b6481005a944ab65da6dbd2858de5cc83a4a289d15bd506c2f",
+    "backend/data/experiments/m9/m9_dataset_schema.json": "7aabc73643cf3a5ae915a62127d22127ca1d6a23109fbd399efb8d9aac947191",
+    "backend/data/experiments/m9/m9_human_review_template.csv": "a12be907f554a2d5cf4ca8f2715d32a40034aa35a3e4bd99267514a864ef472f",
+    "backend/data/experiments/m9/language_detection_results.csv": "83c01e89259fd7ad536650800a3c290ac40aca5121751a1f0113464abf7cebd2",
+    "backend/data/experiments/m9/language_confusion_matrix.csv": "bd4fc1d13aee9384fd0aa5231112a60223da5b03daa3cb579f326114cf43d916",
+    "backend/data/experiments/m9/query_normalization_results.csv": "53ebc2c85d9fccbe235f52c2358abedb96711e4fe4adb3dcface456114ebeec5",
+    "backend/data/experiments/m9/retrieval_metrics_by_language.csv": "bf810377e0e649fcd92b674efb20b7b1d12dea0510530d3c4f2c4f99e76be446",
+    "backend/data/experiments/m9/cross_lingual_evidence_consistency.csv": "9b611a801ab9370fc6871be223fed362aa10556bfee0683acb2657713374ea2a",
+    "backend/data/experiments/m9/m9_ablation_results.csv": "32542151854dfdca66e4e176b3f9470889594ddbc1fa246a72983ed83f19b0d4",
+    "backend/data/experiments/m9/m9_test_execution.log": "729e6668201adea0c7533cc164d622707db97250f9a71780c56bba19c5a09aee",
+    "backend/data/experiments/m9/m9_test_results.xml": "313f27db4b48b8ff21becf950167866e0799eaca5a1b73982d7565d3f2ff9fa2",
+    "backend/data/db/indicrag.db": "2ec61aae957c51eb9703e5322461e044b8432e1b752a9a6e8e2b154bd68121d3",
+    "docs/m9_cross_lingual_architecture_audit.md": "e146b7927dd3387efd00f135f7e5b01b15f1508a162c18b3deb68b97e89e50bc",
+    "docs/m9_dataset_design.md": "4d0e314e8b67e3ab0e2329c56312082a06686804ae805427d027c0d2b0d678a7",
+    "docs/m9_language_detection_analysis.md": "630690a70fb6400c03aa3b39e24a5113635fc5b8f2caaad25d6ff1bd25e0bb8f",
+    "docs/m9_retrieval_evaluation.md": "f5b5e1255da21dec2704dacae2615fb8a03170e81998f7bd946d79942a378e5c",
+    "docs/m9_statistical_evaluation.md": "2dafaabbcc446fa61c17cf95f6d2c903b2fba1285441dc87559344a9ec702f2f",
+    "docs/m9_error_analysis.md": "bebe66442e377ea4f740d0303e5028de20cd67b812af86e23b1ce8100a1a2b43",
+    "backend/data/experiments/m9/answer_generation_results.csv": "8dd71a906d704a9e2dfce55dee3d977555f6e59d5deb7a20eef8fc3ce0b13943",
+    "backend/data/experiments/m9/claim_grounding_results.csv": "996912d7b701430b8fa4c3a588e497ce737f37f973715cfc4a82c39c7b80b161",
+    "backend/data/experiments/m9/citation_quality_results.csv": "dc3ee4bd6b832610b983e901fba22acc56ce5390e6fa98d876c854a1fb081fc1",
+    "docs/m9_answer_grounding_analysis.md": "ed9c50721de5a6b3946eedf31753b4a16aeeacb3112554d3fcac2bb9b9cddc16",
+    "docs/m9_final_evaluation_report.md": "f9a1e594cdacc67078ac916adee15a909f51a6bc6805d7d307eb1effe954d3fb"
+  }
+}

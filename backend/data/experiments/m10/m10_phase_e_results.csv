@@ -1,0 +1,36 @@
+config_id,config_description,language,sample_size,hit_at_1,hit_at_3,hit_at_5,mrr,ndcg_at_5,recall_at_5,cand_recall_10,mean_reranker_lat_ms,mean_e2e_lat_ms,p95_e2e_lat_ms
+E1_PROD_MSMARCO_D10,"Existing English Cross-Encoder (ms-marco-MiniLM-L-6-v2, Depth=10)",en,45,0.0889,0.1111,0.1111,0.1,0.0839,0.0889,0.0889,1065.34,1281.59,2305.65
+E1_PROD_MSMARCO_D10,"Existing English Cross-Encoder (ms-marco-MiniLM-L-6-v2, Depth=10)",hi,45,0.0222,0.0222,0.0444,0.0278,0.0195,0.0222,0.0778,988.93,1051.81,1412.41
+E1_PROD_MSMARCO_D10,"Existing English Cross-Encoder (ms-marco-MiniLM-L-6-v2, Depth=10)",hi-Latn,45,0.1333,0.1333,0.1333,0.1333,0.1161,0.1111,0.1111,948.74,1005.62,1245.03
+E1_PROD_MSMARCO_D10,"Existing English Cross-Encoder (ms-marco-MiniLM-L-6-v2, Depth=10)",en-hi,45,0.1111,0.1111,0.1111,0.1111,0.0939,0.0889,0.0889,989.85,1049.38,1197.1
+E1_PROD_MSMARCO_D10,"Existing English Cross-Encoder (ms-marco-MiniLM-L-6-v2, Depth=10)",OVERALL,180,0.0889,0.0944,0.1,0.0931,0.0784,0.0778,0.0917,998.22,1097.1,1477.08
+E2_HYBRID_NO_RERANK,No Reranker Hybrid RRF Retrieval (Depth=10),en,45,0.0444,0.0444,0.0444,0.0444,0.0358,0.0333,0.0889,0.0,216.25,113.85
+E2_HYBRID_NO_RERANK,No Reranker Hybrid RRF Retrieval (Depth=10),hi,45,0.0222,0.0222,0.0222,0.0222,0.0222,0.0222,0.0778,0.0,62.88,104.57
+E2_HYBRID_NO_RERANK,No Reranker Hybrid RRF Retrieval (Depth=10),hi-Latn,45,0.0222,0.0444,0.0444,0.0333,0.0308,0.0333,0.1111,0.0,56.87,83.24
+E2_HYBRID_NO_RERANK,No Reranker Hybrid RRF Retrieval (Depth=10),en-hi,45,0.0444,0.0444,0.0444,0.0444,0.0358,0.0333,0.0889,0.0,59.53,80.88
+E2_HYBRID_NO_RERANK,No Reranker Hybrid RRF Retrieval (Depth=10),OVERALL,180,0.0333,0.0389,0.0389,0.0361,0.0312,0.0306,0.0917,0.0,98.88,98.41
+E3_BI_ENCODER_DENSE,Multilingual Bi-Encoder Only Ranking (FAISS Dense Top-5),en,45,0.1111,0.1111,0.1111,0.1111,0.0921,0.0889,0.0889,0.0,121.32,63.01
+E3_BI_ENCODER_DENSE,Multilingual Bi-Encoder Only Ranking (FAISS Dense Top-5),hi,45,0.0889,0.0889,0.0889,0.0889,0.0717,0.0667,0.0778,0.0,31.7,52.66
+E3_BI_ENCODER_DENSE,Multilingual Bi-Encoder Only Ranking (FAISS Dense Top-5),hi-Latn,45,0.0667,0.1111,0.1111,0.0852,0.0762,0.0889,0.1111,0.0,28.71,41.98
+E3_BI_ENCODER_DENSE,Multilingual Bi-Encoder Only Ranking (FAISS Dense Top-5),en-hi,45,0.1111,0.1111,0.1111,0.1111,0.0912,0.0889,0.0889,0.0,30.03,40.79
+E3_BI_ENCODER_DENSE,Multilingual Bi-Encoder Only Ranking (FAISS Dense Top-5),OVERALL,180,0.0944,0.1056,0.1056,0.0991,0.0828,0.0833,0.0917,0.0,52.94,54.21
+E4_DEPTH_5_MSMARCO,Existing Cross-Encoder with Candidate Depth=5 (ms-marco),en,45,0.0222,0.0444,0.0444,0.0333,0.0308,0.0333,0.0889,532.67,748.92,1189.66
+E4_DEPTH_5_MSMARCO,Existing Cross-Encoder with Candidate Depth=5 (ms-marco),hi,45,0.0,0.0,0.0222,0.0044,0.0086,0.0222,0.0778,494.46,557.34,759.24
+E4_DEPTH_5_MSMARCO,Existing Cross-Encoder with Candidate Depth=5 (ms-marco),hi-Latn,45,0.0444,0.0444,0.0444,0.0444,0.0358,0.0333,0.1111,474.37,531.24,662.58
+E4_DEPTH_5_MSMARCO,Existing Cross-Encoder with Candidate Depth=5 (ms-marco),en-hi,45,0.0444,0.0444,0.0444,0.0444,0.0358,0.0333,0.0889,494.92,554.46,626.95
+E4_DEPTH_5_MSMARCO,Existing Cross-Encoder with Candidate Depth=5 (ms-marco),OVERALL,180,0.0278,0.0333,0.0389,0.0317,0.0278,0.0306,0.0917,499.11,597.99,792.78
+E5_AMBEROAD_MBERT_D10,"Multilingual Cross-Encoder (amberoad-mBERT, Depth=10)",en,45,0.0667,0.0667,0.0667,0.0667,0.0581,0.0556,0.0889,2866.7,3082.95,5658.96
+E5_AMBEROAD_MBERT_D10,"Multilingual Cross-Encoder (amberoad-mBERT, Depth=10)",hi,45,0.0444,0.0667,0.0889,0.0574,0.0442,0.0556,0.0778,2707.07,2769.95,3433.5
+E5_AMBEROAD_MBERT_D10,"Multilingual Cross-Encoder (amberoad-mBERT, Depth=10)",hi-Latn,45,0.0667,0.0667,0.0889,0.0722,0.0725,0.0778,0.1111,2676.49,2733.36,3212.28
+E5_AMBEROAD_MBERT_D10,"Multilingual Cross-Encoder (amberoad-mBERT, Depth=10)",en-hi,45,0.0889,0.0889,0.1111,0.0933,0.0838,0.0889,0.0889,2880.42,2939.95,4132.24
+E5_AMBEROAD_MBERT_D10,"Multilingual Cross-Encoder (amberoad-mBERT, Depth=10)",OVERALL,180,0.0667,0.0722,0.0889,0.0724,0.0647,0.0694,0.0917,2782.67,2881.55,3447.56
+E6a_ADAPTIVE_D5,Adaptive Routing A: Depth=5 for Devanagari Hindi; E1 for Latin,en,45,0.0889,0.1111,0.1111,0.1,0.0839,0.0889,0.0889,1065.34,1281.59,2305.65
+E6a_ADAPTIVE_D5,Adaptive Routing A: Depth=5 for Devanagari Hindi; E1 for Latin,hi,45,0.0,0.0,0.0222,0.0044,0.0086,0.0222,0.0778,494.46,557.34,759.24
+E6a_ADAPTIVE_D5,Adaptive Routing A: Depth=5 for Devanagari Hindi; E1 for Latin,hi-Latn,45,0.1333,0.1333,0.1333,0.1333,0.1161,0.1111,0.1111,948.74,1005.62,1245.03
+E6a_ADAPTIVE_D5,Adaptive Routing A: Depth=5 for Devanagari Hindi; E1 for Latin,en-hi,45,0.1111,0.1111,0.1111,0.1111,0.0939,0.0889,0.0889,989.85,1049.38,1197.1
+E6a_ADAPTIVE_D5,Adaptive Routing A: Depth=5 for Devanagari Hindi; E1 for Latin,OVERALL,180,0.0833,0.0889,0.0944,0.0872,0.0756,0.0778,0.0917,874.6,973.48,1337.49
+E6b_ADAPTIVE_BI_ENCODER,Adaptive Routing B: Bi-Encoder Dense for Devanagari Hindi; E1 for Latin,en,45,0.0889,0.1111,0.1111,0.1,0.0839,0.0889,0.0889,1065.34,1281.59,2305.65
+E6b_ADAPTIVE_BI_ENCODER,Adaptive Routing B: Bi-Encoder Dense for Devanagari Hindi; E1 for Latin,hi,45,0.0889,0.0889,0.0889,0.0889,0.0717,0.0667,0.0778,0.0,62.88,104.57
+E6b_ADAPTIVE_BI_ENCODER,Adaptive Routing B: Bi-Encoder Dense for Devanagari Hindi; E1 for Latin,hi-Latn,45,0.1333,0.1333,0.1333,0.1333,0.1161,0.1111,0.1111,948.74,1005.62,1245.03
+E6b_ADAPTIVE_BI_ENCODER,Adaptive Routing B: Bi-Encoder Dense for Devanagari Hindi; E1 for Latin,en-hi,45,0.1111,0.1111,0.1111,0.1111,0.0939,0.0889,0.0889,989.85,1049.38,1197.1
+E6b_ADAPTIVE_BI_ENCODER,Adaptive Routing B: Bi-Encoder Dense for Devanagari Hindi; E1 for Latin,OVERALL,180,0.1056,0.1111,0.1111,0.1083,0.0914,0.0889,0.0917,750.98,849.87,1337.49

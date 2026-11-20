@@ -1,0 +1,11 @@
+{
+  "generated_at": "20261110_125754",
+  "source_document": "Academic-Rules-for-SCSET_UG.pdf",
+  "passages_processed": 25,
+  "questions_per_passage": 2,
+  "total_candidates": 49,
+  "generation_failures": 0,
+  "model": "gemma:2b",
+  "review_status": "ALL PENDING \u2014 must be human-reviewed before use in experiments",
+  "csv_path": "C:\\Users\\anish\\Desktop\\IndicRAG-QA\\backend\\data\\dataset\\candidates_20261110_125754.csv"
+}

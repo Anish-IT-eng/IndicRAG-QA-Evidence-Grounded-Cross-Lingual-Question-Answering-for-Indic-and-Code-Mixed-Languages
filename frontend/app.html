@@ -1,0 +1,2529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <title>IndicRAG-QA — Your Academic Guide, in Your Language</title>
+  <meta name="description" content="Evidence-grounded multilingual assistant for Bennett University academic regulations. Understand attendance, exams, grading, and policies in English, Hindi, and Hinglish." />
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── DESIGN SYSTEM SPECIFICATION ────────────────────────────────────────── */
+    :root {
+      --bg-page:        #F7F8FC; /* Warm off-white requested */
+      --bg-sidebar:     #FFFFFF; /* Clean white sidebar */
+      --bg-surface:     #FFFFFF; /* White cards */
+      --bg-subtle:      #F8FAFC;
+      --bg-hover:       #F1F5F9;
+
+      --primary:        #5146E5; /* Deep indigo requested */
+      --primary-hover:  #4338CA;
+      --primary-light:  #EEF2FF;
+      --primary-subtle: #F5F7FF;
+
+      --text-main:      #20243A; /* Dark navy requested */
+      --text-secondary: #6B7280; /* Muted grey requested */
+      --text-muted:     #9CA3AF;
+      --text-white:     #FFFFFF;
+
+      --border:         #E5E7EB; /* Subtle borders requested */
+      --border-subtle:  #F3F4F6;
+      --border-focus:   #5146E5;
+
+      --success:        #059669;
+      --success-bg:     #ECFDF5;
+      --success-border: #A7F3D0;
+
+      --warning:        #D97706;
+      --warning-bg:     #FFFBEB;
+      --warning-border: #FDE68A;
+
+      --info:           #0284C7;
+      --info-bg:        #F0F9FF;
+      --info-border:    #BAE6FD;
+
+      --danger:         #DC2626;
+      --danger-bg:      #FEF2F2;
+      --danger-border:  #FECACA;
+
+      --radius-sm:      6px;
+      --radius-md:      10px;
+      --radius-lg:      14px;
+      --radius-xl:      20px;
+      --radius-full:    9999px;
+
+      --shadow-sm:      0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px 0 rgba(0, 0, 0, 0.02);
+      --shadow-md:      0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+      --shadow-lg:      0 10px 15px -3px rgba(0, 0, 0, 0.06), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+      --shadow-input:   0 4px 20px -2px rgba(81, 70, 229, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+      --shadow-modal:   0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+      --transition:     0.18s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* ── BASE RESET ─────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: 'Plus Jakarta Sans', 'Noto Sans Devanagari', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      overflow: hidden;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── APP LAYOUT ─────────────────────────────────────────────────────────── */
+    .app-root {
+      display: flex;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* ── SIDEBAR (Clean White) ──────────────────────────────────────────────── */
+    .sidebar {
+      width: 270px;
+      background-color: var(--bg-sidebar);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      z-index: 30;
+      transition: transform var(--transition);
+    }
+
+    .sidebar-brand-box {
+      padding: 22px 20px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .brand-avatar {
+      width: 38px;
+      height: 38px;
+      background: var(--primary);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-white);
+      font-weight: 800;
+      font-size: 1.15rem;
+      box-shadow: 0 2px 8px rgba(81, 70, 229, 0.3);
+    }
+
+    .brand-texts {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
+    }
+
+    .brand-sub {
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .sidebar-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 18px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .btn-new-chat-primary {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 11px 16px;
+      background-color: var(--primary);
+      color: var(--text-white);
+      border: none;
+      border-radius: var(--radius-md);
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(81, 70, 229, 0.2);
+      transition: background-color var(--transition), transform var(--transition);
+    }
+
+    .btn-new-chat-primary:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-1px);
+    }
+
+    .sidebar-heading {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      padding-left: 4px;
+    }
+
+    .recent-list {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .recent-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 10px;
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: background-color var(--transition), color var(--transition);
+    }
+
+    .recent-item:hover {
+      background-color: var(--bg-hover);
+      color: var(--text-main);
+    }
+
+    .recent-item svg {
+      flex-shrink: 0;
+      color: var(--text-muted);
+    }
+
+    .recent-empty {
+      padding: 10px 6px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* Official Documents Card */
+    .docs-summary-box {
+      background-color: var(--primary-subtle);
+      border: 1px solid var(--primary-light);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .docs-summary-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .docs-summary-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .docs-summary-count {
+      font-size: 0.7rem;
+      font-weight: 700;
+      background-color: #ffffff;
+      color: var(--primary);
+      padding: 2px 7px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--primary-light);
+    }
+
+    .docs-summary-text {
+      font-size: 0.74rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    .docs-summary-link {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--primary);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      text-align: left;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .docs-summary-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Language Support Indicator */
+    .language-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .lang-chip {
+      font-size: 0.74rem;
+      padding: 3px 8px;
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-full);
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    .lang-chip.active {
+      background-color: var(--primary-light);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* Sidebar Footer */
+    .sidebar-footer {
+      padding: 14px 18px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: var(--bg-sidebar);
+    }
+
+    .backend-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--text-muted);
+    }
+
+    .status-dot.online {
+      background-color: var(--success);
+      box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.2);
+    }
+
+    .status-dot.offline {
+      background-color: var(--danger);
+      box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.2);
+    }
+
+    .btn-icon-link {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 4px;
+      border-radius: var(--radius-sm);
+    }
+
+    .btn-icon-link:hover {
+      color: var(--text-main);
+      background-color: var(--bg-hover);
+    }
+
+    /* ── MAIN CONTENT VIEWPORT ──────────────────────────────────────────────── */
+    .main-viewport {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+      background-color: var(--bg-page);
+    }
+
+    /* Header Nav */
+    .main-nav {
+      height: 60px;
+      border-bottom: 1px solid var(--border);
+      background-color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      z-index: 10;
+    }
+
+    .nav-left-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-mobile-sidebar {
+      display: none;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 6px;
+      color: var(--text-secondary);
+      cursor: pointer;
+    }
+
+    .nav-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-title span {
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .nav-right-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-nav-action {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border: 1px solid var(--border);
+      background: #FFFFFF;
+      border-radius: var(--radius-md);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .btn-nav-action:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* ── SCROLLABLE CENTRAL CONTAINER ───────────────────────────────────────── */
+    .view-scrollable {
+      flex: 1;
+      overflow-y: auto;
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .center-column {
+      width: 100%;
+      max-width: 780px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── WELCOME SCREEN (PHASE 2.A SPECIFICATION) ────────────────────────────── */
+    .welcome-screen {
+      margin: auto 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 20px 0 30px;
+    }
+
+    .welcome-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      background-color: var(--primary-light);
+      border: 1px solid rgba(81, 70, 229, 0.15);
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 18px;
+    }
+
+    .welcome-h1 {
+      font-size: 2.35rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text-main);
+      line-height: 1.25;
+      margin-bottom: 12px;
+      max-width: 680px;
+    }
+
+    .welcome-sub {
+      font-size: 1.02rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    /* Centered Hero Input Box on Welcome Screen */
+    .hero-input-box {
+      width: 100%;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 14px 18px 12px;
+      box-shadow: var(--shadow-input);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 34px;
+      transition: border-color var(--transition), box-shadow var(--transition);
+      text-align: left;
+    }
+
+    .hero-input-box:focus-within {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(81, 70, 229, 0.12), var(--shadow-input);
+    }
+
+    .hero-textarea {
+      width: 100%;
+      min-height: 38px;
+      max-height: 140px;
+      resize: none;
+      border: none;
+      outline: none;
+      font-family: inherit;
+      font-size: 1rem;
+      color: var(--text-main);
+      line-height: 1.5;
+      background: transparent;
+    }
+
+    .hero-textarea::placeholder {
+      color: var(--text-muted);
+    }
+
+    .hero-input-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 4px;
+    }
+
+    .hero-lang-hint {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.74rem;
+      color: var(--text-muted);
+    }
+
+    .hero-btn-send {
+      width: 36px;
+      height: 36px;
+      background-color: var(--primary);
+      color: var(--text-white);
+      border: none;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color var(--transition), transform var(--transition);
+    }
+
+    .hero-btn-send:hover {
+      background-color: var(--primary-hover);
+      transform: scale(1.04);
+    }
+
+    /* 4 Example Question Tiles (2x2 Grid) */
+    .tile-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      width: 100%;
+      text-align: left;
+    }
+
+    .example-tile {
+      background-color: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 16px 18px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition);
+      position: relative;
+    }
+
+    .example-tile:hover {
+      transform: translateY(-2px);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-md);
+    }
+
+    .tile-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tile-question {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-main);
+      line-height: 1.45;
+    }
+
+    .tile-action {
+      margin-top: 4px;
+      font-size: 0.76rem;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* ── CONVERSATION THREAD (PHASE 2.C SPECIFICATION) ──────────────────────── */
+    .conversation-stream {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      width: 100%;
+      padding-bottom: 24px;
+    }
+
+    .thread-entry {
+      display: flex;
+      gap: 14px;
+      width: 100%;
+    }
+
+    .thread-entry.user-entry {
+      justify-content: flex-end;
+    }
+
+    .user-msg-bubble {
+      background-color: var(--primary);
+      color: #FFFFFF;
+      padding: 12px 18px;
+      border-radius: 18px 18px 4px 18px;
+      font-size: 0.95rem;
+      line-height: 1.55;
+      max-width: 82%;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .assistant-avatar-icon {
+      width: 34px;
+      height: 34px;
+      background: var(--primary);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      font-weight: 800;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .assistant-card {
+      flex: 1;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 22px 24px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .answer-prose {
+      font-size: 0.96rem;
+      color: var(--text-main);
+      line-height: 1.75;
+    }
+
+    .answer-prose p {
+      margin-bottom: 12px;
+    }
+
+    .answer-prose p:last-child {
+      margin-bottom: 0;
+    }
+
+    .answer-prose strong {
+      color: var(--text-main);
+      font-weight: 700;
+    }
+
+    .answer-prose ul, .answer-prose ol {
+      margin: 10px 0 12px 22px;
+    }
+
+    .answer-prose li {
+      margin-bottom: 6px;
+    }
+
+    /* Distinct Academic State Banners */
+    .answer-state-banner {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 16px;
+      border-radius: var(--radius-md);
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+
+    .answer-state-banner.clarification {
+      background-color: var(--info-bg);
+      border: 1px solid var(--info-border);
+      color: #0369A1;
+    }
+
+    .answer-state-banner.unanswerable {
+      background-color: #F8FAFC;
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+    }
+
+    .answer-state-banner.conflicting {
+      background-color: var(--warning-bg);
+      border: 1px solid var(--warning-border);
+      color: #B45309;
+    }
+
+    .answer-state-banner.error {
+      background-color: var(--danger-bg);
+      border: 1px solid var(--danger-border);
+      color: #B91C1C;
+    }
+
+    .banner-title {
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .cohort-button-row {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .btn-cohort-tag {
+      font-size: 0.76rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      background-color: #FFFFFF;
+      border: 1px solid var(--info-border);
+      color: var(--info);
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .btn-cohort-tag:hover {
+      background-color: var(--info);
+      color: #FFFFFF;
+    }
+
+    /* ── EVIDENCE & OFFICIAL SOURCES (PHASE 2.D SPECIFICATION) ───────────────── */
+    .official-sources-section {
+      margin-top: 6px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .sources-heading-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .sources-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .verified-corpus-stamp {
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--success);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .source-card-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .source-card {
+      background-color: var(--bg-page);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 12px 16px;
+      transition: border-color var(--transition), background-color var(--transition);
+    }
+
+    .source-card:hover {
+      border-color: var(--primary);
+      background-color: #FFFFFF;
+    }
+
+    .source-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .source-title-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .source-index-num {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .source-doc-name {
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .source-page-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      background-color: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-full);
+      color: var(--text-secondary);
+    }
+
+    .source-type-pill {
+      font-size: 0.70rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .source-type-pill.official {
+      background-color: #ECFDF5;
+      color: #059669;
+      border: 1px solid #A7F3D0;
+    }
+    .source-type-pill.upload {
+      background-color: #EEF2FF;
+      color: #5146E5;
+      border: 1px solid rgba(81, 70, 229, 0.25);
+    }
+    .verified-corpus-stamp.user-scope-stamp {
+      background-color: #EEF2FF;
+      border-color: rgba(81, 70, 229, 0.25);
+      color: #5146E5;
+    }
+
+    .source-quote-box {
+      font-size: 0.83rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      font-style: italic;
+      border-left: 3px solid var(--primary);
+      padding-left: 10px;
+      margin-bottom: 8px;
+    }
+
+    .btn-inspect-passage {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--primary);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .btn-inspect-passage:hover {
+      text-decoration: underline;
+    }
+
+    /* Response Action Row */
+    .response-action-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-subtle);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .btn-copy-ans {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 4px 10px;
+      color: var(--text-secondary);
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all var(--transition);
+    }
+
+    .btn-copy-ans:hover {
+      background-color: var(--bg-hover);
+      color: var(--text-main);
+      border-color: var(--text-muted);
+    }
+
+    /* ── PROGRESSIVE TIMER CARD ─────────────────────────────────────────────── */
+    .progressive-loading-box {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 18px 22px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .loading-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .loading-label-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .loading-spinner-ring {
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--primary-light);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .loading-stage-msg {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .loading-timer-badge {
+      font-size: 0.78rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-secondary);
+      background: var(--bg-page);
+      border: 1px solid var(--border);
+      padding: 2px 8px;
+      border-radius: var(--radius-sm);
+    }
+
+    .step-track {
+      display: flex;
+      gap: 6px;
+      width: 100%;
+    }
+
+    .step-seg {
+      flex: 1;
+      height: 4px;
+      background: var(--border);
+      border-radius: var(--radius-full);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .step-seg.completed {
+      background: var(--primary);
+    }
+
+    .step-seg.active::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--primary);
+      animation: seg-pulse 1.4s ease-in-out infinite;
+    }
+
+    @keyframes seg-pulse {
+      0%, 100% { opacity: 0.35; }
+      50% { opacity: 1; }
+    }
+
+    /* ── CHAT STICKY BOTTOM INPUT DOCK ──────────────────────────────────────── */
+    .sticky-dock {
+      padding: 14px 28px 18px;
+      background: rgba(247, 248, 252, 0.95);
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .dock-input-card {
+      width: 100%;
+      max-width: 780px;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 10px 14px 8px 18px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .dock-input-card:focus-within {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(81, 70, 229, 0.12), var(--shadow-sm);
+    }
+
+    .dock-textarea {
+      width: 100%;
+      min-height: 24px;
+      max-height: 140px;
+      resize: none;
+      border: none;
+      outline: none;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      line-height: 1.5;
+      background: transparent;
+    }
+
+    .dock-textarea::placeholder {
+      color: var(--text-muted);
+    }
+
+    .dock-bottom-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 6px;
+    }
+
+    .dock-hint {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+    }
+
+    .dock-hint kbd {
+      background: var(--bg-hover);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 1px 4px;
+      font-size: 0.68rem;
+    }
+
+    .btn-dock-send {
+      width: 32px;
+      height: 32px;
+      background-color: var(--primary);
+      color: #FFFFFF;
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color var(--transition);
+    }
+
+    .btn-dock-send:hover:not(:disabled) {
+      background-color: var(--primary-hover);
+    }
+
+    .btn-dock-send:disabled {
+      background-color: var(--border);
+      cursor: not-allowed;
+    }
+
+    /* ── MODALS ─────────────────────────────────────────────────────────────── */
+    .modal-veil {
+      position: fixed;
+      inset: 0;
+      background: rgba(32, 36, 58, 0.45);
+      backdrop-filter: blur(3px);
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-veil.open {
+      display: flex;
+    }
+
+    .modal-window {
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 620px;
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-modal);
+      border: 1px solid var(--border);
+    }
+
+    .modal-top {
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .modal-h2 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .modal-close-x {
+      background: none;
+      border: none;
+      font-size: 1.3rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .modal-content-area {
+      padding: 20px 22px;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    .passage-meta-pill {
+      background: var(--bg-page);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 10px 14px;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+    }
+
+    .passage-text-view {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--text-main);
+      white-space: pre-wrap;
+    }
+
+    .registry-card {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--bg-page);
+      margin-bottom: 8px;
+    }
+
+    .registry-title {
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .registry-sub {
+      font-size: 0.74rem;
+      color: var(--text-secondary);
+    }
+
+    /* Toast */
+    .toast-box {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 120;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .toast-item {
+      padding: 10px 16px;
+      background: var(--text-main);
+      color: #FFFFFF;
+      border-radius: var(--radius-md);
+      font-size: 0.82rem;
+      font-weight: 600;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .toast-item.success { background: var(--success); }
+    .toast-item.error { background: var(--danger); }
+
+    /* Scope Selector */
+    .scope-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .scope-label {
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .scope-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-full);
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      user-select: none;
+      transition: all var(--transition);
+    }
+    .scope-chip:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    .scope-chip.active {
+      background: var(--primary-light);
+      border-color: rgba(81, 70, 229, 0.35);
+      color: var(--primary);
+    }
+    .scope-indicator {
+      font-size: 0.72rem;
+      font-weight: 800;
+    }
+
+    /* Upload Dropzone & Form */
+    .upload-dropzone {
+      border: 2px dashed var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px 20px;
+      text-align: center;
+      background: var(--bg-page);
+      cursor: pointer;
+      transition: all var(--transition);
+      margin-bottom: 14px;
+    }
+    .upload-dropzone:hover, .upload-dropzone.dragover {
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
+    .form-group-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .form-label {
+      display: block;
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+    }
+    .form-input {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+      font-family: inherit;
+      color: var(--text-main);
+      background: #FFFFFF;
+      outline: none;
+      transition: border-color var(--transition);
+    }
+    .form-input:focus {
+      border-color: var(--primary);
+    }
+    .isolation-notice {
+      background: #F0F9FF;
+      border: 1px solid #BAE6FD;
+      border-radius: var(--radius-md);
+      padding: 10px 12px;
+      margin-bottom: 16px;
+      font-size: 0.78rem;
+      color: #0369A1;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.5;
+    }
+
+    /* ── RESPONSIVENESS ─────────────────────────────────────────────────────── */
+    @media (max-width: 860px) {
+      .sidebar {
+        position: fixed;
+        inset: 0 auto 0 0;
+        transform: translateX(-100%);
+        box-shadow: var(--shadow-modal);
+      }
+      .sidebar.open {
+        transform: translateX(0);
+      }
+      .sidebar-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(32, 36, 58, 0.4);
+        z-index: 25;
+        display: none;
+      }
+      .sidebar-overlay.active {
+        display: block;
+      }
+      .btn-mobile-sidebar {
+        display: flex;
+      }
+      .tile-grid {
+        grid-template-columns: 1fr;
+      }
+      .welcome-h1 {
+        font-size: 1.85rem;
+      }
+      .main-nav {
+        padding: 0 16px;
+      }
+      .sticky-dock {
+        padding: 12px 16px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-root">
+
+    <!-- Mobile Drawer Backdrop -->
+    <div id="sidebar-overlay" class="sidebar-overlay" onclick="toggleSidebarDrawer()"></div>
+
+    <!-- ── SIDEBAR (Clean White Background) ───────────────────────────────── -->
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-brand-box">
+        <div class="brand-avatar">अ</div>
+        <div class="brand-texts">
+          <div class="brand-title">IndicRAG-QA</div>
+          <div class="brand-sub">Academic Regulations Guide</div>
+        </div>
+      </div>
+
+      <div class="sidebar-body">
+        <!-- New Consultation Button -->
+        <button type="button" class="btn-new-chat-primary" onclick="resetToWelcomeScreen()">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          <span>New Chat</span>
+        </button>
+
+        <!-- Recent Questions List -->
+        <div>
+          <div class="sidebar-heading">Recent Consultations</div>
+          <div id="recent-queries-container" class="recent-list">
+            <div class="recent-empty">No recent questions yet</div>
+          </div>
+        </div>
+
+        <!-- Official Corpus Summary Card -->
+        <div class="docs-summary-box">
+          <div class="docs-summary-top">
+            <span class="docs-summary-label">Official Regulations</span>
+            <span class="docs-summary-count" id="corpus-doc-pill">7 Verified</span>
+          </div>
+          <div class="docs-summary-text">
+            Bennett University B.Tech / SCSET academic rules, attendance criteria, grading scales, and examination ordinances.
+          </div>
+          <button type="button" class="docs-summary-link" onclick="openRegistryModal()">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+            <span>Browse 7 Official Documents →</span>
+          </button>
+        </div>
+
+        <!-- User Uploads Summary Box -->
+        <div class="docs-summary-box" style="margin-top: 10px;">
+          <div class="docs-summary-top">
+            <span class="docs-summary-label">My Documents</span>
+            <span class="docs-summary-count" id="user-doc-pill">0 Uploaded</span>
+          </div>
+          <div class="docs-summary-text">
+            Upload your custom course PDFs, handouts, or notes to search them alongside regulations.
+          </div>
+          <button type="button" class="docs-summary-link" onclick="openUploadModal()">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+            <span>+ Upload Custom PDF →</span>
+          </button>
+        </div>
+
+        <!-- Language Preference Section -->
+        <div>
+          <div class="sidebar-heading">Language Support</div>
+          <div class="language-badge-row">
+            <span class="lang-chip active">English</span>
+            <span class="lang-chip">हिंदी</span>
+            <span class="lang-chip">Romanized Hindi</span>
+            <span class="lang-chip">Hinglish</span>
+          </div>
+          <div style="font-size:0.72rem;color:var(--text-muted);margin-top:8px">
+            Ask naturally in any format. Answers are grounded in official records.
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar Status Footer -->
+      <div class="sidebar-footer">
+        <div class="backend-pill">
+          <div id="backend-dot" class="status-dot"></div>
+          <span id="backend-status-msg">Checking system…</span>
+        </div>
+        <button type="button" class="btn-icon-link" onclick="openAboutInfoModal()" title="About IndicRAG-QA">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+        </button>
+      </div>
+    </aside>
+
+    <!-- ── MAIN VIEWPORT ──────────────────────────────────────────────────── -->
+    <main class="main-viewport">
+      
+      <!-- Top Navigation -->
+      <header class="main-nav">
+        <div class="nav-left-group">
+          <button type="button" class="btn-mobile-sidebar" onclick="toggleSidebarDrawer()" aria-label="Toggle Navigation">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          </button>
+          <div class="nav-title">
+            IndicRAG-QA <span>/</span> Academic Regulations
+          </div>
+        </div>
+
+        <div class="nav-right-actions">
+          <button type="button" class="btn-nav-action" onclick="openUploadModal()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+            <span>Upload Document</span>
+          </button>
+          <button type="button" class="btn-nav-action" onclick="openRegistryModal()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+            <span>Official Sources</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Scrollable Center Workspace -->
+      <div id="workspace-scroll" class="view-scrollable">
+        <div class="center-column">
+
+          <!-- ── WELCOME SCREEN (PHASE 2.A) ────────────────────────────────── -->
+          <div id="welcome-view" class="welcome-screen">
+            <div class="welcome-pill">
+              <span>🏛️ Bennett University B.Tech / SCSET</span>
+            </div>
+
+            <h1 class="welcome-h1">
+              Your Academic Guide, in Your Language.
+            </h1>
+
+            <p class="welcome-sub">
+              Understand university regulations, attendance, examinations and grading through answers grounded in official documents.
+            </p>
+
+            <!-- Prominent Central Input Box on Welcome Screen -->
+            <div class="hero-input-box">
+              <textarea 
+                id="hero-input" 
+                class="hero-textarea" 
+                placeholder="Ask anything about your academic regulations (English, हिंदी, Hinglish)..."
+                onkeydown="handleHeroKeydown(event)"
+                oninput="autoResizeTextarea(this)"
+              ></textarea>
+              
+              <div class="hero-input-bottom">
+                <div class="hero-lang-hint">
+                  <span>English · हिंदी · Romanized Hindi · Hinglish</span>
+                </div>
+                <button type="button" class="hero-btn-send" onclick="submitHeroQuery()" aria-label="Ask Question">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Corpus Scope Selector -->
+            <div class="scope-bar">
+              <span class="scope-label">Search in:</span>
+              <button type="button" class="scope-chip active" id="scope-hero-official" onclick="toggleScope('official')">
+                <span class="scope-indicator">✓</span>
+                <span>🏛️ Official Regulations</span>
+              </button>
+              <button type="button" class="scope-chip" id="scope-hero-upload" onclick="toggleScope('upload')">
+                <span class="scope-indicator"></span>
+                <span>📁 My Documents (<span class="scope-count-label">0</span>)</span>
+              </button>
+            </div>
+
+            <!-- 4 Attractive Example Question Tiles -->
+            <div class="tile-grid">
+              
+              <!-- Tile 1: Attendance Requirements -->
+              <div class="example-tile" onclick="triggerQuestion('What is the minimum attendance requirement to appear in end-semester examinations?')">
+                <div class="tile-badge">
+                  <span>📋 Attendance Requirements</span>
+                </div>
+                <div class="tile-question">What is the minimum attendance requirement to appear in end-semester examinations?</div>
+                <div class="tile-action">Ask attendance rule →</div>
+              </div>
+
+              <!-- Tile 2: Examination Eligibility -->
+              <div class="example-tile" onclick="triggerQuestion('What are the examination eligibility requirements and criteria for students?')">
+                <div class="tile-badge">
+                  <span>⚖️ Examination Eligibility</span>
+                </div>
+                <div class="tile-question">What are the examination eligibility requirements and criteria for students?</div>
+                <div class="tile-action">Ask examination rule →</div>
+              </div>
+
+              <!-- Tile 3: CGPA Calculation -->
+              <div class="example-tile" onclick="triggerQuestion('How is CGPA calculated under the official academic evaluation rules?')">
+                <div class="tile-badge">
+                  <span>🎓 CGPA Calculation</span>
+                </div>
+                <div class="tile-question">How is CGPA calculated under the official academic evaluation rules?</div>
+                <div class="tile-action">Ask grading formula →</div>
+              </div>
+
+              <!-- Tile 4: Academic Regulations in Hindi -->
+              <div class="example-tile" onclick="triggerQuestion('सेमेस्टर परीक्षा और उपस्थिति के नियम क्या हैं?')">
+                <div class="tile-badge">
+                  <span>🇮🇳 हिंदी देवनागरी</span>
+                </div>
+                <div class="tile-question" style="font-family:'Noto Sans Devanagari',sans-serif">सेमेस्टर परीक्षा और उपस्थिति के नियम क्या हैं?</div>
+                <div class="tile-action">हिंदी में पूछें →</div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- ── CHAT SCREEN (CONVERSATION STREAM) ─────────────────────────── -->
+          <div id="chat-thread" class="conversation-stream" style="display:none;"></div>
+
+          <!-- Progressive Stopwatch Loading View -->
+          <div id="loading-box" class="progressive-loading-box" style="display:none;">
+            <div class="loading-head">
+              <div class="loading-label-group">
+                <div class="loading-spinner-ring"></div>
+                <div>
+                  <div id="loading-stage-msg" class="loading-stage-msg">Consulting official regulations…</div>
+                  <div style="font-size:0.75rem;color:var(--text-secondary)">Grounded cross-lingual retrieval active</div>
+                </div>
+              </div>
+              <div id="loading-timer-val" class="loading-timer-badge">0.0s</div>
+            </div>
+
+            <div class="step-track">
+              <div id="step-seg-1" class="step-seg active"></div>
+              <div id="step-seg-2" class="step-seg"></div>
+              <div id="step-seg-3" class="step-seg"></div>
+              <div id="step-seg-4" class="step-seg"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── CHAT STICKY BOTTOM DOCK (Active during conversation) ──────────── -->
+      <footer id="chat-dock" class="sticky-dock" style="display:none;">
+        <div class="dock-input-card">
+          <div class="scope-bar" style="padding: 0 4px 6px; margin-bottom: 0;">
+            <span class="scope-label">Scope:</span>
+            <button type="button" class="scope-chip active" id="scope-dock-official" onclick="toggleScope('official')">
+              <span class="scope-indicator">✓</span>
+              <span>🏛️ Official</span>
+            </button>
+            <button type="button" class="scope-chip" id="scope-dock-upload" onclick="toggleScope('upload')">
+              <span class="scope-indicator"></span>
+              <span>📁 My Uploads (<span class="scope-count-label">0</span>)</span>
+            </button>
+          </div>
+          <textarea 
+            id="dock-input" 
+            class="dock-textarea" 
+            rows="1" 
+            placeholder="Ask anything about your academic regulations..."
+            onkeydown="handleDockKeydown(event)"
+            oninput="autoResizeTextarea(this)"
+          ></textarea>
+
+          <div class="dock-bottom-bar">
+            <div class="dock-hint">
+              <span>Press <kbd>Enter ↵</kbd> to ask · <kbd>Shift + Enter</kbd> new line</span>
+            </div>
+            <button type="button" id="btn-dock-send" class="btn-dock-send" onclick="submitDockQuery()" aria-label="Send">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            </button>
+          </div>
+        </div>
+      </footer>
+
+    </main>
+
+  </div>
+
+  <!-- ── MODAL: UPLOAD DOCUMENT ───────────────────────────────────────────── -->
+  <div id="modal-upload" class="modal-veil" onclick="handleVeilClick(event, 'modal-upload')">
+    <div class="modal-window">
+      <div class="modal-top">
+        <h2 class="modal-h2">Upload Academic Document (PDF)</h2>
+        <button type="button" class="modal-close-x" onclick="closeModalWindow('modal-upload')">×</button>
+      </div>
+      <div class="modal-content-area">
+        <p style="font-size:0.84rem;color:var(--text-secondary);margin-bottom:14px">
+          Upload your own course syllabi, notices, or program documents to query them alongside official regulations.
+        </p>
+
+        <!-- Dropzone -->
+        <div id="upload-dropzone" class="upload-dropzone" onclick="document.getElementById('file-upload-input').click()" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleFileDrop(event)">
+          <input type="file" id="file-upload-input" accept=".pdf" style="display:none;" onchange="handleFileSelect(event)">
+          <div style="font-size:2rem;color:var(--primary);margin-bottom:6px">📄</div>
+          <div id="dropzone-text" style="font-weight:700;font-size:0.92rem;color:var(--text-main);margin-bottom:4px">
+            Click to browse or drag & drop PDF here
+          </div>
+          <div style="font-size:0.75rem;color:var(--text-secondary)">
+            Accepts PDF documents up to 25 MB
+          </div>
+          <div id="selected-file-pill" style="display:none;margin-top:10px;padding:6px 12px;background:#EEF2FF;color:#5146E5;border-radius:6px;font-size:0.82rem;font-weight:600"></div>
+        </div>
+
+        <div class="form-group-grid">
+          <div>
+            <label class="form-label">Academic Year (Optional)</label>
+            <input type="text" id="upload-year" class="form-input" placeholder="e.g. 2024-25">
+          </div>
+          <div>
+            <label class="form-label">Program Applicability (Optional)</label>
+            <input type="text" id="upload-program" class="form-input" placeholder="e.g. B.Tech CSE">
+          </div>
+        </div>
+
+        <div class="isolation-notice">
+          <span style="font-size:1rem;line-height:1">🔒</span>
+          <span><strong>Isolation Guarantee:</strong> Uploaded documents remain completely isolated in your personal collection and are never mixed into the official institutional regulatory corpus.</span>
+        </div>
+
+        <button type="button" id="btn-upload-submit" class="btn-new-chat-primary" style="width:100%;justify-content:center;margin-bottom:18px" onclick="submitDocumentUpload()" disabled>
+          <span>Upload and Index Document</span>
+        </button>
+
+        <div style="border-top:1px solid var(--border);padding-top:14px">
+          <div style="font-size:0.82rem;font-weight:700;color:var(--text-main);margin-bottom:8px;display:flex;align-items:center;justify-content:space-between">
+            <span>Your Uploaded Documents</span>
+            <span id="user-docs-modal-count" style="font-size:0.72rem;color:var(--text-secondary)">0 indexed</span>
+          </div>
+          <div id="user-docs-modal-list" style="font-size:0.8rem;color:var(--text-muted)">
+            No custom documents uploaded yet.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MODAL: DOCUMENT REGISTRY ─────────────────────────────────────────── -->
+  <div id="modal-registry" class="modal-veil" onclick="handleVeilClick(event, 'modal-registry')">
+    <div class="modal-window">
+      <div class="modal-top">
+        <h2 class="modal-h2">Official Regulatory Corpus (7 Documents)</h2>
+        <button type="button" class="modal-close-x" onclick="closeModalWindow('modal-registry')">×</button>
+      </div>
+      <div class="modal-content-area">
+        <p style="font-size:0.84rem;color:var(--text-secondary);margin-bottom:14px">
+          The IndicRAG-QA knowledge base is strictly anchored to the following official Bennett University regulations:
+        </p>
+        <div id="modal-docs-list">Loading official registry…</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MODAL: PASSAGE INSPECTOR ─────────────────────────────────────────── -->
+  <div id="modal-passage" class="modal-veil" onclick="handleVeilClick(event, 'modal-passage')">
+    <div class="modal-window">
+      <div class="modal-top">
+        <h2 class="modal-h2" id="passage-doc-title">Authoritative Source Passage</h2>
+        <button type="button" class="modal-close-x" onclick="closeModalWindow('modal-passage')">×</button>
+      </div>
+      <div class="modal-content-area">
+        <div class="passage-meta-pill" id="passage-meta-info"></div>
+        <div class="passage-text-view" id="passage-text-body">Loading full passage text from database…</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MODAL: ABOUT ─────────────────────────────────────────────────────── -->
+  <div id="modal-about" class="modal-veil" onclick="handleVeilClick(event, 'modal-about')">
+    <div class="modal-window">
+      <div class="modal-top">
+        <h2 class="modal-h2">About IndicRAG-QA</h2>
+        <button type="button" class="modal-close-x" onclick="closeModalWindow('modal-about')">×</button>
+      </div>
+      <div class="modal-content-area" style="font-size:0.88rem;color:var(--text-secondary);line-height:1.6">
+        <p style="margin-bottom:12px">
+          <strong>IndicRAG-QA</strong> is an evidence-grounded cross-lingual question answering system for university students.
+        </p>
+        <p style="margin-bottom:12px">
+          <strong>Institutional Integrity Guarantees:</strong>
+        </p>
+        <ul style="margin-left:20px;margin-bottom:14px">
+          <li><strong>Grounded Citations:</strong> Answers explicitly cite official documents, clauses, and page numbers.</li>
+          <li><strong>No Guessing:</strong> If an academic policy is not documented, the system returns a safe abstention.</li>
+          <li><strong>Language Inclusivity:</strong> Accepts questions in English, हिंदी, Romanized Hindi, and Hinglish.</li>
+        </ul>
+        <p style="font-size:0.8rem;color:var(--text-muted)">
+          Backend powered by FastAPI, SQLite, BM25 + FAISS Hybrid Fusion, and local Ollama inference.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Box -->
+  <div id="toast-container" class="toast-box"></div>
+
+  <!-- ── SCRIPT LOGIC ─────────────────────────────────────────────────────── -->
+  <script>
+    const API_BASE = 'http://localhost:8000';
+    let queryHistory = [];
+    let activeTimer = null;
+    let startTime = null;
+
+    let scopeOfficial = true;
+    let scopeUpload = false;
+    let userUploadedDocs = [];
+    let selectedUploadFile = null;
+
+    function getUserId() {
+      let uid = localStorage.getItem('indicrag_user_id');
+      if (!uid) {
+        uid = 'user_' + Math.random().toString(36).substring(2, 10);
+        localStorage.setItem('indicrag_user_id', uid);
+      }
+      return uid;
+    }
+
+    function getSessionId() {
+      let sid = sessionStorage.getItem('indicrag_session_id');
+      if (!sid) {
+        sid = 'session_' + Math.random().toString(36).substring(2, 10);
+        sessionStorage.setItem('indicrag_session_id', sid);
+      }
+      return sid;
+    }
+
+    // Scope Toggling
+    function toggleScope(type) {
+      if (type === 'official') {
+        scopeOfficial = !scopeOfficial;
+        if (!scopeOfficial && !scopeUpload) scopeOfficial = true; // At least one active
+      } else if (type === 'upload') {
+        if (userUploadedDocs.length === 0 && !scopeUpload) {
+          openUploadModal();
+          return;
+        }
+        scopeUpload = !scopeUpload;
+        if (!scopeOfficial && !scopeUpload) scopeOfficial = true;
+      }
+      updateScopeUI();
+    }
+
+    function updateScopeUI() {
+      ['hero', 'dock'].forEach(prefix => {
+        const offBtn = document.getElementById(`scope-${prefix}-official`);
+        const upBtn = document.getElementById(`scope-${prefix}-upload`);
+        if (offBtn) {
+          offBtn.classList.toggle('active', scopeOfficial);
+          const ind = offBtn.querySelector('.scope-indicator');
+          if (ind) ind.textContent = scopeOfficial ? '✓' : '';
+        }
+        if (upBtn) {
+          upBtn.classList.toggle('active', scopeUpload);
+          const ind = upBtn.querySelector('.scope-indicator');
+          if (ind) ind.textContent = scopeUpload ? '✓' : '';
+        }
+      });
+      document.querySelectorAll('.scope-count-label').forEach(el => {
+        el.textContent = userUploadedDocs.length;
+      });
+    }
+
+    // Modal Upload handlers
+    function openUploadModal() {
+      document.getElementById('modal-upload').classList.add('open');
+      fetchUserDocuments();
+    }
+
+    function handleDragOver(e) {
+      e.preventDefault();
+      document.getElementById('upload-dropzone').classList.add('dragover');
+    }
+
+    function handleDragLeave(e) {
+      document.getElementById('upload-dropzone').classList.remove('dragover');
+    }
+
+    function handleFileDrop(e) {
+      e.preventDefault();
+      document.getElementById('upload-dropzone').classList.remove('dragover');
+      if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+        processSelectedFile(e.dataTransfer.files[0]);
+      }
+    }
+
+    function handleFileSelect(e) {
+      if (e.target.files && e.target.files[0]) {
+        processSelectedFile(e.target.files[0]);
+      }
+    }
+
+    function processSelectedFile(file) {
+      if (!file.name.toLowerCase().endsWith('.pdf')) {
+        showToast('Only PDF documents are supported.', 'error');
+        return;
+      }
+      selectedUploadFile = file;
+      const pill = document.getElementById('selected-file-pill');
+      const text = document.getElementById('dropzone-text');
+      const btn = document.getElementById('btn-upload-submit');
+      pill.style.display = 'block';
+      pill.textContent = `Selected: ${file.name} (${(file.size / (1024*1024)).toFixed(2)} MB)`;
+      text.textContent = 'Change selected PDF';
+      btn.disabled = false;
+    }
+
+    async function submitDocumentUpload() {
+      if (!selectedUploadFile) return;
+      const btn = document.getElementById('btn-upload-submit');
+      btn.disabled = true;
+      btn.innerHTML = '<span>Uploading and indexing…</span>';
+
+      const formData = new FormData();
+      formData.append('file', selectedUploadFile);
+      formData.append('user_id', getUserId());
+      const year = document.getElementById('upload-year').value.trim();
+      const prog = document.getElementById('upload-program').value.trim();
+      if (year) formData.append('academic_year', year);
+      if (prog) formData.append('program_applicability', prog);
+
+      try {
+        const resp = await fetch(`${API_BASE}/uploads`, {
+          method: 'POST',
+          body: formData
+        });
+        if (!resp.ok) {
+          const err = await resp.json().catch(() => ({}));
+          throw new Error(err.detail || 'Upload failed');
+        }
+        showToast('Document uploaded successfully! Indexing into user collection.', 'success');
+        selectedUploadFile = null;
+        document.getElementById('selected-file-pill').style.display = 'none';
+        document.getElementById('dropzone-text').textContent = 'Click to browse or drag & drop PDF here';
+        document.getElementById('upload-year').value = '';
+        document.getElementById('upload-program').value = '';
+        
+        // Auto-enable upload scope
+        scopeUpload = true;
+        fetchUserDocuments();
+      } catch (e) {
+        showToast(e.message || 'Failed to upload document', 'error');
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<span>Upload and Index Document</span>';
+      }
+    }
+
+    async function fetchUserDocuments() {
+      const listEl = document.getElementById('user-docs-modal-list');
+      const pill = document.getElementById('user-doc-pill');
+      const countEl = document.getElementById('user-docs-modal-count');
+      try {
+        const resp = await fetch(`${API_BASE}/documents?source_type=upload&user_id=${getUserId()}`);
+        if (!resp.ok) throw new Error();
+        userUploadedDocs = await resp.json();
+        
+        if (pill) pill.textContent = `${userUploadedDocs.length} Uploaded`;
+        if (countEl) countEl.textContent = `${userUploadedDocs.length} indexed`;
+        updateScopeUI();
+
+        if (userUploadedDocs.length === 0) {
+          listEl.innerHTML = '<div style="padding:8px 0;color:var(--text-muted)">No custom documents uploaded yet.</div>';
+          return;
+        }
+
+        listEl.innerHTML = userUploadedDocs.map(d => `
+          <div class="registry-card">
+            <div>
+              <div class="registry-title">${escapeHtml(d.title || d.filename)}</div>
+              <div class="registry-sub">${escapeHtml(d.filename)} ${d.page_count ? '· ' + d.page_count + ' pages' : ''}</div>
+            </div>
+            <span style="font-size:0.7rem;font-weight:700;color:var(--primary);background:var(--primary-light);padding:2px 7px;border-radius:9999px;border:1px solid rgba(81,70,229,0.2)">User Scope</span>
+          </div>
+        `).join('');
+      } catch (e) {
+        if (listEl) listEl.innerHTML = '<div style="color:var(--danger)">Unable to fetch uploaded documents.</div>';
+      }
+    }
+
+    // Initialization
+    document.addEventListener('DOMContentLoaded', () => {
+      pingBackendHealth();
+      loadHistoryFromLocal();
+      fetchOfficialDocuments();
+      fetchUserDocuments();
+      setInterval(pingBackendHealth, 12000);
+
+      // Support direct deep-linking via ?q=
+      const urlParams = new URLSearchParams(window.location.search);
+      const initialQ = urlParams.get('q');
+      if (initialQ) {
+        setTimeout(() => triggerQuestion(initialQ), 400);
+      }
+    });
+
+    // Sidebar Mobile Drawer
+    function toggleSidebarDrawer() {
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('sidebar-overlay');
+      const isOpen = sidebar.classList.contains('open');
+      if (isOpen) {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('active');
+      } else {
+        sidebar.classList.add('open');
+        overlay.classList.add('active');
+      }
+    }
+
+    // Auto-resize textareas
+    function autoResizeTextarea(el) {
+      el.style.height = 'auto';
+      el.style.height = Math.min(el.scrollHeight, 140) + 'px';
+    }
+
+    // Keydown handlers
+    function handleHeroKeydown(e) {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        submitHeroQuery();
+      }
+    }
+
+    function handleDockKeydown(e) {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        submitDockQuery();
+      }
+    }
+
+    // Reset to Welcome Screen
+    function resetToWelcomeScreen() {
+      document.getElementById('welcome-view').style.display = 'flex';
+      document.getElementById('chat-thread').style.display = 'none';
+      document.getElementById('chat-dock').style.display = 'none';
+      document.getElementById('chat-thread').innerHTML = '';
+      
+      const heroIn = document.getElementById('hero-input');
+      heroIn.value = '';
+      heroIn.style.height = 'auto';
+      heroIn.focus();
+
+      if (window.innerWidth <= 860) {
+        toggleSidebarDrawer();
+      }
+    }
+
+    // Trigger an example question
+    function triggerQuestion(qText) {
+      const heroIn = document.getElementById('hero-input');
+      heroIn.value = qText;
+      executeSearch(qText);
+    }
+
+    function submitHeroQuery() {
+      const q = document.getElementById('hero-input').value.trim();
+      if (q) executeSearch(q);
+    }
+
+    function submitDockQuery() {
+      const q = document.getElementById('dock-input').value.trim();
+      if (q) executeSearch(q);
+    }
+
+    // History Persistence
+    function loadHistoryFromLocal() {
+      try {
+        const stored = localStorage.getItem('indicrag_chat_history');
+        if (stored) queryHistory = JSON.parse(stored);
+      } catch (e) {
+        queryHistory = [];
+      }
+      renderRecentList();
+    }
+
+    function saveQueryToHistory(q) {
+      if (!q || queryHistory.includes(q)) return;
+      queryHistory.unshift(q);
+      if (queryHistory.length > 7) queryHistory.pop();
+      try {
+        localStorage.setItem('indicrag_chat_history', JSON.stringify(queryHistory));
+      } catch (e) {}
+      renderRecentList();
+    }
+
+    function renderRecentList() {
+      const container = document.getElementById('recent-queries-container');
+      if (!queryHistory || queryHistory.length === 0) {
+        container.innerHTML = '<div class="recent-empty">No recent questions yet</div>';
+        return;
+      }
+      container.innerHTML = queryHistory.map(q => `
+        <button type="button" class="recent-item" onclick="triggerQuestion('${escapeAttr(q)}')">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+          <span title="${escapeAttr(q)}">${escapeHtml(q)}</span>
+        </button>
+      `).join('');
+    }
+
+    // ── CORE QUERY EXECUTION ─────────────────────────────────────────────────
+    async function executeSearch(query) {
+      // Switch view: Hide Welcome Hero, Show Chat Thread and Sticky Dock
+      document.getElementById('welcome-view').style.display = 'none';
+      const thread = document.getElementById('chat-thread');
+      const dock = document.getElementById('chat-dock');
+      const loading = document.getElementById('loading-box');
+
+      thread.style.display = 'flex';
+      dock.style.display = 'flex';
+      loading.style.display = 'flex';
+
+      // Clear inputs
+      document.getElementById('hero-input').value = '';
+      document.getElementById('dock-input').value = '';
+      document.getElementById('hero-input').style.height = 'auto';
+      document.getElementById('dock-input').style.height = 'auto';
+
+      // Append User Message to Thread
+      renderUserMessage(query);
+      saveQueryToHistory(query);
+
+      // Disable Dock Send
+      const sendBtn = document.getElementById('btn-dock-send');
+      sendBtn.disabled = true;
+
+      // Start Progressive Timer
+      startTime = Date.now();
+      const stageLabel = document.getElementById('loading-stage-msg');
+      const timerVal = document.getElementById('loading-timer-val');
+      const s1 = document.getElementById('step-seg-1');
+      const s2 = document.getElementById('step-seg-2');
+      const s3 = document.getElementById('step-seg-3');
+      const s4 = document.getElementById('step-seg-4');
+
+      s1.className = 'step-seg active';
+      s2.className = 'step-seg';
+      s3.className = 'step-seg';
+      s4.className = 'step-seg';
+      stageLabel.textContent = '1. Understanding language & academic intent…';
+
+      activeTimer = setInterval(() => {
+        const sec = (Date.now() - startTime) / 1000;
+        timerVal.textContent = `${sec.toFixed(1)}s`;
+
+        if (sec >= 1.2 && !s2.classList.contains('active') && !s2.classList.contains('completed')) {
+          s1.className = 'step-seg completed';
+          s2.className = 'step-seg active';
+          stageLabel.textContent = '2. Searching official university regulations…';
+        }
+        if (sec >= 2.8 && !s3.classList.contains('active') && !s3.classList.contains('completed')) {
+          s2.className = 'step-seg completed';
+          s3.className = 'step-seg active';
+          stageLabel.textContent = '3. Validating evidence, citations & versions…';
+        }
+        if (sec >= 4.8 && !s4.classList.contains('active')) {
+          s3.className = 'step-seg completed';
+          s4.className = 'step-seg active';
+          stageLabel.textContent = '4. Synthesizing evidence-grounded response…';
+        }
+      }, 100);
+
+      loading.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+      // Selected collections based on active scope
+      const selectedCollections = [];
+      if (scopeOfficial) selectedCollections.push('official');
+      if (scopeUpload) selectedCollections.push('upload');
+      if (selectedCollections.length === 0) selectedCollections.push('official');
+
+      // API Request to FastAPI Backend
+      const payload = {
+        query: query,
+        collection: selectedCollections,
+        user_id: getUserId(),
+        session_id: getSessionId(),
+        sequential_fallback: true,
+        use_reranker: true,
+        use_pdr: true,
+        debug: false
+      };
+
+      try {
+        const resp = await fetch(`${API_BASE}/query`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (!resp.ok) {
+          const errData = await resp.json().catch(() => ({}));
+          throw new Error(errData.detail || `Server error (HTTP ${resp.status})`);
+        }
+
+        const data = await resp.json();
+        clearInterval(activeTimer);
+        loading.style.display = 'none';
+        renderAssistantCard(data);
+      } catch (err) {
+        clearInterval(activeTimer);
+        loading.style.display = 'none';
+        renderAssistantError(err.message);
+        showToast('Error: ' + err.message, 'error');
+      } finally {
+        sendBtn.disabled = false;
+        document.getElementById('dock-input').focus();
+      }
+    }
+
+    // Render User Message in Stream
+    function renderUserMessage(text) {
+      const thread = document.getElementById('chat-thread');
+      const entry = document.createElement('div');
+      entry.className = 'thread-entry user-entry';
+      entry.innerHTML = `<div class="user-msg-bubble">${escapeHtml(text)}</div>`;
+      thread.appendChild(entry);
+      entry.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
+
+    // Render Assistant Card (Phase 2.C, 2.D, 2.E)
+    function renderAssistantCard(data) {
+      const thread = document.getElementById('chat-thread');
+      const status = data.status || 'answered';
+      const evidenceStatus = data.evidence_status || 'sufficient';
+      const citations = data.citations || [];
+      const latencySec = data.latency_ms ? (data.latency_ms / 1000).toFixed(1) + 's' : '';
+      const model = data.model_used || 'Ollama';
+
+      let stateBanner = '';
+
+      if (status === 'clarification_needed' || evidenceStatus === 'clarification_required') {
+        stateBanner = `
+          <div class="answer-state-banner clarification">
+            <span style="font-size:1.1rem;line-height:1">❓</span>
+            <div>
+              <div class="banner-title">Clarification Required for Specific Cohort</div>
+              <div>The applicable regulatory rule depends on your specific admission cohort or engineering program. Select an applicable parameter to refine:</div>
+              <div class="cohort-button-row">
+                <button type="button" class="btn-cohort-tag" onclick="refineWithCohort('admitted in 2023-24 onwards')">Admitted 2023-24 Onwards (Current)</button>
+                <button type="button" class="btn-cohort-tag" onclick="refineWithCohort('admitted under 2017 Ordinance')">Admitted 2017-2022 (Historical)</button>
+                <button type="button" class="btn-cohort-tag" onclick="refineWithCohort('for SCSET B.Tech engineering')">SCSET Engineering Specific</button>
+              </div>
+            </div>
+          </div>
+        `;
+      } else if (status === 'conflicting_versions' || evidenceStatus === 'conflicting') {
+        stateBanner = `
+          <div class="answer-state-banner conflicting">
+            <span style="font-size:1.1rem;line-height:1">⚖️</span>
+            <div>
+              <div class="banner-title">Regulatory Discrepancy Detected Across Instruments</div>
+              <div>Multiple university documents specify divergent rules depending on the student's admission year.</div>
+            </div>
+          </div>
+        `;
+      } else if (status === 'unanswerable') {
+        const stageSummary = data.retrieval_summary && data.retrieval_summary.stage_summary ? data.retrieval_summary.stage_summary : null;
+        let unansTitle = 'Information Not Present in University Records';
+        let unansDesc = 'I could not find sufficient verified statements in the available official university documents or user-provided records to substantiate a reliable answer.';
+        if (stageSummary && stageSummary.stage === 'final_abstention') {
+          unansTitle = 'Information Not Found Across User & Official Sources';
+          unansDesc = 'Sufficient evidence was not found in your uploaded documents or the official university regulations.';
+        }
+        stateBanner = `
+          <div class="answer-state-banner unanswerable">
+            <span style="font-size:1.1rem;line-height:1">📑</span>
+            <div>
+              <div class="banner-title">${unansTitle}</div>
+              <div>${unansDesc}</div>
+            </div>
+          </div>
+        `;
+      }
+
+      // Format markdown
+      const formattedAnswer = data.answer ? parseMarkdownProse(data.answer) : '';
+
+      // Differentiated Sources Block (Official vs User-Provided)
+      let sourcesBlock = '';
+      if (citations.length > 0) {
+        const hasOfficial = citations.some(c => (c.source_type || 'official') === 'official');
+        const hasUpload = citations.some(c => (c.source_type || 'official') === 'upload');
+
+        let headingText = `Official Sources (${citations.length})`;
+        let stampText = 'Verified in University Records';
+        let stampIcon = '<polyline points="20 6 9 17 4 12"></polyline>';
+
+        if (hasUpload && !hasOfficial) {
+          headingText = `User-Provided Sources (${citations.length})`;
+          stampText = 'User-Provided Document';
+          stampIcon = '<circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line>';
+        } else if (hasUpload && hasOfficial) {
+          headingText = `Cited Sources (${citations.length})`;
+          stampText = 'Combined Official + User Sources';
+          stampIcon = '<path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path>';
+        }
+
+        sourcesBlock = `
+          <div class="official-sources-section">
+            <div class="sources-heading-row">
+              <span class="sources-title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                <span>${headingText}</span>
+              </span>
+              <span class="verified-corpus-stamp ${hasUpload && !hasOfficial ? 'user-scope-stamp' : ''}">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">${stampIcon}</svg>
+                <span>${stampText}</span>
+              </span>
+            </div>
+
+            <div class="source-card-stack">
+              ${citations.map((c, i) => {
+                const isUpload = (c.source_type || 'official') === 'upload';
+                const pageStr = c.page ? `Page ${c.page}` : 'Page N/A';
+                const docClean = humanReadableDocName(c.filename);
+                const quote = c.quote ? escapeHtml(c.quote.trim()) : '';
+                const typeLabel = isUpload ? 'User-provided document' : 'Official university document';
+                const typeClass = isUpload ? 'upload' : 'official';
+                const btnLabel = isUpload ? 'View uploaded passage text' : 'View complete official passage text';
+                return `
+                  <div class="source-card">
+                    <div class="source-card-header">
+                      <div class="source-title-group" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+                        <span class="source-index-num">${i + 1}.</span>
+                        <span class="source-doc-name">${escapeHtml(docClean)}</span>
+                        <span class="source-type-pill ${typeClass}">${typeLabel}</span>
+                      </div>
+                      <span class="source-page-badge">${pageStr}</span>
+                    </div>
+
+                    ${quote ? `<div class="source-quote-box">"${quote}"</div>` : ''}
+
+                    <div>
+                      <button type="button" class="btn-inspect-passage" onclick="inspectPassageModal('${escapeAttr(c.document_id || '')}', '${escapeAttr(c.passage_id || '')}', '${escapeAttr(c.filename || '')}', '${pageStr}')">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        <span>${btnLabel}</span>
+                      </button>
+                    </div>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      const ansKey = 'ans-' + Date.now();
+      const entry = document.createElement('div');
+      entry.className = 'thread-entry';
+      entry.innerHTML = `
+        <div class="assistant-avatar-icon">अ</div>
+        <div class="assistant-card">
+          ${stateBanner}
+          <div id="${ansKey}" class="answer-prose">${formattedAnswer}</div>
+          ${sourcesBlock}
+          <div class="response-action-row">
+            <button type="button" class="btn-copy-ans" onclick="copyAnswerText('${ansKey}')">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span>Copy Answer</span>
+            </button>
+            <div>
+              <span>${model}</span>
+              ${latencySec ? `<span> · ${latencySec}</span>` : ''}
+            </div>
+          </div>
+        </div>
+      `;
+
+      thread.appendChild(entry);
+      entry.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    // Render Assistant Error
+    function renderAssistantError(msg) {
+      const thread = document.getElementById('chat-thread');
+      const entry = document.createElement('div');
+      entry.className = 'thread-entry';
+      entry.innerHTML = `
+        <div class="assistant-avatar-icon" style="background:#DC2626">!</div>
+        <div class="assistant-card">
+          <div class="answer-state-banner error">
+            <span style="font-size:1.1rem;line-height:1">⚠️</span>
+            <div>
+              <div class="banner-title">Could Not Connect to Academic Knowledge Base</div>
+              <div>${escapeHtml(msg)}</div>
+            </div>
+          </div>
+          <div style="font-size:0.8rem;color:var(--text-secondary)">
+            Please verify that the FastAPI backend is running at <code>${API_BASE}</code> and Ollama is active.
+          </div>
+        </div>
+      `;
+      thread.appendChild(entry);
+      entry.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    // Cohort refinement
+    function refineWithCohort(clause) {
+      const lastQ = queryHistory[0] || '';
+      triggerQuestion(`${lastQ} (${clause})`);
+    }
+
+    // Copy action
+    function copyAnswerText(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      navigator.clipboard.writeText(el.innerText).then(() => {
+        showToast('Answer copied to clipboard', 'success');
+      }).catch(() => {
+        showToast('Could not copy', 'error');
+      });
+    }
+
+    // ── DOCUMENT REGISTRY & MODALS ───────────────────────────────────────────
+    async function openRegistryModal() {
+      document.getElementById('modal-registry').classList.add('open');
+      fetchOfficialDocuments();
+    }
+
+    async function fetchOfficialDocuments() {
+      const target = document.getElementById('modal-docs-list');
+      try {
+        const resp = await fetch(`${API_BASE}/documents`);
+        if (!resp.ok) throw new Error();
+        const docs = await resp.json();
+        target.innerHTML = docs.map(d => `
+          <div class="registry-card">
+            <div>
+              <div class="registry-title">${escapeHtml(d.title || d.filename)}</div>
+              <div class="registry-sub">${escapeHtml(d.filename)} · ${d.page_count ? d.page_count + ' pages' : ''}</div>
+            </div>
+            <span style="font-size:0.7rem;font-weight:700;color:var(--success);background:#ECFDF5;padding:2px 7px;border-radius:9999px;border:1px solid #A7F3D0">Indexed</span>
+          </div>
+        `).join('');
+
+        const pill = document.getElementById('corpus-doc-pill');
+        if (pill) pill.textContent = `${docs.length} Verified`;
+      } catch (e) {
+        target.innerHTML = '<div style="font-size:0.84rem;color:var(--danger);padding:10px">Unable to connect to registry endpoint.</div>';
+      }
+    }
+
+    async function inspectPassageModal(docId, passageId, filename, pageStr) {
+      const veil = document.getElementById('modal-passage');
+      document.getElementById('passage-doc-title').textContent = humanReadableDocName(filename);
+      document.getElementById('passage-meta-info').innerHTML = `
+        <strong>Document:</strong> ${escapeHtml(filename)} · <strong>Location:</strong> ${escapeHtml(pageStr)}
+      `;
+      const body = document.getElementById('passage-text-body');
+      body.textContent = 'Loading authoritative passage from database…';
+      veil.classList.add('open');
+
+      if (!docId) {
+        body.textContent = 'Passage identifier unavailable.';
+        return;
+      }
+
+      try {
+        const resp = await fetch(`${API_BASE}/documents/${docId}/passages`);
+        if (!resp.ok) throw new Error();
+        const list = await resp.json();
+        const match = list.find(p => p.passage_id === passageId);
+        body.textContent = match ? match.text : (list[0] ? list[0].text : 'No text content.');
+      } catch (e) {
+        body.textContent = 'Could not retrieve full passage text.';
+      }
+    }
+
+    function openAboutInfoModal() {
+      document.getElementById('modal-about').classList.add('open');
+    }
+
+    function closeModalWindow(id) {
+      document.getElementById(id).classList.remove('open');
+    }
+
+    function handleVeilClick(e, id) {
+      if (e.target.id === id) closeModalWindow(id);
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal-veil.open').forEach(m => m.classList.remove('open'));
+      }
+    });
+
+    // ── HEALTH PROBE ─────────────────────────────────────────────────────────
+    async function pingBackendHealth() {
+      const dot = document.getElementById('backend-dot');
+      const msg = document.getElementById('backend-status-msg');
+      try {
+        const resp = await fetch(`${API_BASE}/health`, { signal: AbortSignal.timeout(3500) });
+        if (!resp.ok) throw new Error();
+        const d = await resp.json();
+        dot.className = 'status-dot online';
+        msg.textContent = 'FastAPI Online';
+      } catch {
+        dot.className = 'status-dot offline';
+        msg.textContent = 'Backend Offline';
+      }
+    }
+
+    // ── FORMATTING UTILITIES ─────────────────────────────────────────────────
+    function humanReadableDocName(fn) {
+      if (!fn) return 'Official Document';
+      if (fn.includes('Notification-Minimum-Attendance')) return 'Notification 307/2022 — Minimum Attendance';
+      if (fn.includes('Academic-Rules-for-SCSET_UG')) return 'SCSET B.Tech Academic Rules';
+      if (fn.includes('Academic-Calendar')) return 'Academic Calendar 2026-27';
+      if (fn.includes('Students-Discipline-Conduct-Rules')) return 'Student Discipline & Conduct Rules';
+      if (fn.includes('UFM-Guidelines')) return 'Unfair Means (UFM) Guidelines';
+      if (fn.includes('BU-First-Ordinance')) return 'First Ordinances of Bennett University';
+      if (fn.includes('SEAS-Ordinance')) return 'SEAS Engineering Regulations (2017)';
+      return fn.replace('.pdf', '').replace(/[-_]/g, ' ');
+    }
+
+    function parseMarkdownProse(str) {
+      let t = escapeHtml(str);
+      t = t.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+      const paras = t.split(/\n\s*\n/);
+      return paras.map(p => {
+        const tr = p.trim();
+        if (tr.startsWith('- ') || tr.startsWith('* ')) {
+          const lis = tr.split(/\n[-*]\s+/).filter(Boolean);
+          return '<ul>' + lis.map(l => `<li>${l.replace(/^[-*]\s+/, '')}</li>`).join('') + '</ul>';
+        }
+        return `<p>${tr.replace(/\n/g, '<br>')}</p>`;
+      }).join('');
+    }
+
+    function showToast(msg, type = 'info') {
+      const c = document.getElementById('toast-container');
+      const item = document.createElement('div');
+      item.className = `toast-item ${type}`;
+      item.textContent = msg;
+      c.appendChild(item);
+      setTimeout(() => item.remove(), 3200);
+    }
+
+    function escapeHtml(s) {
+      if (!s) return '';
+      return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+
+    function escapeAttr(s) {
+      if (!s) return '';
+      return String(s).replace(/'/g, "\\'").replace(/"/g, '&quot;');
+    }
+  </script>
+</body>
+</html>

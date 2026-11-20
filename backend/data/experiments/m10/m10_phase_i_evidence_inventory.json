@@ -1,0 +1,177 @@
+{
+  "milestone": "M10",
+  "phase": "I",
+  "title": "Production Promotion Readiness & Final Deployment Decision Evidence Inventory",
+  "timestamp": "2026-11-18T12:55:23+0530",
+  "target_decision": "RETAIN_AS_EXPERIMENTAL",
+  "promotion_disposition": "DEFERRED_PENDING_M11_CONFIRMATORY_EVIDENCE",
+  "production_default_verified": "production (engine.py line 395)",
+  "evaluation_population": {
+    "benchmark_dataset": "m9_evaluation_dataset.jsonl",
+    "total_intent_groups": 60,
+    "answerable_intent_groups": 45,
+    "unanswerable_intent_groups": 15,
+    "languages_per_intent": 4,
+    "total_query_records": 240,
+    "comparative_traces_evaluated": 480
+  },
+  "verified_metrics_summary": {
+    "retrieval": {
+      "ConfigA_Production": {
+        "en_hit_5": "5/45 (0.1111)",
+        "hi_hit_5": "2/45 (0.0444)",
+        "hi_latn_hit_5": "6/45 (0.1333)",
+        "en_hi_hit_5": "5/45 (0.1111)",
+        "overall_hit_5": "18/180 (0.1000)",
+        "overall_mrr": 0.0931,
+        "overall_ndcg_5": 0.0784,
+        "mean_retrieval_stage_latency_ms": 1097.1
+      },
+      "ConfigB_AdaptiveE6b": {
+        "en_hit_5": "5/45 (0.1111)",
+        "hi_hit_5": "4/45 (0.0889)",
+        "hi_latn_hit_5": "6/45 (0.1333)",
+        "en_hi_hit_5": "5/45 (0.1111)",
+        "overall_hit_5": "20/180 (0.1111)",
+        "overall_mrr": 0.1083,
+        "overall_ndcg_5": 0.0914,
+        "hi_retrieval_stage_latency_ms": 62.88,
+        "mean_retrieval_stage_latency_ms": 849.87
+      }
+    },
+    "answer_quality": {
+      "ConfigA_Production": {
+        "answerable_success": "59/180 (32.78%)",
+        "clean_unnecessary_abstentions": "119/180 (66.11%)",
+        "execution_errors": "2/180 (1.11%)",
+        "unanswerable_correct_abstentions": "58/60 (96.67%)",
+        "unanswerable_incorrect_answers": "2/60 (3.33%)"
+      },
+      "ConfigB_AdaptiveE6b": {
+        "answerable_success": "61/180 (33.89%)",
+        "clean_unnecessary_abstentions": "117/180 (65.00%)",
+        "execution_errors": "2/180 (1.11%)",
+        "unanswerable_correct_abstentions": "58/60 (96.67%)",
+        "unanswerable_incorrect_answers": "2/60 (3.33%)",
+        "latin_script_regressions": "0/135 (0.00%)"
+      }
+    },
+    "grounding_and_citations": {
+      "ConfigB_claims_audited": 85,
+      "claim_support_precision": 1.0,
+      "unsupported_claim_rate": 0.0,
+      "rule_of_three_upper_bound_95ci": 0.0353,
+      "ConfigB_citations_audited": 57,
+      "citation_uuid_validity": 1.0,
+      "citation_page_accuracy": 0.9825,
+      "semantic_citation_support": 1.0
+    },
+    "statistical_inferences": {
+      "independent_sampling_unit": "semantic_intent_group",
+      "pilot_sample_size": "N=45 answerable intent groups",
+      "devanagari_hit_5_exact_binomial_p": 0.625,
+      "devanagari_e2e_success_exact_binomial_p": 0.5,
+      "cluster_wilcoxon_exact_permutation_p": 0.5,
+      "pilot_two_sided_power": 0.6537,
+      "confirmatory_sample_size_required_m11": 230,
+      "confirmatory_query_records_total": 920,
+      "unconditional_power_at_230": 0.8122
+    },
+    "operational_integration_status": {
+      "engine_support": "Implemented in backend/app/retrieval/engine.py line 449",
+      "runtime_default": "production (engine.py line 395)",
+      "api_exposure": "None (QueryRequest schema in backend/app/models/schemas.py lacks rerank_strategy)",
+      "frontend_ui_exposure": "None (frontend/index.html only exposes boolean use_reranker toggle)",
+      "config_setting_exposure": "None (backend/app/core/config.py lacks RERANK_STRATEGY setting)",
+      "regression_test_coverage": "Covered by backend/tests/test_retrieval_baselines.py (260/260 passed)",
+      "fallback_mechanism": "Internal fallback to production if strategy != 'adaptive_e6b'"
+    }
+  },
+  "evidence_inventory_artifacts": {
+    "m9_evaluation_dataset.jsonl": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\backend\\data\\experiments\\m9\\m9_evaluation_dataset.jsonl",
+      "sha256": "f1829bdcad4512b6481005a944ab65da6dbd2858de5cc83a4a289d15bd506c2f",
+      "size_bytes": 215953
+    },
+    "indicrag.db": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\backend\\data\\db\\indicrag.db",
+      "sha256": "2ec61aae957c51eb9703e5322461e044b8432e1b752a9a6e8e2b154bd68121d3",
+      "size_bytes": 1957888
+    },
+    "faiss.index": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\backend\\data\\indexes\\official\\faiss.index",
+      "sha256": "19e57ba4d910eb911ff6300d196c222b3bdd3735b878352f6f504311f7c10d2c",
+      "size_bytes": 388653
+    },
+    "m10_phase_e_results.csv": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\backend\\data\\experiments\\m10\\m10_phase_e_results.csv",
+      "sha256": "4009e1b5afa0205c4f9f9a08734177b2e00eb1ace7697e570f72664d08bc255d",
+      "size_bytes": 5715
+    },
+    "m10_phase_e_per_intent_results.csv": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\backend\\data\\experiments\\m10\\m10_phase_e_per_intent_results.csv",
+      "sha256": "2ce231deb133c4c985a5055a7b8ea88cf9409c66fbb2279d49500102fa39ca58",
+      "size_bytes": 181155
+    },
+    "m10_phase_f_end_to_end_results.csv": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\backend\\data\\experiments\\m10\\m10_phase_f_end_to_end_results.csv",
+      "sha256": "60a108f448ff9756601a0669c930e48b0186fab7b5920be26e1359c8581a7ebf",
+      "size_bytes": 184410
+    },
+    "m10_phase_g_statistical_results.csv": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\backend\\data\\experiments\\m10\\m10_phase_g_statistical_results.csv",
+      "sha256": "530f2653d9f6fe17a46794ecd580eb977d5095cc5cbeba7e3d3a84c2bc6a0a17",
+      "size_bytes": 4482
+    },
+    "m10_phase_h_per_query_results.csv": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\backend\\data\\experiments\\m10\\m10_phase_h_per_query_results.csv",
+      "sha256": "22fed7f47c9085606bd3a6cf7a399c46b58f916e658d93d34e12f256a4390138",
+      "size_bytes": 235426
+    },
+    "m10_phase_h_claim_audit.csv": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\backend\\data\\experiments\\m10\\m10_phase_h_claim_audit.csv",
+      "sha256": "90f6e36dab122ab589a45d09964bf4ef60a937ffac8fdfc93b4717bbc33e089d",
+      "size_bytes": 59090
+    },
+    "m10_phase_h_citation_audit.csv": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\backend\\data\\experiments\\m10\\m10_phase_h_citation_audit.csv",
+      "sha256": "b12b8af82a6fdb42ade3d4ce9944e59ef4b871a0c3cfafadab31f0cea3b96196",
+      "size_bytes": 18839
+    },
+    "m10_phase_h_metrics.json": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\backend\\data\\experiments\\m10\\m10_phase_h_metrics.json",
+      "sha256": "d8233013d104f2afe1d7e49c908cac5cf1702838ba529ff9048afd4fd138500c",
+      "size_bytes": 14210
+    },
+    "engine.py": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\backend\\app\\retrieval\\engine.py",
+      "sha256": "2bd4b34873c9ae9adfc3b8abec684bf9ab4f314d931c76cd14ed7151bcacc193",
+      "size_bytes": 22377
+    },
+    "generator.py": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\backend\\app\\generation\\generator.py",
+      "sha256": "bd9d0219a7e1081c63d939e832af7e5c90e790f014d23d42e8f388161cc07542",
+      "size_bytes": 23778
+    },
+    "evidence_controller.py": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\backend\\app\\retrieval\\evidence_controller.py",
+      "sha256": "86eabe10c4d7b57cb49a4d4727152206c44cd425c4ee947bbc2478d3096c2da1",
+      "size_bytes": 27546
+    },
+    "schemas.py": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\backend\\app\\models\\schemas.py",
+      "sha256": "ec22c2b2df22d5e2f0ab22c08412fe4b1b63e290b2fb9cb3538b99007f2b477b",
+      "size_bytes": 18173
+    },
+    "main.py": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\backend\\app\\api\\main.py",
+      "sha256": "b0c586f6cc31305c86f391009d05be19eb7bd96082b77dccd7805248a92bfbdd",
+      "size_bytes": 13989
+    },
+    "index.html": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\frontend\\index.html",
+      "sha256": "567b8158e7e18dc24453d67354569d2fc7b794e95db108bcf9f9b53ce2d61c88",
+      "size_bytes": 65350
+    }
+  }
+}

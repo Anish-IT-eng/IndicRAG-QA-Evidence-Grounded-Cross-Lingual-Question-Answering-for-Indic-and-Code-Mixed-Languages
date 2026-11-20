@@ -1,0 +1,29 @@
+{
+  "timestamp": "2026-11-17T19:15:00Z",
+  "milestone": "M10_PHASE_F",
+  "candidate": "E6b_ADAPTIVE_BI_ENCODER",
+  "summary": {
+    "total_queries_evaluated": 240,
+    "configurations": [
+      "ConfigA_Production",
+      "ConfigB_AdaptiveE6b"
+    ],
+    "hindi_retrieval_hit5_delta": "+100.0% (0.0444 -> 0.0889)",
+    "latin_preservation": "100.0% across en, hi-Latn, en-hi",
+    "unsupported_answer_rate": "0.0%",
+    "citation_precision": "100.0%",
+    "all_pages_verified": "100.0%"
+  },
+  "file_hashes": {
+    "m10_phase_f_end_to_end_results_csv": "60a108f448ff9756601a0669c930e48b0186fab7b5920be26e1359c8581a7ebf",
+    "m10_phase_f_answer_correctness_csv": "870b88febfe1bf241c2372f093bd1e80492f014bd0ad427146741f08d9004269",
+    "m10_phase_f_claim_grounding_csv": "70edac17a364bb531ce6174e3596715ab8c813d2c6174a587ba6509f03c2bd9b",
+    "m10_phase_f_citation_audit_csv": "1fbda42873912ee9af2968c8ef91c14651ecbd00941293f394d4a46a8ca2f39c",
+    "m10_phase_f_language_quality_csv": "f03ff98ec2820078d5599987f0d374b3a74a46c32429f40afcc4a44573d4551d",
+    "m10_phase_f_resource_results_csv": "17722af2ddf41eb8b6cad12d4634053e6726defd08e0fa268282f3199239222a",
+    "m10_phase_f_routing_trace_csv": "d5d9aa7a494d3a423ef8a52fbe3689c501af2f9e60660df5484eaaf8d1c396c7",
+    "m10_phase_f_baseline_answers_csv": "8dd71a906d704a9e2dfce55dee3d977555f6e59d5deb7a20eef8fc3ce0b13943",
+    "m10_phase_f_baseline_snapshot_json": "ece587035b7e22c4755c8dcbbab091f8255e78c293f917d9960eb969f8fce24b",
+    "m10_phase_f_test_execution_log": "0b138f79728709d265badb6c54ce83564e5b86fd8a16dbfc81761c453479e7ca"
+  }
+}

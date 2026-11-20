@@ -1,0 +1,206 @@
+{
+  "milestone": "M10",
+  "phase": "H",
+  "title": "Cross-Lingual End-to-End Answer Quality, Citation & Grounding Audit",
+  "timestamp": "2026-11-17T21:16:22+0530",
+  "target_determination": "M10_PHASE_H_VERIFIED_WITH_LIMITATIONS",
+  "production_default_verified": "production (engine.py line 395)",
+  "input_artifacts": {
+    "m9_evaluation_dataset.jsonl": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\backend\\data\\experiments\\m9\\m9_evaluation_dataset.jsonl",
+      "sha256": "f1829bdcad4512b6481005a944ab65da6dbd2858de5cc83a4a289d15bd506c2f",
+      "size_bytes": 215953
+    },
+    "indicrag.db": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\backend\\data\\db\\indicrag.db",
+      "sha256": "2ec61aae957c51eb9703e5322461e044b8432e1b752a9a6e8e2b154bd68121d3",
+      "size_bytes": 1957888
+    },
+    "faiss.index": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\backend\\data\\indexes\\official\\faiss.index",
+      "sha256": "19e57ba4d910eb911ff6300d196c222b3bdd3735b878352f6f504311f7c10d2c",
+      "size_bytes": 388653
+    },
+    "m10_phase_e_results.csv": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\backend\\data\\experiments\\m10\\m10_phase_e_results.csv",
+      "sha256": "4009e1b5afa0205c4f9f9a08734177b2e00eb1ace7697e570f72664d08bc255d",
+      "size_bytes": 5715
+    },
+    "m10_phase_f_end_to_end_results.csv": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\backend\\data\\experiments\\m10\\m10_phase_f_end_to_end_results.csv",
+      "sha256": "60a108f448ff9756601a0669c930e48b0186fab7b5920be26e1359c8581a7ebf",
+      "size_bytes": 184410
+    },
+    "m10_phase_g_statistical_results.csv": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\backend\\data\\experiments\\m10\\m10_phase_g_statistical_results.csv",
+      "sha256": "530f2653d9f6fe17a46794ecd580eb977d5095cc5cbeba7e3d3a84c2bc6a0a17",
+      "size_bytes": 4482
+    },
+    "engine.py": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\backend\\app\\retrieval\\engine.py",
+      "sha256": "2bd4b34873c9ae9adfc3b8abec684bf9ab4f314d931c76cd14ed7151bcacc193",
+      "size_bytes": 22377
+    }
+  },
+  "generated_data_deliverables": {
+    "m10_phase_h_per_query_results.csv": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\backend\\data\\experiments\\m10\\m10_phase_h_per_query_results.csv",
+      "sha256": "22fed7f47c9085606bd3a6cf7a399c46b58f916e658d93d34e12f256a4390138",
+      "rows": 480
+    },
+    "m10_phase_h_claim_audit.csv": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\backend\\data\\experiments\\m10\\m10_phase_h_claim_audit.csv",
+      "sha256": "90f6e36dab122ab589a45d09964bf4ef60a937ffac8fdfc93b4717bbc33e089d",
+      "rows": 167
+    },
+    "m10_phase_h_citation_audit.csv": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\backend\\data\\experiments\\m10\\m10_phase_h_citation_audit.csv",
+      "sha256": "b12b8af82a6fdb42ade3d4ce9944e59ef4b871a0c3cfafadab31f0cea3b96196",
+      "rows": 111
+    },
+    "m10_phase_h_metrics.json": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\backend\\data\\experiments\\m10\\m10_phase_h_metrics.json",
+      "sha256": "d8233013d104f2afe1d7e49c908cac5cf1702838ba529ff9048afd4fd138500c",
+      "size_bytes": 14210
+    }
+  },
+  "test_suite_verification": {
+    "framework": "pytest 8.3.4",
+    "tests_executed": 260,
+    "tests_passed": 260,
+    "tests_failed": 0,
+    "duration_seconds": 89.89,
+    "status": "PASSED_ZERO_REGRESSIONS"
+  },
+  "core_research_findings": {
+    "1_does_e6b_improve_retrieval": "Yes. Hindi Devanagari Hit@5 improved +100% (2/45 -> 4/45), MRR improved +220% (0.0278 -> 0.0889). Overall Hit@5 improved from 0.1000 to 0.1111.",
+    "2_does_improved_retrieval_translate_to_answers": "Partially. Unlocks 2 verified Devanagari answers (M9-Q002 regulatory disclosure, M9-Q058 direct answer), while conservative Evidence Controller appropriately abstains on marginal evidence.",
+    "3_does_e6b_preserve_grounding_and_citations": "Yes. 100% claim support precision (85/85 claims supported, 0 unsupported, 0 contradicted), 100% citation UUID validity, 98.2% page verification.",
+    "4_does_it_preserve_latin_script_performance": "Yes. Zero observed regressions across English, Romanized Hindi, and Hinglish (b=0, c=0 discordant pairs).",
+    "5_main_remaining_failure_modes": "Cross-lingual Evidence Controller threshold conservatism (117/180 unnecessary abstentions) and bi-encoder retrieval misses on non-salient regulatory clauses.",
+    "6_is_e6b_supported_for_future_production_review": "Yes, verified with limitations. E6b is recommended as the leading retrieval candidate for M11 full confirmatory evaluation (N=230 intent groups). Production default remains 'production' until Phase I formal promotion review."
+  },
+  "generated_documentation_deliverables": {
+    "m10_phase_h_e2e_evaluation_protocol.md": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\docs\\m10_phase_h_e2e_evaluation_protocol.md",
+      "sha256": "8691d00b2c4a12128d5493d6b236a8af2c508c803e684190984df89ec24d73c5",
+      "size_bytes": 7328
+    },
+    "m10_phase_h_answer_quality_report.md": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\docs\\m10_phase_h_answer_quality_report.md",
+      "sha256": "4bb4651a1d07af21e8be2615decc4c18028c0c62954f7eeb83464461fc48bc59",
+      "size_bytes": 8620
+    },
+    "m10_phase_h_claim_grounding_audit.md": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\docs\\m10_phase_h_claim_grounding_audit.md",
+      "sha256": "b84c823cbd9f0cdce1c560267008c697e2feb26852cc1c2bf53f654ec89bdae4",
+      "size_bytes": 6253
+    },
+    "m10_phase_h_citation_audit.md": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\docs\\m10_phase_h_citation_audit.md",
+      "sha256": "e5fad028b021d51737f4ec4802aa39b92b5c5dd40d16c2e15489184c36e9b8e1",
+      "size_bytes": 4570
+    },
+    "m10_phase_h_regulatory_applicability_audit.md": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\docs\\m10_phase_h_regulatory_applicability_audit.md",
+      "sha256": "82ccd7f93fafb4cc57a72783ad48cc483535ac7253655817fb840720c526adb2",
+      "size_bytes": 5607
+    },
+    "m10_phase_h_cross_lingual_consistency.md": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\docs\\m10_phase_h_cross_lingual_consistency.md",
+      "sha256": "fad375867a2536f56e243d13818713fbfef681a8a04771d9addcaae03cf147ce",
+      "size_bytes": 6680
+    },
+    "m10_phase_h_failure_analysis.md": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\docs\\m10_phase_h_failure_analysis.md",
+      "sha256": "2e94c2885ed0667a9abcf77f6979d071c29b0b5e5427262c4f9cdd22cfc8fac0",
+      "size_bytes": 6803
+    },
+    "m10_phase_h_statistical_analysis.md": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\docs\\m10_phase_h_statistical_analysis.md",
+      "sha256": "09435d7543ae615bb2bd441c572afec50906ffb248142c6304577df31e2a6143",
+      "size_bytes": 9885
+    },
+    "m10_phase_h_correction_log.md": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\docs\\m10_phase_h_correction_log.md",
+      "sha256": "b3b1807e11099501124fdc34401814433761627d692c316f621423b443c4e1fa",
+      "size_bytes": 7465
+    },
+    "m10_phase_h_final_reconciliation.md": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\docs\\m10_phase_h_final_reconciliation.md",
+      "sha256": "89bf36b1d872239b98e71d6aaca645842845303712fc305a457e801e627329c6",
+      "size_bytes": 18136
+    },
+    "m10_phase_h_latency_forensic_audit.md": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\docs\\m10_phase_h_latency_forensic_audit.md",
+      "sha256": "a8b3edb63b131f5f61445c54b06d48f928e5870ce80bdbf8067fdaa3ff1cae1a",
+      "size_bytes": 17025
+    },
+    "m10_phase_h_latency_correction_log.md": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\docs\\m10_phase_h_latency_correction_log.md",
+      "sha256": "f96401cb81fec331c4368f3397996fe23a5cc83715ea9df79f43b629e8ce5a39",
+      "size_bytes": 7035
+    },
+    "m10_phase_h_config_b_generation_reconciliation.md": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\docs\\m10_phase_h_config_b_generation_reconciliation.md",
+      "sha256": "74bff134db4284e3870182ad5ea7a4411b6f38f0ccfdf03e5f8aebe3941fe882",
+      "size_bytes": 12448
+    },
+    "m10_phase_h_config_b_correction_log.md": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\docs\\m10_phase_h_config_b_correction_log.md",
+      "sha256": "bf650e830b8b02ec9870f2691a79958c29d5b863383d250afa73bcba8acc007f",
+      "size_bytes": 4345
+    },
+    "m10_phase_h_config_b_latency_final_verification.md": {
+      "path": "c:\\Users\\anish\\Desktop\\IndicRAG-QA\\docs\\m10_phase_h_config_b_latency_final_verification.md",
+      "sha256": "18acc16f56a45acb4c08ac656791dbf72e19e32264dbeff036cfa774eb457526",
+      "size_bytes": 9699
+    }
+  },
+  "reconciliation_audit": {
+    "status": "COMPLETED",
+    "determination": "M10_PHASE_H_VERIFIED_WITH_LIMITATIONS",
+    "outcome_partition_verified": true,
+    "retrieval_standardization_verified": true,
+    "devanagari_traces_verified": true,
+    "latency_definitions_verified": true,
+    "claim_audit_methodology_documented": true
+  },
+  "latency_audit": {
+    "status": "COMPLETED",
+    "determination": "M10_PHASE_H_VERIFIED_WITH_LIMITATIONS",
+    "controlled_retrieval_stage_latency_verified": true,
+    "cold_cpu_execution_latency_verified": true,
+    "component_sum_verified": true,
+    "synthetic_estimates_withdrawn": true
+  },
+  "config_b_reconciliation": {
+    "status": "COMPLETED",
+    "determination": "M10_PHASE_H_VERIFIED_WITH_LIMITATIONS",
+    "m9_q002_reconciled": true,
+    "outputs_total_verified": 63,
+    "abstentions_total_verified": 175,
+    "execution_errors_verified": 2,
+    "total_benchmark_records": 240
+  },
+  "config_b_latency_arithmetic_verification": {
+    "status": "COMPLETED",
+    "determination": "M10_PHASE_H_VERIFIED_WITH_LIMITATIONS",
+    "raw_sums_verified": {
+      "retrieval_sum_ms": 569399.95,
+      "controller_sum_ms": 299.37,
+      "invoked_generation_sum_ms": 10535311.13,
+      "all_generation_sum_ms": 10535325.48,
+      "total_pipeline_sum_ms": 11105024.78
+    },
+    "recalculated_means": {
+      "retrieval_mean_ms": 2372.5,
+      "controller_mean_ms": 1.25,
+      "invoked_generation_mean_ms": 88532.03,
+      "amortized_generation_mean_ms": 43897.19,
+      "total_pipeline_mean_ms": 46270.94
+    },
+    "residual_ms": -8.3e-05,
+    "displayed_aggregates_changed": false
+  }
+}

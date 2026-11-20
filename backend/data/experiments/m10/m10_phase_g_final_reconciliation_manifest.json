@@ -1,0 +1,77 @@
+{
+  "timestamp": "2026-11-17T15:09:51Z",
+  "milestone": "M10_PHASE_G_FINAL_RECONCILIATION_AND_SIGNOFF",
+  "final_determination": "M10_PHASE_G_VERIFIED_WITH_LIMITATIONS",
+  "reconciliation_summary": {
+    "answerable_success_metric": {
+      "english_strict_answered": "25 / 45 (55.56%)",
+      "english_regulatory_disclosures": "3 / 45 (6.67%)",
+      "english_combined_success": "28 / 45 (62.22%)",
+      "english_phase_f_table2_transcription": "26 / 45 (Narrative transcription error, raw is 25 strict + 3 disclosure)",
+      "hindi_config_a_success": "0 / 45 (0.00%)",
+      "hindi_config_b_strict_answered": "1 / 45 (2.22%, M9-Q058)",
+      "hindi_config_b_regulatory_disclosure": "1 / 45 (2.22%, M9-Q002)",
+      "hindi_config_b_combined_success": "2 / 45 (4.44%)",
+      "overall_config_a_strict_answered": "52 / 180 (28.89%)",
+      "overall_config_a_combined_success": "59 / 180 (32.78%)",
+      "overall_config_b_strict_answered": "53 / 180 (29.44%)",
+      "overall_config_b_combined_success": "61 / 180 (33.89%)"
+    },
+    "retrieval_candidate_depth_reconciliation": {
+      "phase_e_candidate_depth": "k_pool = 10",
+      "phase_e_english_hit5": "0.1111 (5/45, Q029 f88ec726 at rank 14 excluded)",
+      "phase_f_candidate_depth": "k_pool = 20 (Production)",
+      "phase_f_reconciled_english_hit5": "0.1333 (6/45, Q029 f88ec726 entered pool and elevated to rank 1)",
+      "phase_g_evaluated_population": "Phase E Candidate Ablation Dataset (k_pool = 10)",
+      "phase_g_reported_english_hit5": "0.1111 (5/45, apples-to-apples controlled evaluation)"
+    },
+    "cluster_aware_intent_level_evaluation": {
+      "independent_statistical_unit": "Semantic Intent Group (K = 45 answerable, K = 15 unanswerable)",
+      "repeated_measures": "4 language formulations per intent (en, hi, hi-Latn, en-hi)",
+      "intra_cluster_correlation": 0.6,
+      "design_effect": 2.8,
+      "effective_sample_size": 64.3,
+      "retrieval_cluster_hit5_config_a": 0.1,
+      "retrieval_cluster_hit5_config_b": 0.1111,
+      "retrieval_cluster_hit5_wilcoxon_w": 2.5,
+      "retrieval_cluster_hit5_wilcoxon_p": 0.317311,
+      "retrieval_any_language_hit5_mcnemar_p": 1.0,
+      "e2e_cluster_success_config_a": 0.3278,
+      "e2e_cluster_success_config_b": 0.3389,
+      "e2e_cluster_success_wilcoxon_w": 0.0,
+      "e2e_cluster_success_wilcoxon_p": 0.157299,
+      "e2e_any_language_success_mcnemar_p": 1.0
+    },
+    "power_and_sample_size_verification": {
+      "assumed_odds_ratio": 3.0,
+      "assumed_discordance_probability": 0.15,
+      "significance_level": 0.05,
+      "target_power": 0.8,
+      "asymptotic_discordant_pairs": 11.68,
+      "exact_binomial_discordant_pairs": 23,
+      "exact_binomial_achieved_power": 0.8034,
+      "required_independent_intents_per_language": 150,
+      "required_total_queries_across_4_languages": 600,
+      "effective_clustered_sample_size": 214.3
+    },
+    "non_inferiority_terminology": {
+      "latin_sample_invariance": "Observed sample identity with zero regressions (b=0, c=0)",
+      "formal_non_inferiority_status": "Bounded by sample size 95% confidence interval [-0.0789, +0.0789]; requires pre-specified margin delta_NI >= 0.08"
+    }
+  },
+  "file_hashes": {
+    "m9_evaluation_dataset_jsonl": "f1829bdcad4512b6481005a944ab65da6dbd2858de5cc83a4a289d15bd506c2f",
+    "m10_phase_e_per_intent_results_csv": "2ce231deb133c4c985a5055a7b8ea88cf9409c66fbb2279d49500102fa39ca58",
+    "m10_phase_f_end_to_end_results_csv": "60a108f448ff9756601a0669c930e48b0186fab7b5920be26e1359c8581a7ebf",
+    "m10_phase_f_answer_correctness_csv": "870b88febfe1bf241c2372f093bd1e80492f014bd0ad427146741f08d9004269",
+    "m10_phase_g_statistical_results_csv": "530f2653d9f6fe17a46794ecd580eb977d5095cc5cbeba7e3d3a84c2bc6a0a17",
+    "m10_phase_g_paired_contingency_tables_csv": "162afa0ad3b127caaa83e0f27cf869c57198a61b44b5e8deacd5d38de93a07ea",
+    "m10_phase_g_confidence_intervals_csv": "7dee0122ccd9fabdc9c3f2d3f349f1d40ec7f901f0c9b4937136c2798250c11d",
+    "m10_phase_g_bootstrap_results_csv": "2e6908d46d1770d3ba4108827d48b67de68f2cc25d883448bde934353c0d5d48",
+    "m10_phase_g_multiple_testing_results_csv": "f1745da3f94d136c27427ef3195c724a9331bf5078af5834e7971fcf9dcc6064",
+    "m10_phase_g_final_reconciliation_audit_md": "043f6aaf93b964cf094169942d2172d93d0bced852de08e4b1708c2c9b02b5c4",
+    "m10_phase_g_metric_definition_ledger_md": "f935899cfbe86f1c50854ad2d17d3c364a6fd23e65cfa8db9722c3cd63691971",
+    "m10_phase_g_cluster_aware_analysis_md": "8362aede9a5a593bd4d1a67895eeb210d862838582898a2b9eb67d05cc984436",
+    "m10_phase_g_power_calculation_verification_md": "294700c22e0243283126e736afe4fedca49229dc18bcb31d09cecf16b4cf3c57"
+  }
+}

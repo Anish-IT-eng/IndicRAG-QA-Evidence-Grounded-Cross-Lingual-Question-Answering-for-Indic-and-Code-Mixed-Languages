@@ -1,0 +1,97 @@
+{
+  "manifest_version": "1.0",
+  "phase": "M6_Phase_4",
+  "timestamp_utc": "2026-11-11T07:23:57.463055+00:00",
+  "execution_mode": "EXPLORATORY_CALIBRATION_AND_SYNTHESIS",
+  "authorization_decision": "PHASE_4_AUTHORIZED_EXPLORATORY_ONLY",
+  "final_milestone_decision": "PHASE_4_EXPLORATORY_CALIBRATION_COMPLETED",
+  "cryptographic_preflight": {
+    "corpus_db_sha256": "8688605df0dbff786454ec770e95609d9d3aacb284fdb3a2f97191f7d2971e9d",
+    "m3_frozen_sha256": "093b00ad0f19acda806f2302731ccf2de28838c1b29c6ef16d55cbc5e7e2d520",
+    "m6_benchmark_n60_sha256": "a528ac583d8c060b91a7febce652885e4045fcc76d644e49e876ddeb5d1db4ae",
+    "m6_qualification_ledger_sha256": "db8c2b5e02d6177b335a283f9ac62f99729fb36ef142aa1af81c99528efd3b13",
+    "m6_phase3_negative_benchmark_sha256": "492b0b1be3ce0c00fdcf453c971c48cb15176496e15806142c0aaff66050aeaa",
+    "preflight_status": "ALL_HASHES_MATCH_VERIFIED"
+  },
+  "cohort_lineage_summary": {
+    "total_evaluated_records": 93,
+    "pilot_primary_eligible": 29,
+    "pilot_excluded_quarantined": 31,
+    "negative_qualified_unanswerable": 22,
+    "negative_qualified_answerable_control": 5,
+    "negative_excluded_needs_adjudication": 6,
+    "target_b_effective_calibration_sample": 56
+  },
+  "target_b_calibration_performance": {
+    "uncalibrated_ceci": {
+      "brier": 0.414,
+      "log_loss": 9.0813,
+      "roc_auc": 0.5573,
+      "ece": 0.3963
+    },
+    "oof_platt_calibrated_ceci": {
+      "brier": 0.2473,
+      "log_loss": 0.6879,
+      "roc_auc": 0.377,
+      "ece": 0.0059
+    },
+    "fitted_sigmoid_parameters": {
+      "slope_a": 0.2892915560070595,
+      "intercept_b": 0.23719286712622017,
+      "cross_validation_slopes_std": 0.2924717032960738
+    }
+  },
+  "cross_lingual_calibration_breakdown": [
+    {
+      "language": "en",
+      "sample_size": 35,
+      "answerable_count": 17,
+      "unanswerable_count": 18,
+      "mean_confidence": 0.5722,
+      "brier_score": 0.2578,
+      "roc_auc": 0.4542,
+      "evaluation_designation": "EXPLORATORY"
+    },
+    {
+      "language": "hi-en",
+      "sample_size": 3,
+      "answerable_count": 3,
+      "unanswerable_count": 0,
+      "mean_confidence": 0.5593,
+      "brier_score": 0.1943,
+      "roc_auc": "UNDEFINED (Single Class)",
+      "evaluation_designation": "DESCRIPTIVE_ONLY (Small Sample)"
+    },
+    {
+      "language": "hi-Latn",
+      "sample_size": 5,
+      "answerable_count": 3,
+      "unanswerable_count": 2,
+      "mean_confidence": 0.5764,
+      "brier_score": 0.2455,
+      "roc_auc": 0.5,
+      "evaluation_designation": "DESCRIPTIVE_ONLY (Small Sample)"
+    },
+    {
+      "language": "hi",
+      "sample_size": 13,
+      "answerable_count": 9,
+      "unanswerable_count": 4,
+      "mean_confidence": 0.5684,
+      "brier_score": 0.2321,
+      "roc_auc": 0.1944,
+      "evaluation_designation": "DESCRIPTIVE_ONLY (Small Sample)"
+    }
+  ],
+  "deliverables": [
+    "docs/m6_phase4_calibration_design.md",
+    "docs/m6_phase4_experiment_report.md",
+    "backend/app/calibration/exploratory_calibrator.py",
+    "backend/tests/test_m6_phase4_calibration.py",
+    "backend/data/experiments/m6/m6_phase4_cohort_lineage.csv",
+    "backend/data/experiments/m6/m6_phase4_calibration_results.csv",
+    "backend/data/experiments/m6/m6_phase4_threshold_analysis.csv",
+    "backend/data/experiments/m6/m6_phase4_manifest.json",
+    "docs/m6_final_evidence_reliability_assessment.md"
+  ]
+}

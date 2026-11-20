@@ -1,0 +1,34 @@
+{
+  "index_name": "fixed_window",
+  "index_dir": "C:\\Users\\anish\\Desktop\\IndicRAG-QA\\backend\\data\\indexes\\fixed_window",
+  "chunking_strategy": "fixed_window",
+  "chunk_size_words": 300,
+  "overlap_words": 50,
+  "total_passages": 165,
+  "documents": [
+    {
+      "filename": "Academic-Rules-for-SCSET_UG.pdf",
+      "document_id": "b787fd22-eb2f-42ed-9ef7-ef098e5ff8b6",
+      "page_count": 20,
+      "fixed_chunks_count": 39
+    },
+    {
+      "filename": "Notification-Minimum-Attendance.pdf",
+      "document_id": "40c366dd-41b2-49f6-b5e4-492a8b5bbe8a",
+      "page_count": 1,
+      "fixed_chunks_count": 1
+    },
+    {
+      "filename": "Academic-Calendar-2026-27.pdf",
+      "document_id": "0c174816-3d23-4e47-aef4-8b8579b801d6",
+      "page_count": 9,
+      "fixed_chunks_count": 17
+    },
+    {
+      "filename": "SEAS-Ordinance-Rules-Regulations-2017.pdf",
+      "document_id": "b6f9aad0-7a87-432a-bc91-38fe8eaec817",
+      "page_count": 81,
+      "fixed_chunks_count": 108
+    }
+  ]
+}

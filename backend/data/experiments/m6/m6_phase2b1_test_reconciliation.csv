@@ -1,0 +1,11 @@
+test_file,documented_count_in_status_md,actual_collected_count,passed_count,failed_count,skipped_count,error_count,discrepancy_delta,reconciliation_notes
+backend/tests/test_api.py,10,10,10,0,0,0,0,"Exact match. Covers FastAPI endpoints, health, ingest, and upload validation."
+backend/tests/test_database.py,4,4,4,0,0,0,0,"Exact match. Covers SQLite table initialization, idempotency, document/passage CRUD."
+backend/tests/test_ingestion_smoke.py,32,32,32,0,0,0,0,"Exact match. Covers PDF extraction, SHA-256 deduplication, parent-child chunking, and source registry."
+backend/tests/test_metrics.py,18,24,24,0,0,0,6,"Discrepancy identified. STATUS.md contained a stale documentation string (18) from M4; actual module contains 24 tests (12 retrieval, 9 answer, 3 answerability)."
+backend/tests/test_model_verifier.py,12,12,12,0,0,0,0,Exact match. Covers deterministic validation rules and independent LLM verification controller.
+backend/tests/test_query_processor.py,22,22,22,0,0,0,0,"Exact match. Covers multilingual language/script detection, normalization, and decomposition."
+backend/tests/test_retrieval_baselines.py,12,12,12,0,0,0,0,"Exact match. Covers BM25, Dense FAISS, RRF fusion, deduplication, and version awareness."
+backend/tests/test_m5_advanced_rag.py,19,19,19,0,0,0,0,"Exact match. Covers adaptive router, translation-assisted retrieval, and adaptive token budget."
+backend/tests/test_m6_benchmark_expansion.py,7,7,7,0,0,0,0,"Exact match. Covers expanded benchmark schemas, unanswerable categorization, and verifier exclusion."
+backend/tests/test_m6_phase2b_scoring_and_controller.py,21,21,21,0,0,0,0,"Exact match. Covers score normalizers, convex CECI, six-state controller precedence, and claim grounding."

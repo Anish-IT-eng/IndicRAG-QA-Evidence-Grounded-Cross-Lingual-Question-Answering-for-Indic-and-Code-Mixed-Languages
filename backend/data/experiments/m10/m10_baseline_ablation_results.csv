@@ -1,0 +1,31 @@
+experiment,config_id,language,sample_size,hit_at_1,hit_at_3,hit_at_5,mrr,ndcg_at_5,recall_at_5,mean_latency_ms,median_latency_ms,p95_latency_ms
+E1: Current Production Pipeline (Depth=10 + ms-marco),E1_PROD,en,45,0.1111,0.1333,0.1333,0.1185,0.1204,0.1333,4491.64,4651.37,7008.49
+E1: Current Production Pipeline (Depth=10 + ms-marco),E1_PROD,hi,45,0.0222,0.0222,0.0444,0.0278,0.0195,0.0222,2788.21,2908.1,3982.97
+E1: Current Production Pipeline (Depth=10 + ms-marco),E1_PROD,hi-Latn,45,0.1111,0.1333,0.1333,0.1222,0.1251,0.1333,4262.12,4576.02,6090.89
+E1: Current Production Pipeline (Depth=10 + ms-marco),E1_PROD,en-hi,45,0.1111,0.1333,0.1333,0.1222,0.1251,0.1333,4171.15,4368.7,5686.23
+E1: Current Production Pipeline (Depth=10 + ms-marco),E1_PROD,OVERALL,180,0.0889,0.1056,0.1111,0.0977,0.0975,0.1056,3928.28,4110.47,6028.42
+E2: No-Reranker Hybrid Baseline (Depth=10),E2_NO_RERANK_D10,en,45,0.0444,0.0444,0.0444,0.0444,0.0358,0.0333,77.04,71.63,109.8
+E2: No-Reranker Hybrid Baseline (Depth=10),E2_NO_RERANK_D10,hi,45,0.0222,0.0222,0.0222,0.0222,0.0222,0.0222,71.07,68.96,82.58
+E2: No-Reranker Hybrid Baseline (Depth=10),E2_NO_RERANK_D10,hi-Latn,45,0.0222,0.0444,0.0444,0.0333,0.0308,0.0333,62.78,64.81,81.64
+E2: No-Reranker Hybrid Baseline (Depth=10),E2_NO_RERANK_D10,en-hi,45,0.0444,0.0444,0.0444,0.0444,0.0358,0.0333,63.47,66.39,83.07
+E2: No-Reranker Hybrid Baseline (Depth=10),E2_NO_RERANK_D10,OVERALL,180,0.0333,0.0389,0.0389,0.0361,0.0312,0.0306,68.59,67.87,85.95
+E3: Bi-Encoder Only Ranking (Dense FAISS),E3_BI_ENCODER_ONLY,en,45,0.1111,0.1111,0.1111,0.1111,0.0921,0.0889,73.67,72.59,91.17
+E3: Bi-Encoder Only Ranking (Dense FAISS),E3_BI_ENCODER_ONLY,hi,45,0.0889,0.0889,0.0889,0.0889,0.0717,0.0667,68.26,68.61,77.76
+E3: Bi-Encoder Only Ranking (Dense FAISS),E3_BI_ENCODER_ONLY,hi-Latn,45,0.0667,0.1111,0.1111,0.0852,0.0762,0.0889,66.53,67.18,77.32
+E3: Bi-Encoder Only Ranking (Dense FAISS),E3_BI_ENCODER_ONLY,en-hi,45,0.1111,0.1111,0.1111,0.1111,0.0912,0.0889,65.74,67.16,74.1
+E3: Bi-Encoder Only Ranking (Dense FAISS),E3_BI_ENCODER_ONLY,OVERALL,180,0.0944,0.1056,0.1056,0.0991,0.0828,0.0833,68.55,68.9,80.01
+E4a: Controlled Depth Reranking (Depth=5 + ms-marco),E4A_RERANK_D5,en,45,0.1111,0.1333,0.1333,0.1185,0.1204,0.1333,1409.6,1583.81,1996.39
+E4a: Controlled Depth Reranking (Depth=5 + ms-marco),E4A_RERANK_D5,hi,45,0.0222,0.0667,0.1111,0.047,0.0454,0.0778,834.71,718.26,1499.09
+E4a: Controlled Depth Reranking (Depth=5 + ms-marco),E4A_RERANK_D5,hi-Latn,45,0.1111,0.1333,0.1333,0.1222,0.1251,0.1333,1489.14,1647.52,2079.03
+E4a: Controlled Depth Reranking (Depth=5 + ms-marco),E4A_RERANK_D5,en-hi,45,0.1111,0.1333,0.1333,0.1222,0.1251,0.1333,1440.75,1611.54,2212.9
+E4a: Controlled Depth Reranking (Depth=5 + ms-marco),E4A_RERANK_D5,OVERALL,180,0.0889,0.1167,0.1278,0.1025,0.104,0.1194,1293.55,1219.15,2059.22
+E4b: Controlled Depth Reranking (Depth=20 + ms-marco),E4B_RERANK_D20,en,45,0.1111,0.1333,0.1333,0.1185,0.1204,0.1333,3061.6,2862.31,3444.81
+E4b: Controlled Depth Reranking (Depth=20 + ms-marco),E4B_RERANK_D20,hi,45,0.0222,0.0222,0.0222,0.0222,0.0195,0.0222,2040.96,1810.42,3097.63
+E4b: Controlled Depth Reranking (Depth=20 + ms-marco),E4B_RERANK_D20,hi-Latn,45,0.1111,0.1333,0.1333,0.1222,0.1251,0.1333,3065.38,2844.38,3428.36
+E4b: Controlled Depth Reranking (Depth=20 + ms-marco),E4B_RERANK_D20,en-hi,45,0.1111,0.1333,0.1556,0.1278,0.1347,0.1556,3032.79,2808.81,3385.9
+E4b: Controlled Depth Reranking (Depth=20 + ms-marco),E4B_RERANK_D20,OVERALL,180,0.0889,0.1056,0.1111,0.0977,0.0999,0.1111,2800.18,2789.19,3411.96
+E5: Controlled Depth Hybrid without Reranker (Depth=20),E5_NO_RERANK_D20,en,45,0.0444,0.0444,0.0444,0.0444,0.0358,0.0333,84.84,73.86,120.15
+E5: Controlled Depth Hybrid without Reranker (Depth=20),E5_NO_RERANK_D20,hi,45,0.0222,0.0222,0.0222,0.0222,0.0222,0.0222,73.16,68.3,107.21
+E5: Controlled Depth Hybrid without Reranker (Depth=20),E5_NO_RERANK_D20,hi-Latn,45,0.0222,0.0667,0.0667,0.0444,0.0394,0.0444,80.04,66.83,144.89
+E5: Controlled Depth Hybrid without Reranker (Depth=20),E5_NO_RERANK_D20,en-hi,45,0.0444,0.0444,0.0444,0.0444,0.0358,0.0333,75.22,67.43,108.37
+E5: Controlled Depth Hybrid without Reranker (Depth=20),E5_NO_RERANK_D20,OVERALL,180,0.0333,0.0444,0.0444,0.0389,0.0333,0.0333,78.32,69.91,123.2

@@ -1,0 +1,65 @@
+{
+  "timestamp": "2026-11-17T15:32:40Z",
+  "milestone": "M10_PHASE_G_FINAL_DOCUMENTATION_CONSISTENCY_PATCH",
+  "final_determination": "M10_PHASE_G_VERIFIED_WITH_LIMITATIONS",
+  "standardized_m11_requirements": {
+    "independent_semantic_intent_groups_total": "225 to 230 in total (NOT per language)",
+    "parallel_language_formulations_per_intent": 4,
+    "total_benchmark_query_records": "920 (at N = 230 total intent groups)",
+    "clarification": "230 is not required separately for each language; sampling 230 total intent groups automatically provides 230 paired query instances in each language.",
+    "planning_assumptions": {
+      "discordance_probability_pD": 0.15,
+      "conditional_win_probability_pi": 0.75,
+      "target_odds_ratio_psi": 3.0,
+      "significance_level_alpha": 0.05,
+      "target_power": 0.8
+    }
+  },
+  "exact_power_and_cluster_test_reconciliation": {
+    "software_environment": "Python 3.13.5, SciPy 1.15.1, NumPy 2.4.6",
+    "executable_script": "backend/experiments/m10/reproduce_power_and_cluster_tests.py",
+    "nD_23_exact_two_sided_power": 0.6537277951,
+    "nD_23_exact_two_sided_rejection_region": "C <= 6 or C >= 17 (exact alpha = 0.0346896648)",
+    "nD_23_exact_one_sided_power": 0.803696685,
+    "nD_23_exact_one_sided_rejection_region": "C >= 16 (exact alpha = 0.0465698242)",
+    "nD_30_exact_two_sided_power": 0.8034069188,
+    "nD_30_exact_two_sided_rejection_region": "C <= 9 or C >= 21",
+    "nD_30_null_rejection_probability": 0.0427739453,
+    "unconditional_power_N_150": 0.601062,
+    "unconditional_power_N_225": 0.802042,
+    "unconditional_power_N_230": 0.812236,
+    "hit5_cluster_wilcoxon_statistic": 2.5,
+    "hit5_cluster_asymptotic_p": 0.317311,
+    "hit5_cluster_exact_permutation_p": 0.625,
+    "e2e_cluster_wilcoxon_statistic": 0.0,
+    "e2e_cluster_asymptotic_p": 0.157299,
+    "e2e_cluster_exact_permutation_p": 0.5
+  },
+  "paired_confidence_interval_and_noninferiority": {
+    "symmetrized_wilson_interval_status": "Removed as formal paired difference confidence interval",
+    "post_hoc_margin_status": "Retracted (8% margin was not pre-specified)",
+    "authorized_reporting_standard": "Zero observed regressions in the evaluated Latin-script sample."
+  },
+  "evidence_provenance_and_raw_data_verification": {
+    "provenance_status": "Independently verified from local raw CSV files, SQLite database, FAISS index, and scripts.",
+    "english": "25 CA + 3 RD = 28 combined successes (17 UA, total 45)",
+    "devanagari_config_b": "1 CA (M9-Q058) + 1 RD (M9-Q002) = 2 combined successes (43 UA, total 45)",
+    "romanized_hindi": "13 CA + 1 RD = 14 combined successes (31 UA, total 45)",
+    "hinglish": "14 CA + 3 RD = 17 combined successes (28 UA, total 45)",
+    "overall_config_a": "52 CA + 7 RD = 59 combined successes (121 UA, total 180)",
+    "overall_config_b": "53 CA + 8 RD = 61 combined successes (119 UA, total 180)"
+  },
+  "file_hashes": {
+    "m9_evaluation_dataset_jsonl": "f1829bdcad4512b6481005a944ab65da6dbd2858de5cc83a4a289d15bd506c2f",
+    "m10_phase_e_per_intent_results_csv": "2ce231deb133c4c985a5055a7b8ea88cf9409c66fbb2279d49500102fa39ca58",
+    "m10_phase_f_end_to_end_results_csv": "60a108f448ff9756601a0669c930e48b0186fab7b5920be26e1359c8581a7ebf",
+    "m10_phase_f_answer_correctness_csv": "870b88febfe1bf241c2372f093bd1e80492f014bd0ad427146741f08d9004269",
+    "reproduce_power_and_cluster_tests_py": "28c73ca3200f9c4228f454ecfe38dd32e6dcd73f1e43b26177dfa3252c71d06d",
+    "m10_phase_g_power_correction_audit_md": "4dc906e5ce8a29afb8f09b7a8892aef6a15a2ea0ee7ff66eef765c2602ecacce",
+    "m10_phase_g_cluster_test_correction_md": "979b1a8e6bded0ea4f1ed778fc1f42c4d6f6a7473d5c9507e19585cfee731ecb",
+    "m10_phase_g_independent_unit_audit_md": "c99f046255648a4c3b46cebc906abc9c336f0516b3605e893f90f8c0a9018afe",
+    "m10_phase_g_success_reconciliation_verification_md": "4c699be95e9d5b4bfff87a1e9c7781d6002572d36fa552399f57239b0082e0c5",
+    "m10_phase_g_noninferiority_review_md": "bbd0a7b8efc63ef9c495f06aa7a3b77adabb456396b1dbf8c37087e70a1ba4bc",
+    "m10_phase_g_final_consistency_patch_md": "b8e679dddead238fa846b09b30be060ad15e818809353824166af8ba3b9d9412"
+  }
+}

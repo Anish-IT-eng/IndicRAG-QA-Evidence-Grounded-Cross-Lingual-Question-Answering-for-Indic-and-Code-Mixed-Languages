@@ -1,0 +1,55 @@
+{
+  "timestamp": "2026-11-19T19:09:02+0530",
+  "suite": "IndicRAG-QA Final End-to-End Acceptance Suite",
+  "all_passed": true,
+  "tests": {
+    "Test_A_Startup": {
+      "status": "PASS",
+      "latency_ms": 895.91
+    },
+    "Test_B_Upload_QA": {
+      "status": "PASS",
+      "doc_id": "2be56a0b-ac2a-4753-a3e9-827ee75fa3b7",
+      "cited_doc": "AI_401_Lab_Policy_2026.pdf",
+      "latency_ms": 19983.99
+    },
+    "Test_C_Official_Retrieval": {
+      "status": "PASS",
+      "latency_ms": 25991.18
+    },
+    "Test_D_Multilingual": {
+      "status": "PASS",
+      "scenarios": {
+        "English": "PASS",
+        "Devanagari Hindi": "PASS",
+        "Romanized Hindi": "PASS",
+        "Code-Mixed Hinglish": "PASS",
+        "Even_Semester_Registration": "PASS"
+      },
+      "latency_ms": 51526.84
+    },
+    "Test_E_Abstention": {
+      "status": "PASS",
+      "response_status": "unanswerable",
+      "latency_ms": 7014.52
+    },
+    "Test_F_Multi_Hop": {
+      "status": "PASS",
+      "citations_count": 3,
+      "latency_ms": 80756.62
+    },
+    "Test_G_Conversational_Repair": {
+      "status": "PASS",
+      "repair_action": "citation_reverified",
+      "latency_ms": 39.37
+    },
+    "Test_H_Security_Deletion": {
+      "status": "PASS",
+      "latency_ms": 6918.27
+    },
+    "Test_I_Regression": {
+      "status": "PASS",
+      "latency_ms": 3.3
+    }
+  }
+}

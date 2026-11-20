@@ -1,0 +1,163 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "IndicRAG-QA Regulatory Condition & Relationship Schema",
+  "description": "Formal schema for regulatory conditions, relationships, temporal scopes, and controller decision metadata in IndicRAG-QA",
+  "version": "1.0.0",
+  "milestone": "M8.4",
+  "definitions": {
+    "RegulatoryCondition": {
+      "type": "string",
+      "enum": [
+        "COURSE_GRADING",
+        "EXAM_ELIGIBILITY",
+        "MEDICAL_CONDONATION",
+        "DISCIPLINARY_ACTION",
+        "ACADEMIC_PROGRESSION",
+        "PROGRAMME_REQUIREMENT",
+        "OTHER"
+      ],
+      "descriptions": {
+        "COURSE_GRADING": "Course-level evaluation, minimum lecture/tutorial/practical attendance profile, grade penalty (e.g. 'X' grade), and course repetition requirements. Enforced by Course Instructor and School Dean.",
+        "EXAM_ELIGIBILITY": "Institutional university-wide requirements to sit for End Semester Examinations and admit card issuance under statutory authority (e.g. UGC Regulations). Enforced by Registrar and Controller of Examination.",
+        "MEDICAL_CONDONATION": "Formal attendance relaxation or condonation ceiling granted for continuous illness or university deputation upon certified evidence.",
+        "DISCIPLINARY_ACTION": "Proctorial guidelines, campus conduct, hostel rules, and examination hall malpractice (UFM) codes.",
+        "ACADEMIC_PROGRESSION": "Minimum CGPA/SGPA thresholds, credit accumulation requirements for semester promotion, academic probation, and maximum degree duration.",
+        "PROGRAMME_REQUIREMENT": "School- or branch-specific curriculum structure, core/elective distribution, and branch migration criteria.",
+        "OTHER": "Administrative notices, general fee policies, and academic calendar operational dates."
+      }
+    },
+    "RegulatoryRelationship": {
+      "type": "string",
+      "enum": [
+        "SAME_CONDITION_AGREEMENT",
+        "SAME_CONDITION_DIFFERENT_VERSION",
+        "DIFFERENT_REGULATORY_CONDITIONS",
+        "EXPLICITLY_SUPERSEDES",
+        "PROGRAMME_SPECIFIC_RULE",
+        "HISTORICAL_RULE",
+        "APPLICABILITY_UNRESOLVED",
+        "GENUINE_CONFLICT"
+      ],
+      "descriptions": {
+        "SAME_CONDITION_AGREEMENT": "Current and historical regulations specify identical numerical thresholds and consequences for the same condition. Yields SUFFICIENT evidence with zero conflict.",
+        "SAME_CONDITION_DIFFERENT_VERSION": "Successive versions modify the rule for the exact same condition. Requires temporal/cohort anchoring or clarification.",
+        "DIFFERENT_REGULATORY_CONDITIONS": "Retrieved passages govern distinct operational stages, authorities, or scopes (e.g. 70% course grading vs 75% exam hall). Yields multi-condition disclosure without contradiction.",
+        "EXPLICITLY_SUPERSEDES": "Newer legal instrument contains express repeal or supersession clause. Older clause is legally invalidated.",
+        "PROGRAMME_SPECIFIC_RULE": "School-level rule operates within statutory boundaries delegated by university-wide ordinance.",
+        "HISTORICAL_RULE": "Document applies exclusively to past cohorts. Valid when queried with historical anchor; otherwise de-emphasized.",
+        "APPLICABILITY_UNRESOLVED": "Document scope cannot be definitively assigned to query cohort/program. Requires clarification or safe abstention.",
+        "GENUINE_CONFLICT": "Two legally co-equal, currently active rules within the same jurisdiction specify contradictory mandates for the same cohort."
+      }
+    },
+    "TemporalIntentMode": {
+      "type": "string",
+      "enum": [
+        "EXPLICIT_HISTORICAL",
+        "EXPLICIT_CURRENT",
+        "COHORT_BOUND",
+        "UNANCHORED"
+      ]
+    },
+    "ApplicabilityScope": {
+      "type": "object",
+      "required": ["school", "programme", "academic_year_scope", "authority_level"],
+      "properties": {
+        "school": {
+          "type": "string",
+          "description": "Issuing school (e.g. 'SCSET', 'SEAS', 'ALL_UNIVERSITY')"
+        },
+        "programme": {
+          "type": "string",
+          "description": "Degree programme (e.g. 'B.Tech CSE', 'All UG', 'All Programmes')"
+        },
+        "academic_year_scope": {
+          "type": "string",
+          "description": "Cohort or academic year span (e.g. '2017-18 to 2021-22', '2022-23 onwards')"
+        },
+        "authority_level": {
+          "type": "string",
+          "enum": ["STATUTORY_ACT", "UNIVERSITY_ORDINANCE", "EXECUTIVE_NOTIFICATION", "SCHOOL_ACADEMIC_RULE"]
+        }
+      }
+    }
+  },
+  "condition_catalog": {
+    "COURSE_GRADING": {
+      "condition_id": "RC-01",
+      "canonical_thresholds": {
+        "SCSET_UG_2022": "70% in course lectures, tutorials, practicals combined",
+        "SEAS_UG_2017": "70% in course lectures, tutorials, practicals combined"
+      },
+      "canonical_consequence": "Award of 'X' grade; course debarment and mandatory course repetition",
+      "jurisdiction": "Course Instructor & School Dean",
+      "required_evidence": ["Clause mentioning minimum course attendance or 'X' grade"],
+      "inter_condition_relationship": {
+        "EXAM_ELIGIBILITY": "COMPLEMENTARY_PREREQUISITE (Course attendance feeds into overall eligibility; lower than exam hall threshold)",
+        "MEDICAL_CONDONATION": "SUBJECT_TO_CONDONATION (Permits up to 10% relaxation down to 60%)"
+      }
+    },
+    "EXAM_ELIGIBILITY": {
+      "condition_id": "RC-02",
+      "canonical_thresholds": {
+        "NOTIFICATION_307_2022": "75% aggregate attendance across registered courses",
+        "SEAS_UG_2017": "70% general attendance requirement"
+      },
+      "canonical_consequence": "Debarment from End Semester Examination; withholding of Examination Admit Card",
+      "jurisdiction": "Controller of Examination & Registrar",
+      "required_evidence": ["Official notification or ordinance clause governing End Semester Exam eligibility"],
+      "inter_condition_relationship": {
+        "COURSE_GRADING": "INSTITUTIONAL_OVERRIDE (Applies at university exam hall level across all registered courses)",
+        "MEDICAL_CONDONATION": "SUBJECT_TO_CONDONATION (Condonation per university medical regulations)"
+      }
+    },
+    "MEDICAL_CONDONATION": {
+      "condition_id": "RC-03",
+      "canonical_thresholds": {
+        "SCSET_UG_2022": "Up to 10% relaxation (floor 60%) for >= 2 weeks illness",
+        "SEAS_UG_2017": "Up to 10% relaxation (floor 60%) for >= 2 weeks illness"
+      },
+      "canonical_consequence": "Restoration of examination and grading eligibility",
+      "jurisdiction": "Dean / Medical Board / Authorized University Committee",
+      "required_evidence": ["Explicit medical relaxation or condonation clause with required documentation"],
+      "inter_condition_relationship": {
+        "COURSE_GRADING": "MITIGATING_EXCEPTION (Relaxes 70% requirement to 60%)",
+        "EXAM_ELIGIBILITY": "MITIGATING_EXCEPTION (Condonation ceiling applied to attendance shortage)"
+      }
+    },
+    "DISCIPLINARY_ACTION": {
+      "condition_id": "RC-04",
+      "canonical_consequence": "Proctorial warning, fine, suspension, expulsion, or UFM examination cancellation",
+      "jurisdiction": "Proctorial Board / Examination Disciplinary Committee / Vice Chancellor",
+      "required_evidence": ["Discipline code clause or UFM penalty table category"],
+      "inter_condition_relationship": {
+        "EXAM_ELIGIBILITY": "DISQUALIFYING (UFM or disciplinary suspension cancels exam eligibility)"
+      }
+    },
+    "ACADEMIC_PROGRESSION": {
+      "condition_id": "RC-05",
+      "canonical_consequence": "Promotion to higher semester, academic probation, or degree termination",
+      "jurisdiction": "Academic Council / School Academic Committee",
+      "required_evidence": ["Credit accumulation rules, minimum CGPA tables, or progression clauses"],
+      "inter_condition_relationship": {
+        "COURSE_GRADING": "DEPENDENT (Earned credits depend on clearing courses without 'F' or 'X' grades)"
+      }
+    },
+    "PROGRAMME_REQUIREMENT": {
+      "condition_id": "RC-06",
+      "canonical_consequence": "Degree completion verification, branch transfer eligibility",
+      "jurisdiction": "School Academic Committee / Head of Department",
+      "required_evidence": ["Branch transfer criteria, credit distribution matrices"],
+      "inter_condition_relationship": {
+        "ACADEMIC_PROGRESSION": "CO_REQUISITE"
+      }
+    },
+    "OTHER": {
+      "condition_id": "RC-07",
+      "canonical_consequence": "Administrative compliance",
+      "jurisdiction": "Registrar / Finance / Admissions",
+      "required_evidence": ["General administrative notice or calendar"],
+      "inter_condition_relationship": {}
+    }
+  }
+}
+

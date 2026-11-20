@@ -1,0 +1,109 @@
+{
+  "manifest_version": "1.0.0",
+  "milestone": "M8",
+  "generated_at": "2026-11-16T10:00:00+05:30",
+  "repository": "IndicRAG-QA",
+  "documents": [
+    {
+      "filename": "Academic-Rules-for-SCSET_UG.pdf",
+      "sha256": "787c88b0eb03e5c70bb8d591b61905307b0ecdaecb700f074d0ea203b8e4e082",
+      "file_size_bytes": 247472,
+      "page_count": 20,
+      "provenance": "https://www.bennett.edu.in/wp-content/uploads/2022/03/Academic-Rules-for-SCSET_UG.pdf",
+      "classification": "UNCHANGED",
+      "in_corpus": true,
+      "document_id": "b787fd22-eb2f-42ed-9ef7-ef098e5ff8b6"
+    },
+    {
+      "filename": "Notification-Minimum-Attendance.pdf",
+      "sha256": "81f181be3c42e975a6c66cf1bb2a842f10b777a8fcff92ffdc39f285fb70c8ad",
+      "file_size_bytes": 776906,
+      "page_count": 1,
+      "provenance": "https://www.bennett.edu.in/wp-content/uploads/2022/09/Notification-for-Minimum-Attendance-for-Students.pdf",
+      "classification": "UNCHANGED",
+      "in_corpus": true,
+      "document_id": "40c366dd-41b2-49f6-b5e4-492a8b5bbe8a"
+    },
+    {
+      "filename": "Academic-Calendar-2026-27.pdf",
+      "sha256": "e36e6ba6fcbf2a35368a5ca4eb3bca4fdf2463e26084931a0e14a275e7a9121a",
+      "file_size_bytes": 446423,
+      "page_count": 9,
+      "provenance": "https://d2xwywryb7yxbo.cloudfront.net/s3bucket-images/Academic-Calendar-2026-27.pdf",
+      "classification": "UNCHANGED",
+      "in_corpus": true,
+      "document_id": "0c174816-3d23-4e47-aef4-8b8579b801d6"
+    },
+    {
+      "filename": "SEAS-Ordinance-Rules-Regulations-2017.pdf",
+      "sha256": "cffb041cfdd924f707f1859bf557924c5ddccce5c678516d2eaec4b5b7863e46",
+      "file_size_bytes": 2085859,
+      "page_count": 81,
+      "provenance": "https://www.bennett.edu.in/wp-content/uploads/2017/08/SEAS-Ord_Rules-Reg_01-Nov.pdf",
+      "classification": "HISTORICAL",
+      "in_corpus": true,
+      "document_id": "b6f9aad0-4cbd-4915-bc0b-262e14b6e3a2"
+    },
+    {
+      "filename": "Students-Discipline-Conduct-Rules-2024.pdf",
+      "sha256": "1325facb0517e640ebf634e8d30ffe3d2fcd1122a676e7cfba49db9a8fa3bb2d",
+      "file_size_bytes": 223636,
+      "page_count": 23,
+      "provenance": "https://www.bennett.edu.in/wp-content/uploads/2024/03/STUDENTS-DISCIPLINE-AND-CONDUCT-RULES_compressed.pdf",
+      "classification": "NEW_DOCUMENT",
+      "in_corpus": true,
+      "document_id": "f110a0e9-e299-4f4a-9dd9-b879ecbbdc36"
+    },
+    {
+      "filename": "BU-First-Ordinance-2016.pdf",
+      "sha256": "b657822edb6148b7e9b6a276b9065dab1f9d66bd4a81a58432f425498e47be05",
+      "file_size_bytes": 731965,
+      "page_count": 55,
+      "provenance": "https://www.bennett.edu.in/wp-content/uploads/2024/05/BU-First-Ordinance-2016.pdf",
+      "classification": "NEW_DOCUMENT",
+      "in_corpus": true,
+      "document_id": "8e3b751a-5728-4af0-bf6c-5418b578af7b"
+    },
+    {
+      "filename": "UFM-Guidelines-2024.pdf",
+      "sha256": "450363b66826637de2123c86570d571d11c3dde576bab890b278143d60768f04",
+      "file_size_bytes": 4926812,
+      "page_count": 7,
+      "provenance": "https://www.bennett.edu.in/wp-content/uploads/2024/05/UFM.pdf",
+      "classification": "NEW_DOCUMENT",
+      "in_corpus": true,
+      "document_id": "d741f37d-c2db-4463-b9fa-fe59ab749960"
+    },
+    {
+      "filename": "Exam-Manual.pdf",
+      "sha256": "893e14f7849a1b537e91c507b1ce45d0d3317fbec438a5524bcbb49090d364c3",
+      "file_size_bytes": 7669082,
+      "page_count": 40,
+      "provenance": "https://www.bennett.edu.in/wp-content/uploads/2024/05/Exam-Manual.pdf",
+      "classification": "UNVERIFIED",
+      "in_corpus": false,
+      "document_id": null
+    },
+    {
+      "filename": "Academic-Calender-2024-25.pdf",
+      "sha256": "76c676a1a670a2a1bba9d7003d44254287157a0cbecb7437e3d69fb932779c21",
+      "file_size_bytes": 1705916,
+      "page_count": 6,
+      "provenance": "https://www.bennett.edu.in/wp-content/uploads/2024/06/Academic-Calender-2024-25.pdf",
+      "classification": "HISTORICAL",
+      "in_corpus": false,
+      "document_id": null
+    },
+    {
+      "filename": "Academic-Calendar-2025-26.pdf",
+      "sha256": "16e15618bc7a736f854c98e7723b8a485408ee3c1894434409d1ea4fc5a1bc98",
+      "file_size_bytes": 9088321,
+      "page_count": 7,
+      "provenance": "https://www.bennett.edu.in/wp-content/uploads/2025/07/Academic-Calendar-for-A.Y.-2025-26-All-Returning-Students_Updated.pdf",
+      "classification": "HISTORICAL",
+      "in_corpus": false,
+      "document_id": null
+    }
+  ]
+}
+

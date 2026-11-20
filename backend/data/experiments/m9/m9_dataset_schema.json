@@ -1,0 +1,89 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "IndicRAG-QA M9 Evaluation Benchmark Dataset Schema",
+  "description": "Formal schema for multilingual cross-lingual and code-mixed question answering evaluation items",
+  "type": "object",
+  "properties": {
+    "intent_id": {
+      "type": "string",
+      "pattern": "^M9-INT-[0-9]{2}$",
+      "description": "Unique identifier for the semantic intent group across languages"
+    },
+    "query_id": {
+      "type": "string",
+      "pattern": "^M9-Q[0-9]{3}$",
+      "description": "Unique query instance identifier"
+    },
+    "query_text": {
+      "type": "string",
+      "minLength": 5,
+      "description": "Raw query string in English, Hindi Devanagari, Romanized Hindi, or Hinglish"
+    },
+    "query_language": {
+      "type": "string",
+      "enum": ["en", "hi", "hi-Latn", "en-hi"],
+      "description": "Language formulation code"
+    },
+    "script": {
+      "type": "string",
+      "enum": ["LATIN", "DEVANAGARI"],
+      "description": "Orthographic script representation"
+    },
+    "query_type": {
+      "type": "string",
+      "enum": ["DIRECT", "HYPOTHETICAL", "COMPARATIVE", "OUT_OF_SCOPE", "ABSURD"],
+      "description": "Taxonomic classification of the question"
+    },
+    "expected_answer_language": {
+      "type": "string",
+      "enum": ["en", "hi", "hi-Latn", "en-hi"]
+    },
+    "expected_status": {
+      "type": "string",
+      "enum": ["ANSWERED", "UNANSWERABLE", "CONFLICTING_VERSIONS", "CLARIFICATION_REQUIRED"]
+    },
+    "expected_document_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "List of UUIDs of authoritative source documents supporting the intent"
+    },
+    "expected_passage_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "List of UUIDs of primary child passages required to answer the intent"
+    },
+    "expected_claims": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Atomic factual assertions required in an accurate response"
+    },
+    "expected_answer": {
+      "type": "string",
+      "description": "Gold reference answer string"
+    },
+    "applicability_constraints": {
+      "type": "object",
+      "description": "Regulatory temporal, school, programme, and cohort constraints"
+    },
+    "human_review_status": {
+      "type": "string",
+      "enum": ["PROVISIONAL_NOT_HUMAN_VERIFIED", "VERIFIED_HUMAN_APPROVED", "REJECTED_UNGROUNDED"]
+    },
+    "reviewer_notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "intent_id",
+    "query_id",
+    "query_text",
+    "query_language",
+    "script",
+    "expected_status",
+    "expected_document_ids",
+    "expected_passage_ids",
+    "expected_claims",
+    "expected_answer",
+    "human_review_status"
+  ]
+}

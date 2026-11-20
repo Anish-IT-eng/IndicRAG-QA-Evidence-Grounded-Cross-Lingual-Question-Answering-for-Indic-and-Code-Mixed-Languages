@@ -1,0 +1,30 @@
+{
+  "execution_timestamp_utc": "20261110_135218",
+  "corpus_sha256": "8688605df0dbff786454ec770e95609d9d3aacb284fdb3a2f97191f7d2971e9d",
+  "benchmark_sha256": "093b00ad0f19acda806f2302731ccf2de28838c1b29c6ef16d55cbc5e7e2d520",
+  "embedding_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "reranker_model": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+  "llm_model": "gemma:2b",
+  "rrf_fusion_constant_k": 60,
+  "retrieval_depth_k": 5,
+  "pool_depth_k": 10,
+  "adaptive_budget_range": [
+    3,
+    10
+  ],
+  "elbow_pruning_threshold": 0.35,
+  "experiments": [
+    "E1",
+    "E2",
+    "E3",
+    "E4",
+    "E5",
+    "E6",
+    "E7",
+    "E8",
+    "E9",
+    "E10",
+    "E11",
+    "E12"
+  ]
+}

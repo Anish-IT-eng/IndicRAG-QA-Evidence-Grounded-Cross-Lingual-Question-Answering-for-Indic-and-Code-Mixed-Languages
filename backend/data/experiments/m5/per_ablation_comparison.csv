@@ -1,0 +1,8 @@
+ablation_code,description,disabled_component,hit_1,hit_3,hit_5,mrr,ndcg_5,avg_retrieval_latency_ms,delta_hit_5_vs_a0,delta_mrr_vs_a0
+A0_FULL_ARCHITECTURE,Full Architecture (BM25+Dense+MQR+Rerank+PDR+Version),None (Complete System),0.1538,0.8462,0.8462,0.4487,0.5195,1464.38,0.0,0.0
+A1_NO_RERANKER,Leave-One-Out: No Cross-Encoder Reranker,Cross-Encoder (ms-marco-MiniLM-L-6-v2),0.0,0.6154,0.7692,0.3167,0.3806,42.48,-0.077,-0.132
+A2_NO_MQR,Leave-One-Out: No Multi-Query Retrieval,Query Expansion / Sub-Questions,0.1538,0.8462,0.8462,0.4487,0.5195,1468.4,0.0,0.0
+A3_NO_PDR,Leave-One-Out: No Parent Document Retrieval,Parent Chunk Context Expansion,0.1538,0.8462,0.8462,0.4487,0.5195,1524.38,0.0,0.0
+A4_NO_VERSION_VALIDATION,Leave-One-Out: No Version Validation,Regulatory Version Filtering,0.1538,0.8462,0.8462,0.4487,0.5195,1545.97,0.0,0.0
+A5_NO_DENSE,Leave-One-Out: Pure BM25 Lexical,Dense Embeddings (FAISS),0.1538,0.8462,0.8462,0.4744,0.5546,771.37,0.0,0.0257
+A6_NO_BM25,Leave-One-Out: Pure Dense Semantic,BM25 Lexical Index,0.1538,0.7692,0.7692,0.4231,0.4634,1047.82,-0.077,-0.0256

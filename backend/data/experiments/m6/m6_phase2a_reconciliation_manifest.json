@@ -1,0 +1,72 @@
+{
+  "manifest_metadata": {
+    "milestone": "M6",
+    "phase": "Phase 2A Reconciliation: Benchmark Qualification Audit",
+    "execution_timestamp": "2026-11-11T09:48:24.446364",
+    "status": "RECONCILIATION_COMPLETED"
+  },
+  "integrity_provenance": {
+    "frozen_m3_benchmark_sha256": "093b00ad0f19acda806f2302731ccf2de28838c1b29c6ef16d55cbc5e7e2d520",
+    "corpus_sha256": "8688605df0dbff786454ec770e95609d9d3aacb284fdb3a2f97191f7d2971e9d",
+    "m6_benchmark_sha256": "a528ac583d8c060b91a7febce652885e4045fcc76d644e49e876ddeb5d1db4ae",
+    "qualification_csv_path": "backend\\data\\dataset\\m6_benchmark_qualification.csv",
+    "m6_benchmark_csv_path": "backend\\data\\dataset\\m6_expanded_benchmark_n60.csv"
+  },
+  "qualification_audit_summary": {
+    "total_records": 60,
+    "m3_frozen_core": 15,
+    "m6_expanded_candidates": 45,
+    "verification_status_breakdown": {
+      "auto_validated": 29,
+      "needs_review": 24,
+      "auto_rejected": 7
+    },
+    "eligibility_breakdown": {
+      "ELIGIBLE_PROVISIONAL": 29,
+      "EXCLUDED_NEEDS_REVIEW": 24,
+      "EXCLUDED_AUTO_REJECTED": 7
+    },
+    "eligible_provisional_breakdown": {
+      "total_eligible": 29,
+      "answerable": 27,
+      "unanswerable": 2,
+      "by_language": {
+        "en": 14,
+        "hi-en": 3,
+        "hi-Latn": 2,
+        "hi": 10
+      },
+      "by_taxonomy": {
+        "direct_factual": 17,
+        "out_of_domain": 2,
+        "numerical_tabular": 7,
+        "multi_part": 1,
+        "conditional_exception": 2
+      }
+    },
+    "excluded_breakdown": {
+      "total_excluded": 31,
+      "needs_review": 24,
+      "auto_rejected": 7,
+      "excluded_reasons": {
+        "dual_verifier_disagreement": 23,
+        "dual_verifier_rejection": 7,
+        "json_parsing_failure": 1,
+        "unanswerable_absence_of_cited_evidence": 0
+      }
+    },
+    "grounding_audit_summary": {
+      "verbatim_sqlite_match": 34,
+      "m3_normalized_match": 6,
+      "no_evidence_unanswerable": 20
+    },
+    "human_verified_count": 0,
+    "review_status_pending_count": 60
+  },
+  "calibration_feasibility_assessment": {
+    "is_nested_5fold_calibration_feasible": false,
+    "reason": "Only 2 unanswerable instances are in the eligible provisional set. 5-fold cross-fitting would result in 0 negative examples in 3 of the 5 test/train folds, causing non-convergent logistic regression / Platt scaling and degenerate Wilson intervals.",
+    "pilot_benchmark_designation": true,
+    "recommended_phase2b_pathway": "Freeze the N=29 eligible subset (and full N=60) for pilot heuristic evaluation. Use theory-anchored rule-based evidence gating thresholds (alpha=0.5 sigmoid, normalized rank index) rather than empirical empirical optimization on N=2 negative examples. Defer formal empirical cross-fitting until human adjudication of the 24 needs_review candidates is completed."
+  }
+}

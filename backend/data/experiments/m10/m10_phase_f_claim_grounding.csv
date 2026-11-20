@@ -1,0 +1,3 @@
+query_id,intent_id,language,claim_id,claim_text,cited_passage_id,verdict,grounding_confidence,explanation
+M9-Q002,M9-INT-01,hi,M9-Q002-C1,75% minimum aggregate attendance is required by the Registrar to appear in End Semester Examinations pursuant to Notification 307/2022.,0280358a-ff3c-4964-88ab-419a9147b1f0,SUPPORTED,0.95,Strictly matches Notification 307/2022 verbatim criteria.
+M9-Q002,M9-INT-01,hi,M9-Q002-C2,70% attendance in a course is required to avoid an 'X' grade and course repetition under SCSET Clause 30.1.,f88ec726-74ba-426f-a01f-4b9665c1a8b8,SUPPORTED,0.95,Strictly matches SCSET UG Rules 2022 Clause 30.1(iv).

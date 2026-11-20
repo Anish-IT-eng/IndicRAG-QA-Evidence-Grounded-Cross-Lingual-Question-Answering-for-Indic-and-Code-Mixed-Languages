@@ -1,0 +1,95 @@
+{
+  "milestone": "M6",
+  "phase": "Phase 3.1",
+  "title": "Post-Patch Evaluation & Enforcement Audit",
+  "timestamp_utc": "2026-11-11T06:47:50.350528+00:00",
+  "audit_mode": "Strict read-only verification (Zero runtime modifications)",
+  "provenance_hashes": {
+    "corpus_db_sha256": "8688605df0dbff786454ec770e95609d9d3aacb284fdb3a2f97191f7d2971e9d",
+    "m3_frozen_benchmark_sha256": "093b00ad0f19acda806f2302731ccf2de28838c1b29c6ef16d55cbc5e7e2d520",
+    "m6_n60_benchmark_sha256": "a528ac583d8c060b91a7febce652885e4045fcc76d644e49e876ddeb5d1db4ae",
+    "m6_qualification_ledger_sha256": "db8c2b5e02d6177b335a283f9ac62f99729fb36ef142aa1af81c99528efd3b13",
+    "m6_phase3_negative_candidates_sha256": "492b0b1be3ce0c00fdcf453c971c48cb15176496e15806142c0aaff66050aeaa"
+  },
+  "test_suite_status": {
+    "total_tests": 175,
+    "passing_tests": 175,
+    "failing_tests": 0,
+    "test_modules_count": 11,
+    "verified_secure": true
+  },
+  "post_patch_operational_metrics": {
+    "direct_answer_coverage": 0.5862,
+    "correct_answer_rate": 0.5862,
+    "answerable_query_recall": 0.6296,
+    "unsupported_answer_rate": 0.0,
+    "contradiction_leakage_rate": 0.0,
+    "zero_citation_bypass_rate": 0.0,
+    "clarification_rate": 0.0345,
+    "conflict_disclosure_rate": 0.0345,
+    "safe_abstention_rate": 0.3448,
+    "total_pilot_queries": 29
+  },
+  "six_state_confusion_matrix_post_patch": {
+    "SUFFICIENT": {
+      "SUFFICIENT": 11,
+      "PARTIAL": 6,
+      "INSUFFICIENT": 8,
+      "CONFLICTING": 0,
+      "MISSING": 0,
+      "CLARIFICATION_REQUIRED": 0
+    },
+    "PARTIAL": {
+      "SUFFICIENT": 0,
+      "PARTIAL": 0,
+      "INSUFFICIENT": 0,
+      "CONFLICTING": 0,
+      "MISSING": 0,
+      "CLARIFICATION_REQUIRED": 0
+    },
+    "INSUFFICIENT": {
+      "SUFFICIENT": 0,
+      "PARTIAL": 0,
+      "INSUFFICIENT": 2,
+      "CONFLICTING": 0,
+      "MISSING": 0,
+      "CLARIFICATION_REQUIRED": 0
+    },
+    "CONFLICTING": {
+      "SUFFICIENT": 0,
+      "PARTIAL": 0,
+      "INSUFFICIENT": 0,
+      "CONFLICTING": 1,
+      "MISSING": 0,
+      "CLARIFICATION_REQUIRED": 0
+    },
+    "MISSING": {
+      "SUFFICIENT": 0,
+      "PARTIAL": 0,
+      "INSUFFICIENT": 0,
+      "CONFLICTING": 0,
+      "MISSING": 0,
+      "CLARIFICATION_REQUIRED": 0
+    },
+    "CLARIFICATION_REQUIRED": {
+      "SUFFICIENT": 0,
+      "PARTIAL": 0,
+      "INSUFFICIENT": 0,
+      "CONFLICTING": 0,
+      "MISSING": 0,
+      "CLARIFICATION_REQUIRED": 1
+    }
+  },
+  "adversarial_tests_summary": {
+    "total_adversarial_tests": 12,
+    "verified_secure_count": 12,
+    "vulnerabilities_detected": 0
+  },
+  "negative_benchmark_audit_summary": {
+    "total_negative_candidates": 33,
+    "deterministic_passed_count": 33,
+    "generator_verifier_separated_count": 33,
+    "historical_misapplication_anomalies_flagged": 2
+  },
+  "audit_decision": "M6_RUNTIME_ENFORCEMENT_VERIFIED_SECURE__EMPIRICAL_CALIBRATION_READY"
+}

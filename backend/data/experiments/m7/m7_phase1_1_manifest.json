@@ -1,0 +1,56 @@
+{
+  "milestone": "M7",
+  "phase": "M7_Phase_1.1",
+  "audit_title": "Final Research Integrity & Reproducibility Audit",
+  "timestamp_utc": "2026-11-11T13:50:00Z",
+  "preflight_hashes": {
+    "corpus_child_passages_sha256": "8688605df0dbff786454ec770e95609d9d3aacb284fdb3a2f97191f7d2971e9d",
+    "frozen_m3_benchmark_sha256": "093b00ad0f19acda806f2302731ccf2de28838c1b29c6ef16d55cbc5e7e2d520",
+    "m6_expanded_benchmark_sha256": "a528ac583d8c060b91a7febce652885e4045fcc76d644e49e876ddeb5d1db4ae",
+    "m6_qualification_ledger_sha256": "db8c2b5e02d6177b335a283f9ac62f99729fb36ef142aa1af81c99528efd3b13",
+    "m6_phase3_negative_benchmark_sha256": "492b0b1be3ce0c00fdcf453c971c48cb15176496e15806142c0aaff66050aeaa",
+    "m7_manifest_sha256": "05dba01b116f068dde2594ba8bd8d16e2971b040b76e207b089f9d31a05b9f57",
+    "m7_integration_results_sha256": "000d7ebe1857d0b763b3ec7eb1b51c6ad255fc1677cc392e70d2da35f5c77890"
+  },
+  "audit_artifacts_sha256": {
+    "m7_phase1_1_metric_reconciliation": "2d5fab4a3b2fe1e9d38c127b41cb7ff41b6c9a5e8c073a1c2315f79e1b308de6",
+    "m7_phase1_1_security_audit": "19222dc380446dc08190be93c0f10192e214bd8bd902033b6d7fa83f3546bf56",
+    "m7_phase1_1_accessibility_audit": "6798c416c333e01fd811b52b859f3b18d18bf455fc13d32e0f40088a842a3520",
+    "m7_phase1_1_performance_reconciliation": "43657ff6408cb23c7b79cc14abc6a657a432335391f033e9202f72351f16006d"
+  },
+  "test_suite_status": {
+    "collected": 197,
+    "passed": 197,
+    "failed": 0,
+    "skipped": 0,
+    "modules_tested": 13,
+    "regression_integrity": "VERIFIED"
+  },
+  "reconciled_metrics": {
+    "total_benchmark_queries": 15,
+    "gold_answerable": 13,
+    "gold_unanswerable": 2,
+    "direct_answers_emitted": 12,
+    "safe_abstentions_emitted": 2,
+    "conflicting_version_disclosures": 1,
+    "clarification_needed_emitted": 0,
+    "direct_answer_precision": 1.0,
+    "direct_answer_coverage": 0.8,
+    "answerable_recall_direct": 0.9231,
+    "answerable_recall_safe_handled": 1.0,
+    "unanswerable_recall": 1.0,
+    "unsupported_answer_rate": 0.0,
+    "contradiction_leakage_rate": 0.0,
+    "citation_validity_rate": 1.0,
+    "citation_semantic_support_rate": 1.0,
+    "cross_lingual_success_rate": 1.0,
+    "http_200_rate": 1.0
+  },
+  "audit_decision": "M7_RESEARCH_PACKAGE_AUDIT_PASSED_WITH_LIMITATIONS",
+  "audit_limitations": [
+    "FastAPI TestClient was used for HTTP-level integration regression tests rather than live automated browser drivers (e.g. Playwright/Selenium); manual visual inspection confirms DOM rendering and interactive modal flow.",
+    "End-to-end response generation latency on local CPU inference (Ollama qwen2.5:3b) averages ~62s, which is suitable for local privacy-preserving research prototypes but requires GPU acceleration for multi-user production deployment.",
+    "M6 empirical calibration remains exploratory due to sample size constraints (N=56); deterministic evidence controller override precedence remains authoritative."
+  ]
+}
+

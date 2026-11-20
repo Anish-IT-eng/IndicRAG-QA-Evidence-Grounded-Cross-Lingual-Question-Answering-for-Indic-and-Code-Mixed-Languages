@@ -1,0 +1,54 @@
+{
+  "English": {
+    "query": "When do odd semester end semester examinations start and finish?",
+    "detected_language": "en",
+    "passages_retrieved": 13,
+    "retrieval_success": true,
+    "has_start_date_in_evidence": true,
+    "has_end_date_in_evidence": true,
+    "answer_correctness": false,
+    "answer_excerpt": "",
+    "total_citations": 0,
+    "valid_calendar_citations": 0,
+    "citation_correctness": false
+  },
+  "Devanagari Hindi": {
+    "query": "विषम सेमेस्टर की अंतिम परीक्षाएं कब शुरू और समाप्त होती हैं?",
+    "detected_language": "hi",
+    "passages_retrieved": 12,
+    "retrieval_success": false,
+    "has_start_date_in_evidence": true,
+    "has_end_date_in_evidence": true,
+    "answer_correctness": false,
+    "answer_excerpt": "Registration for Even Semester Make-up Examination-Start Date is on 01-07-2026.",
+    "total_citations": 1,
+    "valid_calendar_citations": 0,
+    "citation_correctness": false
+  },
+  "Romanized Hindi": {
+    "query": "Odd semester end semester exams kab start aur finish hote hain?",
+    "detected_language": "hi-Latn",
+    "passages_retrieved": 13,
+    "retrieval_success": true,
+    "has_start_date_in_evidence": true,
+    "has_end_date_in_evidence": true,
+    "answer_correctness": false,
+    "answer_excerpt": "UNANSWERABLE — Insufficient information available in the provided documents.",
+    "total_citations": 0,
+    "valid_calendar_citations": 0,
+    "citation_correctness": false
+  },
+  "Hinglish": {
+    "query": "Odd semester examinations ki start date aur end date kya hai?",
+    "detected_language": "hi-en",
+    "passages_retrieved": 13,
+    "retrieval_success": true,
+    "has_start_date_in_evidence": true,
+    "has_end_date_in_evidence": true,
+    "answer_correctness": true,
+    "answer_excerpt": "Odd semester examinations start date is 10-12-2026 (Thursday) and end date is 22-12-2026 (Tuesday).",
+    "total_citations": 1,
+    "valid_calendar_citations": 1,
+    "citation_correctness": true
+  }
+}

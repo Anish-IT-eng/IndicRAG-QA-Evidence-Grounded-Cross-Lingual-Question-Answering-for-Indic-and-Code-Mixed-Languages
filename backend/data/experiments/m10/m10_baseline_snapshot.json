@@ -1,0 +1,132 @@
+{
+  "milestone": "M10_PHASE_A_BASELINE_SNAPSHOT",
+  "timestamp": "2026-11-17T16:45:00+05:30",
+  "source_manifest_hash": "8941968f484d636c888e5fe224ad11d9039b39234ae2764e43b4d94014b5570d",
+  "corpus_and_indexes": {
+    "database_path": "backend/data/db/indicrag.db",
+    "database_sha256": "2ec61aae957c51eb9703e5322461e044b8432e1b752a9a6e8e2b154bd68121d3",
+    "official_documents": 7,
+    "child_passages": 253,
+    "parent_passages": 53,
+    "embedding_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "production_cross_encoder": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+    "production_llm": "qwen2.5:3b"
+  },
+  "frozen_benchmark_hashes": {
+    "m3_final_dataset": {
+      "path": "backend/data/dataset/final_verified_dataset.csv",
+      "sha256": "093b00ad0f19acda806f2302731ccf2de28838c1b29c6ef16d55cbc5e7e2d520"
+    },
+    "m6_expanded_benchmark_n60": {
+      "path": "backend/data/dataset/m6_expanded_benchmark_n60.csv",
+      "sha256": "a528ac583d8c060b91a7febce652885e4045fcc76d644e49e876ddeb5d1db4ae"
+    },
+    "m6_qualification_ledger": {
+      "path": "backend/data/dataset/m6_benchmark_qualification.csv",
+      "sha256": "db8c2b5e02d6177b335a283f9ac62f99729fb36ef142aa1af81c99528efd3b13"
+    },
+    "m6_phase3_negative_candidates": {
+      "path": "backend/data/experiments/m6/m6_phase3_1_negative_benchmark_audit.csv",
+      "sha256": "be02da59b85d2895b8c60f52266540c27e39c4e8fb39810b1152cf74ea69b05c"
+    }
+  },
+  "m9_reported_retrieval_metrics": {
+    "en": {
+      "language": "en",
+      "total_queries": "60",
+      "answerable_queries": "45",
+      "unanswerable_queries": "15",
+      "hit_at_1": "0.1111111111111111",
+      "hit_at_3": "0.13333333333333333",
+      "hit_at_5": "0.13333333333333333",
+      "mrr": "0.11851851851851851",
+      "ndcg_at_5": "0.12043823975884861",
+      "recall_at_5": "0.13333333333333333",
+      "avg_latency_ms": "1635.4628966662858"
+    },
+    "hi": {
+      "language": "hi",
+      "total_queries": "60",
+      "answerable_queries": "45",
+      "unanswerable_queries": "15",
+      "hit_at_1": "0.022222222222222223",
+      "hit_at_3": "0.022222222222222223",
+      "hit_at_5": "0.044444444444444446",
+      "mrr": "0.027777777777777776",
+      "ndcg_at_5": "0.019493673674178872",
+      "recall_at_5": "0.022222222222222223",
+      "avg_latency_ms": "986.7435199994361"
+    },
+    "hi-Latn": {
+      "language": "hi-Latn",
+      "total_queries": "60",
+      "answerable_queries": "45",
+      "unanswerable_queries": "15",
+      "hit_at_1": "0.1111111111111111",
+      "hit_at_3": "0.13333333333333333",
+      "hit_at_5": "0.13333333333333333",
+      "mrr": "0.12222222222222222",
+      "ndcg_at_5": "0.12513177230158795",
+      "recall_at_5": "0.13333333333333333",
+      "avg_latency_ms": "1620.684534999964"
+    },
+    "en-hi": {
+      "language": "en-hi",
+      "total_queries": "60",
+      "answerable_queries": "45",
+      "unanswerable_queries": "15",
+      "hit_at_1": "0.1111111111111111",
+      "hit_at_3": "0.13333333333333333",
+      "hit_at_5": "0.13333333333333333",
+      "mrr": "0.12222222222222222",
+      "ndcg_at_5": "0.12513177230158795",
+      "recall_at_5": "0.13333333333333333",
+      "avg_latency_ms": "1598.0101966666552"
+    }
+  },
+  "m9_reported_document_consensus": {
+    "definition": "Proportion of 45 answerable intents where any of top-3 retrieved passages across all 4 language variants belong to the same document_id",
+    "reported_value": 0.8889,
+    "matched_intents": 40,
+    "total_answerable_intents": 45,
+    "denominator": 45,
+    "measured_stage": "POST_RERANKING_TOP3_DOCUMENTS",
+    "reconciliation_notes": "Measures coarse document-level overlap (7 documents total in corpus) across top 3 hits, NOT passage-level retrieval accuracy. Devanagari Hindi passage Hit@5 was 0.0444 (2/45)."
+  },
+  "m9_statistical_parity_reconciliation": {
+    "english_vs_hinglish": {
+      "metric": "nDCG@5",
+      "en_mean": 0.1204,
+      "en_hi_mean": 0.1251,
+      "t_statistic": 0.316,
+      "p_value": 0.7533,
+      "verdict": "STATISTICAL_PARITY_ESTABLISHED"
+    },
+    "english_vs_romanized_hindi": {
+      "metric": "nDCG@5",
+      "en_mean": 0.1204,
+      "hi_latn_mean": 0.1251,
+      "t_statistic": 0.316,
+      "p_value": 0.7533,
+      "verdict": "STATISTICAL_PARITY_ESTABLISHED"
+    },
+    "english_vs_devanagari_hindi": {
+      "metric": "nDCG@5",
+      "en_mean": 0.1204,
+      "hi_mean": 0.0195,
+      "t_statistic": -2.746,
+      "p_value": 0.0086,
+      "verdict": "STATISTICALLY_SIGNIFICANT_DEGRADATION"
+    }
+  },
+  "m9_generation_summary": {
+    "total_queries": 240,
+    "answered_count": 53,
+    "unanswerable_count": 177,
+    "conflicting_count": 8,
+    "overall_status_correctness": 0.4583,
+    "claim_grounding_precision": 0.939,
+    "citation_page_precision": 0.9815,
+    "unanswerable_abstention_accuracy": 0.9667
+  }
+}

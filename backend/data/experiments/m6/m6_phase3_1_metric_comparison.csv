@@ -1,0 +1,10 @@
+metric_name,pre_patch_phase2c,post_patch_phase3_1,delta,denominator_definition,interpretation
+Direct-Answer Coverage,0.5862,0.5862,0.0,All qualified pilot queries (N=29),Identical coverage maintained; valid answers pass without regression.
+Correct-Answer Rate,0.5862,0.5862,0.0,All qualified pilot queries (N=29),100% precision maintained on answered queries (17/17).
+Answerable-Query Recall,0.6296,0.6296,0.0,All gold answerable queries (N=27),17 answered / 27 gold answerable. (65.38% if CR is excluded from binary recall denominator).
+Unsupported-Answer Rate,0.0,0.0,0.0,All qualified pilot queries (N=29),Zero unsupported or contradicted claims leaked to end users.
+Contradiction Leakage Rate,0.0345,0.0,-0.0345,All qualified pilot queries (N=29),DEFECT-GEN-01 successfully eliminated all contradiction leakage.
+Zero-Citation Bypass Rate,VULNERABLE,0.0,REMEDIATED,All qualified pilot queries (N=29),DEFECT-GEN-02 strictly blocks zero-citation bypass with retry & abstention.
+Clarification Rate,0.0345,0.0345,0.0,All qualified pilot queries (N=29),Cohort attendance condonation correctly triggers clarification prompt.
+Conflict-Disclosure Rate,0.0345,0.0345,0.0,All qualified pilot queries (N=29),Genuine make-up exam contradiction disclosed with discrepancies.
+Safe-Abstention Rate,0.3448,0.3448,0.0,All qualified pilot queries (N=29),All 10 insufficient queries abstained safely without hallucination.

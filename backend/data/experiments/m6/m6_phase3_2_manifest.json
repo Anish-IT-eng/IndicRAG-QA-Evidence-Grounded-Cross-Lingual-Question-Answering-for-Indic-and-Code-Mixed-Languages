@@ -1,0 +1,34 @@
+{
+  "milestone": "M6",
+  "phase": "Phase 3.2",
+  "title": "Metric Reconciliation & Negative Benchmark Qualification Audit",
+  "timestamp_utc": "2026-11-11T06:58:05.464406+00:00",
+  "audit_mode": "Strict read-only verification",
+  "decision": "PHASE_4_AUTHORIZED_EXPLORATORY_ONLY",
+  "provenance_hashes": {
+    "corpus_db_sha256": "8688605df0dbff786454ec770e95609d9d3aacb284fdb3a2f97191f7d2971e9d",
+    "m3_frozen_benchmark_sha256": "093b00ad0f19acda806f2302731ccf2de28838c1b29c6ef16d55cbc5e7e2d520",
+    "m6_n60_benchmark_sha256": "a528ac583d8c060b91a7febce652885e4045fcc76d644e49e876ddeb5d1db4ae",
+    "m6_qualification_ledger_sha256": "db8c2b5e02d6177b335a283f9ac62f99729fb36ef142aa1af81c99528efd3b13",
+    "m6_phase3_negative_candidates_sha256": "492b0b1be3ce0c00fdcf453c971c48cb15176496e15806142c0aaff66050aeaa"
+  },
+  "metric_reconciliation_summary": {
+    "six_state_accuracy": 0.5172,
+    "six_state_macro_f1_all_6_classes": 0.4907,
+    "six_state_macro_f1_4_support_classes": 0.7361,
+    "six_state_weighted_f1": 0.6188,
+    "reconciled_binary_macro_f1": 0.5492,
+    "direct_answer_precision": 1.0,
+    "direct_answer_coverage": 0.5862,
+    "answerable_query_recall": 0.6296,
+    "unsupported_answer_rate": 0.069,
+    "contradiction_leakage_rate": 0.0
+  },
+  "negative_qualification_summary": {
+    "total_candidates": 33,
+    "qualified_negative": 22,
+    "qualified_answerable_control": 5,
+    "needs_adjudication": 6,
+    "rejected": 0
+  }
+}

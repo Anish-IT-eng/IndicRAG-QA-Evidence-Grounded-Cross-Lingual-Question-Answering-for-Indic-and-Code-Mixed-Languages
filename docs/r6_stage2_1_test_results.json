@@ -1,0 +1,278 @@
+{
+  "timestamp": "2026-11-19T18:11:16+0530",
+  "stage": "R6 Stage 2.1 — Multilingual Event Alignment Repair Regression",
+  "total_scenarios": 8,
+  "passed_scenarios": 8,
+  "all_passed": true,
+  "scenarios": [
+    {
+      "scenario_id": "scenario_1_english",
+      "scenario_name": "English Odd Semester End Exam",
+      "query": "When do odd semester end semester examinations start and finish?",
+      "detected_language": "QueryLanguage.ENGLISH",
+      "detected_script": "QueryScript.LATIN",
+      "normalized_query": "When do End Semester Examinations for Odd Semester start and finish?",
+      "status": "PASS",
+      "evidence_passages_count": 11,
+      "boundary_enforced": true,
+      "traversal_hops": 1,
+      "edges_traversed": 8,
+      "answer": "The examinations start on 10-12-2026 and conclude on 22-12-2026",
+      "citations_count": 1,
+      "valid_citations_count": 1,
+      "citations": [
+        {
+          "filename": "Academic-Calendar-2026-27.pdf",
+          "page": 4,
+          "passage_id": "cal_full_sched_0c174816"
+        }
+      ],
+      "abstained": false,
+      "positive_matches": [
+        "10-12-2026",
+        "22-12-2026"
+      ],
+      "negative_violations": [],
+      "telemetry": {
+        "retrieval_reasoning_ms": 24117.17,
+        "generation_ms": 7466.02,
+        "total_elapsed_ms": 32065.14,
+        "retry_triggered": false
+      }
+    },
+    {
+      "scenario_id": "scenario_2_devanagari_hindi",
+      "scenario_name": "Devanagari Hindi Odd Semester End Exam",
+      "query": "विषम सेमेस्टर की अंतिम परीक्षाएं कब शुरू और समाप्त होती हैं?",
+      "detected_language": "QueryLanguage.HINDI",
+      "detected_script": "QueryScript.DEVANAGARI",
+      "normalized_query": "When do End Semester Examinations for Odd Semester start and finish?",
+      "status": "PASS",
+      "evidence_passages_count": 11,
+      "boundary_enforced": true,
+      "traversal_hops": 1,
+      "edges_traversed": 8,
+      "answer": "The examinations start on 10-12-2026 and conclude on 22-12-2026.",
+      "citations_count": 1,
+      "valid_citations_count": 1,
+      "citations": [
+        {
+          "filename": "Academic-Calendar-2026-27.pdf",
+          "page": 4,
+          "passage_id": "1ef0ccfc-0e11-4406-a880-a97a7df7f41b"
+        }
+      ],
+      "abstained": false,
+      "positive_matches": [
+        "10-12-2026",
+        "22-12-2026"
+      ],
+      "negative_violations": [],
+      "telemetry": {
+        "retrieval_reasoning_ms": 2503.33,
+        "generation_ms": 9492.87,
+        "total_elapsed_ms": 12004.56,
+        "retry_triggered": false
+      }
+    },
+    {
+      "scenario_id": "scenario_3_romanized_hindi",
+      "scenario_name": "Romanized Hindi Odd Semester End Exam",
+      "query": "Visham semester ki antim pariksha kab shuru aur samapt hoti hai?",
+      "detected_language": "QueryLanguage.CODE_MIXED",
+      "detected_script": "QueryScript.LATIN",
+      "normalized_query": "When do End Semester Examinations for Odd Semester start and finish?",
+      "status": "PASS",
+      "evidence_passages_count": 11,
+      "boundary_enforced": true,
+      "traversal_hops": 1,
+      "edges_traversed": 8,
+      "answer": "The examinations start on 10-12-2026 and conclude on 22-12-2026",
+      "citations_count": 1,
+      "valid_citations_count": 1,
+      "citations": [
+        {
+          "filename": "Academic-Calendar-2026-27.pdf",
+          "page": 4,
+          "passage_id": "cal_full_sched_0c174816"
+        }
+      ],
+      "abstained": false,
+      "positive_matches": [
+        "10-12-2026",
+        "22-12-2026"
+      ],
+      "negative_violations": [],
+      "telemetry": {
+        "retrieval_reasoning_ms": 2598.53,
+        "generation_ms": 7378.68,
+        "total_elapsed_ms": 9978.46,
+        "retry_triggered": false
+      }
+    },
+    {
+      "scenario_id": "scenario_4_hinglish",
+      "scenario_name": "Code-Mixed Hinglish Odd Semester End Exam",
+      "query": "Odd semester examinations ki start date aur end date kya hai?",
+      "detected_language": "QueryLanguage.CODE_MIXED",
+      "detected_script": "QueryScript.LATIN",
+      "normalized_query": "When do End Semester Examinations for Odd Semester start and finish?",
+      "status": "PASS",
+      "evidence_passages_count": 11,
+      "boundary_enforced": true,
+      "traversal_hops": 1,
+      "edges_traversed": 8,
+      "answer": "The examinations start on 10-12-2026 and conclude on 22-12-2026",
+      "citations_count": 1,
+      "valid_citations_count": 1,
+      "citations": [
+        {
+          "filename": "Academic-Calendar-2026-27.pdf",
+          "page": 4,
+          "passage_id": "cal_full_sched_0c174816"
+        }
+      ],
+      "abstained": false,
+      "positive_matches": [
+        "10-12-2026",
+        "22-12-2026"
+      ],
+      "negative_violations": [],
+      "telemetry": {
+        "retrieval_reasoning_ms": 2703.08,
+        "generation_ms": 7394.98,
+        "total_elapsed_ms": 10099.11,
+        "retry_triggered": false
+      }
+    },
+    {
+      "scenario_id": "scenario_5_makeup_exam",
+      "scenario_name": "Odd Semester Make-up Examination",
+      "query": "When are the odd semester make-up examinations held?",
+      "detected_language": "QueryLanguage.ENGLISH",
+      "detected_script": "QueryScript.LATIN",
+      "normalized_query": null,
+      "status": "PASS",
+      "evidence_passages_count": 12,
+      "boundary_enforced": true,
+      "traversal_hops": 1,
+      "edges_traversed": 8,
+      "answer": "The examinations start on 18-01-2027 and conclude on 18-01-2027",
+      "citations_count": 1,
+      "valid_citations_count": 1,
+      "citations": [
+        {
+          "filename": "Academic-Calendar-2026-27.pdf",
+          "page": 5,
+          "passage_id": "cal_full_sched_0c174816"
+        }
+      ],
+      "abstained": false,
+      "positive_matches": [
+        "2027"
+      ],
+      "negative_violations": [],
+      "telemetry": {
+        "retrieval_reasoning_ms": 2573.33,
+        "generation_ms": 9028.28,
+        "total_elapsed_ms": 11609.9,
+        "retry_triggered": false
+      }
+    },
+    {
+      "scenario_id": "scenario_6_registration",
+      "scenario_name": "Even Semester Registration",
+      "query": "When does registration for even semester start?",
+      "detected_language": "QueryLanguage.ENGLISH",
+      "detected_script": "QueryScript.LATIN",
+      "normalized_query": null,
+      "status": "PASS",
+      "evidence_passages_count": 6,
+      "boundary_enforced": true,
+      "traversal_hops": 1,
+      "edges_traversed": 9,
+      "answer": "The event starts on 28-12-2026.",
+      "citations_count": 1,
+      "valid_citations_count": 1,
+      "citations": [
+        {
+          "filename": "Academic-Calendar-2026-27.pdf",
+          "page": 5,
+          "passage_id": "cal_full_sched_0c174816"
+        }
+      ],
+      "abstained": false,
+      "positive_matches": [
+        "28-12-2026"
+      ],
+      "negative_violations": [],
+      "telemetry": {
+        "retrieval_reasoning_ms": 3176.8,
+        "generation_ms": 6031.74,
+        "total_elapsed_ms": 9231.9,
+        "retry_triggered": false
+      }
+    },
+    {
+      "scenario_id": "scenario_7_ambiguous_exam",
+      "scenario_name": "Ambiguous Examination Query",
+      "query": "When are the examinations?",
+      "detected_language": "QueryLanguage.ENGLISH",
+      "detected_script": "QueryScript.LATIN",
+      "normalized_query": null,
+      "status": "PASS",
+      "evidence_passages_count": 12,
+      "boundary_enforced": true,
+      "traversal_hops": 1,
+      "edges_traversed": 7,
+      "answer": "UNANSWERABLE — Factual claims could not be verified against corpus citations.",
+      "citations_count": 0,
+      "valid_citations_count": 0,
+      "citations": [],
+      "abstained": true,
+      "positive_matches": [],
+      "negative_violations": [],
+      "telemetry": {
+        "retrieval_reasoning_ms": 3895.96,
+        "generation_ms": 28369.66,
+        "total_elapsed_ms": 32269.17,
+        "retry_triggered": false
+      }
+    },
+    {
+      "scenario_id": "scenario_8_citation_validation",
+      "scenario_name": "Strict Citation Provenance Check",
+      "query": "What are the start and finish dates for Odd Semester End Semester Examinations 2026-27?",
+      "detected_language": "QueryLanguage.ENGLISH",
+      "detected_script": "QueryScript.LATIN",
+      "normalized_query": "What are the start and finish dates for End Semester Examinations for Odd Semester 2026-27?",
+      "status": "PASS",
+      "evidence_passages_count": 11,
+      "boundary_enforced": true,
+      "traversal_hops": 1,
+      "edges_traversed": 8,
+      "answer": "The examinations start on 10-12-2026 and conclude on 22-12-2026.",
+      "citations_count": 1,
+      "valid_citations_count": 1,
+      "citations": [
+        {
+          "filename": "Academic-Calendar-2026-27.pdf",
+          "page": 4,
+          "passage_id": "1ef0ccfc-0e11-4406-a880-a97a7df7f41b"
+        }
+      ],
+      "abstained": false,
+      "positive_matches": [
+        "10-12-2026",
+        "22-12-2026"
+      ],
+      "negative_violations": [],
+      "telemetry": {
+        "retrieval_reasoning_ms": 3415.85,
+        "generation_ms": 10480.51,
+        "total_elapsed_ms": 13905.93,
+        "retry_triggered": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,367 @@
+{
+  "status": "PREFLIGHT_VERIFIED",
+  "timestamp_utc": "2026-11-10T13:39:47.265959+00:00",
+  "corpus_sha256": "8688605df0dbff786454ec770e95609d9d3aacb284fdb3a2f97191f7d2971e9d",
+  "benchmark_sha256": "093b00ad0f19acda806f2302731ccf2de28838c1b29c6ef16d55cbc5e7e2d520",
+  "smoke_test_results": {
+    "E1": {
+      "bm25": {
+        "count": 1,
+        "hit_1": 1.0,
+        "hit_3": 1.0,
+        "hit_5": 1.0,
+        "mrr": 1.0,
+        "ndcg_5": 1.0,
+        "avg_latency_ms": 0.79
+      },
+      "dense": {
+        "count": 1,
+        "hit_1": 0.0,
+        "hit_3": 0.0,
+        "hit_5": 1.0,
+        "mrr": 0.25,
+        "ndcg_5": 0.4307,
+        "avg_latency_ms": 4499.22
+      },
+      "hybrid": {
+        "count": 1,
+        "hit_1": 0.0,
+        "hit_3": 1.0,
+        "hit_5": 1.0,
+        "mrr": 0.3333,
+        "ndcg_5": 0.5,
+        "avg_latency_ms": 84.43
+      }
+    },
+    "E2": {
+      "fixed_hybrid": {
+        "count": 1,
+        "hit_1": 0.0,
+        "hit_3": 1.0,
+        "hit_5": 1.0,
+        "mrr": 0.3333,
+        "ndcg_5": 0.5,
+        "avg_latency_ms": 82.49
+      },
+      "adaptive_routing": {
+        "count": 1,
+        "hit_1": 0.0,
+        "hit_3": 1.0,
+        "hit_5": 1.0,
+        "mrr": 0.3333,
+        "ndcg_5": 0.5,
+        "avg_latency_ms": 30.82
+      },
+      "routing_log": [
+        {
+          "candidate_id": "8820214e-35a3-4176-9a87-d6a681c62c24",
+          "question": "What are the three options available to a student for doing the final semester?",
+          "language": "en",
+          "strategy": "hybrid_rrf",
+          "reason": "Standard balanced query: routes to fixed Hybrid RRF baseline."
+        },
+        {
+          "candidate_id": "b0a1c011-87a1-4111-9011-000000000011",
+          "question": "\u090f\u0938\u0938\u0940\u090f\u0938\u0908\u091f\u0940 \u092f\u0942\u091c\u0940 \u0928\u093f\u092f\u092e\u094b\u0902 \u0915\u0947 \u0905\u0928\u0941\u0938\u093e\u0930 \u0939\u0949\u0938\u094d\u091f\u0932 \u092e\u0947\u0938 \u0915\u0940 \u092b\u0940\u0938 \u0935\u093e\u092a\u0938\u0940 (refund) \u0915\u0947 \u0915\u094d\u092f\u093e \u0928\u093f\u092f\u092e \u0939\u0948\u0902?",
+          "language": "hi",
+          "strategy": "cross_lingual_mqr",
+          "reason": "Devanagari query with English corpus: routes to dense multilingual retrieval with MQR."
+        }
+      ]
+    },
+    "E3": {
+      "direct": {
+        "count": 1,
+        "hit_1": 0.0,
+        "hit_3": 1.0,
+        "hit_5": 1.0,
+        "mrr": 0.3333,
+        "ndcg_5": 0.5,
+        "avg_latency_ms": 26.05
+      },
+      "translation_assisted": {
+        "count": 1,
+        "hit_1": 0.0,
+        "hit_3": 1.0,
+        "hit_5": 1.0,
+        "mrr": 0.3333,
+        "ndcg_5": 0.5,
+        "avg_latency_ms": 26.49
+      },
+      "fallback": {
+        "count": 1,
+        "hit_1": 0.0,
+        "hit_3": 1.0,
+        "hit_5": 1.0,
+        "mrr": 0.3333,
+        "ndcg_5": 0.5,
+        "avg_latency_ms": 1.5
+      },
+      "translation_log": [
+        {
+          "candidate_id": "8820214e-35a3-4176-9a87-d6a681c62c24",
+          "original_query": "What are the three options available to a student for doing the final semester?",
+          "translated_query": "What are the three options available to a student for doing the final semester?",
+          "fallback_occurred": false,
+          "translation_latency_ms": 1.5
+        },
+        {
+          "candidate_id": "b0a1c011-87a1-4111-9011-000000000011",
+          "original_query": "\u090f\u0938\u0938\u0940\u090f\u0938\u0908\u091f\u0940 \u092f\u0942\u091c\u0940 \u0928\u093f\u092f\u092e\u094b\u0902 \u0915\u0947 \u0905\u0928\u0941\u0938\u093e\u0930 \u0939\u0949\u0938\u094d\u091f\u0932 \u092e\u0947\u0938 \u0915\u0940 \u092b\u0940\u0938 \u0935\u093e\u092a\u0938\u0940 (refund) \u0915\u0947 \u0915\u094d\u092f\u093e \u0928\u093f\u092f\u092e \u0939\u0948\u0902?",
+          "translated_query": "When do classes start after semester begins?",
+          "fallback_occurred": false,
+          "translation_latency_ms": 1.5
+        }
+      ]
+    },
+    "E4": {
+      "without_reranker": {
+        "count": 1,
+        "hit_1": 0.0,
+        "hit_3": 1.0,
+        "hit_5": 1.0,
+        "mrr": 0.3333,
+        "ndcg_5": 0.5,
+        "avg_latency_ms": 5.0
+      },
+      "with_reranker": {
+        "count": 1,
+        "hit_1": 0.0,
+        "hit_3": 1.0,
+        "hit_5": 1.0,
+        "mrr": 0.3333,
+        "ndcg_5": 0.5,
+        "avg_latency_ms": 3396.08
+      }
+    },
+    "E5": {
+      "structure_aware": {
+        "count": 1,
+        "hit_1": 0.0,
+        "hit_3": 1.0,
+        "hit_5": 1.0,
+        "mrr": 0.3333,
+        "ndcg_5": 0.5,
+        "avg_latency_ms": 10.0
+      },
+      "fixed_window": {
+        "count": 1,
+        "hit_1": 0.0,
+        "hit_3": 1.0,
+        "hit_5": 1.0,
+        "mrr": 0.3333,
+        "ndcg_5": 0.5,
+        "avg_latency_ms": 10.0
+      }
+    },
+    "E6": {
+      "without_mqr": {
+        "count": 1,
+        "hit_1": 0.0,
+        "hit_3": 1.0,
+        "hit_5": 1.0,
+        "mrr": 0.3333,
+        "ndcg_5": 0.5,
+        "avg_latency_ms": 5.0
+      },
+      "with_mqr": {
+        "count": 1,
+        "hit_1": 0.0,
+        "hit_3": 1.0,
+        "hit_5": 1.0,
+        "mrr": 0.3333,
+        "ndcg_5": 0.5,
+        "avg_latency_ms": 30.74
+      }
+    },
+    "E7": {
+      "without_pdr": {
+        "count": 1,
+        "hit_1": 0.0,
+        "hit_3": 1.0,
+        "hit_5": 1.0,
+        "mrr": 0.3333,
+        "ndcg_5": 0.5,
+        "avg_latency_ms": 5.0
+      },
+      "with_pdr": {
+        "count": 1,
+        "hit_1": 0.0,
+        "hit_3": 1.0,
+        "hit_5": 1.0,
+        "mrr": 0.3333,
+        "ndcg_5": 0.5,
+        "avg_latency_ms": 5.03
+      }
+    },
+    "E8": {
+      "without_version_validation": {
+        "count": 1,
+        "hit_1": 0.0,
+        "hit_3": 1.0,
+        "hit_5": 1.0,
+        "mrr": 0.3333,
+        "ndcg_5": 0.5,
+        "avg_latency_ms": 5.0
+      },
+      "with_version_validation": {
+        "count": 1,
+        "hit_1": 0.0,
+        "hit_3": 1.0,
+        "hit_5": 1.0,
+        "mrr": 0.3333,
+        "ndcg_5": 0.5,
+        "avg_latency_ms": 5.04
+      }
+    },
+    "E9": {
+      "without_decomposition": {
+        "count": 1,
+        "hit_1": 0.0,
+        "hit_3": 1.0,
+        "hit_5": 1.0,
+        "mrr": 0.3333,
+        "ndcg_5": 0.5,
+        "avg_latency_ms": 5.0
+      },
+      "with_decomposition": {
+        "count": 1,
+        "hit_1": 0.0,
+        "hit_3": 1.0,
+        "hit_5": 1.0,
+        "mrr": 0.3333,
+        "ndcg_5": 0.5,
+        "avg_latency_ms": 0.16
+      }
+    },
+    "E10": {
+      "always_answer_baseline": {
+        "total_answered": 2,
+        "total_abstentions": 0
+      },
+      "evidence_controlled": {
+        "total_answered": 0,
+        "total_abstentions": 2,
+        "log": [
+          {
+            "candidate_id": "8820214e-35a3-4176-9a87-d6a681c62c24",
+            "gold_answerability": "answerable",
+            "controller_status": "insufficient",
+            "controller_action": "ABSTAIN",
+            "is_correct_abstention": false,
+            "is_false_answer": false
+          },
+          {
+            "candidate_id": "b0a1c011-87a1-4111-9011-000000000011",
+            "gold_answerability": "unanswerable",
+            "controller_status": "insufficient",
+            "controller_action": "ABSTAIN",
+            "is_correct_abstention": true,
+            "is_false_answer": false
+          }
+        ]
+      }
+    },
+    "E11": {
+      "fixed_budget_k5": {
+        "count": 1,
+        "hit_1": 0.0,
+        "hit_3": 1.0,
+        "hit_5": 1.0,
+        "mrr": 0.3333,
+        "ndcg_5": 0.5,
+        "avg_latency_ms": 5.0
+      },
+      "adaptive_budget": {
+        "count": 1,
+        "hit_1": 0.0,
+        "hit_3": 1.0,
+        "hit_5": 1.0,
+        "mrr": 0.3333,
+        "ndcg_5": 0.5,
+        "avg_latency_ms": 5.06
+      },
+      "budget_log": [
+        {
+          "candidate_id": "8820214e-35a3-4176-9a87-d6a681c62c24",
+          "fixed_k": 5,
+          "initial_adaptive_k": 3,
+          "final_pruned_k": 3,
+          "selection_reason": "Candidate pool size (3) at or below min_k (3)."
+        },
+        {
+          "candidate_id": "b0a1c011-87a1-4111-9011-000000000011",
+          "fixed_k": 5,
+          "initial_adaptive_k": 6,
+          "final_pruned_k": 6,
+          "selection_reason": "No steep drop-off detected: retained full budget k=6."
+        }
+      ]
+    },
+    "E12": {
+      "A0_FULL_ARCHITECTURE": {
+        "count": 1,
+        "hit_1": 0.0,
+        "hit_3": 1.0,
+        "hit_5": 1.0,
+        "mrr": 0.3333,
+        "ndcg_5": 0.5,
+        "avg_latency_ms": 759.75
+      },
+      "A1_NO_RERANKER": {
+        "count": 1,
+        "hit_1": 0.0,
+        "hit_3": 1.0,
+        "hit_5": 1.0,
+        "mrr": 0.3333,
+        "ndcg_5": 0.5,
+        "avg_latency_ms": 27.6
+      },
+      "A2_NO_MQR": {
+        "count": 1,
+        "hit_1": 0.0,
+        "hit_3": 1.0,
+        "hit_5": 1.0,
+        "mrr": 0.3333,
+        "ndcg_5": 0.5,
+        "avg_latency_ms": 715.04
+      },
+      "A3_NO_PDR": {
+        "count": 1,
+        "hit_1": 0.0,
+        "hit_3": 1.0,
+        "hit_5": 1.0,
+        "mrr": 0.3333,
+        "ndcg_5": 0.5,
+        "avg_latency_ms": 801.57
+      },
+      "A4_NO_VERSION_VALIDATION": {
+        "count": 1,
+        "hit_1": 0.0,
+        "hit_3": 1.0,
+        "hit_5": 1.0,
+        "mrr": 0.3333,
+        "ndcg_5": 0.5,
+        "avg_latency_ms": 819.67
+      },
+      "A5_NO_DENSE": {
+        "count": 1,
+        "hit_1": 0.0,
+        "hit_3": 1.0,
+        "hit_5": 1.0,
+        "mrr": 0.3333,
+        "ndcg_5": 0.5,
+        "avg_latency_ms": 264.3
+      },
+      "A6_NO_BM25": {
+        "count": 1,
+        "hit_1": 0.0,
+        "hit_3": 1.0,
+        "hit_5": 1.0,
+        "mrr": 0.3333,
+        "ndcg_5": 0.5,
+        "avg_latency_ms": 567.12
+      }
+    }
+  }
+}

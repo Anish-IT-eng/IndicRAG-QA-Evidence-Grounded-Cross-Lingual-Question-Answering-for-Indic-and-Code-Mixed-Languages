@@ -1,0 +1,11 @@
+{
+  "generated_at": "20261110_130247",
+  "source_document": "Academic-Calendar-2026-27.pdf",
+  "passages_processed": 11,
+  "questions_per_passage": 2,
+  "total_candidates": 18,
+  "generation_failures": 0,
+  "model": "gemma:2b",
+  "review_status": "ALL PENDING \u2014 must be human-reviewed before use in experiments",
+  "csv_path": "C:\\Users\\anish\\Desktop\\IndicRAG-QA\\backend\\data\\dataset\\candidates_20261110_130247.csv"
+}

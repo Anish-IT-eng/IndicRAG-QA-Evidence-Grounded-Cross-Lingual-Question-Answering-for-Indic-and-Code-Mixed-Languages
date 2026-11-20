@@ -1,0 +1,113 @@
+{
+  "audit_milestone": "M8.2",
+  "audit_role": "Independent Research Integrity Auditor and Academic Regulation Evidence Reviewer",
+  "execution_mode": "STRICT_READ_ONLY_AUDIT",
+  "final_determination": "M8_2_CLOSED_WITH_DOCUMENTATION_ERRORS",
+  "timestamp": "2026-11-16T11:02:00+05:30",
+  "prerequisites_verified": {
+    "M8_DOCUMENT_REFRESH_COMPLETED": true,
+    "M8_1_INTEGRITY_VERIFIED": true
+  },
+  "passage_lineage_validation": {
+    "total_records_checked": 172,
+    "records_existing_in_current_db": 172,
+    "text_hashes_matching": 172,
+    "parent_child_relationships_matching": 172,
+    "source_document_ids_matching": 172,
+    "duplicate_passages_found": 0,
+    "preservation_classification": "IDENTICAL_PRESERVED",
+    "preservation_percentage": 100.0,
+    "evidence_file": "backend/data/experiments/m8/m8_1_passage_lineage.csv"
+  },
+  "document_count_reconciliation": {
+    "sqlite_ground_truth": {
+      "Academic-Rules-for-SCSET_UG.pdf": {
+        "child": 34,
+        "parent": 8,
+        "total": 42
+      },
+      "Notification-Minimum-Attendance.pdf": {
+        "child": 1,
+        "parent": 1,
+        "total": 2
+      },
+      "Academic-Calendar-2026-27.pdf": {
+        "child": 11,
+        "parent": 3,
+        "total": 14
+      },
+      "SEAS-Ordinance-Rules-Regulations-2017.pdf": {
+        "child": 96,
+        "parent": 18,
+        "total": 114
+      }
+    },
+    "m8_manifest_reported_counts": {
+      "Academic-Rules-for-SCSET_UG.pdf": {
+        "child": 20,
+        "parent": 5,
+        "total": 25
+      },
+      "Notification-Minimum-Attendance.pdf": {
+        "child": 1,
+        "parent": 1,
+        "total": 2
+      },
+      "Academic-Calendar-2026-27.pdf": {
+        "child": 8,
+        "parent": 1,
+        "total": 9
+      },
+      "SEAS-Ordinance-Rules-Regulations-2017.pdf": {
+        "child": 113,
+        "parent": 23,
+        "total": 136
+      }
+    },
+    "discrepancy_nature": "DOCUMENTATION_ERROR_ONLY",
+    "database_changes_found": false,
+    "root_cause_explanation": {
+      "SCSET_UG": "Author transcribed 20 PDF pages into child_passages and estimated 5 parent passages.",
+      "Calendar": "Author estimated 9 total passages based on 9 PDF pages (8 child + 1 parent).",
+      "SEAS": "Author computed SEAS child and parent counts as mathematical residuals to balance the 142/30 sum (142 - 20 - 1 - 8 = 113; 30 - 5 - 1 - 1 = 23)."
+    },
+    "evidence_file": "backend/data/experiments/m8/m8_2_document_count_reconciliation.csv"
+  },
+  "attendance_rule_supersession_reassessment": {
+    "sources_analyzed": {
+      "SCSET_UG_2022": {
+        "clause": "30.1(ii)",
+        "page": 19,
+        "threshold": "70% minimum attendance in course lectures, tutorials, practicals combined",
+        "authority": "Dean, SCSET",
+        "effective": "AY 2022-23"
+      },
+      "Notification_307_2022": {
+        "reference": "BU/RO/Notification/307/2022",
+        "date": "2022-09-08",
+        "page": 1,
+        "threshold": "75% minimum attendance to appear in End Semester Examination",
+        "authority": "Registrar / Academic Council (UGC Regulations 2003)",
+        "effective": "AY 2022-23 odd semester onwards"
+      },
+      "SEAS_2017": {
+        "clause": "30.1(ii)",
+        "page": 28,
+        "threshold": "70% minimum attendance in course; <70% results in X grade",
+        "authority": "SEAS / Academic Council",
+        "effective": "AY 2017-18"
+      }
+    },
+    "explicit_supersession_clause": false,
+    "unanchored_query_policy": "CONFLICTING_VERSIONS",
+    "evidence_file": "backend/data/experiments/m8/m8_2_regulatory_applicability_matrix.csv"
+  },
+  "test_suite_inventory_reconciliation": {
+    "actual_test_modules": 14,
+    "actual_total_test_cases": 214,
+    "passed_tests": 214,
+    "failed_tests": 0,
+    "skipped_tests": 0,
+    "m8_report_discrepancy": "M8 report stated 197 tests in 13 test suites due to omitting test_m8_corpus_refresh.py (17 tests) from pre-M8 test inventory."
+  }
+}

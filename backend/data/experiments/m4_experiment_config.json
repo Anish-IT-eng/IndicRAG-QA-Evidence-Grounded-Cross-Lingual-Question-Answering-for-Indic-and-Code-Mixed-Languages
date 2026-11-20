@@ -1,0 +1,46 @@
+{
+  "milestone": "M4",
+  "timestamp_utc": "2026-11-10T13:08:24.560585+00:00",
+  "corpus": {
+    "database_path": "C:\\Users\\anish\\Desktop\\IndicRAG-QA\\backend\\data\\db\\indicrag.db",
+    "total_child_passages": 142,
+    "total_parent_passages": 30,
+    "total_db_passages": 172,
+    "corpus_sha256": "8688605df0dbff786454ec770e95609d9d3aacb284fdb3a2f97191f7d2971e9d",
+    "embedding_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "embedding_dimension": 384,
+    "faiss_index_type": "IndexFlatIP",
+    "faiss_vector_count": 142
+  },
+  "retrieval_configurations": {
+    "baseline_a": {
+      "name": "BM25Okapi",
+      "tokenizer": "whitespace lower",
+      "top_k": 5
+    },
+    "baseline_b": {
+      "name": "Dense FAISS Cosine",
+      "embedding_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+      "top_k": 5
+    },
+    "baseline_c": {
+      "name": "Hybrid RRF",
+      "k": 60,
+      "bm25_weight": 1.0,
+      "dense_weight": 1.0,
+      "top_k": 5
+    }
+  },
+  "evaluation_benchmark": {
+    "path": "C:\\Users\\anish\\Desktop\\IndicRAG-QA\\backend\\data\\dataset\\final_verified_dataset.csv",
+    "total_candidates": 15,
+    "answerable_candidates": 13,
+    "unanswerable_candidates": 2,
+    "language_counts": {
+      "en": 5,
+      "hi": 5,
+      "hi-en": 3,
+      "hi-Latn": 2
+    }
+  }
+}

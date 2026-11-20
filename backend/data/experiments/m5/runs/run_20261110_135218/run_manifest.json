@@ -1,0 +1,36 @@
+{
+  "status": "COMPLETED",
+  "run_id": "run_20261110_135218",
+  "timestamp_utc": "2026-11-10T14:16:37.622530+00:00",
+  "total_duration_seconds": 1459.29,
+  "corpus_sha256": "8688605df0dbff786454ec770e95609d9d3aacb284fdb3a2f97191f7d2971e9d",
+  "benchmark_sha256": "093b00ad0f19acda806f2302731ccf2de28838c1b29c6ef16d55cbc5e7e2d520",
+  "environment": {
+    "os": "Windows-11-10.0.26300-SP0",
+    "python_version": "3.13.5",
+    "sqlite_version": "3.45.3",
+    "torch_available": true
+  },
+  "dataset_summary": {
+    "total_candidates": 15,
+    "answerable": 13,
+    "unanswerable": 2,
+    "language_counts": {
+      "en": 5,
+      "hi": 5,
+      "hi-en": 3,
+      "hi-Latn": 2
+    }
+  },
+  "artifacts_generated": [
+    "experiment_config.json",
+    "experiment_summary.json",
+    "query_level_results.csv",
+    "per_experiment_results.csv",
+    "per_language_metrics.csv",
+    "per_ablation_comparison.csv",
+    "error_and_fallback_log.csv",
+    "error_and_fallback_log.json",
+    "run_manifest.json"
+  ]
+}
