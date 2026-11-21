@@ -437,7 +437,11 @@ def chunk_pages(
                     ))
                     chunk_idx += 1
                     parent_buffer.append(chunk_body.strip())
-        else:
+
+        table_text_len = sum(len(c.get("cell_value", "")) for t in page.tables for c in t.get("cells", [])) if page.tables else 0
+        has_prose = (not page.tables) or (len(page.text.strip()) > table_text_len + 150)
+
+        if has_prose:
             # Normal prose chunking (sentence boundary preservation for narrative text)
             sentences = _split_into_sentences(page.text)
             buffer: list[str] = []

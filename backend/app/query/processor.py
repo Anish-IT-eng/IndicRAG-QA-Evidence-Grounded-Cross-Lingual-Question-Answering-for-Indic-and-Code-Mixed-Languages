@@ -207,7 +207,7 @@ def normalize_code_mixed(text: str) -> str:
 # ─── Intent and complexity ─────────────────────────────────────────────────────
 
 _NUMERICAL_PATTERNS = re.compile(
-    r"\b(how many|kitne|kitni|percentage|percent|%|marks|credit|cgpa|sgpa|minimum|maximum|pass|fail)\b",
+    r"\b(how many|how much|total|area|acres|acre|hectares|square feet|sq ft|sq\.?\s*ft|count|number of|quantity|measurement|size|kitne|kitna|kitni|kul|percentage|percent|%|marks|credit|credits|cgpa|sgpa|minimum|maximum|pass|fail)\b",
     re.IGNORECASE,
 )
 _MULTI_PART_PATTERNS = re.compile(

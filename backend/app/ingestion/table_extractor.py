@@ -165,7 +165,7 @@ def extract_tables_from_pypdf_page(
                             break
                 active_headers = [m or f"Col_{i + 1}" for i, m in enumerate(mapped)]
                 active_cuts = cuts
-        elif context and len(centers) == len(context.active_cuts) - 1:
+        elif context and context.last_page_number == page_number - 1 and len(centers) == len(context.active_cuts) - 1:
             # Multi-page continuation
             active_headers = context.active_headers
             active_cuts = context.active_cuts
@@ -175,10 +175,8 @@ def extract_tables_from_pypdf_page(
             active_cuts = cuts
             active_headers = [f"Col_{i + 1}" for i in range(len(centers))]
     else:
-        if context:
-            active_headers = context.active_headers
-            active_cuts = context.active_cuts
-            is_continuation = True
+        # A page without discovered columns cannot continue or form a table
+        return [], None
 
     if not active_headers or not active_cuts:
         return [], None
@@ -264,6 +262,18 @@ def extract_tables_from_pypdf_page(
 
     if not rows:
         return [], context
+
+    # 3b. Validate genuine table structure:
+    # A true table must exhibit multi-column cell content.
+    # Single-column narrative text blocks with dummy headers (Col_1..Col_N) must be rejected
+    # so they can be processed as clean prose.
+    multi_col_rows = sum(1 for r in rows if sum(1 for h in active_headers if r.get(h, "").strip()) >= 2)
+    if not found_headers:
+        if len(rows) < 3 or multi_col_rows < 2 or (multi_col_rows / len(rows) < 0.25):
+            return [], None
+    else:
+        if len(rows) > 0 and multi_col_rows == 0 and len(active_headers) >= 2:
+            return [], None
 
     # 4. Generate structured representations
     # Markdown

@@ -30,6 +30,7 @@ from app.models.schemas import (
     QueryAnalysis,
     QueryLanguage,
     QueryResponse,
+    QuestionType,
     ResponseStatus,
 )
 
@@ -56,6 +57,7 @@ Rules:
 5. If rules conflict between documents, state both versions and their applicable periods.
 6. Be concise and precise. Do not speculate or extrapolate.
 7. When answering about scheduled events, examinations, or dates from a calendar/table, match the specific event requested in the question (for example, 'End Semester Examination' vs 'Make-up Examination' vs 'Re-appear Examination') and state the exact start date.
+8. For numerical, measurement, or quantity questions: State the exact numbers, measurements, and units directly from the evidence in the opening sentence. Do not substitute general descriptive summaries for requested quantities.
 """
 
 _USER_PROMPT_TEMPLATE = """{lang_instruction}
@@ -65,7 +67,7 @@ Question: {question}
 Evidence passages:
 {evidence}
 
-Instructions: Answer the question using the evidence passages above. When answering about scheduled dates or events, match the exact event requested in the question. Cite every factual claim with [Source: passage_id, page X] referring to the passages above. If the answer cannot be determined from the evidence, output UNANSWERABLE."""
+Instructions: Answer the question using the evidence passages above. When answering about scheduled dates or events, match the exact event requested. For numerical, measurement, or quantity questions, directly state the exact figure and unit in the first sentence. Cite every factual claim with [Source: passage_id, page X] referring to the passages above. If the answer cannot be determined from the evidence, output UNANSWERABLE."""
 
 _RETRY_CITATION_PROMPT = """You provided an answer without citing any source passages.
 You MUST provide citations in the exact format [Source: <passage_id>, page X] for EVERY factual claim made.
@@ -120,7 +122,7 @@ async def _call_ollama(prompt: str, system_prompt: str) -> str:
         "stream": False,
         "options": {
             "temperature": settings.generation_temperature,
-            "num_predict": min(settings.generation_max_tokens, 256),
+            "num_predict": min(settings.generation_max_tokens, 512),
         },
     }
     timeout_sec = float(settings.ollama_timeout)
@@ -155,9 +157,10 @@ async def _call_ollama(prompt: str, system_prompt: str) -> str:
 # Format D: [Source: passage_id=<uuid>]
 # Variations: [Source: passage_id: <uuid>], uppercase/lowercase UUIDs, optional page/p.
 _CITATION_PATTERN = re.compile(
-    r"(?:\[Source:\s*(?:passage_id\s*[:=]?\s*)?([a-zA-Z0-9_-]+)(?:\s*,\s*(?:page|p\.?)\s*(\d+))?\s*\]|"
-    r"^\s*Source:\s*(?:passage_id\s*[:=]?\s*)?([a-zA-Z0-9_-]+)(?:\s*,\s*(?:page|p\.?)\s*(\d+))?\s*$)",
-    re.IGNORECASE | re.MULTILINE,
+    r"(?:\[(?:Source|Doc):\s*(?:passage_id\s*[:=]?\s*)?([a-zA-Z0-9_.-]+)(?:\s*,\s*(?:page|p\.?)\s*(\d+))?\s*\]|"
+    r"(?:^|\r?\n)\s*(?:Source|Doc):\s*(?:passage_id\s*[:=]?\s*)?([a-zA-Z0-9_.-]+)(?:\s*,\s*(?:page|p\.?)\s*(\d+))?\s*(?:\r?\n|$)|"
+    r"\[\s*(?:Source|Doc):\s*(?:passage_id\s*[:=]?\s*)?([a-zA-Z0-9_.-]+)(?:\s*,\s*(?:page|p\.?)\s*(\d+))?[^\]\n]*$)",
+    re.IGNORECASE,
 )
 
 
@@ -174,6 +177,7 @@ def _extract_citations_and_claims(
     generated_text: str,
     passages,
     document_filenames: dict[str, str],
+    allow_fallback: bool = False,
 ) -> tuple[list[Citation], str, Any]:
     """
     Parse [Source: passage_id, page X] markers from generated text.
@@ -217,12 +221,21 @@ def _extract_citations_and_claims(
             passage_map.get(raw_pid) 
             or lower_passage_map.get(raw_pid.lower()) 
             or index_map.get(raw_pid)
+            or index_map.get(re.sub(r"^[pP]", "", raw_pid))
             or (next((p for p in passages if p.passage_id.lower().startswith(raw_pid.lower()) or (len(raw_pid) >= 8 and raw_pid.lower() in p.passage_id.lower())), None) if len(raw_pid) >= 8 else None)
         )
-        if not matched_p and len(raw_pid) >= 5:
+        if not matched_p and len(raw_pid) >= 3:
             clean_raw = re.sub(r"[_\s-]+", "", raw_pid).lower()
             matched_p = next(
-                (p for p in passages if (p.heading and (clean_raw in re.sub(r"[_\s-]+", "", p.heading).lower() or re.sub(r"[_\s-]+", "", p.heading).lower() in clean_raw)) or (p.section and (clean_raw in re.sub(r"[_\s-]+", "", p.section).lower() or re.sub(r"[_\s-]+", "", p.section).lower() in clean_raw)) or (clean_raw in re.sub(r"[_\s-]+", "", p.passage_id).lower())),
+                (p for p in passages if (
+                    (page is None or p.page_number == page) and (
+                        clean_raw in ("doc", "source", "document", "pdf", "ssr")
+                        or (p.heading and (clean_raw in re.sub(r"[_\s-]+", "", p.heading).lower() or re.sub(r"[_\s-]+", "", p.heading).lower() in clean_raw))
+                        or (p.section and (clean_raw in re.sub(r"[_\s-]+", "", p.section).lower() or re.sub(r"[_\s-]+", "", p.section).lower() in clean_raw))
+                        or (clean_raw in re.sub(r"[_\s-]+", "", p.passage_id).lower())
+                        or (getattr(p, "document_filename", "") and clean_raw in re.sub(r"[_\s-]+", "", p.document_filename).lower())
+                    )
+                )),
                 None
             )
 
@@ -296,24 +309,35 @@ def _extract_citations_and_claims(
     cleaned = re.sub(r" +", " ", cleaned)
     cleaned = re.sub(r"\s+([.,;:!?])", r"\1", cleaned).strip()
 
-    # Fallback attribution: if LLM synthesized an answer but missed explicit [Source: ...] syntax
-    if not citations and passages and "UNANSWERABLE" not in generated_text.upper():
-        logger.info("Extracting fallback citations from valid evidence passages based on lexical overlap.")
-        # Pass 1: Term & entity overlap
+    # Multi-passage attribution: extract citations if LLM synthesized an answer but missed explicit [Source: ...] syntax
+    if allow_fallback and not citations and passages and "UNANSWERABLE" not in generated_text.upper():
+        logger.info("Extracting/augmenting citations from valid evidence passages based on numerical and lexical overlap.")
+        numbers_in_ans = set(re.findall(r"\b\d+(?:,\d+)*(?:\.\d+)?\b", cleaned))
+        scored_candidates = []
         for p in passages:
             p_terms = set(re.findall(r"\b[a-zA-Z0-9_]{4,}\b", p.text.lower()))
-            ans_terms = set(re.findall(r"\b[a-zA-Z0-9_]{4,}\b", generated_text.lower()))
+            ans_terms = set(re.findall(r"\b[a-zA-Z0-9_]{4,}\b", cleaned.lower()))
             overlap = len(p_terms.intersection(ans_terms))
+            num_matches = sum(1 for n in numbers_in_ans if n in p.text) if numbers_in_ans else 0
             doc_fn = document_filenames.get(p.document_id) or getattr(p, "document_filename", "") or ""
             fn_clean = re.sub(r"[_\W]+", " ", doc_fn).lower()
             heading_clean = (p.heading or "").lower()
             section_clean = (p.section or "").lower()
-            if (
-                overlap >= 5
-                or (fn_clean and any(w in generated_text.lower() for w in fn_clean.split() if len(w) > 4))
-                or (heading_clean and heading_clean in generated_text.lower())
-                or (section_clean and section_clean in generated_text.lower())
-            ):
+            meta_boost = 0
+            if fn_clean and any(w in cleaned.lower() for w in fn_clean.split() if len(w) > 4):
+                meta_boost += 3
+            if heading_clean and heading_clean in cleaned.lower():
+                meta_boost += 5
+            if section_clean and section_clean in cleaned.lower():
+                meta_boost += 3
+            
+            # Numerical match gives strong boost to correctly align quantitative answers
+            total_score = num_matches * 20 + overlap + meta_boost
+            scored_candidates.append((total_score, overlap, num_matches, p, doc_fn))
+
+        scored_candidates.sort(key=lambda x: x[0], reverse=True)
+        for total_score, overlap, num_matches, p, doc_fn in scored_candidates:
+            if total_score >= 4 or overlap >= 4 or num_matches >= 1:
                 if p.passage_id not in seen_passage_ids:
                     seen_passage_ids.add(p.passage_id)
                     matched_source = getattr(p, "source_type", DocumentSource.OFFICIAL)
@@ -421,9 +445,22 @@ async def generate_answer(
         out_lang = lang_enum.value
 
     # Handle clarification required immediately (no LLM call)
-    if evidence_decision.status == EvidenceStatus.CLARIFICATION_REQUIRED or evidence_decision.clarification_needed:
+    from app.query.event_resolver import resolve_academic_event_intent
+    _event_intent = resolve_academic_event_intent(query_analysis.original_query)
+    if not _event_intent.event_category and query_analysis.normalized_query and query_analysis.normalized_query != query_analysis.original_query:
+        _event_intent = resolve_academic_event_intent(query_analysis.normalized_query)
+
+    if (
+        evidence_decision.status == EvidenceStatus.CLARIFICATION_REQUIRED 
+        or evidence_decision.clarification_needed
+        or _event_intent.is_ambiguous
+    ):
         latency = (time.perf_counter() - t0) * 1000
-        explanation = evidence_decision.explanation or "Applicable academic cohort or program version must be specified."
+        explanation = (
+            "The query is ambiguous because multiple examinations exist in the Academic Calendar. Please clarify or specify which examination schedule you need."
+            if _event_intent.is_ambiguous
+            else (evidence_decision.explanation or "Applicable academic cohort or program version must be specified.")
+        )
         return QueryResponse(
             request_id=request_id,
             status=ResponseStatus.CLARIFICATION_NEEDED,
@@ -455,7 +492,8 @@ async def generate_answer(
 
     # Build prompt
     lang_instruction = _LANG_INSTRUCTIONS.get(lang_enum, "Answer in English.")
-    evidence_text = _format_evidence(evidence_decision.valid_passages)
+    prompt_passages = evidence_decision.valid_passages[:5] if len(evidence_decision.valid_passages) > 5 else evidence_decision.valid_passages
+    evidence_text = _format_evidence(prompt_passages)
 
     q_lower = query_analysis.original_query.lower()
     if ("enough" in q_lower or "sufficient" in q_lower or "पर्याप्त" in q_lower or "काफी" in q_lower) and evidence_decision.status == EvidenceStatus.MULTI_CONDITION_DISCLOSURE:
@@ -505,15 +543,20 @@ async def generate_answer(
         elif event_intent.is_ambiguous:
             instructions = (
                 "The question is ambiguous because the user did not specify which semester or exam type is requested. "
-                "State that the query is ambiguous, explain that multiple examinations exist in the Academic Calendar "
-                "(such as Odd Semester End Semester Examinations, Even Semester End Semester Examinations, and Make-up Examinations), "
-                "and ask the user to clarify or specify which examination schedule they need."
+                "You MUST begin your answer by stating: 'The query is ambiguous because multiple examinations exist in the Academic Calendar "
+                "(such as Odd Semester End Semester Examinations, Even Semester End Semester Examinations, and Make-up Examinations). "
+                "Please clarify or specify which examination schedule you need.' "
+                "Cite [Source: passage_id, page X]."
+            )
+        elif query_analysis.query_type == QuestionType.NUMERICAL or any(w in q_lower for w in ["how many", "how much", "total", "area", "acres", "acre", "trees", "percentage", "percent", "count", "number of", "quantity", "kitne", "kitna", "kitni"]):
+            instructions = (
+                "Answer the question using the evidence passages above. Include the exact numbers, measurements, and details from the evidence in the first sentence. "
+                "Cite each claim with [Source: passage_id, page X]."
             )
         else:
             instructions = (
                 "Answer the question using the evidence passages above. "
-                "Cite every factual claim with [Source: passage_id, page X] referring to the passages above. "
-                "If the answer cannot be determined from the evidence, output UNANSWERABLE."
+                "Cite every factual claim with [Source: passage_id, page X] referring to the passages above."
             )
 
     if query_analysis.normalized_query and query_analysis.normalized_query != query_analysis.original_query:

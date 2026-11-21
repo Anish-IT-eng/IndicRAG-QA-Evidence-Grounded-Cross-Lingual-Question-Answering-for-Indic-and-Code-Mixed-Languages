@@ -1,0 +1,177 @@
+[
+  {
+    "id": "Q1",
+    "query": "what is total campus green spaces dedicated by campus",
+    "type": "positive_numerical",
+    "expected": "over 12 acres",
+    "status": "answered",
+    "evidence_status": "sufficient",
+    "answer": "Total campus green spaces dedicated by Bennett University are over 12 acres.",
+    "citations": [
+      {
+        "doc": "UPUNGN113496_SSR_BU.pdf",
+        "page": 102,
+        "source": "User-provided document"
+      }
+    ],
+    "passed": true
+  },
+  {
+    "id": "Q2",
+    "query": "What is the total campus green space?",
+    "type": "positive_numerical",
+    "expected": "over 12 acres",
+    "status": "answered",
+    "evidence_status": "sufficient",
+    "answer": "The total campus green space is 12 acres.",
+    "citations": [
+      {
+        "doc": "UPUNGN113496_SSR_BU.pdf",
+        "page": 102,
+        "source": "User-provided document"
+      }
+    ],
+    "passed": true
+  },
+  {
+    "id": "Q3",
+    "query": "How many acres are dedicated to green spaces?",
+    "type": "positive_numerical",
+    "expected": "over 12 acres",
+    "status": "answered",
+    "evidence_status": "sufficient",
+    "answer": "BU has dedicated 12 acres of its campus to green spaces.",
+    "citations": [
+      {
+        "doc": "UPUNGN113496_SSR_BU.pdf",
+        "page": 102,
+        "source": "User-provided document"
+      }
+    ],
+    "passed": true
+  },
+  {
+    "id": "Q4",
+    "query": "How much campus area is covered by greenery?",
+    "type": "positive_numerical",
+    "expected": "over 12 acres",
+    "status": "answered",
+    "evidence_status": "sufficient",
+    "answer": "The campus of Bennett University (BU) covers over 12 acres of green space dedicated to greenery, which includes over 2,000 fully grown trees and other plants.",
+    "citations": [
+      {
+        "doc": "UPUNGN113496_SSR_BU.pdf",
+        "page": 102,
+        "source": "User-provided document"
+      }
+    ],
+    "passed": true
+  },
+  {
+    "id": "Q5",
+    "query": "How many fully grown trees are present on campus?",
+    "type": "positive_numerical",
+    "expected": "over 2,000",
+    "status": "answered",
+    "evidence_status": "sufficient",
+    "answer": "There are over 2,000 fully grown trees present on campus.",
+    "citations": [
+      {
+        "doc": "UPUNGN113496_SSR_BU.pdf",
+        "page": 102,
+        "source": "User-provided document"
+      }
+    ],
+    "passed": true
+  },
+  {
+    "id": "Q6",
+    "query": "How many geo-tagged trees are there?",
+    "type": "positive_numerical",
+    "expected": "over 2,000",
+    "status": "answered",
+    "evidence_status": "partial",
+    "answer": "There are 2,000+ geo-tagged trees at Bennett University.",
+    "citations": [
+      {
+        "doc": "UPUNGN113496_SSR_BU.pdf",
+        "page": 8,
+        "source": "User-provided document"
+      }
+    ],
+    "passed": true
+  },
+  {
+    "id": "Q7",
+    "query": "What is the green campus initiative?",
+    "type": "positive_initiative",
+    "expected": "automobiles / bicycles / pedestrian pathways / plastic",
+    "status": "answered",
+    "evidence_status": "sufficient",
+    "answer": "The Green Campus initiative at Bennett University includes a campus-wide plastic ban, the use of bio-degradable products in food outlets, and the strategic placement of environment-friendly litter bins across campus zones. The initiative also involves the use of CNG-based shuttles for students and staff, pedestrian-friendly pathways, and the establishment of an organic vegetable garden. The university has also developed a fruit belt to attract and feed birds, and constructed bird nests to provide shelter for native species.",
+    "citations": [
+      {
+        "doc": "UPUNGN113496_SSR_BU.pdf",
+        "page": 102,
+        "source": "User-provided document"
+      }
+    ],
+    "passed": true
+  },
+  {
+    "id": "Q8",
+    "query": "What is the university's policy on plastic usage?",
+    "type": "positive_policy",
+    "expected": "ban on single-use plastic",
+    "status": "answered",
+    "evidence_status": "sufficient",
+    "answer": "Bennett University has a Green Campus initiative that includes a campus-wide plastic ban. Plastic usage is restricted, and the university has implemented policies and guidelines for all food vendors on campus, prohibiting the use of single-use plastic items. Additionally, BU has a \"Paperless policy\" in place to further reduce its environmental impact. The university uses organic waste composter machines to convert food and horticulture waste into manure, which is used in horticulture. BU also uses recycled water for irrigation purposes and promotes the use of e-vehicles on campus.",
+    "citations": [
+      {
+        "doc": "UPUNGN113496_SSR_BU.pdf",
+        "page": 102,
+        "source": "User-provided document"
+      }
+    ],
+    "passed": true
+  },
+  {
+    "id": "Q9",
+    "query": "What is the swimming pool depth?",
+    "type": "unanswerable",
+    "expected": "UNANSWERABLE",
+    "status": "unanswerable",
+    "evidence_status": "insufficient",
+    "answer": "UNANSWERABLE \u2014 Insufficient information available in the provided documents.",
+    "citations": [],
+    "passed": true
+  },
+  {
+    "id": "Q10",
+    "query": "How many acres is the swimming pool?",
+    "type": "unanswerable",
+    "expected": "UNANSWERABLE",
+    "status": "unanswerable",
+    "evidence_status": "insufficient",
+    "answer": "UNANSWERABLE \u2014 Insufficient information available in the provided documents.",
+    "citations": [],
+    "passed": true
+  },
+  {
+    "id": "Q11",
+    "query": "Campus mein green space kitna acre hai?",
+    "type": "multilingual_hinglish",
+    "expected": "over 12 acres",
+    "status": "answered",
+    "evidence_status": "sufficient",
+    "answer": "Source: 3a47f040-cc05-42a0-9ad2-3df9d6f606b9, page 102 [7.1.4] \n\n\u092c\u0947\u0928\u094d\u091f \u0935\u093f\u0936\u094d\u0935\u0935\u093f\u0926\u094d\u092f\u093e\u0932\u092f \u0915\u093e \u0915\u0949\u0938\u094d\u091f\u092e\u0947\u0902\u0938 \u0915\u094d\u0937\u0947\u0924\u094d\u0930 \u0915\u0941\u0932 12 \u090f\u0915\u0930 \u0939\u0948\u0964",
+    "citations": [
+      {
+        "doc": "UPUNGN113496_SSR_BU.pdf",
+        "page": 102,
+        "source": "User-provided document"
+      }
+    ],
+    "passed": true
+  }
+]

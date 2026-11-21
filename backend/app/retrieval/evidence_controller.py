@@ -83,7 +83,7 @@ class EvidenceController:
         sufficient_count: int = settings.evidence_sufficient_count,
         max_retries: int = settings.max_retrieval_retries,
         tau_suff: float = 0.65,
-        tau_insuff: float = 0.35,
+        tau_insuff: float = 0.30,
         ceci_estimator: Optional[CECIEstimator] = None,
     ):
         self.min_score = min_score

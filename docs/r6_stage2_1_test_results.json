@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-19T18:11:16+0530",
+  "timestamp": "2026-11-21T17:06:50+0530",
   "stage": "R6 Stage 2.1 — Multilingual Event Alignment Repair Regression",
   "total_scenarios": 8,
   "passed_scenarios": 8,
@@ -34,9 +34,9 @@
       ],
       "negative_violations": [],
       "telemetry": {
-        "retrieval_reasoning_ms": 24117.17,
-        "generation_ms": 7466.02,
-        "total_elapsed_ms": 32065.14,
+        "retrieval_reasoning_ms": 13391.65,
+        "generation_ms": 5756.71,
+        "total_elapsed_ms": 19361.41,
         "retry_triggered": false
       }
     },
@@ -59,7 +59,7 @@
         {
           "filename": "Academic-Calendar-2026-27.pdf",
           "page": 4,
-          "passage_id": "1ef0ccfc-0e11-4406-a880-a97a7df7f41b"
+          "passage_id": "cal_full_sched_0c174816"
         }
       ],
       "abstained": false,
@@ -69,9 +69,9 @@
       ],
       "negative_violations": [],
       "telemetry": {
-        "retrieval_reasoning_ms": 2503.33,
-        "generation_ms": 9492.87,
-        "total_elapsed_ms": 12004.56,
+        "retrieval_reasoning_ms": 2727.84,
+        "generation_ms": 5662.42,
+        "total_elapsed_ms": 8397.37,
         "retry_triggered": false
       }
     },
@@ -87,7 +87,7 @@
       "boundary_enforced": true,
       "traversal_hops": 1,
       "edges_traversed": 8,
-      "answer": "The examinations start on 10-12-2026 and conclude on 22-12-2026",
+      "answer": "The examinations start on 10-12-2026 and conclude on 22-12-2026.",
       "citations_count": 1,
       "valid_citations_count": 1,
       "citations": [
@@ -104,9 +104,9 @@
       ],
       "negative_violations": [],
       "telemetry": {
-        "retrieval_reasoning_ms": 2598.53,
-        "generation_ms": 7378.68,
-        "total_elapsed_ms": 9978.46,
+        "retrieval_reasoning_ms": 2843.04,
+        "generation_ms": 6018.48,
+        "total_elapsed_ms": 8862.68,
         "retry_triggered": false
       }
     },
@@ -139,9 +139,9 @@
       ],
       "negative_violations": [],
       "telemetry": {
-        "retrieval_reasoning_ms": 2703.08,
-        "generation_ms": 7394.98,
-        "total_elapsed_ms": 10099.11,
+        "retrieval_reasoning_ms": 3919.62,
+        "generation_ms": 7824.27,
+        "total_elapsed_ms": 11744.54,
         "retry_triggered": false
       }
     },
@@ -157,7 +157,7 @@
       "boundary_enforced": true,
       "traversal_hops": 1,
       "edges_traversed": 8,
-      "answer": "The examinations start on 18-01-2027 and conclude on 18-01-2027",
+      "answer": "The examinations start on 25-01-2027 and conclude on 25-01-2027",
       "citations_count": 1,
       "valid_citations_count": 1,
       "citations": [
@@ -173,9 +173,9 @@
       ],
       "negative_violations": [],
       "telemetry": {
-        "retrieval_reasoning_ms": 2573.33,
-        "generation_ms": 9028.28,
-        "total_elapsed_ms": 11609.9,
+        "retrieval_reasoning_ms": 3865.18,
+        "generation_ms": 7296.68,
+        "total_elapsed_ms": 11169.17,
         "retry_triggered": false
       }
     },
@@ -207,9 +207,9 @@
       ],
       "negative_violations": [],
       "telemetry": {
-        "retrieval_reasoning_ms": 3176.8,
-        "generation_ms": 6031.74,
-        "total_elapsed_ms": 9231.9,
+        "retrieval_reasoning_ms": 3649.32,
+        "generation_ms": 4515.3,
+        "total_elapsed_ms": 8179.2,
         "retry_triggered": false
       }
     },
@@ -225,7 +225,7 @@
       "boundary_enforced": true,
       "traversal_hops": 1,
       "edges_traversed": 7,
-      "answer": "UNANSWERABLE — Factual claims could not be verified against corpus citations.",
+      "answer": "CLARIFICATION REQUIRED — The query is ambiguous because multiple examinations exist in the Academic Calendar. Please clarify or specify which examination schedule you need.",
       "citations_count": 0,
       "valid_citations_count": 0,
       "citations": [],
@@ -233,9 +233,9 @@
       "positive_matches": [],
       "negative_violations": [],
       "telemetry": {
-        "retrieval_reasoning_ms": 3895.96,
-        "generation_ms": 28369.66,
-        "total_elapsed_ms": 32269.17,
+        "retrieval_reasoning_ms": 4781.56,
+        "generation_ms": 0.21,
+        "total_elapsed_ms": 4784.34,
         "retry_triggered": false
       }
     },
@@ -258,7 +258,7 @@
         {
           "filename": "Academic-Calendar-2026-27.pdf",
           "page": 4,
-          "passage_id": "1ef0ccfc-0e11-4406-a880-a97a7df7f41b"
+          "passage_id": "cal_full_sched_0c174816"
         }
       ],
       "abstained": false,
@@ -268,9 +268,9 @@
       ],
       "negative_violations": [],
       "telemetry": {
-        "retrieval_reasoning_ms": 3415.85,
-        "generation_ms": 10480.51,
-        "total_elapsed_ms": 13905.93,
+        "retrieval_reasoning_ms": 4757.88,
+        "generation_ms": 7427.64,
+        "total_elapsed_ms": 12191.64,
         "retry_triggered": false
       }
     }
