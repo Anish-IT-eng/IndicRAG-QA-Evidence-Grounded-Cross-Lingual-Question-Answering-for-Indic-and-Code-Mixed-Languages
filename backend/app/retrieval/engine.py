@@ -198,7 +198,8 @@ class RetrieverIndex:
         for idx in top_indices:
             if scores[idx] > 0:
                 meta = self.passage_meta[idx]
-                if user_id and meta.get("user_id") != user_id:
+                meta_uid = meta.get("user_id")
+                if user_id and meta_uid and meta_uid != user_id:
                     continue
                 results.append((self.passage_ids[idx], float(scores[idx]), meta))
                 if len(results) >= top_k:
@@ -218,7 +219,8 @@ class RetrieverIndex:
             if idx < 0:
                 continue
             meta = self.passage_meta[idx]
-            if user_id and meta.get("user_id") != user_id:
+            meta_uid = meta.get("user_id")
+            if user_id and meta_uid and meta_uid != user_id:
                 continue
             results.append((self.passage_ids[idx], float(score), meta))
             if len(results) >= top_k:

@@ -428,7 +428,7 @@ def get_all_documents(source_type: Optional[DocumentSource] = None, user_id: Opt
         if source_type:
             if source_type == DocumentSource.UPLOAD and user_id:
                 rows = conn.execute(
-                    "SELECT * FROM documents WHERE source_type = ? AND json_extract(metadata, '$.user_id') = ? ORDER BY ingestion_timestamp DESC",
+                    "SELECT * FROM documents WHERE source_type = ? AND (json_extract(metadata, '$.user_id') = ? OR json_extract(metadata, '$.user_id') IS NULL OR json_extract(metadata, '$.user_id') = '') ORDER BY ingestion_timestamp DESC",
                     (source_type.value, user_id),
                 ).fetchall()
             else:
