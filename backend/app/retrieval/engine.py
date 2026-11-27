@@ -20,15 +20,39 @@ import pickle
 import re
 import time
 from pathlib import Path
-from typing import Optional
+from typing import Any, Optional
 
-import faiss
+try:
+    import faiss
+    _FAISS_AVAILABLE = True
+except Exception as _faiss_err:
+    faiss = None
+    _FAISS_AVAILABLE = False
+
 import numpy as np
 from rank_bm25 import BM25Okapi
 from sentence_transformers import SentenceTransformer
 
 from app.core.config import settings
 from app.core.logging_config import logger
+
+_faiss_force_disabled: Optional[bool] = None
+
+
+def is_faiss_available() -> bool:
+    """Return True if FAISS is installed, functional, and not force-disabled."""
+    if _faiss_force_disabled is not None:
+        return (not _faiss_force_disabled) and (_FAISS_AVAILABLE and faiss is not None)
+    return _FAISS_AVAILABLE and faiss is not None
+
+
+def set_faiss_force_disabled(disabled: Optional[bool]) -> None:
+    """
+    Hook for automated testing: dynamically enable/disable the FAISS backend
+    to test the NumPy fallback without altering system environment.
+    """
+    global _faiss_force_disabled
+    _faiss_force_disabled = disabled
 from app.models.schemas import (
     DocumentSource,
     DocumentVersionInfo,
@@ -90,7 +114,8 @@ class RetrieverIndex:
         self.passage_meta: list[dict] = []   # per-passage metadata
 
         self.bm25: Optional[BM25Okapi] = None
-        self.faiss_index: Optional[faiss.IndexFlatL2] = None
+        self.faiss_index: Optional[Any] = None
+        self.embeddings: Optional[np.ndarray] = None
         self._dirty = True
 
     # ── Build / update ─────────────────────────────────────────────────────────
@@ -114,13 +139,19 @@ class RetrieverIndex:
             if m.get("document_id") != document_id
         ]
         if len(keep_indices) < len(self.passage_ids):
+            old_len = len(self.passage_ids)
             self.passage_ids = [self.passage_ids[i] for i in keep_indices]
             self.passage_texts = [self.passage_texts[i] for i in keep_indices]
             self.passage_meta = [self.passage_meta[i] for i in keep_indices]
+            if self.embeddings is not None and len(self.embeddings) == old_len:
+                self.embeddings = self.embeddings[keep_indices]
+            else:
+                self.embeddings = None
+            self.faiss_index = None
             self._dirty = True
 
     def build(self) -> None:
-        """Build BM25 and FAISS indexes from current passage store."""
+        """Build BM25 and dense (FAISS or NumPy) indexes from current passage store."""
         if not self.passage_texts:
             logger.warning("No passages to index for %s.", self.index_name)
             return
@@ -129,17 +160,35 @@ class RetrieverIndex:
         tokenized = [t.lower().split() for t in self.passage_texts]
         self.bm25 = BM25Okapi(tokenized)
 
-        logger.info("Building FAISS index…")
+        logger.info("Building dense index for %s…", self.index_name)
         model = get_embedding_model()
-        embeddings = model.encode(
+        raw_embeddings = model.encode(
             self.passage_texts,
             batch_size=settings.embedding_batch_size,
             show_progress_bar=False,
             normalize_embeddings=True,
         )
-        embeddings = np.array(embeddings, dtype="float32")
-        self.faiss_index = faiss.IndexFlatIP(embeddings.shape[1])  # inner-product (cosine after norm)
-        self.faiss_index.add(embeddings)
+        self.embeddings = np.array(raw_embeddings, dtype="float32")
+
+        if is_faiss_available():
+            try:
+                self.faiss_index = faiss.IndexFlatIP(self.embeddings.shape[1])
+                self.faiss_index.add(self.embeddings)
+                logger.info(
+                    "FAISS IndexFlatIP index built (%d vectors, dim=%d).",
+                    self.faiss_index.ntotal,
+                    self.embeddings.shape[1],
+                )
+            except Exception as exc:
+                logger.warning("Failed to build FAISS index (%s); using NumPy dense fallback.", exc)
+                self.faiss_index = None
+        else:
+            self.faiss_index = None
+            logger.info(
+                "Built NumPy dense embedding index (%d vectors, dim=%d).",
+                len(self.embeddings),
+                self.embeddings.shape[1],
+            )
 
         self._dirty = False
         logger.info("Indexes built for %s.", self.index_name)
@@ -147,9 +196,21 @@ class RetrieverIndex:
 
     def save(self) -> None:
         idx_path = self.index_dir / "faiss.index"
+        emb_path = self.index_dir / "embeddings.npy"
         meta_path = self.index_dir / "meta.pkl"
-        if self.faiss_index:
-            faiss.write_index(self.faiss_index, str(idx_path))
+
+        if is_faiss_available() and self.faiss_index is not None:
+            try:
+                faiss.write_index(self.faiss_index, str(idx_path))
+            except Exception as exc:
+                logger.warning("Failed to save FAISS index (%s).", exc)
+
+        if self.embeddings is not None and len(self.embeddings) > 0:
+            try:
+                np.save(str(emb_path), self.embeddings)
+            except Exception as exc:
+                logger.warning("Failed to save embeddings.npy (%s).", exc)
+
         with open(meta_path, "wb") as f:
             pickle.dump({
                 "passage_ids": self.passage_ids,
@@ -160,28 +221,93 @@ class RetrieverIndex:
 
     def load(self) -> bool:
         idx_path = self.index_dir / "faiss.index"
+        emb_path = self.index_dir / "embeddings.npy"
         meta_path = self.index_dir / "meta.pkl"
-        if not idx_path.exists() or not meta_path.exists():
+
+        if not meta_path.exists():
             return False
+
         try:
-            self.faiss_index = faiss.read_index(str(idx_path))
             with open(meta_path, "rb") as f:
                 data = pickle.load(f)
-            self.passage_ids = data["passage_ids"]
-            self.passage_texts = data["passage_texts"]
-            self.passage_meta = data["passage_meta"]
-            # Rebuild BM25 (not serialisable)
-            tokenized = [t.lower().split() for t in self.passage_texts]
-            self.bm25 = BM25Okapi(tokenized)
+            self.passage_ids = data.get("passage_ids", [])
+            self.passage_texts = data.get("passage_texts", [])
+            self.passage_meta = data.get("passage_meta", [])
+
+            # Rebuild BM25
+            if self.passage_texts:
+                tokenized = [t.lower().split() for t in self.passage_texts]
+                self.bm25 = BM25Okapi(tokenized)
+
+            # 1. Try loading pre-saved embeddings.npy
+            if emb_path.exists():
+                try:
+                    self.embeddings = np.load(str(emb_path))
+                    if self.embeddings.dtype != np.float32:
+                        self.embeddings = self.embeddings.astype(np.float32)
+                except Exception as exc:
+                    logger.warning("Failed to load %s: %s", emb_path, exc)
+                    self.embeddings = None
+
+            # 2. Try loading FAISS index if FAISS is available
+            if is_faiss_available() and idx_path.exists():
+                try:
+                    self.faiss_index = faiss.read_index(str(idx_path))
+                    if self.embeddings is None and hasattr(self.faiss_index, "ntotal") and self.faiss_index.ntotal > 0:
+                        try:
+                            self.embeddings = self.faiss_index.reconstruct_n(0, self.faiss_index.ntotal)
+                            np.save(str(emb_path), self.embeddings)
+                        except Exception:
+                            pass
+                except Exception as exc:
+                    logger.warning("Failed to load FAISS index from %s (%s). Falling back to NumPy.", idx_path, exc)
+                    self.faiss_index = None
+
+            # 3. If FAISS is available and faiss_index is None but embeddings is loaded, construct faiss_index in memory
+            if is_faiss_available() and self.faiss_index is None and self.embeddings is not None and len(self.embeddings) > 0:
+                try:
+                    self.faiss_index = faiss.IndexFlatIP(self.embeddings.shape[1])
+                    self.faiss_index.add(self.embeddings)
+                except Exception as exc:
+                    logger.debug("Could not initialize in-memory FAISS index: %s", exc)
+
+            # 4. If neither FAISS nor embeddings.npy worked, but we have passage_texts, generate embeddings on the fly
+            if self.embeddings is None and self.faiss_index is None and self.passage_texts:
+                logger.info("No saved embeddings found for %s. Generating embeddings on the fly...", self.index_name)
+                model = get_embedding_model()
+                raw = model.encode(
+                    self.passage_texts,
+                    batch_size=settings.embedding_batch_size,
+                    show_progress_bar=False,
+                    normalize_embeddings=True,
+                )
+                self.embeddings = np.array(raw, dtype="float32")
+                try:
+                    np.save(str(emb_path), self.embeddings)
+                except Exception:
+                    pass
+                if is_faiss_available():
+                    try:
+                        self.faiss_index = faiss.IndexFlatIP(self.embeddings.shape[1])
+                        self.faiss_index.add(self.embeddings)
+                    except Exception:
+                        pass
+
             self._dirty = False
-            logger.info("Loaded index %s (%d passages).", self.index_name, len(self.passage_ids))
+            backend_label = (
+                "FAISS+NumPy"
+                if (self.faiss_index is not None and self.embeddings is not None)
+                else ("FAISS" if self.faiss_index is not None else ("NumPy" if self.embeddings is not None else "None"))
+            )
+            logger.info("Loaded index %s (%d passages, dense_backend=%s).", self.index_name, len(self.passage_ids), backend_label)
             return True
         except Exception as exc:
             logger.error("Failed to load index %s: %s", self.index_name, exc)
             return False
 
     def is_ready(self) -> bool:
-        return bool(self.passage_ids) and self.bm25 is not None and self.faiss_index is not None
+        has_dense = (self.faiss_index is not None) or (self.embeddings is not None and len(self.embeddings) > 0)
+        return bool(self.passage_ids) and self.bm25 is not None and has_dense
 
     # ── Search ─────────────────────────────────────────────────────────────────
 
@@ -207,22 +333,84 @@ class RetrieverIndex:
         return results
 
     def dense_search(self, query: str, top_k: int, user_id: Optional[str] = None) -> list[tuple[str, float, dict]]:
-        """Returns list of (passage_id, score, meta), optionally filtered by user_id."""
-        if self.faiss_index is None:
+        """
+        Returns list of (passage_id, score, meta), optionally filtered by user_id.
+        Uses FAISS IndexFlatIP when available, otherwise falls back to NumPy cosine similarity.
+        Safely handles empty indexes, dimension mismatches, and edge cases.
+        """
+        if not self.passage_ids:
             return []
+
+        has_dense = (self.faiss_index is not None) or (self.embeddings is not None and len(self.embeddings) > 0)
+        if not has_dense:
+            logger.warning("Dense search called on %s but no dense index/embeddings available.", self.index_name)
+            return []
+
         model = get_embedding_model()
         q_emb = model.encode([query], normalize_embeddings=True)
         q_emb = np.array(q_emb, dtype="float32")
-        scores, indices = self.faiss_index.search(q_emb, top_k * 4 if user_id else top_k)
+
+        candidate_k = max(top_k * 4 if user_id else top_k, 1)
+
+        # ── Branch A: FAISS backend (if available and loaded) ──
+        if is_faiss_available() and self.faiss_index is not None:
+            if hasattr(self.faiss_index, "d") and self.faiss_index.d != q_emb.shape[1]:
+                logger.error(
+                    "Dimension mismatch in FAISS dense search: query dim %d != index dim %d",
+                    q_emb.shape[1],
+                    self.faiss_index.d,
+                )
+                return []
+            try:
+                scores, indices = self.faiss_index.search(q_emb, min(candidate_k, self.faiss_index.ntotal))
+                results = []
+                for score, idx in zip(scores[0], indices[0]):
+                    if idx < 0 or idx >= len(self.passage_ids):
+                        continue
+                    meta = self.passage_meta[idx]
+                    meta_uid = meta.get("user_id")
+                    if user_id and meta_uid and meta_uid != user_id:
+                        continue
+                    results.append((self.passage_ids[idx], float(score), meta))
+                    if len(results) >= top_k:
+                        break
+                return results
+            except Exception as exc:
+                logger.warning("FAISS search failed (%s); falling back to NumPy search.", exc)
+
+        # ── Branch B: NumPy cosine-similarity fallback ──
+        if self.embeddings is None or len(self.embeddings) == 0:
+            logger.warning("NumPy fallback requested but self.embeddings is empty for %s.", self.index_name)
+            return []
+
+        if self.embeddings.shape[1] != q_emb.shape[1]:
+            logger.error(
+                "Dimension mismatch in NumPy dense search: query dim %d != index dim %d",
+                q_emb.shape[1],
+                self.embeddings.shape[1],
+            )
+            return []
+
+        q_vec = q_emb[0]
+        q_norm = np.linalg.norm(q_vec)
+        if q_norm > 0:
+            q_vec = q_vec / q_norm
+
+        # Cosine similarity is the dot product of normalized vectors
+        sims = np.dot(self.embeddings, q_vec)
+
+        max_take = min(candidate_k, len(sims), len(self.passage_ids))
+        top_indices = np.argsort(sims)[::-1][:max_take]
+
         results = []
-        for score, idx in zip(scores[0], indices[0]):
-            if idx < 0:
+        for idx in top_indices:
+            if idx < 0 or idx >= len(self.passage_ids):
                 continue
             meta = self.passage_meta[idx]
             meta_uid = meta.get("user_id")
             if user_id and meta_uid and meta_uid != user_id:
                 continue
-            results.append((self.passage_ids[idx], float(score), meta))
+            results.append((self.passage_ids[idx], float(sims[idx]), meta))
             if len(results) >= top_k:
                 break
         return results

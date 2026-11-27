@@ -139,6 +139,7 @@ def _require_eval_key(x_api_key: Optional[str] = Header(default=None)) -> None:
 # ─── Health ──────────────────────────────────────────────────────────────────
 
 @app.get("/health", response_model=HealthResponse, tags=["System"])
+@app.get("/api/health", response_model=HealthResponse, tags=["System"], include_in_schema=False)
 async def health() -> HealthResponse:
     # Check Ollama
     import httpx as _httpx
